@@ -1,0 +1,51 @@
+{
+	"title": {
+		"en": "Start/Stop (dis)charging",
+		"nl": "Start/Stop (ont)laden"
+	},
+		"titleFormatted": {
+				"en": "Set Sessy charge mode to [[chargeMode]]",
+				"nl": "Zet Sessy laadmodus op [[chargeMode]]"
+		},
+		"hint": { 
+				"en": "Charging/Discharging will be set to the maximum capacity.",
+				"nl": "Laden/Ontladen wordt ingesteld op de maximale capaciteit."
+		},
+		"highlight": true,
+		"args": [
+				{
+						"type": "device",
+						"name": "device",
+						"filter": "driver_id=sessy"
+				},
+				{
+						"type": "dropdown",
+						"name": "chargeMode",
+						"title": { "en": "Charge mode", "nl": "Laadmodus" },
+						"values": [
+								{
+										"id": "CHARGE",
+										"title": {
+												"en": "Charge",
+												"nl": "Opladen"
+										}
+								},
+								{
+										"id": "STOP",
+										"title": {
+												"en": "Stop",
+												"nl": "Stop"
+										}
+								},
+								{
+										"id": "DISCHARGE",
+										"title": {
+												"en": "Discharge",
+												"nl": "Ontladen"
+										}
+								}
+						],
+						"value": "STOP"
+				}
+		]
+}

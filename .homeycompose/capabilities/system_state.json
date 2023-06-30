@@ -1,0 +1,11 @@
+{
+	"type": "string",
+	"title": {
+		"en": "System State",
+		"nl": "Systeemstatus"
+	},
+	"getable": true,
+	"setable": false,
+	"uiComponent": "sensor",
+	"icon": "./assets/system_state.svg"
+}

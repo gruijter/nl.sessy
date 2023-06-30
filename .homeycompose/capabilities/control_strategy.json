@@ -1,0 +1,38 @@
+{
+	"type": "enum",
+	"title": {
+		"en": "Control Mode",
+		"nl": "Besturingsmodus"
+	},
+	"values": [
+		{
+			"id": "POWER_STRATEGY_API",
+			"title": {
+				"en": "HOMEY"
+			}
+		},
+		{
+			"id": "POWER_STRATEGY_NOM",
+			"title": {
+				"en": "SESSY NOM (!)"
+			}
+		},
+		{
+			"id": "POWER_STRATEGY_ROI",
+			"title": {
+				"en": "SESSY ROI (!)"
+			}
+		},
+		{
+			"id": "POWER_STRATEGY_IDLE",
+			"title": {
+				"en": "IDLE (!)"
+			}
+		}
+	],
+	"value": "POWER_STRATEGY_API",
+	"getable": true,
+	"setable": true,
+	"icon": "./assets/control_strategy.svg",
+	"uiComponent": "sensor"
+}

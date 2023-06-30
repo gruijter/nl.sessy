@@ -1,0 +1,21 @@
+{
+	"pair": {
+		"monmodetitle": "MONITORING MODE",
+		"monmodetext": "Add all SESSY's in monitoring mode",
+		"monmodebutton": "CONTINUE IN MONITORING MODE",
+		"contmodetitle": "CONTROL MODE",
+		"contmodetext": "Add one SESSY in control mode",
+		"contmodebutton": "CONTINUE IN CONTROL MODE",
+		"host": "IP address or URL",
+		"username": "Username",
+		"password": "Password",
+		"incomplete": "Host, username and password must be entered!"
+	},
+	"sessy": {
+		"controlError": "Homey is not set in control mode",
+		"connectionError": "Connection error, restarting now",
+		"migrating": "Device is migrating. Please wait!",
+		"newFirmware": "New firmware installed on Sessy. __fw__",
+		"newFirmwareAvailable": "New firmware available for Sessy. __fw__"
+	}
+}

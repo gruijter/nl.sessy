@@ -1,0 +1,16 @@
+{
+		"title": {
+				"en": "The fault Alarm turned Off",
+				"nl": "Het storing Alarm ging Uit"
+		},
+		"highlight": true,
+		"args": [
+				{
+						"type": "device",
+						"name": "device",
+						"filter": "driver_id=sessy"
+				}
+		]
+}
+
+

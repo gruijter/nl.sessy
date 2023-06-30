@@ -1,0 +1,29 @@
+{
+  "1.0.0": {
+    "en": "First release."
+  },
+  "1.0.1": {
+    "en": "Updated P1 icon and image."
+  },
+  "1.0.2": {
+    "en": "Appstore compatibility changes. Minor translation updates. Updated P1 icon."
+  },
+  "1.0.3": {
+    "en": "Sessy and P1 firmware information and flow card added. Homey forced control mode extended to every control attempt. Readme updated."
+  },
+  "1.0.4": {
+    "en": "Sessy Dongle and Battery firmware information, flow cards and timeline added. New available firmware now only triggers once after app start."
+  },
+  "1.0.5": {
+    "en": "Sessy Dongle and Battery firmware information, flow cards and timeline added. New available firmware now only triggers once after app start."
+  },
+  "1.0.6": {
+    "en": "Added settings for minimum and maximum Sessy power. Auto stop charging/discharging when battery is full/empty. Max discharge limit set to 1.8kW."
+  },
+  "1.0.7": {
+    "en": "Added frequency info. Added full/empty detection based on system state."
+  },
+  "1.0.8": {
+    "en": "Added seperate settings for max charge/discharge limits."
+  }
+}

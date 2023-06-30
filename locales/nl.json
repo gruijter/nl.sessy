@@ -1,0 +1,21 @@
+{
+	"pair": {
+		"monmodetitle": "MONITOR MODUS",
+		"monmodetext": "Voeg alle SESSY's toe in monitor modus",
+		"monmodebutton": "GA DOOR IN MONITOR MODUS",
+		"contmodetitle": "BESTURING MODUS",
+		"contmodetext": "Voeg één SESSY toe in besturingsmodus",
+		"contmodebutton": "GA DOOR IN BESTURING MODUS",
+		"host": "IP adres of URL",
+		"username": "Gebruikersnaam",
+		"password": "Wachtwoord",
+		"incomplete": "IP adres, gebruikersnaam en wachtwoord moeten worden ingevoerd!"
+	},
+	"sessy": {
+		"controlError": "Homey is niet ingesteld in besturingsmodus",
+		"connectionError": "Verbindingsfout, aan het hertarten",
+		"migrating": "Apparaat is aan het migreren. Geduld AUB!",
+		"newFirmware": "Nieuwe firmware geinstalleerd op Sessy. __fw__",
+		"newFirmwareAvailable": "Nieuwe firmware beschikbaar voor Sessy. __fw__"
+	}
+}

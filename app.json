@@ -1,0 +1,939 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "nl.sessy",
+  "version": "1.0.8",
+  "compatibility": ">=7.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Sessy"
+  },
+  "brandColor": "#662abd",
+  "description": {
+    "en": "Your smart battery at home.",
+    "nl": "Je slimme batterij in huis."
+  },
+  "tags": {
+    "en": [
+      "battery",
+      "powerwall",
+      "storage"
+    ],
+    "nl": [
+      "thuisbatterij",
+      "powerwall",
+      "opslag"
+    ]
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.jpg",
+    "large": "/assets/images/large.jpg",
+    "xlarge": "/assets/images/xlarge.jpg"
+  },
+  "author": {
+    "name": "Robin de Gruijter",
+    "email": "homey@sessy.nl"
+  },
+  "support": "mailto:homey@sessy.nl",
+  "homeyCommunityTopicId": 78156,
+  "flow": {
+    "triggers": [
+      {
+        "title": {
+          "en": "The fault Alarm turned On",
+          "nl": "Het storing Alarm ging Aan"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          }
+        ],
+        "id": "alarm_fault_false"
+      },
+      {
+        "title": {
+          "en": "The fault Alarm turned Off",
+          "nl": "Het storing Alarm ging Uit"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          }
+        ],
+        "id": "alarm_fault_true"
+      },
+      {
+        "title": {
+          "en": "The charge mode changed",
+          "nl": "De laadmodus is veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "charge_mode",
+            "type": "string",
+            "title": {
+              "en": "Charge Mode",
+              "nl": "Laadmodus"
+            },
+            "example": "STOP"
+          }
+        ],
+        "id": "charge_mode_changed"
+      },
+      {
+        "title": {
+          "en": "The control mode changed",
+          "nl": "De besturingsmodus is veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "control_strategy",
+            "type": "string",
+            "title": {
+              "en": "Control Mode",
+              "nl": "Besturingsmodus"
+            },
+            "example": "HOMEY"
+          }
+        ],
+        "id": "control_strategy_changed"
+      },
+      {
+        "title": {
+          "en": "The firmware changed",
+          "nl": "De firmware is veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "fwDongle",
+            "type": "string",
+            "title": {
+              "en": "Dongle firmware",
+              "nl": "Dongel firmware"
+            },
+            "example": "1.1.2"
+          },
+          {
+            "name": "fwBat",
+            "type": "string",
+            "title": {
+              "en": "Battery firmware",
+              "nl": "Batterij firmware"
+            },
+            "example": "1.1.2"
+          }
+        ],
+        "id": "firmware_changed"
+      },
+      {
+        "title": {
+          "en": "The target power changed",
+          "nl": "Het doelvermogen is veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_setpoint",
+            "type": "number",
+            "title": {
+              "en": "Target power",
+              "nl": "Doelvermogen"
+            },
+            "example": 1500
+          }
+        ],
+        "id": "meter_setpoint_changed"
+      },
+      {
+        "title": {
+          "en": "New firmware is available",
+          "nl": "Nieuwe firmware is beschikbaar"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "availableFWDongle",
+            "type": "string",
+            "title": {
+              "en": "Dongle Firmware",
+              "nl": "Dongel Firmware"
+            },
+            "example": "1.1.2"
+          },
+          {
+            "name": "availableFWBat",
+            "type": "string",
+            "title": {
+              "en": "Battery firmware",
+              "nl": "Batterij firmware"
+            },
+            "example": "1.1.2"
+          }
+        ],
+        "id": "new_firmware_available"
+      },
+      {
+        "title": {
+          "en": "The system state changed",
+          "nl": "De systeemstatus is veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy|p1"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "system_state",
+            "type": "string",
+            "title": {
+              "en": "System state",
+              "nl": "Systeemstatus"
+            },
+            "example": "RUNNING_SAFE"
+          }
+        ],
+        "id": "system_state_changed"
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Start/Stop (dis)charging",
+          "nl": "Start/Stop (ont)laden"
+        },
+        "titleFormatted": {
+          "en": "Set Sessy charge mode to [[chargeMode]]",
+          "nl": "Zet Sessy laadmodus op [[chargeMode]]"
+        },
+        "hint": {
+          "en": "Charging/Discharging will be set to the maximum capacity.",
+          "nl": "Laden/Ontladen wordt ingesteld op de maximale capaciteit."
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          },
+          {
+            "type": "dropdown",
+            "name": "chargeMode",
+            "title": {
+              "en": "Charge mode",
+              "nl": "Laadmodus"
+            },
+            "values": [
+              {
+                "id": "CHARGE",
+                "title": {
+                  "en": "Charge",
+                  "nl": "Opladen"
+                }
+              },
+              {
+                "id": "STOP",
+                "title": {
+                  "en": "Stop",
+                  "nl": "Stop"
+                }
+              },
+              {
+                "id": "DISCHARGE",
+                "title": {
+                  "en": "Discharge",
+                  "nl": "Ontladen"
+                }
+              }
+            ],
+            "value": "STOP"
+          }
+        ],
+        "id": "set_charge_mode"
+      },
+      {
+        "title": {
+          "en": "Set the control mode",
+          "nl": "Zet de besturingsmodus"
+        },
+        "titleFormatted": {
+          "en": "Set Sessy control mode to [[controlStrategy]]",
+          "nl": "Zet Sessy besturingsmodus op [[controlStrategy]]"
+        },
+        "hint": {
+          "en": "Only when set to 'HOMEY' it is possible to control Sessy from Homey.",
+          "nl": "Alleen wanneer ingesteld op 'HOMEY' kan Sessy worden bestuurd door Homey."
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          },
+          {
+            "type": "dropdown",
+            "name": "controlStrategy",
+            "title": {
+              "en": "Control mode",
+              "nl": "Besturingsmodus"
+            },
+            "values": [
+              {
+                "id": "POWER_STRATEGY_API",
+                "title": {
+                  "en": "HOMEY"
+                }
+              },
+              {
+                "id": "POWER_STRATEGY_NOM",
+                "title": {
+                  "en": "SESSY NOM (!)"
+                }
+              },
+              {
+                "id": "POWER_STRATEGY_ROI",
+                "title": {
+                  "en": "SESSY ROI (!)"
+                }
+              },
+              {
+                "id": "POWER_STRATEGY_IDLE",
+                "title": {
+                  "en": "IDLE (!)"
+                }
+              }
+            ],
+            "value": "POWER_STRATEGY_API"
+          }
+        ],
+        "id": "set_control_strategy"
+      },
+      {
+        "title": {
+          "en": "Set the target power",
+          "nl": "Zet het doelvermogen"
+        },
+        "units": {
+          "en": "Watt"
+        },
+        "titleFormatted": {
+          "en": "Set target power to [[setpoint]] W",
+          "nl": "Zet doelvermogen op [[setpoint]] W"
+        },
+        "hint": {
+          "en": "Positive = battery will discharge. Negative number = battery will charge. When set to 0 charging/discharging will stop.",
+          "nl": "Positieve waarde = accu gaat ontladen. Negatieve waarde = accu gaat laden. Bij een waarde van 0 stopt het laden/ontladen."
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          },
+          {
+            "type": "number",
+            "name": "setpoint",
+            "title": {
+              "en": "Target power",
+              "nl": "Doelvermogen"
+            },
+            "min": -2200,
+            "max": 1800,
+            "step": 1,
+            "value": 0,
+            "label": " Watt",
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_power_setpoint"
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Sessy P1"
+      },
+      "class": "sensor",
+      "energy": {
+        "cumulative": true
+      },
+      "capabilities": [
+        "measure_power",
+        "system_state"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "/drivers/p1/assets/images/small.jpg",
+        "large": "/drivers/p1/assets/images/large.jpg"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": false
+          },
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
+      "id": "p1"
+    },
+    {
+      "name": {
+        "en": "Sessy"
+      },
+      "class": "solarpanel",
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
+      "capabilities": [
+        "charge_mode",
+        "measure_battery",
+        "measure_power",
+        "meter_setpoint",
+        "system_state",
+        "alarm_fault",
+        "control_strategy",
+        "measure_power.total",
+        "measure_power.p1",
+        "measure_voltage.p1",
+        "measure_current.p1",
+        "measure_power.p2",
+        "measure_voltage.p2",
+        "measure_current.p2",
+        "measure_power.p3",
+        "measure_current.p3",
+        "measure_voltage.p3"
+      ],
+      "capabilitiesOptions": {
+        "measure_power.total": {
+          "title": {
+            "en": "Solar Power Total",
+            "nl": "PV vermogen Totaal"
+          }
+        },
+        "measure_power.p1": {
+          "title": {
+            "en": "Solar Power P1",
+            "nl": "PV vermogen P1"
+          }
+        },
+        "measure_power.p2": {
+          "title": {
+            "en": "Solar Power P2",
+            "nl": "PV vermogen P2"
+          }
+        },
+        "measure_power.p3": {
+          "title": {
+            "en": "Solar Power P3",
+            "nl": "PV vermogen P3"
+          }
+        },
+        "measure_current.p1": {
+          "title": {
+            "en": "Solar Current P1",
+            "nl": "PV stroom P1"
+          }
+        },
+        "measure_current.p2": {
+          "title": {
+            "en": "Solar Current P2",
+            "nl": "PV stroom P2"
+          }
+        },
+        "measure_current.p3": {
+          "title": {
+            "en": "Solar Current P3",
+            "nl": "PV stroom P3"
+          }
+        },
+        "measure_voltage.p1": {
+          "title": {
+            "en": "Solar Voltage P1",
+            "nl": "PV spanning P1"
+          }
+        },
+        "measure_voltage.p2": {
+          "title": {
+            "en": "Solar Voltage P2",
+            "nl": "PV spanning P2"
+          }
+        },
+        "measure_voltage.p3": {
+          "title": {
+            "en": "Solar Voltage P3",
+            "nl": "PV spanning P3"
+          }
+        },
+        "alarm_fault": {
+          "titleTrue": {
+            "en": "Yes",
+            "nl": "Ja"
+          },
+          "titleFalse": {
+            "en": "No",
+            "nl": "Nee"
+          }
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "lan"
+      ],
+      "images": {
+        "small": "/drivers/sessy/assets/images/small.jpg",
+        "large": "/drivers/sessy/assets/images/large.jpg"
+      },
+      "pair": [
+        {
+          "id": "selectmode"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": false
+          },
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
+      "id": "sessy",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Sessy information",
+            "nl": "Sessy informatie"
+          },
+          "children": [
+            {
+              "id": "mac",
+              "type": "label",
+              "label": {
+                "en": "MAC address",
+                "nl": "MAC adres"
+              },
+              "value": ""
+            },
+            {
+              "id": "fwDongle",
+              "type": "label",
+              "label": {
+                "en": "Firmware Dongle",
+                "nl": "Firmware Dongel"
+              },
+              "value": ""
+            },
+            {
+              "id": "fwBat",
+              "type": "label",
+              "label": {
+                "en": "Firmware Battery",
+                "nl": "Firmware Batterij"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Connection settings",
+            "nl": "Verbinding instellingen"
+          },
+          "children": [
+            {
+              "id": "host",
+              "type": "text",
+              "label": {
+                "en": "Host",
+                "nl": "Host"
+              },
+              "value": ""
+            },
+            {
+              "id": "port",
+              "type": "number",
+              "label": {
+                "en": "Port",
+                "nl": "Poort"
+              },
+              "value": 80
+            },
+            {
+              "id": "username",
+              "type": "text",
+              "label": {
+                "en": "Username",
+                "nl": "Gebruikersnaam"
+              },
+              "value": ""
+            },
+            {
+              "id": "password",
+              "type": "password",
+              "label": {
+                "en": "Password",
+                "nl": "Wachtwoord"
+              },
+              "value": ""
+            },
+            {
+              "id": "pollingInterval",
+              "type": "number",
+              "label": {
+                "en": "Update interval (s)",
+                "nl": "Update interval (s)"
+              },
+              "min": 5,
+              "max": 300,
+              "value": 10
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Solar settings",
+            "nl": "PV instellingen"
+          },
+          "children": [
+            {
+              "id": "show_re_total",
+              "type": "checkbox",
+              "label": {
+                "en": "Show Solar Total",
+                "nl": "Toon PV Totaal"
+              },
+              "value": true
+            },
+            {
+              "id": "show_re1",
+              "type": "checkbox",
+              "label": {
+                "en": "Show Solar P1",
+                "nl": "Toon PV P1"
+              },
+              "value": true
+            },
+            {
+              "id": "show_re2",
+              "type": "checkbox",
+              "label": {
+                "en": "Show Solar P2",
+                "nl": "Toon PV P2"
+              },
+              "value": true
+            },
+            {
+              "id": "show_re3",
+              "type": "checkbox",
+              "label": {
+                "en": "Show Solar P3",
+                "nl": "Toon PV P3"
+              },
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Control settings",
+            "nl": "Besturing instellingen"
+          },
+          "children": [
+            {
+              "id": "force_control_strategy",
+              "type": "checkbox",
+              "label": {
+                "en": "Force Homey control mode",
+                "nl": "Forceer Homey besturingsmodus"
+              },
+              "hint": {
+                "en": "Control mode will be set to HOMEY at every app start and control attempt (API Open Mode). Note that you must set the username and password first!",
+                "nl": "Besturingsmodus wordt ingesteld op HOMEY bij iedere app start en besturingspoging. (API Open Modus). Let op: eerst gebruikersnaam en wachtwoord invullen!"
+              },
+              "value": false
+            },
+            {
+              "id": "power_min",
+              "type": "number",
+              "label": {
+                "en": "Minimum power",
+                "nl": "Minimaal vermogen"
+              },
+              "hint": {
+                "en": "Homey will stop charging or discharging when the power is lower then the set minimum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+                "nl": "Homey stopt met laden of ontladen als het vermogen lager is dan het ingestelde minimum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
+              },
+              "min": 0,
+              "max": 1800,
+              "value": 0
+            },
+            {
+              "id": "power_max_charge",
+              "type": "number",
+              "label": {
+                "en": "Maximum charge power",
+                "nl": "Maximaal laadvermogen"
+              },
+              "hint": {
+                "en": "Homey will limit the charging power to the set maximum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+                "nl": "Homey beperkt het vermogen tijdens laden tot het ingestelde maximum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
+              },
+              "min": 100,
+              "max": 2200,
+              "value": 2200
+            },
+            {
+              "id": "power_max_discharge",
+              "type": "number",
+              "label": {
+                "en": "Maximum dischargepower",
+                "nl": "Maximaal ontlaadvermogen"
+              },
+              "hint": {
+                "en": "Homey will limit the discharging power to the set maximum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+                "nl": "Homey beperkt het vermogen tijdens ontladen tot het ingestelde maximum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
+              },
+              "min": 100,
+              "max": 1800,
+              "value": 1700
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "alarm_fault": {
+      "type": "boolean",
+      "title": {
+        "en": "Fault",
+        "nl": "Storing"
+      },
+      "desc": {
+        "en": "True when fault"
+      },
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Fault Alarm On",
+        "nl": "Storing Alarm Aan"
+      },
+      "insightsTitleFalse": {
+        "en": "Fault Alarm Off",
+        "nl": "Storing Alarm Uit"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "./assets/fault.svg"
+    },
+    "charge_mode": {
+      "type": "enum",
+      "title": {
+        "en": "Charge Mode",
+        "nl": "Laadmodus"
+      },
+      "values": [
+        {
+          "id": "CHARGE",
+          "title": {
+            "en": "Charge",
+            "nl": "Opladen"
+          }
+        },
+        {
+          "id": "STOP",
+          "title": {
+            "en": "Stop",
+            "nl": "Stop"
+          }
+        },
+        {
+          "id": "DISCHARGE",
+          "title": {
+            "en": "Discharge",
+            "nl": "Ontladen"
+          }
+        }
+      ],
+      "value": "STOP",
+      "getable": true,
+      "setable": true,
+      "uiComponent": "picker"
+    },
+    "control_strategy": {
+      "type": "enum",
+      "title": {
+        "en": "Control Mode",
+        "nl": "Besturingsmodus"
+      },
+      "values": [
+        {
+          "id": "POWER_STRATEGY_API",
+          "title": {
+            "en": "HOMEY"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_NOM",
+          "title": {
+            "en": "SESSY NOM (!)"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_ROI",
+          "title": {
+            "en": "SESSY ROI (!)"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_IDLE",
+          "title": {
+            "en": "IDLE (!)"
+          }
+        }
+      ],
+      "value": "POWER_STRATEGY_API",
+      "getable": true,
+      "setable": true,
+      "icon": "./assets/control_strategy.svg",
+      "uiComponent": "sensor"
+    },
+    "measure_frequency": {
+      "type": "number",
+      "title": {
+        "en": "Frequency",
+        "nl": "Frequentie"
+      },
+      "units": {
+        "en": "Hz"
+      },
+      "decimals": 3,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/frequency.svg"
+    },
+    "meter_setpoint": {
+      "type": "number",
+      "title": {
+        "en": "Target power",
+        "nl": "Doelvermogen"
+      },
+      "units": {
+        "en": "W"
+      },
+      "min": -2200,
+      "max": 2200,
+      "step": 1,
+      "decimals": 0,
+      "getable": true,
+      "setable": true,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/charge_setpoint.svg"
+    },
+    "system_state": {
+      "type": "string",
+      "title": {
+        "en": "System State",
+        "nl": "Systeemstatus"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "./assets/system_state.svg"
+    }
+  }
+}

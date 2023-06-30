@@ -1,0 +1,206 @@
+[
+	{
+		"type": "group",
+		"label": {
+				"en": "Sessy information",
+				"nl": "Sessy informatie"
+		},
+		"children": [
+			{
+				"id": "mac",
+				"type": "label",
+				"label": {
+						"en": "MAC address",
+						"nl": "MAC adres"
+				},
+				"value": ""
+			},
+			{
+				"id": "fwDongle",
+				"type": "label",
+				"label": {
+						"en": "Firmware Dongle",
+						"nl": "Firmware Dongel"
+				},
+				"value": ""
+			},
+			{
+				"id": "fwBat",
+				"type": "label",
+				"label": {
+						"en": "Firmware Battery",
+						"nl": "Firmware Batterij"
+				},
+				"value": ""
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Connection settings",
+				"nl": "Verbinding instellingen"
+		},
+		"children": [	
+			{
+				"id": "host",
+				"type": "text",
+				"label": {
+						"en": "Host",
+						"nl": "Host"
+				},
+				"value": ""
+			},
+			{
+				"id": "port",
+				"type": "number",
+				"label": {
+						"en": "Port",
+						"nl": "Poort"
+				},
+				"value": 80
+			},
+			{
+				"id": "username",
+				"type": "text",
+				"label": {
+						"en": "Username",
+						"nl": "Gebruikersnaam"
+				},
+				"value": ""
+			},
+			{
+				"id": "password",
+				"type": "password",
+				"label": {
+						"en": "Password",
+						"nl": "Wachtwoord"
+				},
+				"value": ""
+			},
+			{
+				"id": "pollingInterval",
+				"type": "number",
+				"label": {
+						"en": "Update interval (s)",
+						"nl": "Update interval (s)"
+				},
+				"min": 5,
+				"max": 300,
+				"value": 10
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Solar settings",
+				"nl": "PV instellingen"
+		},
+		"children": [
+			{
+				"id": "show_re_total",
+				"type": "checkbox",
+				"label": {
+						"en": "Show Solar Total",
+						"nl": "Toon PV Totaal"
+				},
+				"value": true
+			},
+			{
+				"id": "show_re1",
+				"type": "checkbox",
+				"label": {
+						"en": "Show Solar P1",
+						"nl": "Toon PV P1"
+				},
+				"value": true
+			},
+			{
+				"id": "show_re2",
+				"type": "checkbox",
+				"label": {
+					"en": "Show Solar P2",
+					"nl": "Toon PV P2"
+				},
+				"value": true
+			},
+			{
+				"id": "show_re3",
+				"type": "checkbox",
+				"label": {
+					"en": "Show Solar P3",
+					"nl": "Toon PV P3"
+				},
+				"value": true
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Control settings",
+				"nl": "Besturing instellingen"
+		},
+		"children": [
+			{
+				"id": "force_control_strategy",
+				"type": "checkbox",
+				"label": {
+						"en": "Force Homey control mode",
+						"nl": "Forceer Homey besturingsmodus"
+				},
+				"hint": {
+					"en": "Control mode will be set to HOMEY at every app start and control attempt (API Open Mode). Note that you must set the username and password first!",
+					"nl": "Besturingsmodus wordt ingesteld op HOMEY bij iedere app start en besturingspoging. (API Open Modus). Let op: eerst gebruikersnaam en wachtwoord invullen!"
+				},
+				"value": false
+			},
+			{
+				"id": "power_min",
+				"type": "number",
+				"label": {
+						"en": "Minimum power",
+						"nl": "Minimaal vermogen"
+				},
+				"hint": {
+					"en": "Homey will stop charging or discharging when the power is lower then the set minimum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+					"nl": "Homey stopt met laden of ontladen als het vermogen lager is dan het ingestelde minimum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
+				},
+				"min": 0,
+				"max": 1800,
+				"value": 0
+			},
+			{
+				"id": "power_max_charge",
+				"type": "number",
+				"label": {
+						"en": "Maximum charge power",
+						"nl": "Maximaal laadvermogen"
+				},
+				"hint": {
+					"en": "Homey will limit the charging power to the set maximum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+					"nl": "Homey beperkt het vermogen tijdens laden tot het ingestelde maximum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
+				},
+				"min": 100,
+				"max": 2200,
+				"value": 2200
+			},
+			{
+				"id": "power_max_discharge",
+				"type": "number",
+				"label": {
+						"en": "Maximum dischargepower",
+						"nl": "Maximaal ontlaadvermogen"
+				},
+				"hint": {
+					"en": "Homey will limit the discharging power to the set maximum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+					"nl": "Homey beperkt het vermogen tijdens ontladen tot het ingestelde maximum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
+				},
+				"min": 100,
+				"max": 1800,
+				"value": 1700
+			}
+		]
+	}
+]

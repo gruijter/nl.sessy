@@ -1,0 +1,34 @@
+{
+	"title": { 
+		"en": "The firmware changed",
+		"nl": "De firmware is veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=sessy"
+		}
+	],
+	"tokens": [
+		{
+			"name": "fwDongle",
+			"type": "string",
+			"title": { 
+				"en": "Dongle firmware",
+				"nl": "Dongel firmware"
+			},
+			"example": "1.1.2"
+		},
+		{
+			"name": "fwBat",
+			"type": "string",
+			"title": { 
+				"en": "Battery firmware",
+				"nl": "Batterij firmware"
+			},
+			"example": "1.1.2"
+		}
+	]
+}

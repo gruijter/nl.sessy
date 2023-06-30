@@ -1,0 +1,36 @@
+{
+	"title": {
+		"en": "Set the target power",
+		"nl": "Zet het doelvermogen"
+	},
+		"units": {
+		"en": "Watt"
+	},
+		"titleFormatted": {
+				"en": "Set target power to [[setpoint]] W",
+				"nl": "Zet doelvermogen op [[setpoint]] W"
+		},
+		"hint": { 
+				"en": "Positive = battery will discharge. Negative number = battery will charge. When set to 0 charging/discharging will stop.",
+				"nl": "Positieve waarde = accu gaat ontladen. Negatieve waarde = accu gaat laden. Bij een waarde van 0 stopt het laden/ontladen."
+		},
+		"highlight": true,
+		"args": [
+				{
+						"type": "device",
+						"name": "device",
+						"filter": "driver_id=sessy"
+				},
+				{
+						"type": "number",
+						"name": "setpoint",
+						"title": { "en": "Target power", "nl": "Doelvermogen" },
+						"min": -2200,
+						"max": 1800,
+						"step": 1,
+						"value": 0,
+						"label": " Watt",
+						"labelDecimals": 0
+				}
+		]
+}

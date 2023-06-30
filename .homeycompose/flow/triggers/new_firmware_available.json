@@ -1,0 +1,34 @@
+{
+	"title": { 
+		"en": "New firmware is available",
+		"nl": "Nieuwe firmware is beschikbaar"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=sessy"
+		}
+	],
+	"tokens": [
+		{
+			"name": "availableFWDongle",
+			"type": "string",
+			"title": { 
+				"en": "Dongle Firmware",
+				"nl": "Dongel Firmware"
+			},
+			"example": "1.1.2"
+		},
+		{
+			"name": "availableFWBat",
+			"type": "string",
+			"title": { 
+				"en": "Battery firmware",
+				"nl": "Batterij firmware"
+			},
+			"example": "1.1.2"
+		}
+	]
+}

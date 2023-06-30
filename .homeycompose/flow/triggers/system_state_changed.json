@@ -1,0 +1,25 @@
+{
+	"title": { 
+		"en": "The system state changed",
+		"nl": "De systeemstatus is veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=sessy|p1"
+		}
+	],
+	"tokens": [
+		{
+			"name": "system_state",
+			"type": "string",
+			"title": { 
+				"en": "System state",
+				"nl": "Systeemstatus"
+			},
+			"example": "RUNNING_SAFE"
+		}
+	]
+}

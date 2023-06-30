@@ -1,0 +1,34 @@
+{
+	"type": "enum",
+	"title": {
+		"en": "Charge Mode",
+		"nl": "Laadmodus"
+	},
+	"values": [
+		{
+			"id": "CHARGE",
+			"title": {
+				"en": "Charge",
+				"nl": "Opladen"
+			}
+		},
+		{
+			"id": "STOP",
+			"title": {
+				"en": "Stop",
+				"nl": "Stop"
+			}
+		},
+		{
+			"id": "DISCHARGE",
+			"title": {
+				"en": "Discharge",
+				"nl": "Ontladen"
+			}
+		}
+	],
+	"value": "STOP",
+	"getable": true,
+	"setable": true,
+	"uiComponent": "picker"
+}

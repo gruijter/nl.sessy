@@ -1,0 +1,19 @@
+{
+	"type": "number",
+	"title": {
+		"en": "Target power",
+		"nl": "Doelvermogen"
+	},
+	"units": {
+		"en": "W"
+	},
+	"min": -2200,
+	"max": 2200,
+	"step": 1,
+	"decimals": 0,
+	"getable": true,
+	"setable": true,
+	"insights": true,
+	"uiComponent": "sensor",
+	"icon": "./assets/charge_setpoint.svg"
+}

@@ -1,0 +1,25 @@
+{
+	"title": { 
+		"en": "The charge mode changed",
+		"nl": "De laadmodus is veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=sessy"
+		}
+	],
+	"tokens": [
+		{
+			"name": "charge_mode",
+			"type": "string",
+			"title": { 
+				"en": "Charge Mode",
+				"nl": "Laadmodus"
+			},
+			"example": "STOP"
+		}
+	]
+}

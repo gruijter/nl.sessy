@@ -1,0 +1,25 @@
+{
+	"title": { 
+		"en": "The target power changed",
+		"nl": "Het doelvermogen is veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=sessy"
+		}
+	],
+	"tokens": [
+		{
+			"name": "meter_setpoint",
+			"type": "number",
+			"title": { 
+				"en": "Target power",
+				"nl": "Doelvermogen"
+			},
+			"example": 1500
+		}
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"title": { 
+		"en": "The control mode changed",
+		"nl": "De besturingsmodus is veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=sessy"
+		}
+	],
+	"tokens": [
+		{
+			"name": "control_strategy",
+			"type": "string",
+			"title": { 
+				"en": "Control Mode",
+				"nl": "Besturingsmodus"
+			},
+			"example": "HOMEY"
+		}
+	]
+}
