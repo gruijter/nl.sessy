@@ -22,7 +22,8 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 const { Device } = require('homey');
 const util = require('util');
-const Sessy = require('../../sessy');
+const SessyLocal = require('../../sessy_local');
+const SessyCloud = require('../../sessy_cloud');
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -32,14 +33,17 @@ class P1Device extends Device {
 		try {
 			this.watchDogCounter = 10;
 			const settings = this.getSettings();
-			this.sessy = new Sessy(settings);
+
+			this.useCloud = this.homey.platform === 'cloud' || !settings.use_local_connection;
+			if (this.useCloud) this.sessy = new SessyCloud(settings);
+			else this.sessy = new SessyLocal(settings);
 
 			// start polling device for info
 			this.startPolling(settings.pollingInterval || 10);
 			this.log('P1 device has been initialized');
 		} catch (error) {
 			this.error(error);
-			this.setUnavailable(error);
+			this.setUnavailable(error).catch(() => null);
 			this.restartDevice(60 * 1000);
 		}
 	}
@@ -80,13 +84,13 @@ class P1Device extends Device {
 			if (this.watchDogCounter <= 0) {
 				this.log('watchdog triggered, restarting Homey device now');
 				this.setCapability('alarm_fault', true);
-				this.setUnavailable(this.homey.__('sessy.connectionError'));
+				this.setUnavailable(this.homey.__('sessy.connectionError')).catch(() => null);
 				this.restartDevice(60000);
 				return;
 			}
 			// get new status and update the devicestate
 			const status = await this.sessy.getStatus({ p1: true });
-			this.setAvailable();
+			this.setAvailable().catch(() => null);
 			await this.updateDeviceState(status);
 			this.watchDogCounter = 10;
 		} catch (error) {
@@ -99,8 +103,13 @@ class P1Device extends Device {
 		this.log(`${this.getName()} has been added`);
 	}
 
-	async onSettings({ newSettings }) { // oldSettings, changedKeys
+	async onSettings({ newSettings, changedKeys }) { // oldSettings, changedKeys
 		this.log(`${this.getName()} settings where changed`, newSettings);
+		// check for illegal settings
+		if (changedKeys.includes('use_local_connection')) {
+			if (this.homey.platform === 'cloud') throw Error(this.homey.__('sessy.homeyProOnly'));
+			if (newSettings.host.length < 3) throw Error(this.homey.__('sessy.incomplete'));
+		}
 		this.restarting = false;
 		this.restartDevice(2 * 1000);
 	}

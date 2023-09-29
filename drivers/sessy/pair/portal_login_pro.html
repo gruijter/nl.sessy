@@ -1,0 +1,62 @@
+
+<script>
+	Homey.hideLoadingOverlay();
+
+	async function local_login() {
+		try {
+			await Homey.showView('local_login');
+		} catch (error) { 
+			Homey.hideLoadingOverlay();
+			Homey.alert(error, 'error');
+		}
+	}
+
+	async function portal_login() {
+		try {
+			Homey.showLoadingOverlay();
+			const settings = {
+				username_portal: document.getElementById('username_portal_pro').value,
+				password_portal: document.getElementById('password_portal_pro').value,
+			};
+			console.log(settings);
+			if (settings.username_portal === '' || settings.password_portal === '') throw Error(Homey.__('pair.incomplete_portal'));
+			const device = await Homey.emit('portal_login', settings);
+			await Homey.showView('list_devices');
+		} catch (error) { 
+			Homey.hideLoadingOverlay();
+			Homey.alert(error, 'error');
+		}
+	}
+</script>
+
+<form class="homey-form">
+	<div class="homey-form-group">
+		<h1 class="homey-title" data-i18n="pair.portal_login_title"></h1>
+		<p class="homey-subtitle" data-i18n="pair.portal_login_text"></p>
+
+		<label class="homey-form-label" for="username_portal_pro" data-i18n="pair.username_portal"></label>
+		<input class="homey-form-input" id="username_portal_pro" type="text" placeholder="user@email.com" value="" />
+
+		<label class="homey-form-label" for="password_portal_pro" data-i18n="pair.password_portal"></label>
+		<input class="homey-form-input" id="password_portal_pro" type="password" placeholder="" value="" />
+
+	</div>
+</form>
+<br>
+<button class="homey-button-primary-full" id="manual" onclick="portal_login()" data-i18n="pair.portal_login_button" ></button>
+
+<br><br>
+<form class="homey-form">
+	<div class="homey-form-group">
+		<h1 class="homey-title" data-i18n="pair.local_login_title"></h1>
+		<p class="homey-subtitle" data-i18n="pair.local_login_text"></p>
+	</div>
+</form>
+<br>
+<button class="homey-button-primary-full" onclick="local_login()" data-i18n="pair.local_login_button" ></button>
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Price now",
+    "de": "Preis aktuell",
+    "sv": "Pris just nu",
+    "it": "Prezzo attuale",
+    "no": "Pris nå",
+    "fr": "Tarif actuel",
+    "dk": "Pris nu",
+    "nl": "Prijs nu"
+  },
+  "uiComponent": "sensor",
+  "icon": "/assets/tariff.svg",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "units": {
+    "en": "€"
+  },
+  "decimals": 4
+}

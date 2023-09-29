@@ -1,17 +1,38 @@
 {
+	"today": "Vandaag",
+  "tomorrow": "Morgen",
+  "nextHours": "Komende uren",
 	"pair": {
+		"portal_login_title": "SESSY PORTAL LOGIN",
+		"portal_login_text": "Voeg alle Sessy's van de Sessy Portal toe aan Homey. Zorg dat al je Sessy's in de portal geregistreerd zijn! (portal.sessy.nl)",
+		"portal_login_text_p1": "Voeg je vermogen meter van de Sessy Portal toe aan Homey. Zorg dat je je systeem in de portal hebt geconfigureerd! (portal.sessy.nl)",
+		"portal_login_text_dap": "Voeg dynamische prijsinformatie van de Sessy Portal toe aan Homey. Zorg dat je je account in de portal hebt geconfigureerd! (portal.sessy.nl)",
+		"username_portal": "Portal Gebruikersnaam",
+		"password_portal": "Portal Wachtwoord",
+		"portal_login_button": "SESSY PORTAL LOGIN",
+		"incomplete_portal": "Gebruikersnaam en wachtwoord zijn nodig!",
+		"no_batteries_registered": "Er zijn geen Sessy's gevonden onder dit account. Voeg je Sessy's toe op: portal.sessy.nl.",
+		"no_meters_registered": "Er is geen vermogensmeter gevonden onder dit account. Configureer je systeem op portal.sessy.nl.",
+
+		"local_login_title": "LOKALE VERBINDING",
+		"local_login_text": "Je kunt ook de Sessy portal login overslaan, en doorgaan met een lokale verbinding.",
+		"local_login_button": "DOORGAAN MET LOKALE VERBINDING",
+
 		"monmodetitle": "MONITOR MODUS",
 		"monmodetext": "Voeg alle SESSY's toe in monitor modus",
 		"monmodebutton": "GA DOOR IN MONITOR MODUS",
+
 		"contmodetitle": "BESTURING MODUS",
 		"contmodetext": "Voeg één SESSY toe in besturingsmodus",
 		"contmodebutton": "GA DOOR IN BESTURING MODUS",
 		"host": "IP adres of URL",
-		"username": "Gebruikersnaam",
-		"password": "Wachtwoord",
-		"incomplete": "IP adres, gebruikersnaam en wachtwoord moeten worden ingevoerd!"
+		"sn_dongle": "Dongle S/N",
+		"password_dongle": "Dongle Wachtwoord",
+		"incomplete": "IP of URL, dongle S/N en wachtwoordmoeten worden ingevoerd!"
 	},
 	"sessy": {
+		"homeyProOnly": "Deze instelling is alleen beschikbaar op Homey Pro",
+		"incomplete": "Host en poort moet worden ingevuld voor een lokale verbinding",
 		"controlError": "Homey is niet ingesteld in besturingsmodus",
 		"connectionError": "Verbindingsfout, aan het hertarten",
 		"migrating": "Apparaat is aan het migreren. Geduld AUB!",

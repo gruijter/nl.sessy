@@ -22,7 +22,8 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 const { Device } = require('homey');
 const util = require('util');
-const Sessy = require('../../sessy');
+const SessyLocal = require('../../sessy_local');
+const SessyCloud = require('../../sessy_cloud');
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -37,7 +38,12 @@ class SessyDevice extends Device {
 			this.batIsEmpty = false;
 			this.overrideCounter = 0;
 			const settings = this.getSettings();
-			this.sessy = new Sessy(settings);
+
+			this.useCloud = this.homey.platform === 'cloud' || !settings.use_local_connection;
+			this.useLocalLogin = !this.useCloud && this.getSettings().sn_dongle !== '' && this.getSettings().password_dongle !== '';
+
+			if (this.useCloud) this.sessy = new SessyCloud(settings);
+			else this.sessy = new SessyLocal(settings);
 
 			// set Homey control mode
 			if (settings.force_control_strategy) {
@@ -51,12 +57,13 @@ class SessyDevice extends Device {
 			await this.registerListeners();
 
 			// start polling device for info
-			this.startPolling(settings.pollingInterval || 10);
+			const pollingInterval = this.homey.platform === 'cloud' ? 10 : (settings.pollingInterval || 10);
+			this.startPolling(pollingInterval);
 			this.log('Sessy device has been initialized');
 		} catch (error) {
 			this.error(error);
 			this.setCapability('alarm_fault', true);
-			this.setUnavailable(error);
+			this.setUnavailable(error).catch(() => null);
 			this.restartDevice(60 * 1000);
 		}
 	}
@@ -64,6 +71,19 @@ class SessyDevice extends Device {
 	async migrate() {
 		try {
 			this.log(`checking device migration for ${this.getName()}`);
+
+			// migrate from v1 to v2
+			const settings = this.getSettings() || {};
+			if (settings.username && settings.username !== '' && (!settings.sn_dongle || settings.sn_dongle === '')) {
+				this.log('migrating authentication settings from v1', this.getName());
+				await this.setSettings({
+					sn_dongle: settings.username,
+					password_dongle: settings.password,
+					use_local_connection: true,
+					username: '',
+					password: '',
+				});
+			}
 
 			// migrate max charge/discharge settings
 			if (this.getSettings().power_max && (!this.getSettings().power_max_charge || !this.getSettings().power_max_discharge)) {
@@ -90,7 +110,7 @@ class SessyDevice extends Device {
 				const caps = await this.getCapabilities();
 				const newCap = correctCaps[index];
 				if (caps[index] !== newCap) {
-					this.setUnavailable(this.homey.__('sessy.migrating'));
+					this.setUnavailable(this.homey.__('sessy.migrating')).catch(() => null);
 					// remove all caps from here
 					for (let i = index; i < caps.length; i += 1) {
 						this.log(`removing capability ${caps[i]} for ${this.getName()}`);
@@ -151,7 +171,7 @@ class SessyDevice extends Device {
 			if (this.watchDogCounter <= 0) {
 				this.log('watchdog triggered, restarting Homey device now');
 				this.setCapability('alarm_fault', true);
-				this.setUnavailable(this.homey.__('sessy.connectionError'));
+				this.setUnavailable(this.homey.__('sessy.connectionError')).catch(() => null);
 				this.restartDevice(60000);
 				return;
 			}
@@ -162,16 +182,17 @@ class SessyDevice extends Device {
 			this.busy = true;
 			// get new status and update the devicestate
 			const status = await this.sessy.getStatus();
+			// console.log(this.getName(), status);
 			let strategy = null;
-			if (this.getSettings().username !== '' && this.getSettings().password !== '') strategy = await this.sessy.getStrategy();
-			this.setAvailable();
+			if (this.useLocalLogin) strategy = await this.sessy.getStrategy();
+			this.setAvailable().catch(() => null);
 			await this.updateDeviceState(status, strategy);
-			// check if power is within min/max settings
-			await this.checkMinMaxPower(status.sessy.power);
+			// check if power is within min/max settings, but only if setpoint is set
+			if (status.sessy.power_setpoint) await this.checkMinMaxPower(status.sessy.power);
 			// check if battery is empty or full
 			await this.checkBatEmptyFull();
 			// check fw every 60 minutes
-			if (strategy && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
+			if ((this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
 				const OTAstatus = await this.sessy.getOTAStatus();
 				await this.updateFWState(OTAstatus);
 				this.lastFWCheck = Date.now();
@@ -189,8 +210,18 @@ class SessyDevice extends Device {
 		this.log(`${this.getName()} has been added`);
 	}
 
-	async onSettings({ newSettings }) { // oldSettings, changedKeys
+	async onSettings({ newSettings, changedKeys }) { // oldSettings, changedKeys
 		this.log(`${this.getName()} settings where changed`, newSettings);
+		// check for illegal settings
+		if (changedKeys.includes('use_local_connection')) {
+			if (this.homey.platform === 'cloud') throw Error(this.homey.__('sessy.homeyProOnly'));
+			if (newSettings.host.length < 3) throw Error(this.homey.__('sessy.incomplete'));
+		}
+		if (changedKeys.includes('force_control_strategy')) {
+			if (this.homey.platform === 'cloud') throw Error(this.homey.__('sessy.homeyProOnly'));
+			if (newSettings.host.length < 3 || newSettings.sn_dongle === ''
+				|| newSettings.password_dongle === '') throw Error(this.homey.__('pair.incomplete'));
+		}
 		this.restarting = false;
 		this.restartDevice(2 * 1000);
 	}
@@ -323,15 +354,19 @@ class SessyDevice extends Device {
 
 	// detect empty or full battery
 	async checkBatEmptyFull() {
-		if (this.getCapabilityValue('system_state').includes('EMPTY_OR_FULL')) {
-			if (this.getCapabilityValue('measure_battery') < 20) this.batIsEmpty = true;
-			if (this.getCapabilityValue('measure_battery') > 80) this.batIsFull = true;
-		} else if (this.overrideCounter >= 3) {
-			if (this.getCapabilityValue('measure_battery') < 1) this.batIsEmpty = true;
-			if (this.getCapabilityValue('measure_battery') > 99) this.batIsFull = true;
+		const state = this.getCapabilityValue('system_state');
+		const soc = this.getCapabilityValue('measure_battery');
+		if (state === 'BATTERY_EMPTY') this.batIsEmpty = true;
+		else if (state === 'BATTERY_FULL') this.batIsFull = true;
+		else if (state === 'BATTERY_EMPTY_OR_FULL') {
+			if (soc < 5) this.batIsEmpty = true;
+			if (soc > 95) this.batIsFull = true;
+		}	else if (this.overrideCounter >= 3) {
+			if (soc < 1) this.batIsEmpty = true;
+			if (soc > 99) this.batIsFull = true;
 		}	else {
-			if (this.getCapabilityValue('measure_battery') >= 1) this.batIsEmpty = false;
-			if (this.getCapabilityValue('measure_battery') <= 99) this.batIsFull = false;
+			if (soc >= 1) this.batIsEmpty = false;
+			if (soc <= 99) this.batIsFull = false;
 		}
 	}
 
@@ -360,6 +395,7 @@ class SessyDevice extends Device {
 	}
 
 	async setControlStrategy(strategy, source) {
+		if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
 		await this.sessy.setStrategy({ strategy });
 		this.log(`Control Strategy set by ${source} to ${strategy}`);
 		return Promise.resolve(true);

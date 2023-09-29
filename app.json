@@ -1,11 +1,12 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.sessy",
-  "version": "1.0.8",
-  "compatibility": ">=7.0.0",
+  "version": "2.0.0",
+  "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
-    "local"
+    "local",
+    "cloud"
   ],
   "name": {
     "en": "Sessy"
@@ -408,6 +409,108 @@
   "drivers": [
     {
       "name": {
+        "en": "Day-Ahead Prices",
+        "nl": "Dynamische Prijzen"
+      },
+      "class": "sensor",
+      "capabilities": [],
+      "platforms": [
+        "cloud",
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/dap/assets/images/small.png",
+        "large": "/drivers/dap/assets/images/large.png"
+      },
+      "pair": [
+        {
+          "id": "portal_login"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Cloud connection settings",
+            "nl": "Cloud verbinding instellingen"
+          },
+          "children": [
+            {
+              "id": "username_portal",
+              "type": "text",
+              "label": {
+                "en": "Sessy portal username",
+                "nl": "Sessy portal gebruikersnaam"
+              },
+              "value": ""
+            },
+            {
+              "id": "password_portal",
+              "type": "password",
+              "label": {
+                "en": "Sessy portal password",
+                "nl": "Sessy portal wachtwoord"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Price settings",
+            "nl": "Prijs instellingen"
+          },
+          "children": [
+            {
+              "id": "variableMarkup",
+              "type": "number",
+              "label": {
+                "en": "VAT (%)",
+                "nl": "BTW (%)"
+              },
+              "value": 21,
+              "hint": {
+                "en": "Enter the percentage with which the net price must be increased for VAT.",
+                "nl": "Voer het percentage in waarmee de netto prijs verhoogd moet worden voor BTW."
+              }
+            },
+            {
+              "id": "fixedMarkup",
+              "type": "number",
+              "label": {
+                "en": "Fixed markup per kWh (€)",
+                "nl": "Vaste opslag per kWh (€)"
+              },
+              "value": 0.175,
+              "hint": {
+                "en": "Enter the fixed amount with which the price must be increased per kWh, incl. VAT. E.g. for purchase fee and energy tax.",
+                "nl": "Voer het vaste bedrag in waarmee de prijs per kWh verhoogd moet worden incl. BTW. Bijvoorbeeld voor inkoopvergoeding en Energie belasting."
+              }
+            }
+          ]
+        }
+      ],
+      "id": "dap"
+    },
+    {
+      "name": {
         "en": "Sessy P1"
       },
       "class": "sensor",
@@ -419,16 +522,21 @@
         "system_state"
       ],
       "platforms": [
-        "local"
+        "local",
+        "cloud"
       ],
-      "connectivity": [
-        "lan"
-      ],
+      "connectivity": [],
       "images": {
         "small": "/drivers/p1/assets/images/small.jpg",
         "large": "/drivers/p1/assets/images/large.jpg"
       },
       "pair": [
+        {
+          "id": "portal_login"
+        },
+        {
+          "id": "portal_login_pro"
+        },
         {
           "id": "list_devices",
           "template": "list_devices",
@@ -448,7 +556,117 @@
           "template": "done"
         }
       ],
-      "id": "p1"
+      "id": "p1",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Meter information",
+            "nl": "Meter informatie"
+          },
+          "children": [
+            {
+              "id": "id",
+              "type": "label",
+              "label": {
+                "en": "Meter ID",
+                "nl": "Meter ID"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Cloud connection settings",
+            "nl": "Cloud verbinding instellingen"
+          },
+          "children": [
+            {
+              "id": "username_portal",
+              "type": "text",
+              "label": {
+                "en": "Sessy portal username",
+                "nl": "Sessy portal gebruikersnaam"
+              },
+              "value": ""
+            },
+            {
+              "id": "password_portal",
+              "type": "password",
+              "label": {
+                "en": "Sessy portal password",
+                "nl": "Sessy portal wachtwoord"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Local connection settings (Homey PRO)",
+            "nl": "Lokale verbinding instellingen (Homey PRO)"
+          },
+          "children": [
+            {
+              "id": "use_local_connection",
+              "type": "checkbox",
+              "label": {
+                "en": "Use local connection",
+                "nl": "Gebruik lokale verbinding "
+              },
+              "hint": {
+                "en": "A local connection is faster and more reliable compared to a cloud connection, but is only available on Homey Pro.",
+                "nl": "Een lokale verbinding is sneller en betrouwbaarder dan een cloud verbinding, maar is alleen beschikbaar met Homey Pro."
+              },
+              "value": true
+            },
+            {
+              "id": "host",
+              "type": "text",
+              "label": {
+                "en": "URL or IP address",
+                "nl": "URL of IP adres"
+              },
+              "hint": {
+                "en": "IP address of the dongle.",
+                "nl": "IP adres van de dongel."
+              },
+              "value": ""
+            },
+            {
+              "id": "port",
+              "type": "number",
+              "label": {
+                "en": "Port",
+                "nl": "Poort"
+              },
+              "hint": {
+                "en": "Default is 80.",
+                "nl": "Standaard is 80."
+              },
+              "value": 80
+            },
+            {
+              "id": "pollingInterval",
+              "type": "number",
+              "label": {
+                "en": "Update interval (s)",
+                "nl": "Update interval (s)"
+              },
+              "hint": {
+                "en": "A lower value provides faster updates in Homey.",
+                "nl": "Een lagere waarde geeft snellere updates in Homey."
+              },
+              "min": 5,
+              "max": 300,
+              "value": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "name": {
@@ -552,18 +770,23 @@
         }
       },
       "platforms": [
-        "local"
+        "local",
+        "cloud"
       ],
-      "connectivity": [
-        "lan"
-      ],
+      "connectivity": [],
       "images": {
         "small": "/drivers/sessy/assets/images/small.jpg",
         "large": "/drivers/sessy/assets/images/large.jpg"
       },
       "pair": [
         {
-          "id": "selectmode"
+          "id": "portal_login"
+        },
+        {
+          "id": "portal_login_pro"
+        },
+        {
+          "id": "local_login"
         },
         {
           "id": "list_devices",
@@ -594,11 +817,11 @@
           },
           "children": [
             {
-              "id": "mac",
+              "id": "id",
               "type": "label",
               "label": {
-                "en": "MAC address",
-                "nl": "MAC adres"
+                "en": "Sessy ID",
+                "nl": "Sessy ID"
               },
               "value": ""
             },
@@ -625,16 +848,60 @@
         {
           "type": "group",
           "label": {
-            "en": "Connection settings",
-            "nl": "Verbinding instellingen"
+            "en": "Cloud connection settings",
+            "nl": "Cloud verbinding instellingen"
           },
           "children": [
+            {
+              "id": "username_portal",
+              "type": "text",
+              "label": {
+                "en": "Sessy portal username",
+                "nl": "Sessy portal gebruikersnaam"
+              },
+              "value": ""
+            },
+            {
+              "id": "password_portal",
+              "type": "password",
+              "label": {
+                "en": "Sessy portal password",
+                "nl": "Sessy portal wachtwoord"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Local connection settings (Homey PRO)",
+            "nl": "Lokale verbinding instellingen (Homey PRO)"
+          },
+          "children": [
+            {
+              "id": "use_local_connection",
+              "type": "checkbox",
+              "label": {
+                "en": "Use local connection",
+                "nl": "Gebruik lokale verbinding "
+              },
+              "hint": {
+                "en": "A local connection is faster and more reliable compared to a cloud connection, but is only available on Homey Pro.",
+                "nl": "Een lokale verbinding is sneller en betrouwbaarder dan een cloud verbinding, maar is alleen beschikbaar met Homey Pro."
+              },
+              "value": false
+            },
             {
               "id": "host",
               "type": "text",
               "label": {
-                "en": "Host",
-                "nl": "Host"
+                "en": "URL or IP address",
+                "nl": "URL of IP adres"
+              },
+              "hint": {
+                "en": "IP address of the dongle.",
+                "nl": "IP adres van de dongel."
               },
               "value": ""
             },
@@ -645,23 +912,35 @@
                 "en": "Port",
                 "nl": "Poort"
               },
+              "hint": {
+                "en": "Default is 80.",
+                "nl": "Standaard is 80."
+              },
               "value": 80
             },
             {
-              "id": "username",
+              "id": "sn_dongle",
               "type": "text",
               "label": {
-                "en": "Username",
-                "nl": "Gebruikersnaam"
+                "en": "Dongle S/N",
+                "nl": "Dongel S/N"
+              },
+              "hint": {
+                "en": "As printed on the dongle sticker.",
+                "nl": "Zoals geprint op de dongel sticker."
               },
               "value": ""
             },
             {
-              "id": "password",
+              "id": "password_dongle",
               "type": "password",
               "label": {
-                "en": "Password",
-                "nl": "Wachtwoord"
+                "en": "Dongle Password",
+                "nl": "Dongel Wachtwoord"
+              },
+              "hint": {
+                "en": "As printed on the dongle sticker.",
+                "nl": "Zoals geprint op de dongel sticker."
               },
               "value": ""
             },
@@ -671,6 +950,10 @@
               "label": {
                 "en": "Update interval (s)",
                 "nl": "Update interval (s)"
+              },
+              "hint": {
+                "en": "A lower value provides faster updates in Homey.",
+                "nl": "Een lagere waarde geeft snellere updates in Homey."
               },
               "min": 5,
               "max": 300,
@@ -738,8 +1021,8 @@
                 "nl": "Forceer Homey besturingsmodus"
               },
               "hint": {
-                "en": "Control mode will be set to HOMEY at every app start and control attempt (API Open Mode). Note that you must set the username and password first!",
-                "nl": "Besturingsmodus wordt ingesteld op HOMEY bij iedere app start en besturingspoging. (API Open Modus). Let op: eerst gebruikersnaam en wachtwoord invullen!"
+                "en": "Homey Pro Only. Control mode will be set to HOMEY at every app start and control attempt (API Open Mode). Note that you must set the Dongle S/N and password first!",
+                "nl": "Alleen voor Homey Pro. Besturingsmodus wordt ingesteld op HOMEY bij iedere app start en besturingspoging. (API Open Modus). Let op: eerst Dongle S/N en wachtwoord invullen!"
               },
               "value": false
             },
@@ -777,7 +1060,7 @@
               "id": "power_max_discharge",
               "type": "number",
               "label": {
-                "en": "Maximum dischargepower",
+                "en": "Maximum discharge power",
                 "nl": "Maximaal ontlaadvermogen"
               },
               "hint": {
@@ -786,7 +1069,7 @@
               },
               "min": 100,
               "max": 1800,
-              "value": 1700
+              "value": 1800
             }
           ]
         }
@@ -889,6 +1172,168 @@
       "icon": "./assets/control_strategy.svg",
       "uiComponent": "sensor"
     },
+    "hour_next_8h_highest": {
+      "type": "number",
+      "title": {
+        "en": "Highest hour next 8H",
+        "de": "Höchste Stunde nächste 8 Std.",
+        "sv": "Högsta timmen nästa 8H",
+        "it": "Ora più alta prossime 8h",
+        "no": "Høyeste time neste 8T",
+        "fr": "Heure la plus élevée les 8 prochaines heures",
+        "dk": "Højeste time næste 8T",
+        "nl": "Hoogste uur komende 8U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "Hour",
+        "no": "Time",
+        "de": "Stunde",
+        "sv": "Timme",
+        "it": "Ora",
+        "nl": "Uur"
+      },
+      "decimals": 0
+    },
+    "hour_next_8h_lowest": {
+      "type": "number",
+      "title": {
+        "en": "Lowest hour next 8H",
+        "de": "Niedrigste Stunde nächste 8 Std.",
+        "sv": "Lägsta timmen nästa 8H",
+        "it": "Ora più bassa prossime 8h",
+        "no": "Laveste time neste 8T",
+        "fr": "Heure la plus faible les 8 prochaines heures",
+        "dk": "Laveste pris næste 8T",
+        "nl": "Laagste uur komende 8U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "Hour",
+        "no": "Time",
+        "de": "Stunde",
+        "sv": "Timme",
+        "it": "Ora",
+        "nl": "Uur"
+      },
+      "decimals": 0
+    },
+    "hour_next_day_highest": {
+      "type": "number",
+      "title": {
+        "en": "Highest hour tomorrow",
+        "de": "Höchste Stunde morgen",
+        "sv": "Högsta timmen imorgon",
+        "it": "Ora più alta di domani",
+        "no": "Høyeste time morgen",
+        "fr": "Heure la plus élevée demain",
+        "dk": "Højeste time i morgen",
+        "nl": "Hoogste uur morgen"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "Hour",
+        "no": "Time",
+        "de": "Stunde",
+        "sv": "Timme",
+        "it": "Ora",
+        "nl": "Uur"
+      },
+      "decimals": 0
+    },
+    "hour_next_day_lowest": {
+      "type": "number",
+      "title": {
+        "en": "Lowest hour tomorrow",
+        "de": "Niedrigste Stunde morgen",
+        "sv": "Lägsta timmen imorgen",
+        "it": "Ora più bassa di domani",
+        "no": "Laveste time morgen",
+        "fr": "Heure la plus faible demain",
+        "dk": "Laveste pris i morgen",
+        "nl": "Laagste uur morgen"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "Hour",
+        "no": "Time",
+        "de": "Stunde",
+        "sv": "Timme",
+        "it": "Ora",
+        "nl": "Uur"
+      },
+      "decimals": 0
+    },
+    "hour_this_day_highest": {
+      "type": "number",
+      "title": {
+        "en": "Highest hour this day",
+        "de": "Höchste Stunde des Tages",
+        "sv": "Högsta timmen idag",
+        "it": "Ora più alta di questa giornata",
+        "no": "Høyeste time denne dag",
+        "fr": "Heure la plus élevée aujourd'hui",
+        "dk": "Højeste time i dag",
+        "nl": "Hoogste uur deze dag"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": {
+        "en": "Hour",
+        "no": "Time",
+        "de": "Stunde",
+        "sv": "Timme",
+        "it": "Ora",
+        "nl": "Uur"
+      },
+      "decimals": 0
+    },
+    "hour_this_day_lowest": {
+      "type": "number",
+      "title": {
+        "en": "Lowest hour this day",
+        "de": "Niedrigste Stunde des Tages",
+        "sv": "Lägsta timmen idag",
+        "it": "Ora più bassa di questa giornata",
+        "no": "Laveste time denne dag",
+        "fr": "Heure la plus faible aujourd'hui",
+        "dk": "Laveste pris i dag",
+        "nl": "Laagste uur deze dag"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": {
+        "en": "Hour",
+        "no": "Time",
+        "de": "Stunde",
+        "sv": "Timme",
+        "it": "Ora",
+        "nl": "Uur"
+      },
+      "decimals": 0
+    },
     "measure_frequency": {
       "type": "number",
       "title": {
@@ -904,6 +1349,380 @@
       "insights": true,
       "uiComponent": "sensor",
       "icon": "./assets/frequency.svg"
+    },
+    "meter_price_h0": {
+      "type": "number",
+      "title": {
+        "en": "Price now",
+        "de": "Preis aktuell",
+        "sv": "Pris just nu",
+        "it": "Prezzo attuale",
+        "no": "Pris nå",
+        "fr": "Tarif actuel",
+        "dk": "Pris nu",
+        "nl": "Prijs nu"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_h1": {
+      "type": "number",
+      "title": {
+        "en": "Price +1H",
+        "de": "Preis +1Std.",
+        "sv": "Pris +1H",
+        "it": "Prezzo +1h",
+        "no": "Pris +1T",
+        "fr": "Tarif +1h",
+        "dk": "Pris +1T",
+        "nl": "Prijs +1U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_h2": {
+      "type": "number",
+      "title": {
+        "en": "Price +2H",
+        "de": "Preis +2Std.",
+        "sv": "Pris +2H",
+        "it": "Prezzo +2h",
+        "no": "Pris +2T",
+        "fr": "Tarif +2h",
+        "dk": "Pris +2T",
+        "nl": "Prijs +2U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_h3": {
+      "type": "number",
+      "title": {
+        "en": "Price +3H",
+        "de": "Preis +3Std.",
+        "sv": "Pris +3H",
+        "it": "Prezzo +3h",
+        "no": "Pris +3T",
+        "fr": "Tarif +3h",
+        "dk": "Pris +3T",
+        "nl": "Prijs +3U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_h4": {
+      "type": "number",
+      "title": {
+        "en": "Price +4H",
+        "de": "Preis +4Std.",
+        "sv": "Pris +4H",
+        "it": "Prezzo +4h",
+        "no": "Pris +4T",
+        "fr": "Tarif +4h",
+        "dk": "Pris +4T",
+        "nl": "Prijs +4U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_h5": {
+      "type": "number",
+      "title": {
+        "en": "Price +5H",
+        "de": "Preis +5Std.",
+        "sv": "Pris +5H",
+        "it": "Prezzo +5h",
+        "no": "Pris +5T",
+        "fr": "Tarif +5h",
+        "dk": "Pris +5T",
+        "nl": "Prijs +5U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_h6": {
+      "type": "number",
+      "title": {
+        "en": "Price +6H",
+        "de": "Preis +6Std.",
+        "sv": "Pris +6H",
+        "it": "Prezzo +6h",
+        "no": "Pris +6T",
+        "fr": "Tarif +6h",
+        "dk": "Pris +6T",
+        "nl": "Prijs +6U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_h7": {
+      "type": "number",
+      "title": {
+        "en": "Price +7H",
+        "de": "Preis +7Std.",
+        "sv": "Pris +7H",
+        "it": "Prezzo +7h",
+        "no": "Pris +7T",
+        "fr": "Tarif +7h",
+        "dk": "Pris +7T",
+        "nl": "Prijs +7U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_next_8h_avg": {
+      "type": "number",
+      "title": {
+        "en": "Avg. price next 8H",
+        "de": "Durchschn. Preis nächste 8 Std.",
+        "sv": "Genomsnittligt pris nästa 8H",
+        "it": "Prezzo medio prossime 8h",
+        "no": "Gj.snitt pris neste 8T",
+        "fr": "Tarif moyen les 8 prochaines heures",
+        "dk": "Gn. snt. pris næste 8T",
+        "nl": "Gem. prijs komende 8U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_next_8h_highest": {
+      "type": "number",
+      "title": {
+        "en": "Highest price next 8H",
+        "de": "Höchste Preis nächste 8 Std.",
+        "sv": "Högsta pris nästa 8H",
+        "it": "Prezzo più alta prossime 8h",
+        "no": "Høyeste pris neste 8T",
+        "fr": "Tarif le plus élevée les 8 prochaines heures",
+        "dk": "Højeste pris næste 8T",
+        "nl": "Hoogste prijs komende 8U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_next_8h_lowest": {
+      "type": "number",
+      "title": {
+        "en": "Lowest price next 8H",
+        "de": "Niedrigster Preis nächste 8 Std.",
+        "sv": "Lägsta pris nästa 8H",
+        "it": "Prezzo più basso prossime 8h",
+        "no": "Laveste pris neste 8T",
+        "fr": "Tarif le plus faible les 8 prochaines heures",
+        "dk": "Laveste pris næste 8T",
+        "nl": "Laagste prijs komende 8U"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_next_day_avg": {
+      "type": "number",
+      "title": {
+        "en": "Avg. price tomorrow",
+        "de": "Durchschn. Preis morgen",
+        "sv": "Genomsnittligt pris imorgon",
+        "it": "prezzo medio domani",
+        "no": "Snittpris i morgen",
+        "fr": "Tarif moyen demain",
+        "dk": "Gn. snt. pris i morgen",
+        "nl": "Gem. prijs morgen"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_next_day_highest": {
+      "type": "number",
+      "title": {
+        "en": "Highest price tomorrow",
+        "de": "Höchste Preis morgen",
+        "sv": "Högsta pris imorgon",
+        "it": "Prezzo più alta di domani",
+        "no": "Høyeste pris morgen",
+        "fr": "Tarif le plus élevée demain",
+        "dk": "Højeste pris i morgen",
+        "nl": "Hoogste prijs morgen"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_next_day_lowest": {
+      "type": "number",
+      "title": {
+        "en": "Lowest price tomorrow",
+        "de": "Niedrigster Preis morgen",
+        "sv": "Lägsta pris imorgon",
+        "it": "Prezzo più basso domani",
+        "no": "Laveste pris morgen",
+        "fr": "Tarif le plus faible demain",
+        "dk": "Laveste pris i morgen",
+        "nl": "Laagste prijs morgen"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_this_day_avg": {
+      "type": "number",
+      "title": {
+        "en": "Avg. price this day",
+        "de": "Durchschn. Preis an diesem Tag",
+        "sv": "Genomsnittligt pris idag",
+        "it": "Prezzo medio giornata odierna",
+        "no": "Gj.snitt pris denne dag",
+        "fr": "Tarif moyen aujourd'hui",
+        "dk": "Gn. snt. pris i dag",
+        "nl": "Gem. prijs deze dag"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_this_day_highest": {
+      "type": "number",
+      "title": {
+        "en": "Highest price this day",
+        "de": "Höchste Preis an diesem Tag",
+        "sv": "Högsta pris idag",
+        "it": "Prezzo più alta giornata odierna",
+        "no": "Høyeste pris idag",
+        "fr": "Tarif le plus élevée aujourd'hui",
+        "dk": "Højeste pris i dag",
+        "nl": "Hoogste prijs deze dag"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
+    },
+    "meter_price_this_day_lowest": {
+      "type": "number",
+      "title": {
+        "en": "Lowest price this day",
+        "de": "Niedrigster Preis an diesem Tag",
+        "sv": "Lägsta pris idag",
+        "it": "Prezzo più basso giornata odierna",
+        "no": "Laveste pris idag",
+        "fr": "Tarif le plus faible aujourd'hui",
+        "dk": "Laveste pris i dag",
+        "nl": "Laagste prijs deze dag"
+      },
+      "uiComponent": "sensor",
+      "icon": "/assets/tariff.svg",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": {
+        "en": "€"
+      },
+      "decimals": 4
     },
     "meter_setpoint": {
       "type": "number",

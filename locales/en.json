@@ -1,17 +1,38 @@
 {
+	"today": "Today",
+  "tomorrow": "Tomorrow",
+  "nextHours": "Next hours",
 	"pair": {
-		"monmodetitle": "MONITORING MODE",
-		"monmodetext": "Add all SESSY's in monitoring mode",
+		"portal_login_title": "SESSY PORTAL LOGIN",
+		"portal_login_text": "Add all your Sessy's from the Sessy portal to Homey. Make sure you finished adding your sessy's in the portal first! (portal.sessy.nl)",
+		"portal_login_text_p1": "Add your power meter from the Sessy portal to Homey. Make sure you finished configuring your system in the portal first! (portal.sessy.nl)",
+		"portal_login_text_dap": "Add day ahead price information from the Sessy portal to Homey. Make sure you configured your account in the portal first! (portal.sessy.nl)",
+		"username_portal": "Portal Username",
+		"password_portal": "Portal Password",
+		"portal_login_button": "SESSY PORTAL LOGIN",
+		"incomplete_portal": "Username and password must be entered!",
+		"no_batteries_registered": "No Sessy's were found under this account. Add your Sessy's to portal.sessy.nl.",
+		"no_meters_registered": "No power meters were found under this account. Configure your system at portal.sessy.nl.",
+
+		"local_login_title": "LOCAL SETUP",
+		"local_login_text": "You can also skip the Sessy portal login, and continue with setting up a local connection.",
+		"local_login_button": "CONTINUE WITH LOCAL SETUP",
+
+		"monmodetitle": "LOCAL MONITORING MODE",
+		"monmodetext": "Add all SESSY's in local monitoring mode.",
 		"monmodebutton": "CONTINUE IN MONITORING MODE",
-		"contmodetitle": "CONTROL MODE",
-		"contmodetext": "Add one SESSY in control mode",
+
+		"contmodetitle": "LOCAL CONTROL MODE",
+		"contmodetext": "Add one SESSY in local control mode.",
 		"contmodebutton": "CONTINUE IN CONTROL MODE",
 		"host": "IP address or URL",
-		"username": "Username",
-		"password": "Password",
-		"incomplete": "Host, username and password must be entered!"
+		"sn_dongle": "Dongle S/N",
+		"password_dongle": "Dongle Password",
+		"incomplete": "IP or URL, dongle S/N and password must be entered!"
 	},
 	"sessy": {
+		"homeyProOnly": "This setting is only available on Homey Pro",
+		"incomplete": "Host and port must be entered for a local connection",
 		"controlError": "Homey is not set in control mode",
 		"connectionError": "Connection error, restarting now",
 		"migrating": "Device is migrating. Please wait!",

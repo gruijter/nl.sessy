@@ -1,11 +1,16 @@
 
 <script>
-	// Homey.setTitle('Sessy');
-	// Homey.setSubtitle('Connection settings');
 	Homey.hideLoadingOverlay();
 
-	function auto() {
-		Homey.showView('list_devices');
+	async function auto() {
+		try {
+			Homey.showLoadingOverlay();
+			const device = await Homey.emit('auto_login');
+			await Homey.showView('list_devices');
+		} catch (error) { 
+			Homey.hideLoadingOverlay();
+			Homey.alert(error, 'error');
+		}
 	}
 
 	async function manual() {
@@ -14,14 +19,13 @@
 			const settings = {
 				host: document.getElementById('host').value.split(':')[0],
 				port: Number(document.getElementById('host').value.split(':')[1]) || 80,
-				username: document.getElementById('username').value,
-				password: document.getElementById('password').value,
+				sn_dongle: document.getElementById('sn_dongle').value,
+				password_dongle: document.getElementById('password_dongle').value,
 				force_control_strategy: true,
 			};
-			if (settings.host === '' || settings.username === '' || !settings.password === '') throw Error(Homey.__('pair.incomplete'));
-			const device = await Homey.emit('manual', settings);
-			await Homey.createDevice(device);
-			Homey.showView('done');
+			if (settings.host === '' || settings.sn_dongle === '' || settings.password_dongle === '') throw Error(Homey.__('pair.incomplete'));
+			const device = await Homey.emit('manual_login', settings);
+			Homey.showView('list_devices');
 		} catch (error) { 
 			Homey.hideLoadingOverlay();
 			Homey.alert(error, 'error');
@@ -46,11 +50,11 @@
 		<label class="homey-form-label" for="host" data-i18n="pair.host"></label>
 		<input class="homey-form-input" id="host" type="text" placeholder="e.g. 10.0.0.100" value="" />
 
-		<label class="homey-form-label" for="username" data-i18n="pair.username"></label>
-		<input class="homey-form-input" id="username" type="text" placeholder="" value="" />
+		<label class="homey-form-label" for="sn_dongle" data-i18n="pair.sn_dongle"></label>
+		<input class="homey-form-input" id="sn_dongle" type="text" placeholder="e.g. DVMXWTND" value="" />
 
-		<label class="homey-form-label" for="password" data-i18n="pair.password"></label>
-		<input class="homey-form-input" id="password" type="password" value="" />
+		<label class="homey-form-label" for="password_dongle" data-i18n="pair.password_dongle"></label>
+		<input class="homey-form-input" id="password_dongle" type="password" placeholder="e.g. R7DKR35K" value="" />
 
 	</div>
 </form>

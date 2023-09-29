@@ -1,0 +1,22 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Avg. price this day",
+    "de": "Durchschn. Preis an diesem Tag",
+    "sv": "Genomsnittligt pris idag",
+    "it": "Prezzo medio giornata odierna",
+    "no": "Gj.snitt pris denne dag",
+    "fr": "Tarif moyen aujourd'hui",
+    "dk": "Gn. snt. pris i dag",
+    "nl": "Gem. prijs deze dag"
+  },
+  "uiComponent": "sensor",
+  "icon": "/assets/tariff.svg",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "units": {
+    "en": "€"
+  },
+  "decimals": 4
+}

@@ -1,0 +1,22 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Price +2H",
+    "de": "Preis +2Std.",
+    "sv": "Pris +2H",
+    "it": "Prezzo +2h",
+    "no": "Pris +2T",
+    "fr": "Tarif +2h",
+    "dk": "Pris +2T",
+    "nl": "Prijs +2U"
+  },
+  "uiComponent": "sensor",
+  "icon": "/assets/tariff.svg",
+  "getable": true,
+  "setable": false,
+  "insights": false,
+  "units": {
+    "en": "€"
+  },
+  "decimals": 4
+}

@@ -1,0 +1,110 @@
+[
+	{
+		"type": "group",
+		"label": {
+				"en": "Meter information",
+				"nl": "Meter informatie"
+		},
+		"children": [
+			{
+				"id": "id",
+				"type": "label",
+				"label": {
+						"en": "Meter ID",
+						"nl": "Meter ID"
+				},
+				"value": ""
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Cloud connection settings",
+				"nl": "Cloud verbinding instellingen"
+		},
+		"children": [	
+			{
+				"id": "username_portal",
+				"type": "text",
+				"label": {
+						"en": "Sessy portal username",
+						"nl": "Sessy portal gebruikersnaam"
+				},
+				"value": ""
+			},
+			{
+				"id": "password_portal",
+				"type": "password",
+				"label": {
+					"en": "Sessy portal password",
+					"nl": "Sessy portal wachtwoord"
+				},
+				"value": ""
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Local connection settings (Homey PRO)",
+				"nl": "Lokale verbinding instellingen (Homey PRO)"
+		},
+		"children": [	
+			{
+				"id": "use_local_connection",
+				"type": "checkbox",
+				"label": {
+						"en": "Use local connection",
+						"nl": "Gebruik lokale verbinding "
+				},
+				"hint": {
+					"en": "A local connection is faster and more reliable compared to a cloud connection, but is only available on Homey Pro.",
+					"nl": "Een lokale verbinding is sneller en betrouwbaarder dan een cloud verbinding, maar is alleen beschikbaar met Homey Pro."
+				},
+				"value": true
+			},
+			{
+				"id": "host",
+				"type": "text",
+				"label": {
+						"en": "URL or IP address",
+						"nl": "URL of IP adres"
+				},
+				"hint": {
+					"en": "IP address of the dongle.",
+					"nl": "IP adres van de dongel."
+				},
+				"value": ""
+			},
+			{
+				"id": "port",
+				"type": "number",
+				"label": {
+						"en": "Port",
+						"nl": "Poort"
+				},
+				"hint": {
+					"en": "Default is 80.",
+					"nl": "Standaard is 80."
+				},
+				"value": 80
+			},
+			{
+				"id": "pollingInterval",
+				"type": "number",
+				"label": {
+						"en": "Update interval (s)",
+						"nl": "Update interval (s)"
+				},
+				"hint": {
+					"en": "A lower value provides faster updates in Homey.",
+					"nl": "Een lagere waarde geeft snellere updates in Homey."
+				},
+				"min": 5,
+				"max": 300,
+				"value": 10
+			}
+		]
+	}
+]

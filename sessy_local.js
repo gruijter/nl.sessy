@@ -44,8 +44,8 @@ const defaultTimeout = 15000;
 class Sessy {
 	constructor(opts) {
 		const options = opts || {};
-		this.username = options.username;
-		this.password = options.password;
+		this.username = options.sn_dongle;
+		this.password = options.password_dongle;
 		this.host = options.host;
 		this.port = options.port || defaultPort;
 		this.timeout = options.timeout || defaultTimeout;
@@ -57,8 +57,8 @@ class Sessy {
 			const options = opts || {};
 			const host = options.host || this.host;
 			const port = options.port || this.port;
-			const username = options.username || this.username;
-			const password = options.password || this.password;
+			const username = options.sn_dongle || this.username;
+			const password = options.password_dongle || this.password;
 			const timeout = options.timeout || this.timeout;
 			this.host = host;
 			this.port = port;
@@ -198,6 +198,7 @@ class Sessy {
 				headers,
 				method: 'GET',
 			};
+			// if (actionPath !== getStatusEP && actionPath !== getP1StatusEP) options.auth = `${this.username}:${this.password}`;
 			if (data && data !== '') options.method = 'POST';
 			// console.log(options);
 			const result = await this._makeHttpRequest(options, postData, timeout);
@@ -263,10 +264,10 @@ module.exports = Sessy;
 // START TEST HERE
 // const test = async () => {
 // 	const SESSY = new Sessy();
-// 	const discovered = await SESSY.discover({ p1: true });
-// 	const SESSY = new Sessy({ username: '.....', password: '.....', host: '10.0.0.10' });
-// 	const discovered = await SESSY.discover();
-// 	console.dir(discovered, { depth: null });
+//	const discovered = await SESSY.discover({ p1: true });
+//	const SESSY = new Sessy({ username: '.....', password: '.....', host: '10.0.0.10' });
+//	const discovered = await SESSY.discover();
+//	console.dir(discovered, { depth: null });
 // 	const status = await SESSY.getStatus();
 // 	console.dir(status, { depth: null });
 // 	const setStrategy = await SESSY.setStrategy({ strategy: 'POWER_STRATEGY_API' });
@@ -291,7 +292,9 @@ Status response:
     state_of_charge: 0.38999998569488525,
     power: -1932,
     power_setpoint: -2200,
-    system_state: 'SYSTEM_STATE_RUNNING_SAFE'
+    system_state: 'SYSTEM_STATE_RUNNING_SAFE',
+		system_state_details: '',
+    frequency: 50007
   },
   renewable_energy_phase1: { voltage_rms: 234591, current_rms: 1000, power: 234 },
   renewable_energy_phase2: { voltage_rms: 0, current_rms: 0, power: 0 },
@@ -317,13 +320,15 @@ Discover response:
 [
   {
     ip: '10.0.0.80',
-    res: {
+    status: {
       status: 'ok',
       sessy: {
         state_of_charge: 1,
         power: 0,
         power_setpoint: 0,
-        system_state: 'SYSTEM_STATE_STANDBY'
+        system_state: 'SYSTEM_STATE_STANDBY',
+				system_state_details: '',
+        frequency: 50007
       },
       renewable_energy_phase1: { voltage_rms: 237499, current_rms: 0, power: 0 },
       renewable_energy_phase2: { voltage_rms: 0, current_rms: 0, power: 0 },

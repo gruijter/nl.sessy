@@ -7,11 +7,11 @@
 		},
 		"children": [
 			{
-				"id": "mac",
+				"id": "id",
 				"type": "label",
 				"label": {
-						"en": "MAC address",
-						"nl": "MAC adres"
+						"en": "Sessy ID",
+						"nl": "Sessy ID"
 				},
 				"value": ""
 			},
@@ -38,16 +38,60 @@
 	{
 		"type": "group",
 		"label": {
-				"en": "Connection settings",
-				"nl": "Verbinding instellingen"
+				"en": "Cloud connection settings",
+				"nl": "Cloud verbinding instellingen"
 		},
 		"children": [	
+			{
+				"id": "username_portal",
+				"type": "text",
+				"label": {
+						"en": "Sessy portal username",
+						"nl": "Sessy portal gebruikersnaam"
+				},
+				"value": ""
+			},
+			{
+				"id": "password_portal",
+				"type": "password",
+				"label": {
+					"en": "Sessy portal password",
+					"nl": "Sessy portal wachtwoord"
+				},
+				"value": ""
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Local connection settings (Homey PRO)",
+				"nl": "Lokale verbinding instellingen (Homey PRO)"
+		},
+		"children": [	
+			{
+				"id": "use_local_connection",
+				"type": "checkbox",
+				"label": {
+						"en": "Use local connection",
+						"nl": "Gebruik lokale verbinding "
+				},
+				"hint": {
+					"en": "A local connection is faster and more reliable compared to a cloud connection, but is only available on Homey Pro.",
+					"nl": "Een lokale verbinding is sneller en betrouwbaarder dan een cloud verbinding, maar is alleen beschikbaar met Homey Pro."
+				},
+				"value": false
+			},
 			{
 				"id": "host",
 				"type": "text",
 				"label": {
-						"en": "Host",
-						"nl": "Host"
+						"en": "URL or IP address",
+						"nl": "URL of IP adres"
+				},
+				"hint": {
+					"en": "IP address of the dongle.",
+					"nl": "IP adres van de dongel."
 				},
 				"value": ""
 			},
@@ -58,23 +102,35 @@
 						"en": "Port",
 						"nl": "Poort"
 				},
+				"hint": {
+					"en": "Default is 80.",
+					"nl": "Standaard is 80."
+				},
 				"value": 80
 			},
 			{
-				"id": "username",
+				"id": "sn_dongle",
 				"type": "text",
 				"label": {
-						"en": "Username",
-						"nl": "Gebruikersnaam"
+						"en": "Dongle S/N",
+						"nl": "Dongel S/N"
+				},
+				"hint": {
+					"en": "As printed on the dongle sticker.",
+					"nl": "Zoals geprint op de dongel sticker."
 				},
 				"value": ""
 			},
 			{
-				"id": "password",
+				"id": "password_dongle",
 				"type": "password",
 				"label": {
-						"en": "Password",
-						"nl": "Wachtwoord"
+						"en": "Dongle Password",
+						"nl": "Dongel Wachtwoord"
+				},
+				"hint": {
+					"en": "As printed on the dongle sticker.",
+					"nl": "Zoals geprint op de dongel sticker."
 				},
 				"value": ""
 			},
@@ -84,6 +140,10 @@
 				"label": {
 						"en": "Update interval (s)",
 						"nl": "Update interval (s)"
+				},
+				"hint": {
+					"en": "A lower value provides faster updates in Homey.",
+					"nl": "Een lagere waarde geeft snellere updates in Homey."
 				},
 				"min": 5,
 				"max": 300,
@@ -151,8 +211,8 @@
 						"nl": "Forceer Homey besturingsmodus"
 				},
 				"hint": {
-					"en": "Control mode will be set to HOMEY at every app start and control attempt (API Open Mode). Note that you must set the username and password first!",
-					"nl": "Besturingsmodus wordt ingesteld op HOMEY bij iedere app start en besturingspoging. (API Open Modus). Let op: eerst gebruikersnaam en wachtwoord invullen!"
+					"en": "Homey Pro Only. Control mode will be set to HOMEY at every app start and control attempt (API Open Mode). Note that you must set the Dongle S/N and password first!",
+					"nl": "Alleen voor Homey Pro. Besturingsmodus wordt ingesteld op HOMEY bij iedere app start en besturingspoging. (API Open Modus). Let op: eerst Dongle S/N en wachtwoord invullen!"
 				},
 				"value": false
 			},
@@ -190,7 +250,7 @@
 				"id": "power_max_discharge",
 				"type": "number",
 				"label": {
-						"en": "Maximum dischargepower",
+						"en": "Maximum discharge power",
 						"nl": "Maximaal ontlaadvermogen"
 				},
 				"hint": {
@@ -199,7 +259,7 @@
 				},
 				"min": 100,
 				"max": 1800,
-				"value": 1700
+				"value": 1800
 			}
 		]
 	}

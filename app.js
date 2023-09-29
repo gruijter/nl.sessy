@@ -25,7 +25,27 @@ class SessyApp extends Homey.App {
 
 	async onInit() {
 		this.registerFlowListeners();
+		this.everyHour();
 		this.log('Sessy app has been initialized');
+	}
+
+	async onUninit() {
+		this.log('app onUninit called');
+		this.homey.removeAllListeners('everyhour');
+	}
+
+	everyHour() {
+		const now = new Date();
+		const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 0, 50);
+		const timeToNextHour = nextHour - now;
+		// console.log('everyHour starts in', timeToNextHour / 1000);
+		this.homey.setTimeout(() => {
+			this.homey.setInterval(async () => {
+				this.homey.emit('everyhour', true);
+			}, 60 * 60 * 1000);
+			this.homey.emit('everyhour', true);
+		}, timeToNextHour);
+		this.log('everyHour job started');
 	}
 
 	registerFlowListeners() {
