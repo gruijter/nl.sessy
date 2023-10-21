@@ -1,0 +1,25 @@
+{
+	"title": { 
+		"en": "The voltage sag count changed",
+		"nl": "De spanningsdip teller is veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=p1"
+		}
+	],
+	"tokens": [
+		{
+			"name": "meter_voltage_sag",
+			"type": "number",
+			"title": { 
+				"en": "Voltage sag count",
+				"nl": "Spanningsdip teller"
+			},
+			"example": 12
+		}
+	]
+}

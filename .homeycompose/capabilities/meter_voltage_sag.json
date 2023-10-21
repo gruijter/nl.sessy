@@ -1,0 +1,13 @@
+{
+	"type": "number",
+	"title": {
+		"en": "Voltage sag count",
+		"nl": "Spanningsdip teller"
+	},
+	"decimals": 0,
+	"getable": true,
+	"setable": false,
+	"insights": true,
+	"uiComponent": "sensor",
+	"icon": "./assets/fault.svg"
+}

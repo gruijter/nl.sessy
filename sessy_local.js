@@ -25,12 +25,32 @@ const util = require('util');
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
-// P1
-const getP1StatusEP = '/api/v1/p1/status';
-// const getP1StatusEP = '/api/v1/p1/details';
+// SYSTEM
+const getSystemInfoEP = '/api/v1/system/info'; // version "v5.1.1"?, sessy_serial
+const restartEP = '/api/v1/system/restart'; // data: {}
+
 // OTA
 const getOTACheckEP = '/api/v1/ota/check';
 const getOTAStatusEP = '/api/v1/ota/status';
+// const setUpdateEP = '/api/v1/ota/start'; // data: { target: 'OTA_TARGET_SELF'/'OTA_TARGET_SERIAL' }
+
+// NETWORK
+// const getNetworkScan = '/api/v1/network/scan';
+// const getNetworkStatusEP = '/api/v1/network/status';
+// const setWifiEP = '/api/v1/wifi_sta/credentials'; // data: { ssid, pass }
+
+// P1
+const getP1StatusEP = '/api/v1/p1/status';
+const getP1DetailsEP = '/api/v2/p1/details'; // fw > 1.5.2
+
+// CT
+// const getCTStatusEP = '/api/v1/ct/status';
+// const getCTDetailsEP = '/api/v2//ct/details'; // fw > 1.5.2
+
+// METER
+const getGridTargetEP = '/api/v1/meter/grid_target'; // fw > 1.5.2
+const setGridTargetEP = '/api/v1/meter/grid_target'; // fw > 1.5.2 data: { grid_target: 0 }
+
 // SESSY
 const getStatusEP = '/api/v1/power/status';
 const getStrategyEP = '/api/v1/power/active_strategy';
@@ -75,9 +95,19 @@ class Sessy {
 	async getStatus(opts) {
 		try {
 			const options = opts || {};
+			const statusEP = options.p1 ? getP1DetailsEP : getStatusEP;
+			const res = await this._makeRequest(statusEP);
+			this.status = res;
+			return Promise.resolve(res);
+		} catch (error) {
+			return Promise.reject(error);
+		}
+	}
+
+	async getSystemInfo() {
+		try {
 			const data = '';
-			const statusEP = options.p1 ? getP1StatusEP : getStatusEP;
-			const res = await this._makeRequest(statusEP, data);
+			const res = await this._makeRequest(getSystemInfoEP, data);
 			this.status = res;
 			return Promise.resolve(res);
 		} catch (error) {
@@ -138,6 +168,36 @@ class Sessy {
 		}
 	}
 
+	async getGridTarget() {
+		try {
+			const data = '';
+			const res = await this._makeRequest(getGridTargetEP, data);
+			return Promise.resolve(res);
+		} catch (error) {
+			return Promise.reject(error);
+		}
+	}
+
+	async setGridTarget(opts) {
+		try {
+			const options = opts || {};
+			const data = { grid_target: options.setpoint };
+			const res = await this._makeRequest(setGridTargetEP, data);
+			return Promise.resolve(res);
+		} catch (error) {
+			return Promise.reject(error);
+		}
+	}
+
+	async restart() {
+		try {
+			const res = this._makeRequest(restartEP, undefined, 1000).catch(() => null);
+			return Promise.resolve(res);
+		} catch (error) {
+			return Promise.reject(error);
+		}
+	}
+
 	async discover(opts) {
 		try {
 			const hostsToTest = [];	// make an array of all host IP's in the LAN
@@ -187,7 +247,6 @@ class Sessy {
 		try {
 			const postData = JSON.stringify(data);
 			const headers = {
-				'Content-Type': 'application/json;charset=utf-8',
 			};
 			if (this.client) headers.Client = this.client;
 			const options = {
@@ -198,8 +257,8 @@ class Sessy {
 				headers,
 				method: 'GET',
 			};
-			// if (actionPath !== getStatusEP && actionPath !== getP1StatusEP) options.auth = `${this.username}:${this.password}`;
 			if (data && data !== '') options.method = 'POST';
+			if (actionPath === restartEP) options.method = 'POST';
 			// console.log(options);
 			const result = await this._makeHttpRequest(options, postData, timeout);
 			this.lastResponse = result.body || result.statusCode;
@@ -264,10 +323,12 @@ module.exports = Sessy;
 // START TEST HERE
 // const test = async () => {
 // 	const SESSY = new Sessy();
-//	const discovered = await SESSY.discover({ p1: true });
-//	const SESSY = new Sessy({ username: '.....', password: '.....', host: '10.0.0.10' });
-//	const discovered = await SESSY.discover();
-//	console.dir(discovered, { depth: null });
+// 	const discovered = await SESSY.discover({ p1: true });
+// 	const SESSY = new Sessy({ sn_dongle: '....', password_dongle: '....', host: '....' });
+// 	const res = await SESSY.restart();
+// 	console.log(res);
+// 	const discovered = await SESSY.discover();
+// 	console.dir(discovered, { depth: null });
 // 	const status = await SESSY.getStatus();
 // 	console.dir(status, { depth: null });
 // 	const setStrategy = await SESSY.setStrategy({ strategy: 'POWER_STRATEGY_API' });
@@ -285,6 +346,43 @@ module.exports = Sessy;
 // test();
 
 /*
+fw source: https://github.com/ChargedBV/sessy-updates
+
+status p1 v2:
+{
+	"status":	"ok",
+	"state":	"P1_OK",
+	"dsmr_version":	50,
+	"power_consumed_tariff1":	745838,
+	"power_produced_tariff1":	201650,
+	"power_consumed_tariff2":	523255,
+	"power_produced_tariff2":	545889,
+	"tariff_indicator":	2,
+	"power_consumed":	313,
+	"power_produced":	0,
+	"power_total":	313,
+	"power_failure_any_phase":	11,
+	"long_power_failure_any_phase":	1,
+	"voltage_sag_count_l1":	0,
+	"voltage_sag_count_l2":	0,
+	"voltage_sag_count_l3":	0,
+	"voltage_swell_count_l1":	0,
+	"voltage_swell_count_l2":	0,
+	"voltage_swell_count_l3":	0,
+	"voltage_l1":	237700,
+	"voltage_l2":	0,
+	"voltage_l3":	0,
+	"current_l1":	2000,
+	"current_l2":	0,
+	"current_l3":	0,
+	"power_consumed_l1":	313,
+	"power_consumed_l2":	0,
+	"power_consumed_l3":	0,
+	"power_produced_l1":	0,
+	"power_produced_l2":	0,
+	"power_produced_l3":	0
+}
+
 Status response:
 {
   status: 'ok',
@@ -311,6 +409,26 @@ Status response:
   renewable_energy_phase1: { voltage_rms: 234591, current_rms: 1000, power: 234 },
   renewable_energy_phase2: { voltage_rms: 0, current_rms: 0, power: 0 },
   renewable_energy_phase3: { voltage_rms: 0, current_rms: 0, power: 0 }
+}
+
+system Info Sessy:
+{
+	"status":	"ok",
+	"version":	"v5.1.1",
+	"cores":	2,
+	"internal_mem_available":	52744,
+	"external_mem_available":	3406348,
+	"internal_mem_min":	45800,
+	"external_mem_min":	2541612,
+	"system_state":	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	"state_last_changed":	[-1, 683534483, -1, -1, -1, -1, -1, -1, -1, -1, 51930090, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		166362640, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+	"sessy_serial":	"AP6QQVPY"
 }
 
 Strategy response:

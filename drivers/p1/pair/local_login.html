@@ -1,6 +1,7 @@
 
 <script>
 	Homey.showLoadingOverlay();
+	let discovered;
 	discover();
 
 	async function discover() {
@@ -9,17 +10,6 @@
 			$('#host').val(discovered.ip);
 			$('#sn_dongle').val(discovered.sn_dongle);
 			Homey.hideLoadingOverlay();
-		} catch (error) { 
-			Homey.hideLoadingOverlay();
-			Homey.alert(error, 'error');
-		}
-	}
-
-	async function auto() {
-		try {
-			Homey.showLoadingOverlay();
-			const device = await Homey.emit('auto_login');
-			await Homey.showView('list_devices');
 		} catch (error) { 
 			Homey.hideLoadingOverlay();
 			Homey.alert(error, 'error');
@@ -35,8 +25,10 @@
 				sn_dongle: document.getElementById('sn_dongle').value,
 				password_dongle: document.getElementById('password_dongle').value,
 				force_control_strategy: true,
+				use_mdns: true,
 			};
-			if (settings.host === '' || settings.sn_dongle === '' || settings.password_dongle === '') throw Error(Homey.__('pair.incomplete'));
+			if (settings.host === '' || settings.sn_dongle === '') throw Error(Homey.__('pair.incomplete'));
+			if (settings.host !== discovered.ip) settings.use_mdns = false;
 			const device = await Homey.emit('manual_login', settings);
 			Homey.showView('list_devices');
 		} catch (error) { 
@@ -48,17 +40,8 @@
 
 <form class="homey-form">
 	<div class="homey-form-group">
-		<h1 class="homey-title" data-i18n="pair.monmodetitle"></h1>
-		<p class="homey-subtitle" data-i18n="pair.monmodetext"></p>
-	</div>
-</form>
-<button class="homey-button-primary-full" onclick="auto()" data-i18n="pair.monmodebutton" ></button>
-<br>
-
-<form class="homey-form">
-	<div class="homey-form-group">
-		<h1 class="homey-title" data-i18n="pair.contmodetitle"></h1>
-		<p class="homey-subtitle" data-i18n="pair.contmodetext"></p>
+		<h1 class="homey-title" data-i18n="pair.local_login_title"></h1>
+		<p class="homey-subtitle" data-i18n="pair.local_login_text_p1"></p>
 
 		<label class="homey-form-label" for="host" data-i18n="pair.host"></label>
 		<input class="homey-form-input" id="host" type="text" placeholder="e.g. 10.0.0.100" value="" />
@@ -72,8 +55,6 @@
 	</div>
 </form>
 <br>
-<button class="homey-button-primary-full" id="manual" onclick="manual()" data-i18n="pair.contmodebutton" ></button>
-
-
+<button class="homey-button-primary-full" id="manual" onclick="manual()" data-i18n="pair.continue" ></button>
 
 

@@ -30,6 +30,6 @@
     "en": "Fixed compatibility with Sessy fw1.5.0. Stability improvements."
   },
   "2.0.0": {
-    "en": "Improved paring descriptions.***WIP*** Pairing via Portal login added! ***WIP*** Use mDNS discovery"
+    "en": "Improved pairing UX. Use mDNS device discovery and IP update. Added dongle reboot command. Added extended P1 info (fw1.5.2). Added set SESSY XOM."
   }
 }

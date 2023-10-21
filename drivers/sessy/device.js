@@ -23,7 +23,7 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 const { Device } = require('homey');
 const util = require('util');
 const SessyLocal = require('../../sessy_local');
-const SessyCloud = require('../../sessy_cloud');
+// const SessyCloud = require('../../sessy_cloud');
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -39,22 +39,23 @@ class SessyDevice extends Device {
 			this.overrideCounter = 0;
 			const settings = this.getSettings();
 
-			this.useCloud = this.homey.platform === 'cloud' || !settings.use_local_connection;
-			this.useLocalLogin = !this.useCloud && this.getSettings().sn_dongle !== '' && this.getSettings().password_dongle !== '';
+			this.useCloud = this.homey.platform === 'cloud'; // || !settings.use_local_connection;
+			this.useLocalLogin = !this.useCloud && settings.sn_dongle !== '' && settings.password_dongle !== '';
 
-			if (this.useCloud) this.sessy = new SessyCloud(settings);
-			else this.sessy = new SessyLocal(settings);
-
-			// set Homey control mode
-			if (settings.force_control_strategy) {
-				await this.setControlStrategy('POWER_STRATEGY_API', 'device init');
-			}
+			// if (this.useCloud) this.sessy = new SessyCloud(settings); else
+			if (settings.use_mdns) await this.discover();
+			this.sessy = new SessyLocal(settings);
 
 			// check for capability migration
 			await this.migrate();
 
 			// register capability listeners
 			await this.registerListeners();
+
+			// set Homey control mode
+			if (this.useLocalLogin && settings.force_control_strategy) {
+				await this.setControlStrategy('POWER_STRATEGY_API', 'device init');
+			}
 
 			// start polling device for info
 			const pollingInterval = this.homey.platform === 'cloud' ? 10 : (settings.pollingInterval || 10);
@@ -66,6 +67,43 @@ class SessyDevice extends Device {
 			this.setUnavailable(error).catch(() => null);
 			this.restartDevice(60 * 1000);
 		}
+	}
+
+	// mDNS related stuff
+	async discover() {
+		const discoveryStrategy = this.driver.getDiscoveryStrategy();
+		const discoveryResults = await discoveryStrategy.getDiscoveryResults();
+		if (!discoveryResults) return;
+		const [discoveryResult] = Object.values(discoveryResults).filter((disc) => disc.txt.serial === this.getSettings().sn_dongle);
+		await this.discoveryAvailable(discoveryResult);
+	}
+
+	async discoveryAvailable(discoveryResult) { // onDiscoveryAvailable(discoveryResult)
+		// This method will be executed once when the device has been found (onDiscoveryResult returned true)
+		if (this.getSettings().host !== discoveryResult.address) {
+			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
+			if (this.getSettings().use_mdns) {
+				this.setSettings({ host: discoveryResult.address });
+				this.restartDevice();
+			} else this.log('The IP address is NOT updated (mDNS not enabled)');
+		}
+	}
+
+	onDiscoveryResult(discoveryResult) {
+		// Return a truthy value here if the discovery result matches your device.
+		return discoveryResult.id === this.getSettings().sn_dongle;
+	}
+
+	onDiscoveryAddressChanged(discoveryResult) {
+		// Update your connection details here, reconnect when the device is offline
+		this.log('onDiscoveryAddressChanged triggered', this.getName());
+		if (this.getSettings().host !== discoveryResult.address) {
+			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
+			if (this.getSettings().use_mdns) {
+				this.setSettings({ host: discoveryResult.address });
+				this.restartDevice();
+			} else this.log('The IP address is NOT updated (mDNS not enabled)');
+		} else this.log('IP address still the same :)');
 	}
 
 	async migrate() {
@@ -83,6 +121,16 @@ class SessyDevice extends Device {
 					username: '',
 					password: '',
 				});
+				const newSettings = this.getSettings();
+				this.sessy.login(newSettings);
+			}
+
+			if (!settings.sn_sessy || settings.sn_sessy === '') {
+				const sysInfo = await this.sessy.getSystemInfo().catch(() => {});
+				if (sysInfo && sysInfo.sessy_serial) {
+					this.log('Setting Sessy S/N', this.getName(), sysInfo.sessy_serial);
+					await this.setSettings({ sn_sessy: sysInfo.sessy_serial });
+				}
 			}
 
 			// migrate max charge/discharge settings
@@ -184,7 +232,7 @@ class SessyDevice extends Device {
 			const status = await this.sessy.getStatus();
 			// console.log(this.getName(), status);
 			let strategy = null;
-			if (this.useLocalLogin) strategy = await this.sessy.getStrategy();
+			if (this.useCloud || this.useLocalLogin) strategy = await this.sessy.getStrategy();
 			this.setAvailable().catch(() => null);
 			await this.updateDeviceState(status, strategy);
 			// check if power is within min/max settings, but only if setpoint is set
@@ -312,7 +360,7 @@ class SessyDevice extends Device {
 			// setup custom flow triggers
 			const systemStateChanged = (systemState !== this.getCapabilityValue('system_state'));
 			const chargeModeChanged = (chargeMode !== this.getCapabilityValue('charge_mode'));
-			const controlStrategyChanged = (controlStrategy !== this.getCapabilityValue('control_strategy'));
+			const controlStrategyChanged = (controlStrategy && (controlStrategy !== this.getCapabilityValue('control_strategy')));
 
 			// set the capabilities
 			Object.entries(capabilityStates).forEach(async (entry) => {
@@ -331,8 +379,8 @@ class SessyDevice extends Device {
 				this.homey.app.triggerChargeModeChanged(this, tokens, {});
 			}
 			if (controlStrategyChanged) {
-				this.log('Control Strategy changed:', strategy.strategy);
-				const tokens = { control_strategy: strategy.strategy };
+				this.log('Control Strategy changed:', controlStrategy);
+				const tokens = { control_strategy: controlStrategy };
 				this.homey.app.triggerControlStrategyChanged(this, tokens, {});
 			}
 
@@ -434,6 +482,13 @@ class SessyDevice extends Device {
 		const sp = await this.limitSetpoint(setpoint);
 		await this.sessy.setSetpoint({ setpoint: sp });
 		this.log(`Power setpoint set by ${source} to ${sp}`);
+		return Promise.resolve(true);
+	}
+
+	async restart(source) {
+		if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
+		await this.sessy.restart();
+		this.log(`Restart command executed from ${source}`);
 		return Promise.resolve(true);
 	}
 

@@ -14,7 +14,7 @@
 		"no_batteries_registered": "No Sessy's were found under this account. Add your Sessy's to portal.sessy.nl.",
 		"no_meters_registered": "No power meters were found under this account. Configure your system at portal.sessy.nl.",
 
-		"local_login_title": "LOCAL SETUP",
+		"local_login_title": "LOCAL CONNECTION SETUP",
 		"local_login_text": "You can also skip the Sessy portal login, and continue with setting up a local connection.",
 		"local_login_button": "CONTINUE WITH LOCAL SETUP",
 
@@ -22,13 +22,16 @@
 		"monmodetext": "Add all SESSY's in local monitoring mode.",
 		"monmodebutton": "CONTINUE IN MONITORING MODE",
 
-		"contmodetitle": "LOCAL CONTROL MODE",
+		"contmodetitle": "OR: LOCAL CONTROL MODE",
 		"contmodetext": "Add one SESSY in local control mode.",
 		"contmodebutton": "CONTINUE IN CONTROL MODE",
+
+		"local_login_text_p1": "To continue in CONTROL MODE, the password is required (preferred). To continue in MONITORING MODE, leave the password empty",
 		"host": "IP address or URL",
 		"sn_dongle": "Dongle S/N",
 		"password_dongle": "Dongle Password",
-		"incomplete": "IP or URL, dongle S/N and password must be entered!"
+		"incomplete": "IP or URL, dongle S/N and password must be entered!",
+		"continue": "CONTINUE"
 	},
 	"sessy": {
 		"homeyProOnly": "This setting is only available on Homey Pro",

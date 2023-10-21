@@ -59,6 +59,12 @@ class SessyApp extends Homey.App {
 		const setControlStrategy = this.homey.flow.getActionCard('set_control_strategy');
 		setControlStrategy.registerRunListener((args) => args.device.setControlStrategy(args.controlStrategy, 'flow'));
 
+		const setGridtarget = this.homey.flow.getActionCard('set_grid_target');
+		setGridtarget.registerRunListener((args) => args.device.setGridTarget(args.gridTarget, 'flow'));
+
+		const restart = this.homey.flow.getActionCard('restart');
+		restart.registerRunListener((args) => args.device.restart('flow'));
+
 		// trigger cards
 		this.triggerSystemStateChanged = (device, tokens, state) => {
 			const systemStateChanged = this.homey.flow.getDeviceTriggerCard('system_state_changed');
@@ -90,6 +96,13 @@ class SessyApp extends Homey.App {
 				.trigger(device, tokens, state)
 				.catch(this.error);
 		};
+		this.triggerTariffChanged = (device, tokens, state) => {
+			const tariffChanged = this.homey.flow.getDeviceTriggerCard('tariff_changed');
+			tariffChanged
+				.trigger(device, tokens, state)
+				.catch(this.error);
+		};
+
 	}
 
 }

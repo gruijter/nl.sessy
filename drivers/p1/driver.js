@@ -21,10 +21,33 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 const { Driver } = require('homey');
 const SessyLocal = require('../../sessy_local');
-const SessyCloud = require('../../sessy_cloud');
+// const SessyCloud = require('../../sessy_cloud');
 
 const capabilities = [
 	'measure_power',
+	'meter_offPeak',
+
+	'measure_power.l1',
+	'measure_power.l2',
+	'measure_power.l3',
+	'measure_current.l1',
+	'measure_current.l2',
+	'measure_current.l3',
+
+	'measure_voltage.l1',
+	'measure_voltage.l2',
+	'measure_voltage.l3',
+
+	'meter_power.peak',
+	'meter_power.offPeak',
+	'meter_power.producedPeak',
+	'meter_power.producedOffPeak',
+
+	'meter_power',
+
+	'meter_voltage_sag',
+	'meter_voltage_swell',
+	'meter_power_failure',
 	'system_state',
 ];
 
@@ -47,49 +70,83 @@ class P1Driver extends Driver {
 			if (viewId === 'done' && this.homey.platform !== 'cloud') this.log('done pairing');
 		});
 
-		session.setHandler('portal_login', async (conSett) => {
+		// session.setHandler('portal_login', async (conSett) => {
+		// 	try {
+		// 		this.log(conSett);
+		// 		const settings = conSett;
+		// 		const SESSY = new SessyCloud(settings);
+		// 		// check credentials and get all batteries
+		// 		const disc = await SESSY.discover({ p1: true });
+		// 		if (!disc || !disc[0]) throw Error((this.homey.__('pair.no_meters_registered')));
+		// 		discovered = [];
+		// 		disc.forEach(async (p1) => {
+		// 			const dev = { ...p1 };
+		// 			dev.id = p1.code;
+		// 			dev.name = p1.fullName;
+		// 			dev.usernamePortal = settings.username_portal;
+		// 			dev.passwordPortal = settings.password_portal;
+		// 			// dev.fwDongle = p1.version;
+		// 			dev.useLocalConnection = this.homey.platform !== 'cloud';
+		// 			discovered.push(dev);
+		// 		});
+		// 		return Promise.all(discovered);
+		// 	} catch (error) {
+		// 		this.error(error);
+		// 		return Promise.reject(error);
+		// 	}
+		// });
+
+		const discover = async () => {
+			const discoveryStrategy = this.getDiscoveryStrategy();
+			const discoveryResults = await discoveryStrategy.getDiscoveryResults();
+			const disc = Object.values(discoveryResults)
+				.filter((discoveryResult) => discoveryResult.txt.device.includes('P1'))
+				.map((discoveryResult) => ({
+					name: discoveryResult.txt.serial,
+					id: discoveryResult.txt.serial,
+					ip: discoveryResult.address,
+					port: discoveryResult.port,
+					useMdns: true,
+					useLocalConnection: true,
+					sn_dongle: discoveryResult.txt.serial,
+				}));
+			const discPromise = disc.map(async (sessy) => {
+				const dev = { ...sessy };
+				// add status info
+				const SESSY = new SessyLocal({ host: dev.ip, port: dev.port });
+				dev.status = await SESSY.getStatus({ p1: true }).catch(this.error);
+				return dev;
+			});
+			discovered = await Promise.all(discPromise);
+			return Promise.all(discovered);
+		};
+
+		session.setHandler('discover', async () => {
 			try {
-				this.log(conSett);
-				const settings = conSett;
-				const SESSY = new SessyCloud(settings);
-				// check credentials and get all batteries
-				const disc = await SESSY.discover({ p1: true });
-				if (!disc || !disc[0]) throw Error((this.homey.__('pair.no_meters_registered')));
-				discovered = [];
-				disc.forEach(async (p1) => {
-					const dev = { ...p1 };
-					dev.id = p1.code;
-					dev.name = p1.fullName;
-					dev.usernamePortal = settings.username_portal;
-					dev.passwordPortal = settings.password_portal;
-					// dev.fwDongle = p1.version;
-					dev.useLocalConnection = this.homey.platform !== 'cloud';
-					discovered.push(dev);
-				});
-				return Promise.all(discovered);
+				let disc = await discover();
+				if (!disc || !disc[0]) disc = [{}];
+				return Promise.resolve(disc[0]);
 			} catch (error) {
 				this.error(error);
 				return Promise.reject(error);
 			}
 		});
 
-		session.setHandler('auto_login', async () => {
+		session.setHandler('manual_login', async (conSett) => {
 			try {
-				const SESSY = new SessyLocal();
-				const disc = await SESSY.discover({ p1: true }).catch(() => []);
-				const discPromise = disc.map(async (p1) => {
-					const dev = { ...p1 };
-					// try to find MAC
-					const mac = await this.homey.arp.getMAC(p1.ip).catch(() => '');
-					let MAC = mac.replace(/:/g, '').toUpperCase();
-					if (MAC === '') MAC = Math.random().toString(16).substring(2, 8);
-					dev.name = `SESSY P1_${dev.ip}`;
-					dev.id = MAC;
-					dev.mac = mac;
-					dev.useLocalConnection = true;
-					return dev;
-				});
-				discovered = await Promise.all(discPromise);
+				this.log(conSett);
+				const dev = { ...conSett };
+				// check credentials and get status info
+				const SESSY = new SessyLocal({ host: dev.host, port: dev.port });
+				dev.status = await SESSY.getStatus({ p1: true });
+				dev.name = `${dev.sn_dongle}`;
+				dev.id = dev.sn_dongle;
+				dev.ip = dev.host;
+				dev.useMdns = dev.use_mdns;
+				dev.useLocalConnection = true;
+				// dev.sn_dongle = dev.sn_dongle;
+				// dev.password_dongle = settings.password_dongle;
+				discovered = [dev];
 				return Promise.all(discovered);
 			} catch (error) {
 				this.error(error);
@@ -107,17 +164,18 @@ class P1Driver extends Driver {
 						data: {
 							id: p1.id,
 						},
-						capabilities: ['measure_power', 'system_state'],
+						capabilities,
 						settings: {
 							id: p1.id,
-							mac: p1.mac,
 							username_portal: p1.usernamePortal,
 							password_portal: p1.passwordPortal,
-							use_local_connection: p1.useLocalConnection,
-							// sn_dongle: p1.code,
-							// password_dongle: p1.password_dongle,
+							// use_local_connection: p1.useLocalConnection,
+							sn_dongle: p1.id,
+							password_dongle: p1.password_dongle,
 							host: p1.ip,
 							port: p1.port || 80,
+							use_mdns: p1.useMdns,
+							DSMR: p1.status && p1.status.dsmr_version && p1.status.dsmr_version.toString(),
 						},
 					};
 					allDevicesPromise.push(device);

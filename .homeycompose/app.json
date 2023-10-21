@@ -4,7 +4,7 @@
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
-    "local", "cloud"
+    "local"
   ],
   "name": {
     "en": "Sessy"

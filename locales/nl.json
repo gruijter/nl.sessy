@@ -14,7 +14,7 @@
 		"no_batteries_registered": "Er zijn geen Sessy's gevonden onder dit account. Voeg je Sessy's toe op: portal.sessy.nl.",
 		"no_meters_registered": "Er is geen vermogensmeter gevonden onder dit account. Configureer je systeem op portal.sessy.nl.",
 
-		"local_login_title": "LOKALE VERBINDING",
+		"local_login_title": "INSTELLEN LOKALE VERBINDING",
 		"local_login_text": "Je kunt ook de Sessy portal login overslaan, en doorgaan met een lokale verbinding.",
 		"local_login_button": "DOORGAAN MET LOKALE VERBINDING",
 
@@ -22,13 +22,16 @@
 		"monmodetext": "Voeg alle SESSY's toe in monitor modus",
 		"monmodebutton": "GA DOOR IN MONITOR MODUS",
 
-		"contmodetitle": "BESTURING MODUS",
+		"contmodetitle": "OF: BESTURING MODUS",
 		"contmodetext": "Voeg één SESSY toe in besturingsmodus",
 		"contmodebutton": "GA DOOR IN BESTURING MODUS",
+
+		"local_login_text_p1": "Om verder te gaan in BESTURING MODUS is het wachtwoord nodig (aanbevolen). Laat het wachtwoordveld leeg om verder te gaan in MONITORING MODUS.",
 		"host": "IP adres of URL",
 		"sn_dongle": "Dongle S/N",
 		"password_dongle": "Dongle Wachtwoord",
-		"incomplete": "IP of URL, dongle S/N en wachtwoordmoeten worden ingevoerd!"
+		"incomplete": "IP of URL, dongle S/N en wachtwoordmoeten worden ingevoerd!",
+		"continue": "VERDER"
 	},
 	"sessy": {
 		"homeyProOnly": "Deze instelling is alleen beschikbaar op Homey Pro",

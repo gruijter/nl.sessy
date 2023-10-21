@@ -1,0 +1,17 @@
+{
+	"type": "number",
+	"title": {
+		"en": "XOM Grid target power",
+		"nl": "XOM Net doelvermogen"
+	},
+	"units": {
+		"en": "W"
+	},
+	"step": 1,
+	"decimals": 0,
+	"getable": true,
+	"setable": true,
+	"insights": true,
+	"uiComponent": "sensor",
+	"icon": "./assets/charge_setpoint.svg"
+}

@@ -8,10 +8,147 @@
   },
   "capabilities": [
     "measure_power",
-    "system_state"
-  ],
+    "system_state",
+		"meter_offPeak",
+
+		"measure_power.l1",
+		"measure_power.l2",
+		"measure_power.l3",
+		"measure_current.l1",
+		"measure_current.l2",
+		"measure_current.l3",
+
+		"measure_voltage.l1",
+		"measure_voltage.l2",
+		"measure_voltage.l3",
+
+		"meter_power.peak",
+		"meter_power.offPeak",
+		"meter_power.producedPeak",
+		"meter_power.producedOffPeak",
+
+		"meter_power",
+    "meter_voltage_sag",
+    "meter_voltage_swell",
+    "meter_power_failure"
+	],
+	"capabilitiesOptions": {
+		"measure_power": {
+			"title": {
+				"en": "Power total",
+				"nl": "Vermogen totaal"
+			},
+			"decimals": 2
+		},
+		"meter_power": {
+			"title": {
+				"en": "Energy meter total",
+				"nl": "Energie totaal"
+			},
+			"decimals": 4
+		},
+		"meter_power.peak": {
+			"title": {
+				"en": "Energy meter peak",
+				"nl": "Energie piek"
+			},
+			"decimals": 4
+		},
+		"meter_power.offPeak": {
+			"meter_power": {
+				"title": {
+					"en": "Energy meter total",
+					"nl": "Energie totaal"
+				},
+				"decimals": 4
+			},
+			"title": {
+				"en": "Energy meter off-peak",
+				"nl": "Energie dal"
+			},
+			"decimals": 4
+		},
+		"meter_power.producedPeak": {
+			"title": {
+				"en": "Production peak",
+				"nl": "Productie piek"
+			},
+			"decimals": 4
+		},
+		"meter_power.producedOffPeak": {
+			"title": {
+				"en": "Production off-peak",
+				"nl": "Productie dal"
+			},
+			"decimals": 4
+		},
+		"measure_power.l1": {
+			"title": {
+				"en": "Power L1",
+				"nl": "Vermogen L1"
+			},
+			"decimals": 2
+		},
+		"measure_power.l2": {
+			"title": {
+				"en": "Power L2",
+				"nl": "Vermogen L2"
+			},
+			"decimals": 2
+		},
+		"measure_power.l3": {
+			"title": {
+				"en": "Power L3",
+				"nl": "Vermogen L3"
+			},
+			"decimals": 2
+		},
+		"measure_current.l1": {
+			"title": {
+				"en": "Current L1",
+				"nl": "Stroom L1"
+			},
+			"decimals": 2
+		},
+		"measure_current.l2": {
+			"title": {
+				"en": "Current L2",
+				"nl": "Stroom L2"
+			},
+			"decimals": 2
+		},
+		"measure_current.l3": {
+			"title": {
+				"en": "Current L3",
+				"nl": "Stroom L3"
+			},
+			"decimals": 2
+		},
+		"measure_voltage.l1": {
+			"title": {
+				"en": "Voltage L1",
+				"nl": "Spanning L1"
+			},
+			"decimals": 2
+		},
+		"measure_voltage.l2": {
+			"title": {
+				"en": "Voltage L2",
+				"nl": "Spanning L2"
+			},
+			"decimals": 2
+		},
+		"measure_voltage.l3": {
+			"title": {
+				"en": "Voltage L3",
+				"nl": "Spanning L3"
+			},
+			"decimals": 2
+		}
+	},
+
   "platforms": [
-    "local", "cloud"
+    "local"
   ],
   "connectivity": [
   ],
@@ -19,13 +156,11 @@
     "small": "{{driverAssetsPath}}/images/small.jpg",
     "large": "{{driverAssetsPath}}/images/large.jpg"
   },
+  "discovery": "sessy",
   "pair": [
     {
-			"id": "portal_login"
-		},
-    {
-			"id": "portal_login_pro"
-		},
+      "id": "local_login"
+    },
     {
 			"id": "list_devices",
 			"template": "list_devices",

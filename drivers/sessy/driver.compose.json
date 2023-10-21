@@ -67,20 +67,15 @@
     }
   },
   "platforms": [
-    "local", "cloud"
+    "local"
   ],
   "connectivity": [ ],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.jpg",
     "large": "{{driverAssetsPath}}/images/large.jpg"
   },
+  "discovery": "sessy",
   "pair": [
-    {
-			"id": "portal_login"
-		},
-    {
-			"id": "portal_login_pro"
-		},
     {
 			"id": "local_login"
 		},

@@ -1,0 +1,34 @@
+{
+	"title": {
+		"en": "Set XOM Grid target power",
+		"nl": "Zet XOM Net doelvermogen"
+	},
+		"units": {
+		"en": "Watt"
+	},
+		"titleFormatted": {
+				"en": "Set XOM Grid target power to [[gridTarget]] W",
+				"nl": "Zet XOM Net doelvermogen op [[gridTarget]] W"
+		},
+		"hint": { 
+				"en": "Power to subtract from the measured power of the meter. THIS ONLY AFFECTS SESSY XOM CONTROL MODE!",
+				"nl": "Vermogen af te trekken van het gemeten meter vermogen. DIT HEEFT ALLEEN INVLOED OP SESSY XOM BESTURINGSMODUS!"
+		},
+		"highlight": true,
+		"args": [
+				{
+						"type": "device",
+						"name": "device",
+						"filter": "driver_id=p1"
+				},
+				{
+						"type": "number",
+						"name": "gridTarget",
+						"title": { "en": "XOM Target power", "nl": "XOM Doelvermogen" },
+						"step": 1,
+						"value": 0,
+						"label": " Watt",
+						"labelDecimals": 0
+				}
+		]
+}

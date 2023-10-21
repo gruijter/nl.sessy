@@ -1,0 +1,25 @@
+{
+	"title": { 
+		"en": "The XOM Grid target power changed",
+		"nl": "Het XOM Net doelvermogen is veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=p1"
+		}
+	],
+	"tokens": [
+		{
+			"name": "meter_grid_target",
+			"type": "number",
+			"title": { 
+				"en": "XOM Grid target power",
+				"nl": "XOM Net Doelvermogen"
+			},
+			"example": 1500
+		}
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"title": { 
+		"en": "The voltage swell count changed",
+		"nl": "De spanningspiek teller veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=p1"
+		}
+	],
+	"tokens": [
+		{
+			"name": "meter_voltage_swell",
+			"type": "number",
+			"title": { 
+				"en": "Voltage swell count",
+				"nl": "Spanningspiek teller"
+			},
+			"example": 12
+		}
+	]
+}

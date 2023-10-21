@@ -21,7 +21,7 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 const { Driver } = require('homey');
 const SessyLocal = require('../../sessy_local');
-const SessyCloud = require('../../sessy_cloud');
+// const SessyCloud = require('../../sessy_cloud');
 
 const capabilities = [
 	'charge_mode',
@@ -68,77 +68,118 @@ class SessyDriver extends Driver {
 			if (viewId === 'done' && this.homey.platform !== 'cloud') this.log('done pairing');
 		});
 
-		session.setHandler('portal_login', async (conSett) => {
+		// session.setHandler('portal_login', async (conSett) => {
+		// 	try {
+		// 		this.log(conSett);
+		// 		const settings = conSett;
+		// 		const SESSY = new SessyCloud(settings);
+		// 		// check credentials and get all batteries
+		// 		const disc = await SESSY.discover();
+		// 		if (!disc || !disc[0]) throw Error((this.homey.__('pair.no_batteries_registered')));
+		// 		discovered = [];
+		// 		disc.forEach(async (sessy) => {
+		// 			const dev = sessy;
+		// 			dev.id = sessy.code;
+		// 			dev.name = sessy.fullName;
+		// 			dev.usernamePortal = settings.username_portal;
+		// 			dev.passwordPortal = settings.password_portal;
+		// 			// dev.fwDongle = sessy.version;
+		// 			// dev.fwBat = sessy.acBoardVersion;
+		// 			dev.useLocalConnection = this.homey.platform !== 'cloud';
+		// 			discovered.push(dev);
+		// 		});
+		// 		return Promise.all(discovered);
+		// 	} catch (error) {
+		// 		this.error(error);
+		// 		return Promise.reject(error);
+		// 	}
+		// });
+
+		// session.setHandler('auto_login_OLD', async () => {
+		// 	try {
+		// 		const SESSY = new SessyLocal();
+		// 		const disc = await SESSY.discover().catch(() => []);
+		// 		const discPromise = disc.map(async (sessy) => {
+		// 			const dev = { ...sessy };
+		// 			// try to find MAC
+		// 			const mac = await this.homey.arp.getMAC(sessy.ip).catch(() => '');
+		// 			let MAC = mac.replace(/:/g, '').toUpperCase();
+		// 			if (MAC === '') MAC = Math.random().toString(16).substring(2, 8);
+		// 			dev.name = `SESSY_${dev.ip}`;
+		// 			dev.id = MAC;
+		// 			dev.mac = mac;
+		// 			dev.useLocalConnection = true;
+		// 			return dev;
+		// 		});
+		// 		discovered = await Promise.all(discPromise);
+		// 		return Promise.all(discovered);
+		// 	} catch (error) {
+		// 		this.error(error);
+		// 		return Promise.reject(error);
+		// 	}
+		// });
+
+		const discover = async () => {
+			const discoveryStrategy = this.getDiscoveryStrategy();
+			const discoveryResults = await discoveryStrategy.getDiscoveryResults();
+			// console.dir(discoveryResults, { depth: null });
+			const disc = Object.values(discoveryResults)
+				.filter((discoveryResult) => discoveryResult.txt.device.includes('Dongle'))
+				.map((discoveryResult) => ({
+					name: discoveryResult.txt.serial,
+					id: discoveryResult.txt.serial,
+					ip: discoveryResult.address,
+					port: discoveryResult.port,
+					useMdns: true,
+					useLocalConnection: true,
+					sn_dongle: discoveryResult.txt.serial,
+				}));
+			const discPromise = disc.map(async (sessy) => {
+				const dev = { ...sessy };
+				// add status info
+				const SESSY = new SessyLocal({ host: dev.ip, port: dev.port });
+				dev.status = await SESSY.getStatus().catch(this.error);
+				return dev;
+			});
+			discovered = await Promise.all(discPromise);
+			return Promise.all(discovered);
+		};
+
+		session.setHandler('discover', async () => {
 			try {
-				this.log(conSett);
-				const settings = conSett;
-				const SESSY = new SessyCloud(settings);
-				// check credentials and get all batteries
-				const disc = await SESSY.discover();
-				if (!disc || !disc[0]) throw Error((this.homey.__('pair.no_batteries_registered')));
-				discovered = [];
-				disc.forEach(async (sessy) => {
-					const dev = sessy;
-					dev.id = sessy.code;
-					dev.name = sessy.fullName;
-					dev.usernamePortal = settings.username_portal;
-					dev.passwordPortal = settings.password_portal;
-					// dev.fwDongle = sessy.version;
-					// dev.fwBat = sessy.acBoardVersion;
-					dev.useLocalConnection = this.homey.platform !== 'cloud';
-					discovered.push(dev);
-				});
-				return Promise.all(discovered);
+				let disc = await discover();
+				if (!disc || !disc[0]) disc = [{}];
+				// remove already paired Sessy's
+				const knownDevices = await this.getDevices();
+				const kdIDlist = knownDevices.map((kd) => kd.getData().id);
+				disc = disc.filter((d) => !kdIDlist.includes(d.id));
+				return Promise.resolve(disc[0]);
 			} catch (error) {
 				this.error(error);
 				return Promise.reject(error);
 			}
 		});
 
-		session.setHandler('auto_login', async () => {
-			try {
-				const SESSY = new SessyLocal();
-				const disc = await SESSY.discover().catch(() => []);
-				const discPromise = disc.map(async (sessy) => {
-					const dev = { ...sessy };
-					// try to find MAC
-					const mac = await this.homey.arp.getMAC(sessy.ip).catch(() => '');
-					let MAC = mac.replace(/:/g, '').toUpperCase();
-					if (MAC === '') MAC = Math.random().toString(16).substring(2, 8);
-					dev.name = `SESSY_${dev.ip}`;
-					dev.id = MAC;
-					dev.mac = mac;
-					dev.useLocalConnection = true;
-					return dev;
-				});
-				discovered = await Promise.all(discPromise);
-				return Promise.all(discovered);
-			} catch (error) {
-				this.error(error);
-				return Promise.reject(error);
-			}
-		});
+		session.setHandler('auto_login', async () => discover());
 
 		session.setHandler('manual_login', async (conSett) => {
 			try {
 				this.log(conSett);
 				const settings = conSett;
 				const SESSY = new SessyLocal(settings);
-				const dev = conSett;
+				const dev = { ...settings };
 				// check credentials and get status info
 				const status = await SESSY.getStatus();
+				const sysInfo = await SESSY.getSystemInfo().catch(() => {});
 				dev.status = status;
-				// try to find the MAC
-				const mac = await this.homey.arp.getMAC(settings.host).catch(() => '');
-				let MAC = mac.replace(/:/g, '').toUpperCase();
-				if (MAC === '') MAC = Math.random().toString(16).substring(2, 8);
-				dev.name = `SESSY_${settings.host}`;
-				dev.id = MAC;
+				dev.name = `${settings.sn_dongle}`;
+				dev.id = settings.sn_dongle;
 				dev.ip = settings.host;
-				dev.mac = MAC;
+				dev.useMdns = false;
 				dev.useLocalConnection = true;
-				dev.sn_dongle = settings.username;
-				dev.password_dongle = settings.password;
+				dev.sn_sessy = sysInfo.sessy_serial;
+				dev.sn_dongle = settings.sn_dongle;
+				dev.password_dongle = settings.password_dongle;
 				dev.force_control_strategy = true;
 				// get fwLevel
 				// const OTAstatus = await SESSY.getOTAStatus();
@@ -150,6 +191,32 @@ class SessyDriver extends Driver {
 				this.error(error);
 				return Promise.reject(error);
 			}
+		});
+
+		session.setHandler('auto_login', async () => {
+			const discoveryStrategy = this.getDiscoveryStrategy();
+			const discoveryResults = await discoveryStrategy.getDiscoveryResults();
+			// console.dir(discoveryResults, { depth: null });
+			const disc = Object.values(discoveryResults)
+				.filter((discoveryResult) => discoveryResult.txt.device.includes('Dongle'))
+				.map((discoveryResult) => ({
+					name: discoveryResult.txt.serial,
+					id: discoveryResult.txt.serial,
+					ip: discoveryResult.address,
+					port: discoveryResult.port,
+					useMdns: true,
+					useLocalConnection: true,
+					sn_dongle: discoveryResult.txt.serial,
+				}));
+			const discPromise = disc.map(async (sessy) => {
+				const dev = { ...sessy };
+				// add status info
+				const SESSY = new SessyLocal({ host: dev.ip, port: dev.port });
+				dev.status = await SESSY.getStatus().catch(this.error);
+				return dev;
+			});
+			discovered = await Promise.all(discPromise);
+			return Promise.all(discovered);
 		});
 
 		session.setHandler('list_devices', async () => {
@@ -174,18 +241,18 @@ class SessyDriver extends Driver {
 						},
 						capabilities: correctCaps,
 						settings: {
-							id: sessy.id,
-							mac: sessy.mac,
+							sn_sessy: sessy.sn_sessy,
 							fwDongle: sessy.fwDongle,
 							fwBat: sessy.fwBat,
 							username_portal: sessy.usernamePortal,
 							password_portal: sessy.passwordPortal,
-							use_local_connection: sessy.useLocalConnection,
+							// use_local_connection: sessy.useLocalConnection,
 							sn_dongle: sessy.sn_dongle,
 							password_dongle: sessy.password_dongle,
 							force_control_strategy: sessy.force_control_strategy,
 							host: sessy.ip,
 							port: sessy.port || 80,
+							use_mdns: sessy.useMdns,
 							show_re_total: showReTotal,
 							show_re1: showRe1,
 							show_re2: showRe2,

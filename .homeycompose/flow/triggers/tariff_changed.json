@@ -1,0 +1,24 @@
+{
+  "title": {
+      "en": "Tariff has changed",
+      "nl": "Tarief is gewijzigd"
+  },
+  "tokens": [
+    {
+      "name": "tariff",
+      "type": "boolean",
+      "title": {
+        "en": "off peak",
+        "nl": "dal"
+      },
+      "example": true
+    }
+  ],
+  "args": [
+      {
+          "type": "device",
+          "name": "device",
+          "filter": "driver_id=p1"
+      }
+  ]
+}

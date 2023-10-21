@@ -5,8 +5,7 @@
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
-    "local",
-    "cloud"
+    "local"
   ],
   "name": {
     "en": "Sessy"
@@ -164,6 +163,58 @@
       },
       {
         "title": {
+          "en": "The XOM Grid target power changed",
+          "nl": "Het XOM Net doelvermogen is veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=p1"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_grid_target",
+            "type": "number",
+            "title": {
+              "en": "XOM Grid target power",
+              "nl": "XOM Net Doelvermogen"
+            },
+            "example": 1500
+          }
+        ],
+        "id": "meter_grid_target_changed"
+      },
+      {
+        "title": {
+          "en": "The power failure count changed",
+          "nl": "De stroomuitval teller is veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=p1"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_power_failure",
+            "type": "number",
+            "title": {
+              "en": "Power failure count",
+              "nl": "Stroomuitval teller"
+            },
+            "example": 12
+          }
+        ],
+        "id": "meter_power_failure_changed"
+      },
+      {
+        "title": {
           "en": "The target power changed",
           "nl": "Het doelvermogen is veranderd"
         },
@@ -187,6 +238,58 @@
           }
         ],
         "id": "meter_setpoint_changed"
+      },
+      {
+        "title": {
+          "en": "The voltage sag count changed",
+          "nl": "De spanningsdip teller is veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=p1"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_voltage_sag",
+            "type": "number",
+            "title": {
+              "en": "Voltage sag count",
+              "nl": "Spanningsdip teller"
+            },
+            "example": 12
+          }
+        ],
+        "id": "meter_voltage_sag_changed"
+      },
+      {
+        "title": {
+          "en": "The voltage swell count changed",
+          "nl": "De spanningspiek teller veranderd"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=p1"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_voltage_swell",
+            "type": "number",
+            "title": {
+              "en": "Voltage swell count",
+              "nl": "Spanningspiek teller"
+            },
+            "example": 12
+          }
+        ],
+        "id": "meter_voltage_swell_changed"
       },
       {
         "title": {
@@ -248,9 +351,53 @@
           }
         ],
         "id": "system_state_changed"
+      },
+      {
+        "title": {
+          "en": "Tariff has changed",
+          "nl": "Tarief is gewijzigd"
+        },
+        "tokens": [
+          {
+            "name": "tariff",
+            "type": "boolean",
+            "title": {
+              "en": "off peak",
+              "nl": "dal"
+            },
+            "example": true
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=p1"
+          }
+        ],
+        "id": "tariff_changed"
       }
     ],
     "actions": [
+      {
+        "title": {
+          "en": "Reboot dongle",
+          "nl": "Reboot dongel"
+        },
+        "hint": {
+          "en": "Restart the dongle.",
+          "nl": "Start de dongel opnieuw op."
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy|p1"
+          }
+        ],
+        "id": "restart"
+      },
       {
         "title": {
           "en": "Start/Stop (dis)charging",
@@ -343,7 +490,7 @@
               {
                 "id": "POWER_STRATEGY_NOM",
                 "title": {
-                  "en": "SESSY NOM (!)"
+                  "en": "SESSY XOM (!)"
                 }
               },
               {
@@ -363,6 +510,44 @@
           }
         ],
         "id": "set_control_strategy"
+      },
+      {
+        "title": {
+          "en": "Set XOM Grid target power",
+          "nl": "Zet XOM Net doelvermogen"
+        },
+        "units": {
+          "en": "Watt"
+        },
+        "titleFormatted": {
+          "en": "Set XOM Grid target power to [[gridTarget]] W",
+          "nl": "Zet XOM Net doelvermogen op [[gridTarget]] W"
+        },
+        "hint": {
+          "en": "Power to subtract from the measured power of the meter. THIS ONLY AFFECTS SESSY XOM CONTROL MODE!",
+          "nl": "Vermogen af te trekken van het gemeten meter vermogen. DIT HEEFT ALLEEN INVLOED OP SESSY XOM BESTURINGSMODUS!"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=p1"
+          },
+          {
+            "type": "number",
+            "name": "gridTarget",
+            "title": {
+              "en": "XOM Target power",
+              "nl": "XOM Doelvermogen"
+            },
+            "step": 1,
+            "value": 0,
+            "label": " Watt",
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_grid_target"
       },
       {
         "title": {
@@ -409,108 +594,6 @@
   "drivers": [
     {
       "name": {
-        "en": "Day-Ahead Prices",
-        "nl": "Dynamische Prijzen"
-      },
-      "class": "sensor",
-      "capabilities": [],
-      "platforms": [
-        "cloud",
-        "local"
-      ],
-      "connectivity": [],
-      "images": {
-        "small": "/drivers/dap/assets/images/small.png",
-        "large": "/drivers/dap/assets/images/large.png"
-      },
-      "pair": [
-        {
-          "id": "portal_login"
-        },
-        {
-          "id": "list_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_devices"
-          }
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
-        },
-        {
-          "id": "done",
-          "template": "done"
-        }
-      ],
-      "settings": [
-        {
-          "type": "group",
-          "label": {
-            "en": "Cloud connection settings",
-            "nl": "Cloud verbinding instellingen"
-          },
-          "children": [
-            {
-              "id": "username_portal",
-              "type": "text",
-              "label": {
-                "en": "Sessy portal username",
-                "nl": "Sessy portal gebruikersnaam"
-              },
-              "value": ""
-            },
-            {
-              "id": "password_portal",
-              "type": "password",
-              "label": {
-                "en": "Sessy portal password",
-                "nl": "Sessy portal wachtwoord"
-              },
-              "value": ""
-            }
-          ]
-        },
-        {
-          "type": "group",
-          "label": {
-            "en": "Price settings",
-            "nl": "Prijs instellingen"
-          },
-          "children": [
-            {
-              "id": "variableMarkup",
-              "type": "number",
-              "label": {
-                "en": "VAT (%)",
-                "nl": "BTW (%)"
-              },
-              "value": 21,
-              "hint": {
-                "en": "Enter the percentage with which the net price must be increased for VAT.",
-                "nl": "Voer het percentage in waarmee de netto prijs verhoogd moet worden voor BTW."
-              }
-            },
-            {
-              "id": "fixedMarkup",
-              "type": "number",
-              "label": {
-                "en": "Fixed markup per kWh (€)",
-                "nl": "Vaste opslag per kWh (€)"
-              },
-              "value": 0.175,
-              "hint": {
-                "en": "Enter the fixed amount with which the price must be increased per kWh, incl. VAT. E.g. for purchase fee and energy tax.",
-                "nl": "Voer het vaste bedrag in waarmee de prijs per kWh verhoogd moet worden incl. BTW. Bijvoorbeeld voor inkoopvergoeding en Energie belasting."
-              }
-            }
-          ]
-        }
-      ],
-      "id": "dap"
-    },
-    {
-      "name": {
         "en": "Sessy P1"
       },
       "class": "sensor",
@@ -519,23 +602,152 @@
       },
       "capabilities": [
         "measure_power",
-        "system_state"
+        "system_state",
+        "meter_offPeak",
+        "measure_power.l1",
+        "measure_power.l2",
+        "measure_power.l3",
+        "measure_current.l1",
+        "measure_current.l2",
+        "measure_current.l3",
+        "measure_voltage.l1",
+        "measure_voltage.l2",
+        "measure_voltage.l3",
+        "meter_power.peak",
+        "meter_power.offPeak",
+        "meter_power.producedPeak",
+        "meter_power.producedOffPeak",
+        "meter_power",
+        "meter_voltage_sag",
+        "meter_voltage_swell",
+        "meter_power_failure"
       ],
+      "capabilitiesOptions": {
+        "measure_power": {
+          "title": {
+            "en": "Power total",
+            "nl": "Vermogen totaal"
+          },
+          "decimals": 2
+        },
+        "meter_power": {
+          "title": {
+            "en": "Energy meter total",
+            "nl": "Energie totaal"
+          },
+          "decimals": 4
+        },
+        "meter_power.peak": {
+          "title": {
+            "en": "Energy meter peak",
+            "nl": "Energie piek"
+          },
+          "decimals": 4
+        },
+        "meter_power.offPeak": {
+          "meter_power": {
+            "title": {
+              "en": "Energy meter total",
+              "nl": "Energie totaal"
+            },
+            "decimals": 4
+          },
+          "title": {
+            "en": "Energy meter off-peak",
+            "nl": "Energie dal"
+          },
+          "decimals": 4
+        },
+        "meter_power.producedPeak": {
+          "title": {
+            "en": "Production peak",
+            "nl": "Productie piek"
+          },
+          "decimals": 4
+        },
+        "meter_power.producedOffPeak": {
+          "title": {
+            "en": "Production off-peak",
+            "nl": "Productie dal"
+          },
+          "decimals": 4
+        },
+        "measure_power.l1": {
+          "title": {
+            "en": "Power L1",
+            "nl": "Vermogen L1"
+          },
+          "decimals": 2
+        },
+        "measure_power.l2": {
+          "title": {
+            "en": "Power L2",
+            "nl": "Vermogen L2"
+          },
+          "decimals": 2
+        },
+        "measure_power.l3": {
+          "title": {
+            "en": "Power L3",
+            "nl": "Vermogen L3"
+          },
+          "decimals": 2
+        },
+        "measure_current.l1": {
+          "title": {
+            "en": "Current L1",
+            "nl": "Stroom L1"
+          },
+          "decimals": 2
+        },
+        "measure_current.l2": {
+          "title": {
+            "en": "Current L2",
+            "nl": "Stroom L2"
+          },
+          "decimals": 2
+        },
+        "measure_current.l3": {
+          "title": {
+            "en": "Current L3",
+            "nl": "Stroom L3"
+          },
+          "decimals": 2
+        },
+        "measure_voltage.l1": {
+          "title": {
+            "en": "Voltage L1",
+            "nl": "Spanning L1"
+          },
+          "decimals": 2
+        },
+        "measure_voltage.l2": {
+          "title": {
+            "en": "Voltage L2",
+            "nl": "Spanning L2"
+          },
+          "decimals": 2
+        },
+        "measure_voltage.l3": {
+          "title": {
+            "en": "Voltage L3",
+            "nl": "Spanning L3"
+          },
+          "decimals": 2
+        }
+      },
       "platforms": [
-        "local",
-        "cloud"
+        "local"
       ],
       "connectivity": [],
       "images": {
         "small": "/drivers/p1/assets/images/small.jpg",
         "large": "/drivers/p1/assets/images/large.jpg"
       },
+      "discovery": "sessy",
       "pair": [
         {
-          "id": "portal_login"
-        },
-        {
-          "id": "portal_login_pro"
+          "id": "local_login"
         },
         {
           "id": "list_devices",
@@ -573,6 +785,15 @@
                 "nl": "Meter ID"
               },
               "value": ""
+            },
+            {
+              "id": "DSMR",
+              "type": "label",
+              "label": {
+                "en": "DSMR version",
+                "nl": "DSMR versie"
+              },
+              "value": ""
             }
           ]
         },
@@ -585,21 +806,21 @@
           "children": [
             {
               "id": "username_portal",
-              "type": "text",
+              "type": "label",
               "label": {
                 "en": "Sessy portal username",
                 "nl": "Sessy portal gebruikersnaam"
               },
-              "value": ""
+              "value": "NOT USED"
             },
             {
               "id": "password_portal",
-              "type": "password",
+              "type": "label",
               "label": {
                 "en": "Sessy portal password",
                 "nl": "Sessy portal wachtwoord"
               },
-              "value": ""
+              "value": "NOT USED"
             }
           ]
         },
@@ -610,19 +831,6 @@
             "nl": "Lokale verbinding instellingen (Homey PRO)"
           },
           "children": [
-            {
-              "id": "use_local_connection",
-              "type": "checkbox",
-              "label": {
-                "en": "Use local connection",
-                "nl": "Gebruik lokale verbinding "
-              },
-              "hint": {
-                "en": "A local connection is faster and more reliable compared to a cloud connection, but is only available on Homey Pro.",
-                "nl": "Een lokale verbinding is sneller en betrouwbaarder dan een cloud verbinding, maar is alleen beschikbaar met Homey Pro."
-              },
-              "value": true
-            },
             {
               "id": "host",
               "type": "text",
@@ -650,6 +858,45 @@
               "value": 80
             },
             {
+              "id": "use_mdns",
+              "type": "checkbox",
+              "label": {
+                "en": "Use mDNS for adress",
+                "nl": "Gebruik mDNS voor adres"
+              },
+              "hint": {
+                "en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
+                "nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund."
+              },
+              "value": false
+            },
+            {
+              "id": "sn_dongle",
+              "type": "text",
+              "label": {
+                "en": "Dongle S/N",
+                "nl": "Dongel S/N"
+              },
+              "hint": {
+                "en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+                "nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten."
+              },
+              "value": ""
+            },
+            {
+              "id": "password_dongle",
+              "type": "password",
+              "label": {
+                "en": "Dongle Password",
+                "nl": "Dongel Wachtwoord"
+              },
+              "hint": {
+                "en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+                "nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten."
+              },
+              "value": ""
+            },
+            {
               "id": "pollingInterval",
               "type": "number",
               "label": {
@@ -660,7 +907,7 @@
                 "en": "A lower value provides faster updates in Homey.",
                 "nl": "Een lagere waarde geeft snellere updates in Homey."
               },
-              "min": 5,
+              "min": 1,
               "max": 300,
               "value": 10
             }
@@ -770,21 +1017,15 @@
         }
       },
       "platforms": [
-        "local",
-        "cloud"
+        "local"
       ],
       "connectivity": [],
       "images": {
         "small": "/drivers/sessy/assets/images/small.jpg",
         "large": "/drivers/sessy/assets/images/large.jpg"
       },
+      "discovery": "sessy",
       "pair": [
-        {
-          "id": "portal_login"
-        },
-        {
-          "id": "portal_login_pro"
-        },
         {
           "id": "local_login"
         },
@@ -817,11 +1058,11 @@
           },
           "children": [
             {
-              "id": "id",
+              "id": "sn_sessy",
               "type": "label",
               "label": {
-                "en": "Sessy ID",
-                "nl": "Sessy ID"
+                "en": "Sessy S/N",
+                "nl": "Sessy S/N"
               },
               "value": ""
             },
@@ -854,21 +1095,21 @@
           "children": [
             {
               "id": "username_portal",
-              "type": "text",
+              "type": "label",
               "label": {
                 "en": "Sessy portal username",
                 "nl": "Sessy portal gebruikersnaam"
               },
-              "value": ""
+              "value": "NOT USED"
             },
             {
               "id": "password_portal",
-              "type": "password",
+              "type": "label",
               "label": {
                 "en": "Sessy portal password",
                 "nl": "Sessy portal wachtwoord"
               },
-              "value": ""
+              "value": "NOT USED"
             }
           ]
         },
@@ -879,19 +1120,6 @@
             "nl": "Lokale verbinding instellingen (Homey PRO)"
           },
           "children": [
-            {
-              "id": "use_local_connection",
-              "type": "checkbox",
-              "label": {
-                "en": "Use local connection",
-                "nl": "Gebruik lokale verbinding "
-              },
-              "hint": {
-                "en": "A local connection is faster and more reliable compared to a cloud connection, but is only available on Homey Pro.",
-                "nl": "Een lokale verbinding is sneller en betrouwbaarder dan een cloud verbinding, maar is alleen beschikbaar met Homey Pro."
-              },
-              "value": false
-            },
             {
               "id": "host",
               "type": "text",
@@ -917,6 +1145,19 @@
                 "nl": "Standaard is 80."
               },
               "value": 80
+            },
+            {
+              "id": "use_mdns",
+              "type": "checkbox",
+              "label": {
+                "en": "Use mDNS for adress",
+                "nl": "Gebruik mDNS voor adres"
+              },
+              "hint": {
+                "en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
+                "nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund."
+              },
+              "value": false
             },
             {
               "id": "sn_dongle",
@@ -1150,7 +1391,7 @@
         {
           "id": "POWER_STRATEGY_NOM",
           "title": {
-            "en": "SESSY NOM (!)"
+            "en": "SESSY XOM (!)"
           }
         },
         {
@@ -1349,6 +1590,51 @@
       "insights": true,
       "uiComponent": "sensor",
       "icon": "./assets/frequency.svg"
+    },
+    "meter_grid_target": {
+      "type": "number",
+      "title": {
+        "en": "XOM Grid target power",
+        "nl": "XOM Net doelvermogen"
+      },
+      "units": {
+        "en": "W"
+      },
+      "step": 1,
+      "decimals": 0,
+      "getable": true,
+      "setable": true,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/charge_setpoint.svg"
+    },
+    "meter_offPeak": {
+      "type": "boolean",
+      "title": {
+        "en": "Off-peak",
+        "nl": "Laag tarief"
+      },
+      "desc": {
+        "en": "Is off-peak tarriff active?",
+        "nl": "Is laag tarief actief?"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "icon": "./assets/offPeak_icon.svg"
+    },
+    "meter_power_failure": {
+      "type": "number",
+      "title": {
+        "en": "Power failure count",
+        "nl": "Stroomuitval teller"
+      },
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/fault.svg"
     },
     "meter_price_h0": {
       "type": "number",
@@ -1743,6 +2029,32 @@
       "uiComponent": "sensor",
       "icon": "./assets/charge_setpoint.svg"
     },
+    "meter_voltage_sag": {
+      "type": "number",
+      "title": {
+        "en": "Voltage sag count",
+        "nl": "Spanningsdip teller"
+      },
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/fault.svg"
+    },
+    "meter_voltage_swell": {
+      "type": "number",
+      "title": {
+        "en": "Voltage swell count",
+        "nl": "Spanningspiek teller"
+      },
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/fault.svg"
+    },
     "system_state": {
       "type": "string",
       "title": {
@@ -1753,6 +2065,27 @@
       "setable": false,
       "uiComponent": "sensor",
       "icon": "./assets/system_state.svg"
+    }
+  },
+  "discovery": {
+    "sessy": {
+      "type": "mdns-sd",
+      "mdns-sd": {
+        "name": "http",
+        "protocol": "tcp"
+      },
+      "id": "{{txt.serial}}",
+      "conditions": [
+        [
+          {
+            "field": "name",
+            "match": {
+              "type": "string",
+              "value": "sessy-"
+            }
+          }
+        ]
+      ]
     }
   }
 }

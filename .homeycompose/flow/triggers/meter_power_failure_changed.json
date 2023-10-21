@@ -1,0 +1,25 @@
+{
+	"title": { 
+		"en": "The power failure count changed",
+		"nl": "De stroomuitval teller is veranderd"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=p1"
+		}
+	],
+	"tokens": [
+		{
+			"name": "meter_power_failure",
+			"type": "number",
+			"title": { 
+				"en": "Power failure count",
+				"nl": "Stroomuitval teller"
+			},
+			"example": 12
+		}
+	]
+}
