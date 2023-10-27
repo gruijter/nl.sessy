@@ -126,7 +126,7 @@ class SessyDriver extends Driver {
 			const disc = Object.values(discoveryResults)
 				.filter((discoveryResult) => discoveryResult.txt.device.includes('Dongle'))
 				.map((discoveryResult) => ({
-					name: discoveryResult.txt.serial,
+					name: `SESSY_${discoveryResult.txt.serial}`,
 					id: discoveryResult.txt.serial,
 					ip: discoveryResult.address,
 					port: discoveryResult.port,
@@ -172,7 +172,7 @@ class SessyDriver extends Driver {
 				const status = await SESSY.getStatus();
 				const sysInfo = await SESSY.getSystemInfo().catch(() => {});
 				dev.status = status;
-				dev.name = `${settings.sn_dongle}`;
+				dev.name = `SESSY_${settings.sn_dongle}`;
 				dev.id = settings.sn_dongle;
 				dev.ip = settings.host;
 				dev.useMdns = false;
@@ -193,31 +193,31 @@ class SessyDriver extends Driver {
 			}
 		});
 
-		session.setHandler('auto_login', async () => {
-			const discoveryStrategy = this.getDiscoveryStrategy();
-			const discoveryResults = await discoveryStrategy.getDiscoveryResults();
-			// console.dir(discoveryResults, { depth: null });
-			const disc = Object.values(discoveryResults)
-				.filter((discoveryResult) => discoveryResult.txt.device.includes('Dongle'))
-				.map((discoveryResult) => ({
-					name: discoveryResult.txt.serial,
-					id: discoveryResult.txt.serial,
-					ip: discoveryResult.address,
-					port: discoveryResult.port,
-					useMdns: true,
-					useLocalConnection: true,
-					sn_dongle: discoveryResult.txt.serial,
-				}));
-			const discPromise = disc.map(async (sessy) => {
-				const dev = { ...sessy };
-				// add status info
-				const SESSY = new SessyLocal({ host: dev.ip, port: dev.port });
-				dev.status = await SESSY.getStatus().catch(this.error);
-				return dev;
-			});
-			discovered = await Promise.all(discPromise);
-			return Promise.all(discovered);
-		});
+		// session.setHandler('auto_login', async () => {
+		// 	const discoveryStrategy = this.getDiscoveryStrategy();
+		// 	const discoveryResults = await discoveryStrategy.getDiscoveryResults();
+		// 	// console.dir(discoveryResults, { depth: null });
+		// 	const disc = Object.values(discoveryResults)
+		// 		.filter((discoveryResult) => discoveryResult.txt.device.includes('Dongle'))
+		// 		.map((discoveryResult) => ({
+		// 			name: `SESSY_${discoveryResult.txt.serial}`,
+		// 			id: discoveryResult.txt.serial,
+		// 			ip: discoveryResult.address,
+		// 			port: discoveryResult.port,
+		// 			useMdns: true,
+		// 			useLocalConnection: true,
+		// 			sn_dongle: discoveryResult.txt.serial,
+		// 		}));
+		// 	const discPromise = disc.map(async (sessy) => {
+		// 		const dev = { ...sessy };
+		// 		// add status info
+		// 		const SESSY = new SessyLocal({ host: dev.ip, port: dev.port });
+		// 		dev.status = await SESSY.getStatus().catch(this.error);
+		// 		return dev;
+		// 	});
+		// 	discovered = await Promise.all(discPromise);
+		// 	return Promise.all(discovered);
+		// });
 
 		session.setHandler('list_devices', async () => {
 			try {

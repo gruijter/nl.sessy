@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.sessy",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
@@ -136,7 +136,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy"
+            "filter": "driver_id=sessy|p1"
           }
         ],
         "tokens": [
@@ -147,7 +147,7 @@
               "en": "Dongle firmware",
               "nl": "Dongel firmware"
             },
-            "example": "1.1.2"
+            "example": "1.5.4"
           },
           {
             "name": "fwBat",
@@ -156,7 +156,7 @@
               "en": "Battery firmware",
               "nl": "Batterij firmware"
             },
-            "example": "1.1.2"
+            "example": "1.5.4"
           }
         ],
         "id": "firmware_changed"
@@ -301,7 +301,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy"
+            "filter": "driver_id=sessy|p1"
           }
         ],
         "tokens": [
@@ -312,7 +312,7 @@
               "en": "Dongle Firmware",
               "nl": "Dongel Firmware"
             },
-            "example": "1.1.2"
+            "example": "1.5.4"
           },
           {
             "name": "availableFWBat",
@@ -321,7 +321,7 @@
               "en": "Battery firmware",
               "nl": "Batterij firmware"
             },
-            "example": "1.1.2"
+            "example": "1.5.4"
           }
         ],
         "id": "new_firmware_available"
@@ -792,6 +792,15 @@
               "label": {
                 "en": "DSMR version",
                 "nl": "DSMR versie"
+              },
+              "value": ""
+            },
+            {
+              "id": "fwDongle",
+              "type": "label",
+              "label": {
+                "en": "Firmware Dongle",
+                "nl": "Firmware Dongel"
               },
               "value": ""
             }

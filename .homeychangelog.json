@@ -31,5 +31,8 @@
   },
   "2.0.0": {
     "en": "Improved pairing UX. Use mDNS device discovery and IP update. Added dongle reboot command. Added extended P1 info (fw1.5.2). Added set SESSY XOM."
+  },
+  "2.0.1": {
+  "en": "Improved error message when using old firmware. Improved device naming when pairing. Added firmware level info to P1."
   }
 }

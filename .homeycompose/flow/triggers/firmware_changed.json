@@ -8,7 +8,7 @@
 		{
 				"type": "device",
 				"name": "device",
-				"filter": "driver_id=sessy"
+				"filter": "driver_id=sessy|p1"
 		}
 	],
 	"tokens": [
@@ -19,7 +19,7 @@
 				"en": "Dongle firmware",
 				"nl": "Dongel firmware"
 			},
-			"example": "1.1.2"
+			"example": "1.5.4"
 		},
 		{
 			"name": "fwBat",
@@ -28,7 +28,7 @@
 				"en": "Battery firmware",
 				"nl": "Batterij firmware"
 			},
-			"example": "1.1.2"
+			"example": "1.5.4"
 		}
 	]
 }

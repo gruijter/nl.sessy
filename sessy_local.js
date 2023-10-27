@@ -100,6 +100,8 @@ class Sessy {
 			this.status = res;
 			return Promise.resolve(res);
 		} catch (error) {
+			if (error && error.message
+				&& error.message.includes('Status code: 404')) return Promise.reject(Error('Status info not found. Use the latest firmware!'));
 			return Promise.reject(error);
 		}
 	}

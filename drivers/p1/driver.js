@@ -102,7 +102,7 @@ class P1Driver extends Driver {
 			const disc = Object.values(discoveryResults)
 				.filter((discoveryResult) => discoveryResult.txt.device.includes('P1'))
 				.map((discoveryResult) => ({
-					name: discoveryResult.txt.serial,
+					name: `SESSY_P1_${discoveryResult.txt.serial}`,
 					id: discoveryResult.txt.serial,
 					ip: discoveryResult.address,
 					port: discoveryResult.port,
@@ -139,7 +139,7 @@ class P1Driver extends Driver {
 				// check credentials and get status info
 				const SESSY = new SessyLocal({ host: dev.host, port: dev.port });
 				dev.status = await SESSY.getStatus({ p1: true });
-				dev.name = `${dev.sn_dongle}`;
+				dev.name = `P1_${dev.sn_dongle}`;
 				dev.id = dev.sn_dongle;
 				dev.ip = dev.host;
 				dev.useMdns = dev.use_mdns;

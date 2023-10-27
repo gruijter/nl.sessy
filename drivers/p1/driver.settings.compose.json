@@ -23,6 +23,15 @@
 						"nl": "DSMR versie"
 				},
 				"value": ""
+			},
+			{
+				"id": "fwDongle",
+				"type": "label",
+				"label": {
+						"en": "Firmware Dongle",
+						"nl": "Firmware Dongel"
+				},
+				"value": ""
 			}
 		]
 	},

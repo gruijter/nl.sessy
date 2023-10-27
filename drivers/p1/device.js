@@ -32,6 +32,7 @@ class P1Device extends Device {
 	async onInit() {
 		try {
 			this.watchDogCounter = 10;
+			this.lastFWCheck = 0;
 			const settings = this.getSettings();
 
 			this.useCloud = this.homey.platform === 'cloud'; //  || !settings.use_local_connection;
@@ -174,6 +175,12 @@ class P1Device extends Device {
 			const status = await this.sessy.getStatus({ p1: true });
 			this.setAvailable().catch(() => null);
 			await this.updateDeviceState(status);
+			// check fw every 60 minutes
+			if ((true || this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
+				const OTAstatus = await this.sessy.getOTAStatus();
+				await this.updateFWState(OTAstatus);
+				this.lastFWCheck = Date.now();
+			}
 			this.watchDogCounter = 10;
 		} catch (error) {
 			this.watchDogCounter -= 1;
@@ -211,6 +218,34 @@ class P1Device extends Device {
 				.catch((error) => {
 					this.log(error, capability, value);
 				});
+		}
+	}
+
+	async updateFWState(OTAStatus) {
+		// console.log(`updating OTAstates for: ${this.getName()}`, OTAStatus);
+		try {
+			const fwDongle = OTAStatus.self.installed_firmware.version;
+			const availableFWDongle = OTAStatus.self.available_firmware.version;
+			const firmwareDongleChanged = fwDongle !== this.getSettings().fwDongle;
+			const newDongleFirmwareAvailable = fwDongle !== availableFWDongle;
+			if (firmwareDongleChanged) {
+				this.log('The firmware was updated:', fwDongle);
+				await this.setSettings({ fwDongle });
+				const tokens = { fwDongle, fwBat: '' };
+				this.homey.app.triggerFirmwareChanged(this, tokens, {});
+				const excerpt = this.homey.__('sessy.newFirmwareMeter', { fw: `Dongle: ${fwDongle}` });
+				await this.homey.notifications.createNotification({ excerpt });
+			}
+			if (newDongleFirmwareAvailable && this.availableFWDongle !== availableFWDongle) {
+				this.log('New firmware available:', availableFWDongle);
+				const tokens = { availableFWDongle, availableFWBat: '' };
+				this.homey.app.triggerNewFirmwareAvailable(this, tokens, {});
+				this.availableFWDongle = availableFWDongle;
+				const excerpt = this.homey.__('sessy.newFirmwareAvailableMeter', { fw: `Dongle: ${availableFWDongle}` });
+				await this.homey.notifications.createNotification({ excerpt });
+			}
+		} catch (error) {
+			this.error(error);
 		}
 	}
 

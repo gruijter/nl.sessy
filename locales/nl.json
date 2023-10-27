@@ -40,6 +40,8 @@
 		"connectionError": "Verbindingsfout, aan het hertarten",
 		"migrating": "Apparaat is aan het migreren. Geduld AUB!",
 		"newFirmware": "Nieuwe firmware geinstalleerd op Sessy. __fw__",
-		"newFirmwareAvailable": "Nieuwe firmware beschikbaar voor Sessy. __fw__"
+		"newFirmwareAvailable": "Nieuwe firmware beschikbaar voor Sessy. __fw__",
+		"newFirmwareMeter": "Nieuwe firmware geinstalleerd op Meter. __fw__",
+		"newFirmwareAvailableMeter": "Nieuwe firmware beschikbaar voor Meter. __fw__"
 	}
 }
