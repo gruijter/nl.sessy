@@ -20,6 +20,15 @@
 				"nl": "Systeemstatus"
 			},
 			"example": "RUNNING_SAFE"
+		},
+		{
+			"name": "system_state_details",
+			"type": "string",
+			"title": { 
+				"en": "System state details",
+				"nl": "Systeemstatus details"
+			},
+			"example": "UNDERVOLTAGE"
 		}
 	]
 }

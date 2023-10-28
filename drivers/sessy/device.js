@@ -340,6 +340,7 @@ class SessyDevice extends Device {
 				control_strategy: controlStrategy,
 				charge_mode: chargeMode,
 				system_state: systemState,
+				system_state_details: status.sessy.system_state_details,
 				alarm_fault: alarmFault,
 				measure_battery: status.sessy.state_of_charge * 100,
 				meter_setpoint: status.sessy.power_setpoint,
@@ -370,7 +371,7 @@ class SessyDevice extends Device {
 			// execute custom flow triggers
 			if (systemStateChanged) {
 				this.log('System State changed:', systemState);
-				const tokens = { system_state: systemState };
+				const tokens = { system_state: systemState, system_state_details: capabilityStates.system_state_details };
 				this.homey.app.triggerSystemStateChanged(this, tokens, {});
 			}
 			if (chargeModeChanged) {

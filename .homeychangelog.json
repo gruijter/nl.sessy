@@ -34,5 +34,8 @@
   },
   "2.0.1": {
   "en": "Improved error message when using old firmware. Improved device naming when pairing. Added firmware level info to P1."
+  },
+  "2.0.2": {
+    "en": "Added system state details to flow triggercard. Fix P1 wrong username/password restarts."
   }
 }

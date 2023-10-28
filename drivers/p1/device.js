@@ -176,10 +176,10 @@ class P1Device extends Device {
 			this.setAvailable().catch(() => null);
 			await this.updateDeviceState(status);
 			// check fw every 60 minutes
-			if ((true || this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
+			if ((this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
+				this.lastFWCheck = Date.now();
 				const OTAstatus = await this.sessy.getOTAStatus();
 				await this.updateFWState(OTAstatus);
-				this.lastFWCheck = Date.now();
 			}
 			this.watchDogCounter = 10;
 		} catch (error) {
@@ -289,7 +289,7 @@ class P1Device extends Device {
 			// execute custom flow triggers
 			if (systemStateChanged) {
 				this.log('System State changed:', systemState);
-				const tokens = { system_state: systemState };
+				const tokens = { system_state: systemState, system_state_details: '' };
 				this.homey.app.triggerSystemStateChanged(this, tokens, {});
 			}
 			const tariffChanged = capabilityStates.meter_offPeak !== this.getCapabilityValue('meter_offPeak');
