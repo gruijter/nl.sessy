@@ -37,5 +37,8 @@
   },
   "2.0.2": {
     "en": "Added system state details to flow triggercard. Fix P1 wrong username/password restarts."
+  },
+  "2.0.3": {
+    "en": "Reduced app footprint."
   }
 }
