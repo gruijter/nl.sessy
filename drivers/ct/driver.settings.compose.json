@@ -1,0 +1,145 @@
+[
+	{
+		"type": "group",
+		"label": {
+				"en": "Meter information",
+				"nl": "Meter informatie"
+		},
+		"children": [
+			{
+				"id": "id",
+				"type": "label",
+				"label": {
+						"en": "Meter ID",
+						"nl": "Meter ID"
+				},
+				"value": ""
+			},
+			{
+				"id": "fwDongle",
+				"type": "label",
+				"label": {
+						"en": "Firmware Dongle",
+						"nl": "Firmware Dongel"
+				},
+				"value": ""
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Cloud connection settings",
+				"nl": "Cloud verbinding instellingen"
+		},
+		"children": [	
+			{
+				"id": "username_portal",
+				"type": "label",
+				"label": {
+						"en": "Sessy portal username",
+						"nl": "Sessy portal gebruikersnaam"
+				},
+				"value": "NOT USED"
+			},
+			{
+				"id": "password_portal",
+				"type": "label",
+				"label": {
+					"en": "Sessy portal password",
+					"nl": "Sessy portal wachtwoord"
+				},
+				"value": "NOT USED"
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Local connection settings (Homey PRO)",
+				"nl": "Lokale verbinding instellingen (Homey PRO)"
+		},
+		"children": [	
+			{
+				"id": "host",
+				"type": "text",
+				"label": {
+						"en": "URL or IP address",
+						"nl": "URL of IP adres"
+				},
+				"hint": {
+					"en": "IP address of the dongle.",
+					"nl": "IP adres van de dongel."
+				},
+				"value": ""
+			},
+			{
+				"id": "port",
+				"type": "number",
+				"label": {
+						"en": "Port",
+						"nl": "Poort"
+				},
+				"hint": {
+					"en": "Default is 80.",
+					"nl": "Standaard is 80."
+				},
+				"value": 80
+			},
+			{
+				"id": "use_mdns",
+				"type": "checkbox",
+				"label": {
+						"en": "Use mDNS for adress",
+						"nl": "Gebruik mDNS voor adres"
+				},
+				"hint": {
+					"en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
+					"nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund."
+				},
+				"value": false
+			},
+			{
+				"id": "sn_dongle",
+				"type": "text",
+				"label": {
+						"en": "Dongle S/N",
+						"nl": "Dongel S/N"
+				},
+				"hint": {
+					"en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+					"nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten."
+				},
+				"value": ""
+			},
+			{
+				"id": "password_dongle",
+				"type": "password",
+				"label": {
+						"en": "Dongle Password",
+						"nl": "Dongel Wachtwoord"
+				},
+				"hint": {
+					"en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+					"nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten."
+				},
+				"value": ""
+			},
+			{
+				"id": "pollingInterval",
+				"type": "number",
+				"label": {
+						"en": "Update interval (s)",
+						"nl": "Update interval (s)"
+				},
+				"hint": {
+					"en": "A lower value provides faster updates in Homey.",
+					"nl": "Een lagere waarde geeft snellere updates in Homey."
+				},
+				"min": 1,
+				"max": 300,
+				"value": 10
+			}
+		]
+	}
+]

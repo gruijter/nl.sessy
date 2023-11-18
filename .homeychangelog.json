@@ -40,5 +40,8 @@
   },
   "2.0.3": {
     "en": "Reduced app footprint."
+  },
+  "2.1.0": {
+    "en": "Added CT meter support. Ignore case for username and password."
   }
 }

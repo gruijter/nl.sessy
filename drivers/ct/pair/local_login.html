@@ -1,0 +1,60 @@
+
+<script>
+	Homey.showLoadingOverlay();
+	let discovered;
+	discover();
+
+	async function discover() {
+		try {
+			discovered = await Homey.emit('discover');
+			$('#host').val(discovered.ip);
+			$('#sn_dongle').val(discovered.sn_dongle);
+			Homey.hideLoadingOverlay();
+		} catch (error) { 
+			Homey.hideLoadingOverlay();
+			Homey.alert(error, 'error');
+		}
+	}
+
+	async function manual() {
+		try {
+			Homey.showLoadingOverlay();
+			const settings = {
+				host: document.getElementById('host').value.split(':')[0],
+				port: Number(document.getElementById('host').value.split(':')[1]) || 80,
+				sn_dongle: document.getElementById('sn_dongle').value,
+				password_dongle: document.getElementById('password_dongle').value,
+				force_control_strategy: true,
+				use_mdns: true,
+			};
+			if (settings.host === '' || settings.sn_dongle === '') throw Error(Homey.__('pair.incomplete'));
+			if (settings.host !== discovered.ip) settings.use_mdns = false;
+			const device = await Homey.emit('manual_login', settings);
+			Homey.showView('list_devices');
+		} catch (error) { 
+			Homey.hideLoadingOverlay();
+			Homey.alert(error, 'error');
+		}
+	}
+</script>
+
+<form class="homey-form">
+	<div class="homey-form-group">
+		<h1 class="homey-title" data-i18n="pair.local_login_title"></h1>
+		<p class="homey-subtitle" data-i18n="pair.local_login_text_p1"></p>
+
+		<label class="homey-form-label" for="host" data-i18n="pair.host"></label>
+		<input class="homey-form-input" id="host" type="text" placeholder="e.g. 10.0.0.100" value="" />
+
+		<label class="homey-form-label" for="sn_dongle" data-i18n="pair.sn_dongle"></label>
+		<input class="homey-form-input" id="sn_dongle" type="text" placeholder="e.g. DVMXWTND" value="" />
+
+		<label class="homey-form-label" for="password_dongle" data-i18n="pair.password_dongle"></label>
+		<input class="homey-form-input" id="password_dongle" type="password" placeholder="e.g. R7DKR35K" value="" />
+
+	</div>
+</form>
+<br>
+<button class="homey-button-primary-full" id="manual" onclick="manual()" data-i18n="pair.continue" ></button>
+
+

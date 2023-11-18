@@ -19,7 +19,7 @@
 				{
 						"type": "device",
 						"name": "device",
-						"filter": "driver_id=p1"
+						"filter": "driver_id=p1|ct"
 				},
 				{
 						"type": "number",

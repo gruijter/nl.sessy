@@ -8,7 +8,7 @@
 		{
 			"type": "device",
 			"name": "device",
-			"filter": "driver_id=sessy"
+			"filter": "driver_id=sessy|p1|ct"
 		}
 	]
 }

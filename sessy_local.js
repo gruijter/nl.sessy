@@ -44,8 +44,7 @@ const getP1StatusEP = '/api/v1/p1/status';
 const getP1DetailsEP = '/api/v2/p1/details'; // fw > 1.5.2
 
 // CT
-// const getCTStatusEP = '/api/v1/ct/status';
-// const getCTDetailsEP = '/api/v2//ct/details'; // fw > 1.5.2
+const getCTDetailsEP = '/api/v1/ct/details'; // fw > 1.5.2
 
 // METER
 const getGridTargetEP = '/api/v1/meter/grid_target'; // fw > 1.5.2
@@ -64,8 +63,8 @@ const defaultTimeout = 15000;
 class Sessy {
 	constructor(opts) {
 		const options = opts || {};
-		this.username = options.sn_dongle;
-		this.password = options.password_dongle;
+		this.username = options.sn_dongle && options.sn_dongle.toUpperCase();
+		this.password = options.password_dongle && options.password_dongle.toUpperCase();
 		this.host = options.host;
 		this.port = options.port || defaultPort;
 		this.timeout = options.timeout || defaultTimeout;
@@ -77,8 +76,8 @@ class Sessy {
 			const options = opts || {};
 			const host = options.host || this.host;
 			const port = options.port || this.port;
-			const username = options.sn_dongle || this.username;
-			const password = options.password_dongle || this.password;
+			const username = (options.sn_dongle && options.sn_dongle.toUpperCase()) || this.username;
+			const password = (options.password_dongle && options.password_dongle.toUpperCase()) || this.password;
 			const timeout = options.timeout || this.timeout;
 			this.host = host;
 			this.port = port;
@@ -95,7 +94,9 @@ class Sessy {
 	async getStatus(opts) {
 		try {
 			const options = opts || {};
-			const statusEP = options.p1 ? getP1DetailsEP : getStatusEP;
+			let statusEP = getStatusEP;
+			if (options && options.p1) statusEP = getP1DetailsEP;
+			if (options && options.ct) statusEP = getCTDetailsEP;
 			const res = await this._makeRequest(statusEP);
 			this.status = res;
 			return Promise.resolve(res);
@@ -226,7 +227,9 @@ class Sessy {
 			});
 
 			// try all servers for login response, with http timeout 4 seconds
-			const discoveryEP = (opts && opts.p1) ? getP1StatusEP : getStatusEP;
+			let discoveryEP = getStatusEP;
+			if (opts && opts.p1) discoveryEP = getP1StatusEP;
+			if (opts && opts.ct) discoveryEP = getCTDetailsEP;
 			const allHostsPromise = hostsToTest.map(async (hostToTest) => {
 				let found = false;
 				const status = await this._makeRequest(discoveryEP, undefined, 4000, hostToTest).catch(() => undefined);

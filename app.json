@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.sessy",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
@@ -54,7 +54,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy"
+            "filter": "driver_id=sessy|p1|ct"
           }
         ],
         "id": "alarm_fault_false"
@@ -69,7 +69,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy"
+            "filter": "driver_id=sessy|p1|ct"
           }
         ],
         "id": "alarm_fault_true"
@@ -136,7 +136,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy|p1"
+            "filter": "driver_id=sessy|p1|ct"
           }
         ],
         "tokens": [
@@ -301,7 +301,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy|p1"
+            "filter": "driver_id=sessy|p1|ct"
           }
         ],
         "tokens": [
@@ -336,7 +336,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy|p1"
+            "filter": "driver_id=sessy|p1|ct"
           }
         ],
         "tokens": [
@@ -402,7 +402,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy|p1"
+            "filter": "driver_id=sessy|p1|ct"
           }
         ],
         "id": "restart"
@@ -541,7 +541,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=p1"
+            "filter": "driver_id=p1|ct"
           },
           {
             "type": "number",
@@ -601,6 +601,278 @@
     ]
   },
   "drivers": [
+    {
+      "name": {
+        "en": "Sessy CT"
+      },
+      "class": "sensor",
+      "energy": {
+        "cumulative": true
+      },
+      "capabilities": [
+        "measure_power",
+        "system_state",
+        "measure_power.l1",
+        "measure_power.l2",
+        "measure_power.l3",
+        "measure_current.l1",
+        "measure_current.l2",
+        "measure_current.l3",
+        "measure_voltage.l1",
+        "measure_voltage.l2",
+        "measure_voltage.l3"
+      ],
+      "capabilitiesOptions": {
+        "measure_power": {
+          "title": {
+            "en": "Power total",
+            "nl": "Vermogen totaal"
+          },
+          "decimals": 2
+        },
+        "measure_power.l1": {
+          "title": {
+            "en": "Power L1",
+            "nl": "Vermogen L1"
+          },
+          "decimals": 2
+        },
+        "measure_power.l2": {
+          "title": {
+            "en": "Power L2",
+            "nl": "Vermogen L2"
+          },
+          "decimals": 2
+        },
+        "measure_power.l3": {
+          "title": {
+            "en": "Power L3",
+            "nl": "Vermogen L3"
+          },
+          "decimals": 2
+        },
+        "measure_current.l1": {
+          "title": {
+            "en": "Current L1",
+            "nl": "Stroom L1"
+          },
+          "decimals": 2
+        },
+        "measure_current.l2": {
+          "title": {
+            "en": "Current L2",
+            "nl": "Stroom L2"
+          },
+          "decimals": 2
+        },
+        "measure_current.l3": {
+          "title": {
+            "en": "Current L3",
+            "nl": "Stroom L3"
+          },
+          "decimals": 2
+        },
+        "measure_voltage.l1": {
+          "title": {
+            "en": "Voltage L1",
+            "nl": "Spanning L1"
+          },
+          "decimals": 2
+        },
+        "measure_voltage.l2": {
+          "title": {
+            "en": "Voltage L2",
+            "nl": "Spanning L2"
+          },
+          "decimals": 2
+        },
+        "measure_voltage.l3": {
+          "title": {
+            "en": "Voltage L3",
+            "nl": "Spanning L3"
+          },
+          "decimals": 2
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/ct/assets/images/small.jpg",
+        "large": "/drivers/ct/assets/images/large.jpg"
+      },
+      "discovery": "sessy",
+      "pair": [
+        {
+          "id": "local_login"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": false
+          },
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
+      "id": "ct",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Meter information",
+            "nl": "Meter informatie"
+          },
+          "children": [
+            {
+              "id": "id",
+              "type": "label",
+              "label": {
+                "en": "Meter ID",
+                "nl": "Meter ID"
+              },
+              "value": ""
+            },
+            {
+              "id": "fwDongle",
+              "type": "label",
+              "label": {
+                "en": "Firmware Dongle",
+                "nl": "Firmware Dongel"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Cloud connection settings",
+            "nl": "Cloud verbinding instellingen"
+          },
+          "children": [
+            {
+              "id": "username_portal",
+              "type": "label",
+              "label": {
+                "en": "Sessy portal username",
+                "nl": "Sessy portal gebruikersnaam"
+              },
+              "value": "NOT USED"
+            },
+            {
+              "id": "password_portal",
+              "type": "label",
+              "label": {
+                "en": "Sessy portal password",
+                "nl": "Sessy portal wachtwoord"
+              },
+              "value": "NOT USED"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Local connection settings (Homey PRO)",
+            "nl": "Lokale verbinding instellingen (Homey PRO)"
+          },
+          "children": [
+            {
+              "id": "host",
+              "type": "text",
+              "label": {
+                "en": "URL or IP address",
+                "nl": "URL of IP adres"
+              },
+              "hint": {
+                "en": "IP address of the dongle.",
+                "nl": "IP adres van de dongel."
+              },
+              "value": ""
+            },
+            {
+              "id": "port",
+              "type": "number",
+              "label": {
+                "en": "Port",
+                "nl": "Poort"
+              },
+              "hint": {
+                "en": "Default is 80.",
+                "nl": "Standaard is 80."
+              },
+              "value": 80
+            },
+            {
+              "id": "use_mdns",
+              "type": "checkbox",
+              "label": {
+                "en": "Use mDNS for adress",
+                "nl": "Gebruik mDNS voor adres"
+              },
+              "hint": {
+                "en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
+                "nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund."
+              },
+              "value": false
+            },
+            {
+              "id": "sn_dongle",
+              "type": "text",
+              "label": {
+                "en": "Dongle S/N",
+                "nl": "Dongel S/N"
+              },
+              "hint": {
+                "en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+                "nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten."
+              },
+              "value": ""
+            },
+            {
+              "id": "password_dongle",
+              "type": "password",
+              "label": {
+                "en": "Dongle Password",
+                "nl": "Dongel Wachtwoord"
+              },
+              "hint": {
+                "en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+                "nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten."
+              },
+              "value": ""
+            },
+            {
+              "id": "pollingInterval",
+              "type": "number",
+              "label": {
+                "en": "Update interval (s)",
+                "nl": "Update interval (s)"
+              },
+              "hint": {
+                "en": "A lower value provides faster updates in Homey.",
+                "nl": "Een lagere waarde geeft snellere updates in Homey."
+              },
+              "min": 1,
+              "max": 300,
+              "value": 10
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": {
         "en": "Sessy P1"
