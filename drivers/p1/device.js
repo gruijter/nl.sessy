@@ -252,6 +252,21 @@ class P1Device extends Device {
 	async updateDeviceState(status) {
 		// this.log(`updating states for: ${this.getName()}`);
 		try {
+			// calculate gas usage
+			let gasFlow = this.getCapabilityValue('measure_gas');
+			if (this.lastStatus && this.lastStatus.gas_meter_value_time && this.lastStatus.gas_meter_value_time.length === 13
+				&& status.gas_meter_value_time && status.gas_meter_value_time.length === 13) {
+				let d = status.gas_meter_value_time; // "231125175508W" YYMMDDhhmmssX
+				let T2 = (new Date(`20${d.slice(0, 2)}`, d.slice(2, 4) - 1,	d.slice(4, 6), d.slice(6, 8), d.slice(8, 10), d.slice(10, 2))).valueOf();
+				if (d[11] === 'S') T2 -= 3600 * 1000; // substract an hour when on DST
+				d = this.lastStatus.gas_meter_value_time; // "231125175508W" YYMMDDhhmmssX
+				let T1 = (new Date(`20${d.slice(0, 2)}`, d.slice(2, 4) - 1, d.slice(4, 6), d.slice(6, 8), d.slice(8, 10), d.slice(10, 2))).valueOf();
+				if (d[11] === 'S') T1 -= 3600 * 1000; // substract an hour when on DST
+				const usedGas = (status.gas_meter_value - this.lastStatus.gas_meter_value) / 1000; // m3
+				const deltaT = (T2 - T1) / 1000 / 60 / 60; // hour
+				if (deltaT > 0) gasFlow = usedGas / deltaT;
+			}
+
 			// determine capability states
 			const systemState = status.state;
 			const capabilityStates = {
@@ -276,6 +291,8 @@ class P1Device extends Device {
 				meter_power_failure: status.power_failure_any_phase,
 				meter_voltage_sag: status.voltage_sag_count_l1 + status.voltage_sag_count_l2 + status.voltage_sag_count_l3,
 				meter_voltage_swell: status.voltage_swell_count_l1 + status.voltage_swell_count_l2 + status.voltage_swell_count_l3,
+				meter_gas: status.gas_meter_value / 1000,
+				measure_gas: gasFlow,
 			};
 
 			// setup custom flow triggers
@@ -285,6 +302,8 @@ class P1Device extends Device {
 			Object.entries(capabilityStates).forEach(async (entry) => {
 				await this.setCapability(entry[0], entry[1]);
 			});
+
+			this.lastStatus = status;
 
 			// execute custom flow triggers
 			if (systemStateChanged) {

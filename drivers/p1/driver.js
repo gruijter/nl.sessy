@@ -48,6 +48,10 @@ const capabilities = [
 	'meter_voltage_sag',
 	'meter_voltage_swell',
 	'meter_power_failure',
+
+	'measure_gas',
+	'meter_gas',
+
 	'system_state',
 ];
 
