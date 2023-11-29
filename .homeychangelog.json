@@ -46,5 +46,8 @@
   },
   "2.1.1": {
     "en": "Added P1 Gas meter support (firmware>=1.5.5)."
+  },
+  "2.1.2": {
+    "en": "Added CT meter type selection for Homey Energy. Increased decimals for current (A) to 3."
   }
 }

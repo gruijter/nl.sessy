@@ -66,6 +66,7 @@ class CTDevice extends Device {
 
 	async discoveryAvailable(discoveryResult) { // onDiscoveryAvailable(discoveryResult)
 		// This method will be executed once when the device has been found (onDiscoveryResult returned true)
+		if (!discoveryResult) return;
 		if (this.getSettings().host !== discoveryResult.address) {
 			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
 			if (this.getSettings().use_mdns) {
@@ -199,6 +200,16 @@ class CTDevice extends Device {
 			if (this.homey.platform === 'cloud') throw Error(this.homey.__('sessy.homeyProOnly'));
 			if (newSettings.host.length < 3) throw Error(this.homey.__('sessy.incomplete'));
 		}
+		if (newSettings.homey_energy_type === 'solarpanel') {
+			this.setEnergy({ cumulative: false }).catch(this.error);
+			this.setClass('solarpanel').catch(this.error);
+		} else if (newSettings.homey_energy_type === 'cumulative') {
+			this.setEnergy({ cumulative: true }).catch(this.error);
+			this.setClass('sensor').catch(this.error);
+		} else {
+			this.setEnergy({ cumulative: false }).catch(this.error);
+			this.setClass('sensor').catch(this.error);
+		}
 		this.restarting = false;
 		this.restartDevice(2 * 1000);
 	}
@@ -252,14 +263,15 @@ class CTDevice extends Device {
 	async updateDeviceState(status) {
 		// this.log(`updating states for: ${this.getName()}`);
 		try {
+			const { cosphi } = this.getSettings();
 			// determine capability states
 			const systemState = status.status;
 			const capabilityStates = {
-				measure_power: status.total_power,
+				measure_power: status.total_power * cosphi,
 				system_state: systemState,
-				'measure_power.l1': status.power_l1,
-				'measure_power.l2': status.power_l2,
-				'measure_power.l3': status.power_l3,
+				'measure_power.l1': status.power_l1 * cosphi,
+				'measure_power.l2': status.power_l2 * cosphi,
+				'measure_power.l3': status.power_l3 * cosphi,
 				'measure_current.l1': status.current_l1 / 1000,
 				'measure_current.l2': status.current_l2 / 1000,
 				'measure_current.l3': status.current_l3 / 1000,

@@ -44,13 +44,16 @@
       "title": { "en": "Solar Power P3", "nl": "PV vermogen P3" }
     },
     "measure_current.p1": { 
-      "title": { "en": "Solar Current P1", "nl": "PV stroom P1" }
+      "title": { "en": "Solar Current P1", "nl": "PV stroom P1" },
+      "decimals": 3
     },
     "measure_current.p2": { 
-      "title": { "en": "Solar Current P2", "nl": "PV stroom P2" }
+      "title": { "en": "Solar Current P2", "nl": "PV stroom P2" },
+      "decimals": 3
     },
     "measure_current.p3": { 
-      "title": { "en": "Solar Current P3", "nl": "PV stroom P3" }
+      "title": { "en": "Solar Current P3", "nl": "PV stroom P3" },
+      "decimals": 3
     },
     "measure_voltage.p1": { 
       "title": { "en": "Solar Voltage P1", "nl": "PV spanning P1" }

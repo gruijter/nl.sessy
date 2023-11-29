@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.sessy",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
@@ -682,21 +682,21 @@
             "en": "Current L1",
             "nl": "Stroom L1"
           },
-          "decimals": 2
+          "decimals": 3
         },
         "measure_current.l2": {
           "title": {
             "en": "Current L2",
             "nl": "Stroom L2"
           },
-          "decimals": 2
+          "decimals": 3
         },
         "measure_current.l3": {
           "title": {
             "en": "Current L3",
             "nl": "Stroom L3"
           },
-          "decimals": 2
+          "decimals": 3
         },
         "measure_voltage.l1": {
           "title": {
@@ -896,6 +896,66 @@
               "value": 10
             }
           ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Homey Energy",
+            "nl": "Homey Energy"
+          },
+          "children": [
+            {
+              "id": "homey_energy_type",
+              "label": {
+                "en": "Behaviour",
+                "nl": "Gedrag"
+              },
+              "hint": {
+                "en": "The CT meter is per default intended to act as main meter in Homey Energy. But you can also select it to be counted as an individual device, or as a producing device. The Sessy app might need a restart after changing the behaviour.",
+                "nl": "De CT meter is standaard bedoeld om als hoofdmeter te fungeren in Homey Energy. Maar je kunt ook kiezen om het te laten tellen als individueel apparaat, of als producerend apparaat. De Sessy app moet misschien een herstart krijgen na het wijzigen van het gedrag."
+              },
+              "type": "dropdown",
+              "value": "cumulative",
+              "values": [
+                {
+                  "id": "cumulative",
+                  "label": {
+                    "en": "Main / smart meter",
+                    "nl": "Hoofd / slimme meter"
+                  }
+                },
+                {
+                  "id": "socket",
+                  "label": {
+                    "en": "Device",
+                    "nl": "Apparaat"
+                  }
+                },
+                {
+                  "id": "solarpanel",
+                  "label": {
+                    "en": "Solar panel (producing)",
+                    "nl": "Zonnepaneel (produceert)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "cosphi",
+              "type": "number",
+              "label": {
+                "en": "Cos-Phi compensation",
+                "nl": "Cos-Phi compensatie"
+              },
+              "hint": {
+                "en": "In normal circumstances this value should be set to 1. This setting might be removed on future CT firmware updates.",
+                "nl": "Onder normale omstandigheden moet deze waarde op 1 worden ingesteld. Deze instelling kan worden verwijderd bij toekomstige CT firmware updates. "
+              },
+              "min": 0,
+              "max": 1,
+              "value": 1
+            }
+          ]
         }
       ]
     },
@@ -1007,21 +1067,21 @@
             "en": "Current L1",
             "nl": "Stroom L1"
           },
-          "decimals": 2
+          "decimals": 3
         },
         "measure_current.l2": {
           "title": {
             "en": "Current L2",
             "nl": "Stroom L2"
           },
-          "decimals": 2
+          "decimals": 3
         },
         "measure_current.l3": {
           "title": {
             "en": "Current L3",
             "nl": "Stroom L3"
           },
-          "decimals": 2
+          "decimals": 3
         },
         "measure_voltage.l1": {
           "title": {
@@ -1291,19 +1351,22 @@
           "title": {
             "en": "Solar Current P1",
             "nl": "PV stroom P1"
-          }
+          },
+          "decimals": 3
         },
         "measure_current.p2": {
           "title": {
             "en": "Solar Current P2",
             "nl": "PV stroom P2"
-          }
+          },
+          "decimals": 3
         },
         "measure_current.p3": {
           "title": {
             "en": "Solar Current P3",
             "nl": "PV stroom P3"
-          }
+          },
+          "decimals": 3
         },
         "measure_voltage.p1": {
           "title": {

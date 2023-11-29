@@ -66,6 +66,7 @@ class P1Device extends Device {
 
 	async discoveryAvailable(discoveryResult) { // onDiscoveryAvailable(discoveryResult)
 		// This method will be executed once when the device has been found (onDiscoveryResult returned true)
+		if (!discoveryResult) return;
 		if (this.getSettings().host !== discoveryResult.address) {
 			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
 			if (this.getSettings().use_mdns) {
