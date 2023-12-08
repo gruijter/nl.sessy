@@ -19,11 +19,11 @@
 		"local_login_button": "DOORGAAN MET LOKALE VERBINDING",
 
 		"monmodetitle": "MONITOR MODUS",
-		"monmodetext": "Voeg alle SESSY's toe in monitor modus",
+		"monmodetext": "Voeg alle SESSY's toe in monitor modus. Kies dit als je de besturing via portal.sessy.nl wil blijven doen.",
 		"monmodebutton": "GA DOOR IN MONITOR MODUS",
 
 		"contmodetitle": "OF: BESTURING MODUS",
-		"contmodetext": "Voeg één SESSY toe in besturingsmodus",
+		"contmodetext": "Voeg één SESSY toe in besturingsmodus. Kies dit als je zelf de besturing via Homey wil kunnen doen.",
 		"contmodebutton": "GA DOOR IN BESTURING MODUS",
 
 		"local_login_text_p1": "Om verder te gaan in BESTURING MODUS is het wachtwoord nodig (aanbevolen). Laat het wachtwoordveld leeg om verder te gaan in MONITORING MODUS.",

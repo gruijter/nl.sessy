@@ -6,8 +6,10 @@
 	async function discover() {
 		try {
 			discovered = await Homey.emit('discover');
-			$('#host').val(discovered.ip);
-			$('#sn_dongle').val(discovered.sn_dongle);
+			if (discovered) {
+				$('#host').val(discovered.ip);
+				$('#sn_dongle').val(discovered.sn_dongle);
+			}
 			Homey.hideLoadingOverlay();
 		} catch (error) { 
 			Homey.hideLoadingOverlay();

@@ -49,5 +49,8 @@
   },
   "2.1.2": {
     "en": "Added CT meter type selection for Homey Energy. Increased decimals for current (A) to 3."
+  },
+  "2.1.3": {
+    "en": "Disabled 'force homey control' by default. Extended control mode explaination during pairing. Improved pairing for non-mDNS networks."
   }
 }

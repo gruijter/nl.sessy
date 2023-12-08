@@ -95,30 +95,6 @@ class SessyDriver extends Driver {
 		// 	}
 		// });
 
-		// session.setHandler('auto_login_OLD', async () => {
-		// 	try {
-		// 		const SESSY = new SessyLocal();
-		// 		const disc = await SESSY.discover().catch(() => []);
-		// 		const discPromise = disc.map(async (sessy) => {
-		// 			const dev = { ...sessy };
-		// 			// try to find MAC
-		// 			const mac = await this.homey.arp.getMAC(sessy.ip).catch(() => '');
-		// 			let MAC = mac.replace(/:/g, '').toUpperCase();
-		// 			if (MAC === '') MAC = Math.random().toString(16).substring(2, 8);
-		// 			dev.name = `SESSY_${dev.ip}`;
-		// 			dev.id = MAC;
-		// 			dev.mac = mac;
-		// 			dev.useLocalConnection = true;
-		// 			return dev;
-		// 		});
-		// 		discovered = await Promise.all(discPromise);
-		// 		return Promise.all(discovered);
-		// 	} catch (error) {
-		// 		this.error(error);
-		// 		return Promise.reject(error);
-		// 	}
-		// });
-
 		const discover = async () => {
 			const discoveryStrategy = this.getDiscoveryStrategy();
 			const discoveryResults = await discoveryStrategy.getDiscoveryResults();
@@ -133,16 +109,19 @@ class SessyDriver extends Driver {
 					useMdns: true,
 					useLocalConnection: true,
 					sn_dongle: discoveryResult.txt.serial,
+					force_control_strategy: false,
 				}));
 			const discPromise = disc.map(async (sessy) => {
 				const dev = { ...sessy };
 				// add status info
-				const SESSY = new SessyLocal({ host: dev.ip, port: dev.port });
-				dev.status = await SESSY.getStatus().catch(this.error);
+				if (dev && dev.ip) {
+					const SESSY = new SessyLocal({ host: dev.ip, port: dev.port });
+					dev.status = await SESSY.getStatus().catch(this.error);
+				}
 				return dev;
 			});
 			discovered = await Promise.all(discPromise);
-			return Promise.all(discovered);
+			return discovered;
 		};
 
 		session.setHandler('discover', async () => {
@@ -180,7 +159,7 @@ class SessyDriver extends Driver {
 				dev.sn_sessy = sysInfo.sessy_serial;
 				dev.sn_dongle = settings.sn_dongle;
 				dev.password_dongle = settings.password_dongle;
-				dev.force_control_strategy = true;
+				dev.force_control_strategy = false;
 				// get fwLevel
 				// const OTAstatus = await SESSY.getOTAStatus();
 				// dev.fwDongle = OTAstatus.self.installed_firmware.version;

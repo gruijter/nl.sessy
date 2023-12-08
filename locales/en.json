@@ -19,11 +19,11 @@
 		"local_login_button": "CONTINUE WITH LOCAL SETUP",
 
 		"monmodetitle": "LOCAL MONITORING MODE",
-		"monmodetext": "Add all SESSY's in local monitoring mode.",
+		"monmodetext": "Add all SESSY's in local monitoring mode. Choose this if you want to keep control at portal.sessy.nl.",
 		"monmodebutton": "CONTINUE IN MONITORING MODE",
 
 		"contmodetitle": "OR: LOCAL CONTROL MODE",
-		"contmodetext": "Add one SESSY in local control mode.",
+		"contmodetext": "Add one SESSY in local control mode. Choose this if you want to be able to control using Homey.",
 		"contmodebutton": "CONTINUE IN CONTROL MODE",
 
 		"local_login_text_p1": "To continue in CONTROL MODE, the password is required (preferred). To continue in MONITORING MODE, leave the password empty",
