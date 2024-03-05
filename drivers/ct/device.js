@@ -70,7 +70,7 @@ class CTDevice extends Device {
 		if (this.getSettings().host !== discoveryResult.address) {
 			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
 			if (this.getSettings().use_mdns) {
-				this.setSettings({ host: discoveryResult.address });
+				this.setSettings({ host: discoveryResult.address }).catch(this.error);
 				this.restartDevice();
 			} else this.log('The IP address is NOT updated (mDNS not enabled)');
 		}
@@ -87,7 +87,7 @@ class CTDevice extends Device {
 		if (this.getSettings().host !== discoveryResult.address) {
 			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
 			if (this.getSettings().use_mdns) {
-				this.setSettings({ host: discoveryResult.address });
+				this.setSettings({ host: discoveryResult.address }).catch(this.error);
 				this.restartDevice();
 			} else this.log('The IP address is NOT updated (mDNS not enabled)');
 		} else this.log('IP address still the same :)');
@@ -241,7 +241,7 @@ class CTDevice extends Device {
 			const newDongleFirmwareAvailable = fwDongle !== availableFWDongle;
 			if (firmwareDongleChanged) {
 				this.log('The firmware was updated:', fwDongle);
-				await this.setSettings({ fwDongle });
+				await this.setSettings({ fwDongle }).catch(this.error);
 				const tokens = { fwDongle, fwBat: '' };
 				this.homey.app.triggerFirmwareChanged(this, tokens, {});
 				const excerpt = this.homey.__('sessy.newFirmwareMeter', { fw: `Dongle: ${fwDongle}` });

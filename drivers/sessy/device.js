@@ -84,7 +84,7 @@ class SessyDevice extends Device {
 		if (this.getSettings().host !== discoveryResult.address) {
 			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
 			if (this.getSettings().use_mdns) {
-				this.setSettings({ host: discoveryResult.address });
+				this.setSettings({ host: discoveryResult.address }).catch(this.error);
 				this.restartDevice();
 			} else this.log('The IP address is NOT updated (mDNS not enabled)');
 		}
@@ -101,7 +101,7 @@ class SessyDevice extends Device {
 		if (this.getSettings().host !== discoveryResult.address) {
 			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
 			if (this.getSettings().use_mdns) {
-				this.setSettings({ host: discoveryResult.address });
+				this.setSettings({ host: discoveryResult.address }).catch(this.error);
 				this.restartDevice();
 			} else this.log('The IP address is NOT updated (mDNS not enabled)');
 		} else this.log('IP address still the same :)');
@@ -121,7 +121,7 @@ class SessyDevice extends Device {
 					use_local_connection: true,
 					username: '',
 					password: '',
-				});
+				}).catch(this.error);
 				const newSettings = this.getSettings();
 				this.sessy.login(newSettings);
 			}
@@ -130,7 +130,7 @@ class SessyDevice extends Device {
 				const sysInfo = await this.sessy.getSystemInfo().catch(() => {});
 				if (sysInfo && sysInfo.sessy_serial) {
 					this.log('Setting Sessy S/N', this.getName(), sysInfo.sessy_serial);
-					await this.setSettings({ sn_sessy: sysInfo.sessy_serial });
+					await this.setSettings({ sn_sessy: sysInfo.sessy_serial }).catch(this.error);
 				}
 			}
 
@@ -139,8 +139,8 @@ class SessyDevice extends Device {
 				const maxCharge = this.getSettings().power_max;
 				const maxDisCharge = maxCharge > 1800 ? 1800 : maxCharge;
 				this.log('migrating max (dis)charge settings', maxCharge, maxDisCharge);
-				await this.setSettings({ power_max_charge: maxCharge });
-				await this.setSettings({ power_max_discharge: maxDisCharge });
+				await this.setSettings({ power_max_charge: maxCharge }).catch(this.error);
+				await this.setSettings({ power_max_discharge: maxDisCharge }).catch(this.error);
 			}
 
 			// store the capability states before migration
@@ -306,7 +306,7 @@ class SessyDevice extends Device {
 			const newBatFirmwareAvailable = fwBat !== availableFWBat;
 			if (firmwareDongleChanged || firmwareBatChanged) {
 				this.log('The firmware was updated:', fwDongle, fwBat);
-				await this.setSettings({ fwDongle, fwBat });
+				await this.setSettings({ fwDongle, fwBat }).catch(this.error);
 				const tokens = { fwDongle, fwBat };
 				this.homey.app.triggerFirmwareChanged(this, tokens, {});
 				const excerpt = this.homey.__('sessy.newFirmware', { fw: `Dongle: ${fwDongle}, Bat: ${fwBat}` });
