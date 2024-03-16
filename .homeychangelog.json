@@ -55,5 +55,8 @@
   },
   "2.1.4": {
     "en": "App stability improvements."
+  },
+  "2.2.0": {
+    "en": "Added support for Sessy Connect mode. Added eco charge and eco discharge modes."
   }
 }

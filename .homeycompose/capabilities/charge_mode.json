@@ -8,8 +8,15 @@
 		{
 			"id": "CHARGE",
 			"title": {
-				"en": "Charge",
-				"nl": "Opladen"
+				"en": "Charge (fast)",
+				"nl": "Opladen (snel)"
+			}
+		},
+		{
+			"id": "CHARGE_ECO",
+			"title": {
+				"en": "Charge (eco)",
+				"nl": "Opladen (eco)"
 			}
 		},
 		{
@@ -20,10 +27,17 @@
 			}
 		},
 		{
+			"id": "DISCHARGE_ECO",
+			"title": {
+				"en": "Discharge (eco)",
+				"nl": "Ontladen (eco)"
+			}
+		},
+		{
 			"id": "DISCHARGE",
 			"title": {
-				"en": "Discharge",
-				"nl": "Ontladen"
+				"en": "Discharge (fast)",
+				"nl": "Ontladen (snel)"
 			}
 		}
 	],

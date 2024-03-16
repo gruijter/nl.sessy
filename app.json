@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.sessy",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
@@ -532,6 +532,12 @@
                 "id": "POWER_STRATEGY_ROI",
                 "title": {
                   "en": "SESSY ROI (!)"
+                }
+              },
+              {
+                "id": "POWER_STRATEGY_SESSY_CONNECT",
+                "title": {
+                  "en": "SESSY CONNECT (!)"
                 }
               },
               {
@@ -1732,8 +1738,15 @@
         {
           "id": "CHARGE",
           "title": {
-            "en": "Charge",
-            "nl": "Opladen"
+            "en": "Charge (fast)",
+            "nl": "Opladen (snel)"
+          }
+        },
+        {
+          "id": "CHARGE_ECO",
+          "title": {
+            "en": "Charge (eco)",
+            "nl": "Opladen (eco)"
           }
         },
         {
@@ -1744,10 +1757,17 @@
           }
         },
         {
+          "id": "DISCHARGE_ECO",
+          "title": {
+            "en": "Discharge (eco)",
+            "nl": "Ontladen (eco)"
+          }
+        },
+        {
           "id": "DISCHARGE",
           "title": {
-            "en": "Discharge",
-            "nl": "Ontladen"
+            "en": "Discharge (fast)",
+            "nl": "Ontladen (snel)"
           }
         }
       ],
@@ -1779,6 +1799,12 @@
           "id": "POWER_STRATEGY_ROI",
           "title": {
             "en": "SESSY ROI (!)"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_SESSY_CONNECT",
+          "title": {
+            "en": "SESSY CONNECT (!)"
           }
         },
         {

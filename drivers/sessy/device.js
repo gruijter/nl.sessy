@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /*
-Copyright 2023, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2024, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -331,8 +331,11 @@ class SessyDevice extends Device {
 		// this.log(`updating states for: ${this.getName()}`);
 		try {
 			// determine capability states
-			let chargeMode = status.sessy.power_setpoint < 0 ? 'CHARGE' : 'DISCHARGE';
-			if (status.sessy.power_setpoint === 0) chargeMode = 'STOP';
+			let chargeMode = 'STOP';
+			if (status.sessy.power_setpoint < 0) chargeMode = 'CHARGE_ECO';
+			if (status.sessy.power_setpoint < -1500) chargeMode = 'CHARGE';
+			if (status.sessy.power_setpoint > 0) chargeMode = 'DISCHARGE_ECO';
+			if (status.sessy.power_setpoint > 1000) chargeMode = 'DISCHARGE';
 			const systemState = status.sessy.system_state.replace('SYSTEM_STATE_', '');
 			const alarmFault = systemState.includes('ERROR');
 			const totalREPower = status.renewable_energy_phase1.power + status.renewable_energy_phase2.power + status.renewable_energy_phase3.power;
@@ -464,8 +467,14 @@ class SessyDevice extends Device {
 			case 'CHARGE':
 				setpoint = -2200;
 				break;
+			case 'CHARGE_ECO':
+				setpoint = -1050;
+				break;
 			case 'DISCHARGE':
 				setpoint = 1800;
+				break;
+			case 'DISCHARGE_ECO':
+				setpoint = 765;
 				break;
 			default: setpoint = 0;
 		}

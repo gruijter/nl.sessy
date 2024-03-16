@@ -24,6 +24,12 @@
 			}
 		},
 		{
+			"id": "POWER_STRATEGY_SESSY_CONNECT",
+			"title": {
+				"en": "SESSY CONNECT (!)"
+			}
+		},
+		{
 			"id": "POWER_STRATEGY_IDLE",
 			"title": {
 				"en": "IDLE (!)"

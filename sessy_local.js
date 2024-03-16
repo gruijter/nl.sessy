@@ -1,5 +1,5 @@
 /*
-Copyright 2023, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2024, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -53,6 +53,7 @@ const setGridTargetEP = '/api/v1/meter/grid_target'; // fw > 1.5.2 data: { grid_
 // SESSY
 const getStatusEP = '/api/v1/power/status';
 const getStrategyEP = '/api/v1/power/active_strategy';
+const getScheduleEP = '/api/v1/dynamic/schedule';	// fw > 1.6.5
 const setStrategyEP = '/api/v1/power/active_strategy';
 const setSetpointEP = '/api/v1/power/setpoint';
 
@@ -135,6 +136,17 @@ class Sessy {
 		}
 	}
 
+	async getSchedule() {
+		try {
+			const data = '';
+			const res = await this._makeRequest(getScheduleEP, data);
+			this.strategy = res;
+			return Promise.resolve(res);
+		} catch (error) {
+			return Promise.reject(error);
+		}
+	}
+
 	async getStrategy() {
 		try {
 			const data = '';
@@ -146,7 +158,7 @@ class Sessy {
 		}
 	}
 
-	// [ POWER_STRATEGY_NOM, POWER_STRATEGY_ROI, POWER_STRATEGY_API, POWER_STRATEGY_IDLE ]
+	// [ POWER_STRATEGY_NOM, POWER_STRATEGY_ROI, POWER_STRATEGY_API, POWER_STRATEGY_SESSY_CONNECT, POWER_STRATEGY_IDLE ]
 	async setStrategy(opts) {
 		try {
 			const options = opts || {};
@@ -623,5 +635,71 @@ POST /api/v1/ota/start   PAYLOAD SESSY: { target:'OTA_TARGET_SERIAL } PAYLOAD P1
 	"voltage_l1":	0,
 	"voltage_l2":	0,
 	"voltage_l3":	0
+}
+
+/api/v1/dynamic/schedule
+{
+  "power_strategy": [
+    {
+      "date": "2022-10-23",
+      "power": [
+        0,
+        0,
+        0,
+        0,
+        2200,
+        2200,
+        2200,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2200,
+        -2200,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "energy_prices": [
+    {
+      "date": "2022-10-23",
+      "energy_prices": [
+        6329,
+        5690,
+        5752,
+        5700,
+        5465,
+        6002,
+        7142,
+        8700,
+        8199,
+        6571,
+        5432,
+        4260,
+        2099,
+        3000,
+        4659,
+        5482,
+        6599,
+        8564,
+        10235,
+        8992,
+        7362,
+        6296,
+        5953,
+        5091
+      ]
+    }
+  ]
 }
 */
