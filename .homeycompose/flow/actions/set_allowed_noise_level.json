@@ -1,0 +1,34 @@
+{
+	"title": {
+		"en": "Set the noise level",
+		"nl": "Zet het geluidsniveau"
+	},
+		"units": {
+		"en": "Watt"
+	},
+		"titleFormatted": {
+				"en": "Set maximum noise level to [[setpoint]]",
+				"nl": "Zet maximaal geluidsniveau op [[setpoint]]"
+		},
+		"hint": { 
+				"en": "A lower noise level limits the power. This setting works in all control modes!",
+				"nl": "Een lager geluidsniveau beperkt het vermogen. Deze instelling werkt in alle besturings modi!"
+		},
+		"args": [
+				{
+						"type": "device",
+						"name": "device",
+						"filter": "driver_id=sessy"
+				},
+				{
+						"type": "range",
+						"name": "setpoint",
+						"title": { "en": "Maximum noise level", "nl": "Maximaal geluidsniveau" },
+						"min": 1,
+						"max": 5,
+						"step": 1,
+						"value": 5,
+						"labelDecimals": 0
+				}
+		]
+}

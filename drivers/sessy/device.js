@@ -495,6 +495,23 @@ class SessyDevice extends Device {
 		this.log(`Power setpoint set by ${source} to ${sp}`);
 		return Promise.resolve(true);
 	}
+	async setMinPower(setpoint, source) {
+		await this.sessy.setSystemSettings({ min_power: setpoint });
+		this.log(`Min power set by ${source} to ${setpoint}`);
+		return Promise.resolve(true);
+	}
+
+	async setMaxPower(setpoint, source) {
+		await this.sessy.setSystemSettings({ max_power: setpoint });
+		this.log(`Max power set by ${source} to ${setpoint}`);
+		return Promise.resolve(true);
+	}
+
+	async setAllowedNoiseLevel(setpoint, source) {
+		await this.sessy.setSystemSettings({ allowed_noise_level: setpoint });
+		this.log(`Max noise level set by ${source} to ${setpoint}`);
+		return Promise.resolve(true);
+	}
 
 	async restart(source) {
 		if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));

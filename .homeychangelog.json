@@ -61,5 +61,8 @@
   },
   "2.2.1": {
     "en": "Added support for Sessy ECO mode."
+  },
+  "2.3.0": {
+    "en": "Added flow cards for system settings (noise level, min power, max power)."
   }
 }

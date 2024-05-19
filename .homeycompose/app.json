@@ -1,6 +1,6 @@
 {
   "id": "nl.sessy",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [

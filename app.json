@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.sessy",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
@@ -435,6 +435,44 @@
       },
       {
         "title": {
+          "en": "Set the noise level",
+          "nl": "Zet het geluidsniveau"
+        },
+        "units": {
+          "en": "Watt"
+        },
+        "titleFormatted": {
+          "en": "Set maximum noise level to [[setpoint]]",
+          "nl": "Zet maximaal geluidsniveau op [[setpoint]]"
+        },
+        "hint": {
+          "en": "A lower noise level limits the power. This setting works in all control modes!",
+          "nl": "Een lager geluidsniveau beperkt het vermogen. Deze instelling werkt in alle besturings modi!"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          },
+          {
+            "type": "range",
+            "name": "setpoint",
+            "title": {
+              "en": "Maximum noise level",
+              "nl": "Maximaal geluidsniveau"
+            },
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "value": 5,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_allowed_noise_level"
+      },
+      {
+        "title": {
           "en": "Start/Stop (dis)charging",
           "nl": "Start/Stop (ont)laden"
         },
@@ -595,6 +633,84 @@
           }
         ],
         "id": "set_grid_target"
+      },
+      {
+        "title": {
+          "en": "Set the maximum active power",
+          "nl": "Zet het maximale werkzame vermogen"
+        },
+        "units": {
+          "en": "Watt"
+        },
+        "titleFormatted": {
+          "en": "Set maximum power to [[setpoint]] W",
+          "nl": "Zet maximaal vermogen op [[setpoint]] W"
+        },
+        "hint": {
+          "en": "Maximum power with which Sessy works. This setting works in all control modes! Default is 2200 Watts.",
+          "nl": "Maximaal vermogen waarmee Sessy werkzaam is. Deze instelling werkt in alle besturings modi! Standaard is 2200 Watt."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          },
+          {
+            "type": "number",
+            "name": "setpoint",
+            "title": {
+              "en": "Maximum power",
+              "nl": "Maximaal vermogen"
+            },
+            "min": 50,
+            "max": 2200,
+            "step": 1,
+            "value": 2200,
+            "label": " Watt",
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_max_power"
+      },
+      {
+        "title": {
+          "en": "Set the minimum active power",
+          "nl": "Zet het minimale werkzame vermogen"
+        },
+        "units": {
+          "en": "Watt"
+        },
+        "titleFormatted": {
+          "en": "Set minimum power to [[setpoint]] W",
+          "nl": "Zet minimaal vermogen op [[setpoint]] W"
+        },
+        "hint": {
+          "en": "Minimum power with which Sessy works. This setting works in all control modes! Default is 2200 Watts.",
+          "nl": "Minimaal vermogen waarmee Sessy werkzaam is. Deze instelling werkt in alle besturings modi! Standaard is 2200 Watt."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
+          },
+          {
+            "type": "number",
+            "name": "setpoint",
+            "title": {
+              "en": "Minimum power",
+              "nl": "Minimaal vermogen"
+            },
+            "min": 50,
+            "max": 2200,
+            "step": 1,
+            "value": 50,
+            "label": " Watt",
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_min_power"
       },
       {
         "title": {

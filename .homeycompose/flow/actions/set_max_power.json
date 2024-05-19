@@ -1,0 +1,35 @@
+{
+	"title": {
+		"en": "Set the maximum active power",
+		"nl": "Zet het maximale werkzame vermogen"
+	},
+		"units": {
+		"en": "Watt"
+	},
+		"titleFormatted": {
+				"en": "Set maximum power to [[setpoint]] W",
+				"nl": "Zet maximaal vermogen op [[setpoint]] W"
+		},
+		"hint": { 
+				"en": "Maximum power with which Sessy works. This setting works in all control modes! Default is 2200 Watts.",
+				"nl": "Maximaal vermogen waarmee Sessy werkzaam is. Deze instelling werkt in alle besturings modi! Standaard is 2200 Watt."
+		},
+		"args": [
+				{
+						"type": "device",
+						"name": "device",
+						"filter": "driver_id=sessy"
+				},
+				{
+						"type": "number",
+						"name": "setpoint",
+						"title": { "en": "Maximum power", "nl": "Maximaal vermogen" },
+						"min": 50,
+						"max": 2200,
+						"step": 1,
+						"value": 2200,
+						"label": " Watt",
+						"labelDecimals": 0
+				}
+		]
+}

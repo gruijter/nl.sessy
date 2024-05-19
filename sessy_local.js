@@ -27,6 +27,8 @@ const setTimeoutPromise = util.promisify(setTimeout);
 
 // SYSTEM
 const getSystemInfoEP = '/api/v1/system/info'; // version "v5.1.1"?, sessy_serial
+const getSystemSettingsEP = '/api/v1/system/settings'; // 
+const setSystemSettingsEP = '/api/v1/system/settings'; // 
 const restartEP = '/api/v1/system/restart'; // data: {}
 
 // OTA
@@ -141,6 +143,35 @@ class Sessy {
 			const data = '';
 			const res = await this._makeRequest(getScheduleEP, data);
 			this.strategy = res;
+			return Promise.resolve(res);
+		} catch (error) {
+			return Promise.reject(error);
+		}
+	}
+
+	async getSystemSettings() {
+		try {
+			const data = '';
+			const res = await this._makeRequest(getSystemSettingsEP, data);
+			this.settings = res;
+			return Promise.resolve(res);
+		} catch (error) {
+			return Promise.reject(error);
+		}
+	}
+
+// { 
+// 	"pv_hostname": "10.0.0.10", "p1_hostname": "10.0.0.11", "active_phase": 1, "group_current": 16, "phase_current": 35, "group_sessys": 1, "phase_sessys": 2,
+// 	"total_sessys": 2, "min_power": 50, "max_power": 2200, "allowed_noise_level": 5, "disable_noise_level": "true", "enabled_time": "00:00-23:59", "cloud_enabled": true,
+// 	"sessy_enabled": true, "eco_charge_hours": 4, "eco_charge_power": 1500, "eco_nom_charge": false
+// }
+	async setSystemSettings(opts) {
+		try {
+			const options = opts || {};
+			const oldSettings = await this.getSystemSettings();
+			const data = Object.assign(oldSettings, options);
+			const res = await this._makeRequest(setSystemSettingsEP, data);
+			this.settings = data;
 			return Promise.resolve(res);
 		} catch (error) {
 			return Promise.reject(error);
@@ -339,25 +370,29 @@ module.exports = Sessy;
 
 // START TEST HERE
 // const test = async () => {
-// 	const SESSY = new Sessy();
-// 	const discovered = await SESSY.discover({ p1: true });
-// 	const SESSY = new Sessy({ sn_dongle: '....', password_dongle: '....', host: '....' });
-// 	const res = await SESSY.restart();
-// 	console.log(res);
-// 	const discovered = await SESSY.discover();
-// 	console.dir(discovered, { depth: null });
-// 	const status = await SESSY.getStatus();
-// 	console.dir(status, { depth: null });
-// 	const setStrategy = await SESSY.setStrategy({ strategy: 'POWER_STRATEGY_API' });
-// 	console.dir(setStrategy, { depth: null });
-// 	const strategy = await SESSY.getStrategy();
-// 	console.dir(strategy, { depth: null });
-// 	const setSetpoint = await SESSY.setSetpoint({ setpoint: 500 });
-// 	console.dir(setSetpoint, { depth: null });
-// 	const status2 = await SESSY.getStatus();
-// 	console.dir(status2, { depth: null });
-// 	const OTAstatus = await SESSY.getOTAStatus();
-// 	console.dir(OTAstatus, { depth: null });
+	// const SESSY = new Sessy();
+	// const discovered = await SESSY.discover({ p1: true });
+	// const SESSY = new Sessy({ sn_dongle: '...', password_dongle: '...', host: '...' });
+	// const res = await SESSY.restart();
+	// console.log(res);
+	// const discovered = await SESSY.discover();
+	// console.dir(discovered, { depth: null });
+	// const status = await SESSY.getStatus();
+	// console.dir(status, { depth: null });
+	// const setStrategy = await SESSY.setStrategy({ strategy: 'POWER_STRATEGY_API' });
+	// console.dir(setStrategy, { depth: null });
+	// const strategy = await SESSY.getStrategy();
+	// console.dir(strategy, { depth: null });
+	// const setSetpoint = await SESSY.setSetpoint({ setpoint: 500 });
+	// console.dir(setSetpoint, { depth: null });
+	// const status2 = await SESSY.getStatus();
+	// console.dir(status2, { depth: null });
+	// const OTAstatus = await SESSY.getOTAStatus();
+	// console.dir(OTAstatus, { depth: null });
+	// const newSsettings = { max_power: 2200, eco_charge_power: 1500 };
+	// await SESSY.setSystemSettings(newSsettings);
+	// const settings = await SESSY.getSystemSettings();
+	// console.dir(settings, { depth: null });
 // };
 
 // test();
@@ -447,6 +482,53 @@ system Info Sessy:
 		-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
 	"sessy_serial":	"AP6QQVPY"
 }
+
+systemSettings get:
+{
+	"status":	"ok",
+	"p1_hostname":	"10.0.0.10",
+	"pv_hostname":	"10.0.0.11",
+	"group_current":	16,
+	"phase_current":	35,
+	"group_sessys":	1,
+	"phase_sessys":	2,
+	"total_sessys":	2,
+	"active_phase":	1,
+	"min_power":	50,
+	"max_power":	2200,
+	"disable_noise_level":	true,
+	"allowed_noise_level":	101,
+	"enabled_time":	"00:00-23:59",
+	"sessy_enabled":	true,
+	"cloud_enabled":	true,
+	"eco_charge_hours":	4,
+	"eco_charge_power":	1500,
+	"eco_nom_charge":	false
+}
+
+systemSettings post:
+{
+    "pv_hostname": "10.0.0.10",
+    "p1_hostname": "10.0.0.11",
+    "active_phase": 1,
+    "group_current": 16,
+    "phase_current": 35,
+    "group_sessys": 1,
+    "phase_sessys": 2,
+    "total_sessys": 2,
+    "min_power": 50,
+    "max_power": 2200,
+    "allowed_noise_level": 5,
+    "disable_noise_level": "true",
+    "enabled_time": "00:00-23:59",
+    "cloud_enabled": true,
+    "sessy_enabled": true,
+    "eco_charge_hours": 4,
+    "eco_charge_power": 1500,
+    "eco_nom_charge": false
+}
+
+
 
 Strategy response:
 { status: 'ok', strategy: 'POWER_STRATEGY_API' }
