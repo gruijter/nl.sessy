@@ -64,5 +64,8 @@
   },
   "2.3.0": {
     "en": "Added flow cards for system settings (noise level, min power, max power)."
+  },
+  "2.4.0": {
+    "en": "Added kWh meters for Sessy and CT meter (fw>=1.7.2). Added slider UI for system noise level."
   }
 }

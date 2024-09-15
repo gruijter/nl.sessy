@@ -1,0 +1,16 @@
+{
+  "type": "number",
+  "title": { 
+		"en": "Noise level",
+		"nl": "Geluidsniveau"
+	 },
+  "uiComponent": "slider",
+  "getable": true,
+  "setable": true,
+  "units": { "en": " 🔊" },
+	"min": 1,
+	"max": 5,
+	"step": 1,
+	"value": 5,
+	"labelDecimals": 0
+}

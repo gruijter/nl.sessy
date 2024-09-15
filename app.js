@@ -23,96 +23,95 @@ const Homey = require('homey');
 
 class SessyApp extends Homey.App {
 
-	async onInit() {
-		this.registerFlowListeners();
-		this.everyHour();
-		this.log('Sessy app has been initialized');
-	}
+  async onInit() {
+    this.registerFlowListeners();
+    this.everyHour();
+    this.log('Sessy app has been initialized');
+  }
 
-	async onUninit() {
-		this.log('app onUninit called');
-		this.homey.removeAllListeners('everyhour');
-	}
+  async onUninit() {
+    this.log('app onUninit called');
+    this.homey.removeAllListeners('everyhour');
+  }
 
-	everyHour() {
-		const now = new Date();
-		const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 0, 50);
-		const timeToNextHour = nextHour - now;
-		// console.log('everyHour starts in', timeToNextHour / 1000);
-		this.homey.setTimeout(() => {
-			this.homey.setInterval(async () => {
-				this.homey.emit('everyhour', true);
-			}, 60 * 60 * 1000);
-			this.homey.emit('everyhour', true);
-		}, timeToNextHour);
-		this.log('everyHour job started');
-	}
+  everyHour() {
+    const now = new Date();
+    const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 0, 50);
+    const timeToNextHour = nextHour - now;
+    // console.log('everyHour starts in', timeToNextHour / 1000);
+    this.homey.setTimeout(() => {
+      this.homey.setInterval(async () => {
+        this.homey.emit('everyhour', true);
+      }, 60 * 60 * 1000);
+      this.homey.emit('everyhour', true);
+    }, timeToNextHour);
+    this.log('everyHour job started');
+  }
 
-	registerFlowListeners() {
-		// action cards
-		const setPowerSetpoint = this.homey.flow.getActionCard('set_power_setpoint');
-		setPowerSetpoint.registerRunListener((args) => args.device.setPowerSetpoint(args.setpoint, 'flow'));
+  registerFlowListeners() {
+    // action cards
+    const setPowerSetpoint = this.homey.flow.getActionCard('set_power_setpoint');
+    setPowerSetpoint.registerRunListener((args) => args.device.setPowerSetpoint(args.setpoint, 'flow'));
 
-		const setChargeMode = this.homey.flow.getActionCard('set_charge_mode');
-		setChargeMode.registerRunListener((args) => args.device.setChargeMode(args.chargeMode, 'flow'));
+    const setChargeMode = this.homey.flow.getActionCard('set_charge_mode');
+    setChargeMode.registerRunListener((args) => args.device.setChargeMode(args.chargeMode, 'flow'));
 
-		const setControlStrategy = this.homey.flow.getActionCard('set_control_strategy');
-		setControlStrategy.registerRunListener((args) => args.device.setControlStrategy(args.controlStrategy, 'flow'));
+    const setControlStrategy = this.homey.flow.getActionCard('set_control_strategy');
+    setControlStrategy.registerRunListener((args) => args.device.setControlStrategy(args.controlStrategy, 'flow'));
 
-		const setGridtarget = this.homey.flow.getActionCard('set_grid_target');
-		setGridtarget.registerRunListener((args) => args.device.setGridTarget(args.gridTarget, 'flow'));
+    const setGridtarget = this.homey.flow.getActionCard('set_grid_target');
+    setGridtarget.registerRunListener((args) => args.device.setGridTarget(args.gridTarget, 'flow'));
 
-		const setAllowedNoiseLevel = this.homey.flow.getActionCard('set_allowed_noise_level');
-		setAllowedNoiseLevel.registerRunListener((args) => args.device.setAllowedNoiseLevel(args.setpoint, 'flow'));
+    const setAllowedNoiseLevel = this.homey.flow.getActionCard('set_allowed_noise_level');
+    setAllowedNoiseLevel.registerRunListener((args) => args.device.setAllowedNoiseLevel(args.setpoint, 'flow'));
 
-		const setMaxPower = this.homey.flow.getActionCard('set_max_power');
-		setMaxPower.registerRunListener((args) => args.device.setMaxPower(args.setpoint, 'flow'));
+    const setMaxPower = this.homey.flow.getActionCard('set_max_power');
+    setMaxPower.registerRunListener((args) => args.device.setMaxPower(args.setpoint, 'flow'));
 
-		const setMinPower = this.homey.flow.getActionCard('set_min_power');
-		setMinPower.registerRunListener((args) => args.device.setMinPower(args.setpoint, 'flow'));
+    const setMinPower = this.homey.flow.getActionCard('set_min_power');
+    setMinPower.registerRunListener((args) => args.device.setMinPower(args.setpoint, 'flow'));
 
-		const restart = this.homey.flow.getActionCard('restart');
-		restart.registerRunListener((args) => args.device.restart('flow'));
+    const restart = this.homey.flow.getActionCard('restart');
+    restart.registerRunListener((args) => args.device.restart('flow'));
 
-		// trigger cards
-		this.triggerSystemStateChanged = (device, tokens, state) => {
-			const systemStateChanged = this.homey.flow.getDeviceTriggerCard('system_state_changed');
-			systemStateChanged
-				.trigger(device, tokens, state)
-				.catch(this.error);
-		};
-		this.triggerChargeModeChanged = (device, tokens, state) => {
-			const chargeModeChanged = this.homey.flow.getDeviceTriggerCard('charge_mode_changed');
-			chargeModeChanged
-				.trigger(device, tokens, state)
-				.catch(this.error);
-		};
-		this.triggerControlStrategyChanged = (device, tokens, state) => {
-			const controlStrategyChanged = this.homey.flow.getDeviceTriggerCard('control_strategy_changed');
-			controlStrategyChanged
-				.trigger(device, tokens, state)
-				.catch(this.error);
-		};
-		this.triggerFirmwareChanged = (device, tokens, state) => {
-			const firmwareChanged = this.homey.flow.getDeviceTriggerCard('firmware_changed');
-			firmwareChanged
-				.trigger(device, tokens, state)
-				.catch(this.error);
-		};
-		this.triggerNewFirmwareAvailable = (device, tokens, state) => {
-			const newFirmwareAvailable = this.homey.flow.getDeviceTriggerCard('new_firmware_available');
-			newFirmwareAvailable
-				.trigger(device, tokens, state)
-				.catch(this.error);
-		};
-		this.triggerTariffChanged = (device, tokens, state) => {
-			const tariffChanged = this.homey.flow.getDeviceTriggerCard('tariff_changed');
-			tariffChanged
-				.trigger(device, tokens, state)
-				.catch(this.error);
-		};
-
-	}
+    // trigger cards
+    this.triggerSystemStateChanged = (device, tokens, state) => {
+      const systemStateChanged = this.homey.flow.getDeviceTriggerCard('system_state_changed');
+      systemStateChanged
+        .trigger(device, tokens, state)
+        .catch(this.error);
+    };
+    this.triggerChargeModeChanged = (device, tokens, state) => {
+      const chargeModeChanged = this.homey.flow.getDeviceTriggerCard('charge_mode_changed');
+      chargeModeChanged
+        .trigger(device, tokens, state)
+        .catch(this.error);
+    };
+    this.triggerControlStrategyChanged = (device, tokens, state) => {
+      const controlStrategyChanged = this.homey.flow.getDeviceTriggerCard('control_strategy_changed');
+      controlStrategyChanged
+        .trigger(device, tokens, state)
+        .catch(this.error);
+    };
+    this.triggerFirmwareChanged = (device, tokens, state) => {
+      const firmwareChanged = this.homey.flow.getDeviceTriggerCard('firmware_changed');
+      firmwareChanged
+        .trigger(device, tokens, state)
+        .catch(this.error);
+    };
+    this.triggerNewFirmwareAvailable = (device, tokens, state) => {
+      const newFirmwareAvailable = this.homey.flow.getDeviceTriggerCard('new_firmware_available');
+      newFirmwareAvailable
+        .trigger(device, tokens, state)
+        .catch(this.error);
+    };
+    this.triggerTariffChanged = (device, tokens, state) => {
+      const tariffChanged = this.homey.flow.getDeviceTriggerCard('tariff_changed');
+      tariffChanged
+        .trigger(device, tokens, state)
+        .catch(this.error);
+    };
+  }
 
 }
 

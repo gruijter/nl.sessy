@@ -15,22 +15,37 @@
     "system_state",
     "alarm_fault",
     "control_strategy",
+
+    "meter_power.import",
+    "meter_power.export",
   
     "measure_power.total",
   
     "measure_power.p1",
     "measure_voltage.p1",
     "measure_current.p1",
+    "meter_power.p1Import",
+    "meter_power.p1Export",
   
     "measure_power.p2",
     "measure_voltage.p2",
     "measure_current.p2",
+    "meter_power.p2Import",
+    "meter_power.p2Export",
   
     "measure_power.p3",
     "measure_current.p3",
-    "measure_voltage.p3"
+    "measure_voltage.p3",
+    "meter_power.p3Import",
+    "meter_power.p3Export"
   ],
   "capabilitiesOptions": {
+    "meter_power.import": { 
+      "title": { "en": "Energy Charged", "nl": "Energie Geladen" }
+    },
+    "meter_power.export": { 
+      "title": { "en": "Energy Discharged", "nl": "Energie Ontladen" }
+    },
     "measure_power.total": { 
       "title": { "en": "Solar Power Total", "nl": "PV vermogen Totaal" }
     },
@@ -42,6 +57,30 @@
     },
     "measure_power.p3": { 
       "title": { "en": "Solar Power P3", "nl": "PV vermogen P3" }
+    },
+    "meter_power.p1Import": { 
+      "title": { "en": "Energy P1 Usage", "nl": "Energie P1 Verbruik" },
+      "decimals": 3
+    },
+    "meter_power.p1Export": { 
+      "title": { "en": "Solar Energy P1", "nl": "PV energie P1" },
+      "decimals": 3
+    },
+    "meter_power.p2Import": { 
+      "title": { "en": "Energy P2 Usage", "nl": "Energie P2 Verbruik" },
+      "decimals": 3
+    },
+    "meter_power.p2Export": { 
+      "title": { "en": "Solar Energy P2", "nl": "PV energie P2" },
+      "decimals": 3
+    },
+    "meter_power.p3Import": { 
+      "title": { "en": "Energy P3 Usage", "nl": "Energie P3 Verbruik" },
+      "decimals": 3
+    },
+    "meter_power.p3Export": { 
+      "title": { "en": "Solar Energy P3", "nl": "PV Energie 3" },
+      "decimals": 3
     },
     "measure_current.p1": { 
       "title": { "en": "Solar Current P1", "nl": "PV stroom P1" },
