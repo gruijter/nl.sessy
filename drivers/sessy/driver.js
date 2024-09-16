@@ -25,7 +25,7 @@ const SessyLocal = require('../../sessy_local');
 
 const capabilities = [
   'charge_mode',
-  'noise_level',
+  'volume_set',
   'measure_battery',
 
   'measure_power',

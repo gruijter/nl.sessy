@@ -1,0 +1,16 @@
+{
+	"title": {
+		"en": "UNUSED"
+	},
+		"units": {
+		"en": ""
+	},
+	"deprecated": true,
+	"args": [
+			{
+					"type": "device",
+					"name": "device",
+					"filter": "driver_id=sessy"
+			}
+		]
+}

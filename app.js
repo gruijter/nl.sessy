@@ -62,7 +62,7 @@ class SessyApp extends Homey.App {
     const setGridtarget = this.homey.flow.getActionCard('set_grid_target');
     setGridtarget.registerRunListener((args) => args.device.setGridTarget(args.gridTarget, 'flow'));
 
-    const setAllowedNoiseLevel = this.homey.flow.getActionCard('set_allowed_noise_level');
+    const setAllowedNoiseLevel = this.homey.flow.getActionCard('volume_set');
     setAllowedNoiseLevel.registerRunListener((args) => args.device.setAllowedNoiseLevel(args.setpoint, 'flow'));
 
     const setMaxPower = this.homey.flow.getActionCard('set_max_power');

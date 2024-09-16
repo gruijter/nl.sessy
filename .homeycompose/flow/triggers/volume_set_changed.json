@@ -1,0 +1,24 @@
+{
+	"title": {
+		"en": "The max noise level changed",
+		"nl": "Het max geluidsniveau is veranderd"
+	},
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=sessy"
+		}
+	],
+	"tokens": [
+		{
+			"name": "volume_set",
+			"type": "number",
+			"title": { 
+				"en": "Max noise level",
+				"nl": "Max geluidsniveau"
+			},
+			"example": 3
+		}
+	]
+}

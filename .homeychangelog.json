@@ -67,5 +67,8 @@
   },
   "2.4.0": {
     "en": "Added kWh meters for Sessy and CT meter (fw>=1.7.2). Added slider UI for system noise level."
+  },
+  "2.4.1": {
+    "en": "New slider UI and flow cards for system noise level."
   }
 }

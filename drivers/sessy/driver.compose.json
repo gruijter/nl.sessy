@@ -8,6 +8,7 @@
   },
   "capabilities": [
     "charge_mode",
+    "volume_set",
     "measure_battery",
   
     "measure_power",
@@ -40,6 +41,14 @@
     "meter_power.p3Export"
   ],
   "capabilitiesOptions": {
+    "volume_set": { 
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "units": { "en": "" },
+      "labelMultiplier": 1,
+      "labelDecimals": 0
+    },
     "meter_power.import": { 
       "title": { "en": "Energy Charged", "nl": "Energie Geladen" }
     },

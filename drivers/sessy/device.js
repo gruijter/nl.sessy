@@ -351,7 +351,7 @@ class SessyDevice extends Device {
       const controlStrategy = strategy ? strategy.strategy : null;
       const noiseLevel = systemSettings && (systemSettings.allowed_noise_level <= 5) ? systemSettings.allowed_noise_level : 5;
       const capabilityStates = {
-        noise_level: noiseLevel,
+        volume_set: noiseLevel,
         control_strategy: controlStrategy,
         charge_mode: chargeMode,
         system_state: systemState,
@@ -551,7 +551,7 @@ class SessyDevice extends Device {
       this.registerCapabilityListener('control_strategy', (strategy) => this.setControlStrategy(strategy, 'app'));
       this.registerCapabilityListener('charge_mode', (chargeMode) => this.setChargeMode(chargeMode, 'app'));
       this.registerCapabilityListener('meter_setpoint', (setpoint) => this.setPowerSetpoint(setpoint, 'app'));
-      this.registerCapabilityListener('noise_level', (setpoint) => this.setAllowedNoiseLevel(setpoint, 'app'));
+      this.registerCapabilityListener('volume_set', (setpoint) => this.setAllowedNoiseLevel(setpoint, 'app'));
 
       this.listenersSet = true;
       return Promise.resolve(true);
