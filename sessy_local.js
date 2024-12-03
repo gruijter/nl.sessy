@@ -42,7 +42,6 @@ const getOTAStatusEP = '/api/v1/ota/status';
 // const setWifiEP = '/api/v1/wifi_sta/credentials'; // data: { ssid, pass }
 
 // P1
-const getP1StatusEP = '/api/v1/p1/status';
 const getP1DetailsEP = '/api/v2/p1/details'; // fw > 1.5.2
 
 // CT
@@ -50,6 +49,7 @@ const getCTDetailsEP = '/api/v1/ct/details'; // fw > 1.5.2
 // const getEnergyEP = '/api/v1/energy/status'; // fw > 1.7.2
 
 // METER
+const getMeterStatusEP = '/api/v1/meter/status'; // used for discovery
 const getGridTargetEP = '/api/v1/meter/grid_target'; // fw > 1.5.2
 const setGridTargetEP = '/api/v1/meter/grid_target'; // fw > 1.5.2 data: { grid_target: 0 }
 
@@ -60,6 +60,7 @@ const getStrategyEP = '/api/v1/power/active_strategy';
 const getScheduleEP = '/api/v1/dynamic/schedule'; // fw > 1.6.5
 const setStrategyEP = '/api/v1/power/active_strategy';
 const setSetpointEP = '/api/v1/power/setpoint';
+// const getScgeduleEP = '/api/v1/dynamic/schedule';
 
 const defaultPort = 80;
 const defaultTimeout = 15000;
@@ -286,8 +287,7 @@ class Sessy {
 
       // try all servers for login response, with http timeout 4 seconds
       let discoveryEP = getStatusEP;
-      if (opts && opts.p1) discoveryEP = getP1StatusEP;
-      if (opts && opts.ct) discoveryEP = getCTDetailsEP;
+      if (opts && (opts.p1 || opts.ct)) discoveryEP = getMeterStatusEP;
       const allHostsPromise = hostsToTest.map(async (hostToTest) => {
         let found = false;
         const status = await this._makeRequest(discoveryEP, undefined, 4000, hostToTest).catch(() => undefined);

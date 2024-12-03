@@ -362,6 +362,7 @@ class SessyDevice extends Device {
         measure_power: status.sessy.power,
         measure_frequency: status.sessy.frequency / 1000,
         'measure_power.total': totalREPower,
+        'measure_current.inverter': status.sessy.inverter_current_ma / 1000,
         'measure_power.p1': status.renewable_energy_phase1.power,
         'measure_power.p2': status.renewable_energy_phase2.power,
         'measure_power.p3': status.renewable_energy_phase3.power,

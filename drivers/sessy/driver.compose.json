@@ -12,6 +12,7 @@
     "measure_battery",
   
     "measure_power",
+    "measure_current.inverter",
     "meter_setpoint",
     "system_state",
     "alarm_fault",
@@ -48,6 +49,9 @@
       "units": { "en": "" },
       "labelMultiplier": 1,
       "labelDecimals": 0
+    },
+    "measure_current.inverter": { 
+      "title": { "en": "Inverter Current", "nl": "Omvormer Stroom" }
     },
     "meter_power.import": { 
       "title": { "en": "Energy Charged", "nl": "Energie Geladen" }
@@ -92,25 +96,25 @@
       "decimals": 3
     },
     "measure_current.p1": { 
-      "title": { "en": "Solar Current P1", "nl": "PV stroom P1" },
+      "title": { "en": "Solar Current P1", "nl": "PV Stroom P1" },
       "decimals": 3
     },
     "measure_current.p2": { 
-      "title": { "en": "Solar Current P2", "nl": "PV stroom P2" },
+      "title": { "en": "Solar Current P2", "nl": "PV Stroom P2" },
       "decimals": 3
     },
     "measure_current.p3": { 
-      "title": { "en": "Solar Current P3", "nl": "PV stroom P3" },
+      "title": { "en": "Solar Current P3", "nl": "PV Stroom P3" },
       "decimals": 3
     },
     "measure_voltage.p1": { 
-      "title": { "en": "Solar Voltage P1", "nl": "PV spanning P1" }
+      "title": { "en": "Solar Voltage P1", "nl": "PV Spanning P1" }
     },
     "measure_voltage.p2": { 
-      "title": { "en": "Solar Voltage P2", "nl": "PV spanning P2" }
+      "title": { "en": "Solar Voltage P2", "nl": "PV Spanning P2" }
     },
     "measure_voltage.p3": { 
-      "title": { "en": "Solar Voltage P3", "nl": "PV spanning P3" }
+      "title": { "en": "Solar Voltage P3", "nl": "PV Spanning P3" }
     },
     "alarm_fault": {
       "titleTrue": { "en": "Yes", "nl": "Ja" },

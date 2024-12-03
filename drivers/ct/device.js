@@ -281,6 +281,8 @@ class CTDevice extends Device {
         'measure_voltage.l3': status.voltage_l3 / 1000,
       };
       if (energy) {
+        capabilityStates['meter_power.imported'] = (energy.energy_phase1.import_wh + energy.energy_phase2.import_wh + energy.energy_phase3.import_wh) / 1000;
+        capabilityStates['meter_power.exported'] = (energy.energy_phase1.export_wh + energy.energy_phase2.export_wh + energy.energy_phase3.export_wh) / 1000;
         capabilityStates['meter_power.l1Import'] = energy.energy_phase1.import_wh / 1000;
         capabilityStates['meter_power.l1Export'] = energy.energy_phase1.export_wh / 1000;
         capabilityStates['meter_power.l2Import'] = energy.energy_phase2.import_wh / 1000;

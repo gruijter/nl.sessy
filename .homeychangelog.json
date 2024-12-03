@@ -70,5 +70,8 @@
   },
   "2.4.1": {
     "en": "New slider UI and flow cards for system noise level."
+  },
+  "2.5.0": {
+    "en": "Added Homey total imported/exported energy capability. Added Sessy inverter current capability (fw>=1.8.1). API discovery endpoints update."
   }
 }

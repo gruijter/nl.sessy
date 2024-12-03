@@ -4,7 +4,9 @@
   },
   "class": "sensor",
   "energy": {
-    "cumulative": true
+    "cumulative": true,
+    "cumulativeImportedCapability": "meter_power.imported",
+    "cumulativeExportedCapability": "meter_power.exported"
   },
   "capabilities": [
     "measure_power",
@@ -18,6 +20,8 @@
     "measure_voltage.l1",
     "measure_voltage.l2",
     "measure_voltage.l3",
+    "meter_power.imported",
+    "meter_power.exported",
     "meter_power.l1Import",
     "meter_power.l1Export",
     "meter_power.l2Import",
@@ -33,6 +37,20 @@
       },
       "decimals": 2
     },
+    "meter_power.imported": {
+			"title": {
+				"en": "Imported energy",
+				"nl": "Energie import"
+			},
+			"decimals": 3
+		},
+		"meter_power.exported": {
+			"title": {
+				"en": "Exported energy",
+				"nl": "Energie export"
+			},
+			"decimals": 3
+		},
     "meter_power.l1Import": {
       "title": {
         "en": "Energy L1 Import",

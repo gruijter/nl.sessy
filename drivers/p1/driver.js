@@ -38,6 +38,8 @@ const capabilities = [
   'measure_voltage.l2',
   'measure_voltage.l3',
 
+  'meter_power.imported',
+  'meter_power.exported',
   'meter_power.peak',
   'meter_power.offPeak',
   'meter_power.producedPeak',

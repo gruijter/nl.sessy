@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.sessy",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "compatibility": ">=8.0.0",
   "sdk": 3,
   "platforms": [
@@ -803,7 +803,9 @@
       },
       "class": "sensor",
       "energy": {
-        "cumulative": true
+        "cumulative": true,
+        "cumulativeImportedCapability": "meter_power.imported",
+        "cumulativeExportedCapability": "meter_power.exported"
       },
       "capabilities": [
         "measure_power",
@@ -817,6 +819,8 @@
         "measure_voltage.l1",
         "measure_voltage.l2",
         "measure_voltage.l3",
+        "meter_power.imported",
+        "meter_power.exported",
         "meter_power.l1Import",
         "meter_power.l1Export",
         "meter_power.l2Import",
@@ -831,6 +835,20 @@
             "nl": "Vermogen totaal"
           },
           "decimals": 2
+        },
+        "meter_power.imported": {
+          "title": {
+            "en": "Imported energy",
+            "nl": "Energie import"
+          },
+          "decimals": 3
+        },
+        "meter_power.exported": {
+          "title": {
+            "en": "Exported energy",
+            "nl": "Energie export"
+          },
+          "decimals": 3
         },
         "meter_power.l1Import": {
           "title": {
@@ -1183,7 +1201,9 @@
       },
       "class": "sensor",
       "energy": {
-        "cumulative": true
+        "cumulative": true,
+        "cumulativeImportedCapability": "meter_power.imported",
+        "cumulativeExportedCapability": "meter_power.exported"
       },
       "capabilities": [
         "measure_power",
@@ -1197,6 +1217,8 @@
         "measure_voltage.l1",
         "measure_voltage.l2",
         "measure_voltage.l3",
+        "meter_power.imported",
+        "meter_power.exported",
         "meter_power.peak",
         "meter_power.offPeak",
         "meter_power.producedPeak",
@@ -1224,38 +1246,45 @@
           },
           "decimals": 4
         },
+        "meter_power.imported": {
+          "title": {
+            "en": "Imported energy",
+            "nl": "Energie import"
+          },
+          "decimals": 4
+        },
+        "meter_power.exported": {
+          "title": {
+            "en": "Exported energy",
+            "nl": "Energie export"
+          },
+          "decimals": 4
+        },
         "meter_power.peak": {
           "title": {
-            "en": "Energy meter peak",
-            "nl": "Energie piek"
+            "en": "Imported peak",
+            "nl": "Import piek"
           },
           "decimals": 4
         },
         "meter_power.offPeak": {
-          "meter_power": {
-            "title": {
-              "en": "Energy meter total",
-              "nl": "Energie totaal"
-            },
-            "decimals": 4
-          },
           "title": {
-            "en": "Energy meter off-peak",
-            "nl": "Energie dal"
+            "en": "Imported off-peak",
+            "nl": "Import dal"
           },
           "decimals": 4
         },
         "meter_power.producedPeak": {
           "title": {
-            "en": "Production peak",
-            "nl": "Productie piek"
+            "en": "Exported peak",
+            "nl": "Export piek"
           },
           "decimals": 4
         },
         "meter_power.producedOffPeak": {
           "title": {
-            "en": "Production off-peak",
-            "nl": "Productie dal"
+            "en": "Exported off-peak",
+            "nl": "Export dal"
           },
           "decimals": 4
         },
@@ -1526,6 +1555,7 @@
         "volume_set",
         "measure_battery",
         "measure_power",
+        "measure_current.inverter",
         "meter_setpoint",
         "system_state",
         "alarm_fault",
@@ -1559,6 +1589,12 @@
           },
           "labelMultiplier": 1,
           "labelDecimals": 0
+        },
+        "measure_current.inverter": {
+          "title": {
+            "en": "Inverter Current",
+            "nl": "Omvormer Stroom"
+          }
         },
         "meter_power.import": {
           "title": {
@@ -1641,40 +1677,40 @@
         "measure_current.p1": {
           "title": {
             "en": "Solar Current P1",
-            "nl": "PV stroom P1"
+            "nl": "PV Stroom P1"
           },
           "decimals": 3
         },
         "measure_current.p2": {
           "title": {
             "en": "Solar Current P2",
-            "nl": "PV stroom P2"
+            "nl": "PV Stroom P2"
           },
           "decimals": 3
         },
         "measure_current.p3": {
           "title": {
             "en": "Solar Current P3",
-            "nl": "PV stroom P3"
+            "nl": "PV Stroom P3"
           },
           "decimals": 3
         },
         "measure_voltage.p1": {
           "title": {
             "en": "Solar Voltage P1",
-            "nl": "PV spanning P1"
+            "nl": "PV Spanning P1"
           }
         },
         "measure_voltage.p2": {
           "title": {
             "en": "Solar Voltage P2",
-            "nl": "PV spanning P2"
+            "nl": "PV Spanning P2"
           }
         },
         "measure_voltage.p3": {
           "title": {
             "en": "Solar Voltage P3",
-            "nl": "PV spanning P3"
+            "nl": "PV Spanning P3"
           }
         },
         "alarm_fault": {

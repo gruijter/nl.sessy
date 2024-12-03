@@ -29,6 +29,7 @@ const capabilities = [
   'measure_battery',
 
   'measure_power',
+  'measure_current.inverter',
   'meter_setpoint',
   'measure_frequency',
   'system_state',

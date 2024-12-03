@@ -1,6 +1,6 @@
 {
   "name": "nl.sessy",
-  "version": "2.1.2",
+  "version": "2.5.0",
   "main": "app.js",
   "engines": {
     "node": ">=12.16.1"

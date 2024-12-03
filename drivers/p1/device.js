@@ -283,6 +283,8 @@ class P1Device extends Device {
         'measure_voltage.l1': status.voltage_l1 / 1000,
         'measure_voltage.l2': status.voltage_l2 / 1000,
         'measure_voltage.l3': status.voltage_l3 / 1000,
+        'meter_power.imported': (status.power_consumed_tariff1 + status.power_consumed_tariff2) / 1000,
+        'meter_power.exported': (status.power_produced_tariff1 + status.power_produced_tariff2) / 1000,
         'meter_power.peak': status.power_consumed_tariff2 / 1000,
         'meter_power.offPeak': status.power_consumed_tariff1 / 1000,
         'meter_power.producedPeak': status.power_produced_tariff2 / 1000,
