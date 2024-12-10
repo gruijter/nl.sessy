@@ -2,9 +2,10 @@
   "name": {
     "en": "Sessy"
   },
-  "class": "solarpanel",
+  "class": "battery",
   "energy": {
-    "batteries": ["INTERNAL"]
+    "batteries": ["INTERNAL"],
+    "homeBattery": true
   },
   "capabilities": [
     "charge_mode",

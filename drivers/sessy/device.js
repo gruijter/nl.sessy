@@ -146,7 +146,6 @@ class SessyDevice extends Device {
       // store the capability states before migration
       const sym = Object.getOwnPropertySymbols(this).find((s) => String(s) === 'Symbol(state)');
       const state = this[sym];
-
       // check and repair incorrect capability(order)
       let correctCaps = this.driver.ds.capabilities;
       // remove unwanted PV phase info
@@ -154,7 +153,6 @@ class SessyDevice extends Device {
       if (!this.getSettings().show_re1) correctCaps = correctCaps.filter((cap) => !cap.includes('p1'));
       if (!this.getSettings().show_re2) correctCaps = correctCaps.filter((cap) => !cap.includes('p2'));
       if (!this.getSettings().show_re3) correctCaps = correctCaps.filter((cap) => !cap.includes('p3'));
-
       for (let index = 0; index <= correctCaps.length; index += 1) {
         const caps = await this.getCapabilities();
         const newCap = correctCaps[index];
@@ -181,12 +179,11 @@ class SessyDevice extends Device {
       }
 
       // migrate to Battery class (Homey fw >= 12)
-      // const [ mainVersion ] = this.homey.version.split('.');
-      // const deviceClass = this.getClass();
-      // if (Number(mainVersion) >= 12 && deviceClass !== 'battery') {
-      //   this.log('Converting device class to battery');
-      //   await this.setClass('battery');
-      // }
+      const deviceClass = this.getClass();
+      if (deviceClass !== 'battery') {
+        this.log('Converting device class to battery');
+        await this.setClass('battery');
+      }
     } catch (error) {
       this.error(error);
     }

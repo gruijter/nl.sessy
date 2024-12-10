@@ -73,5 +73,8 @@
   },
   "2.5.0": {
     "en": "Added Homey total imported/exported energy capability. Added Sessy inverter current capability (fw>=1.8.1). API discovery endpoints update."
+  },
+  "2.6.0": {
+    "en": "Homey class migration to Battery/HomeBattery."
   }
 }
