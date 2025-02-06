@@ -1,35 +1,78 @@
 {
-	"title": {
-		"en": "Set the maximum active power",
-		"nl": "Zet het maximale werkzame vermogen"
-	},
-		"units": {
-		"en": "Watt"
-	},
-		"titleFormatted": {
-				"en": "Set maximum power to [[setpoint]] W",
-				"nl": "Zet maximaal vermogen op [[setpoint]] W"
-		},
-		"hint": { 
-				"en": "Maximum power with which Sessy works. This setting works in all control modes! Default is 2200 Watts.",
-				"nl": "Maximaal vermogen waarmee Sessy werkzaam is. Deze instelling werkt in alle besturings modi! Standaard is 2200 Watt."
-		},
-		"args": [
-				{
-						"type": "device",
-						"name": "device",
-						"filter": "driver_id=sessy"
-				},
-				{
-						"type": "number",
-						"name": "setpoint",
-						"title": { "en": "Maximum power", "nl": "Maximaal vermogen" },
-						"min": 50,
-						"max": 2200,
-						"step": 1,
-						"value": 2200,
-						"label": " Watt",
-						"labelDecimals": 0
-				}
-		]
+  "title": {
+    "en": "Set the maximum active power",
+    "nl": "Zet het maximale werkzame vermogen",
+    "da": "Indstil den maksimale aktive effekt",
+    "de": "Setzen Sie die maximale aktive Leistung",
+    "es": "Establecer la potencia activa máxima",
+    "fr": "Définir la puissance active maximale",
+    "it": "Imposta la potenza attiva massima",
+    "no": "Sett maksimal aktiv effekt",
+    "sv": "Ställ in den maximala aktiva effekten",
+    "pl": "Ustaw maksymalną moc czynną",
+    "ru": "Установите максимальную активную мощность",
+    "ko": "최대 활성 전력을 설정하십시오"
+  },
+  "units": {
+    "en": "Watt"
+  },
+  "titleFormatted": {
+    "en": "Set maximum power to [[setpoint]] W",
+    "nl": "Zet maximaal vermogen op [[setpoint]] W",
+    "da": "Indstil maksimal effekt til [[setpoint]] W",
+    "de": "Setzen Sie die maximale Leistung auf [[setpoint]] W",
+    "es": "Establecer la potencia máxima en [[setpoint]] W",
+    "fr": "Définir la puissance maximale à [[setpoint]] W",
+    "it": "Imposta la potenza massima su [[setpoint]] W",
+    "no": "Sett maksimal effekt til [[setpoint]] W",
+    "sv": "Ställ in den maximala effekten till [[setpoint]] W",
+    "pl": "Ustaw maksymalną moc na [[setpoint]] W",
+    "ru": "Установите максимальную мощность на [[setpoint]] W",
+    "ko": "[[setpoint]] W로 최대 전력을 설정하십시오"
+  },
+  "hint": {
+    "en": "Maximum power with which Sessy works. This setting works in all control modes! Default is 2200 Watts.",
+    "nl": "Maximaal vermogen waarmee Sessy werkzaam is. Deze instelling werkt in alle besturings modi! Standaard is 2200 Watt.",
+    "da": "Maksimal effekt, som Sessy arbejder med. Denne indstilling fungerer i alle kontroltilstande! Standard er 2200 Watt.",
+    "de": "Maximale Leistung, mit der Sessy arbeitet. Diese Einstellung funktioniert in allen Betriebsarten! Vorgabe ist 2200 Watt.",
+    "es": "Potencia máxima con la que trabaja Sessy. ¡Esta configuración funciona en todos los modos de control! El valor predeterminado es 2200 vatios.",
+    "fr": "Puissance maximale avec laquelle Sessy fonctionne. Ce paramètre fonctionne dans tous les modes de contrôle ! La valeur par défaut est de 2200 Watts.",
+    "it": "Potenza massima con cui Sessy lavora. Questa impostazione funziona in tutte le modalità di controllo! Il valore predefinito è 2200 Watt.",
+    "no": "Maksimal effekt som Sessy jobber med. Denne innstillingen fungerer i alle kontrollmodi! Standard er 2200 Watt.",
+    "sv": "Maximal effekt som Sessy arbetar med. Denna inställning fungerar i alla kontrolllägen! Standard är 2200 Watt.",
+    "pl": "Maksymalna moc, z jaką działa Sessy. Ta ustawienie działa we wszystkich trybach sterowania! Domyślnie to 2200 Wat.",
+    "ru": "Максимальная мощность, с которой работает Sessy. Эта настройка работает во всех режимах управления! По умолчанию 2200 ватт.",
+    "ko": "Sessy가 작동하는 최대 전력입니다. 이 설정은 모든 제어 모드에서 작동합니다! 기본값은 2200와트입니다."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    },
+    {
+      "type": "number",
+      "name": "setpoint",
+      "title": {
+        "en": "Maximum power",
+        "nl": "Maximaal vermogen",
+        "da": "Maksimal effekt",
+        "de": "Maximale Leistung",
+        "es": "Potencia máxima",
+        "fr": "Puissance maximale",
+        "it": "Potenza massima",
+        "no": "Maksimal effekt",
+        "sv": "Maximal effekt",
+        "pl": "Maksymalna moc",
+        "ru": "Максимальная мощность",
+        "ko": "최대 전력"
+      },
+      "min": 50,
+      "max": 2200,
+      "step": 1,
+      "value": 2200,
+      "label": " Watt",
+      "labelDecimals": 0
+    }
+  ]
 }

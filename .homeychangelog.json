@@ -76,5 +76,11 @@
   },
   "2.6.0": {
     "en": "Homey class migration to Battery/HomeBattery."
+  },
+  "2.7.0": {
+    "en": "AI translation to all languages. CT meter: Added option for correction of low power measurements."
+  },
+  "2.7.1": {
+    "en": "Added Sessy strategy_overridden state (fw>=1.8.3)."
   }
 }

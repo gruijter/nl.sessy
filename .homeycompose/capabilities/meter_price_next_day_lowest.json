@@ -8,7 +8,11 @@
     "no": "Laveste pris morgen",
     "fr": "Tarif le plus faible demain",
     "dk": "Laveste pris i morgen",
-    "nl": "Laagste prijs morgen"
+    "nl": "Laagste prijs morgen",
+    "es": "Precio más bajo mañana",
+    "pl": "Najniższa cena jutro",
+    "ru": " lowest price tomorrow",
+    "ko": "내일 최저가"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

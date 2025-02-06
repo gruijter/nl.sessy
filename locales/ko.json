@@ -1,0 +1,43 @@
+{
+  "today": "오늘",
+  "tomorrow": "내일",
+  "nextHours": "다음 시간",
+  "pair": {
+    "portal_login_title": "SESSY 포털 로그인",
+    "portal_login_text": "Sessy 포털에서 모든 Sessy를 Homey에 추가하세요. 포털에서 Sessy를 추가하는 작업이 끝났는지 확인하세요! (portal.sessy.nl)",
+    "portal_login_text_p1": "Sessy 포털에서 전력 계량기를 Homey에 추가하세요. 포털에서 시스템 구성이 완료되었는지 확인하세요! (portal.sessy.nl)",
+    "portal_login_text_dap": "Sessy 포털에서 하루 전 가격 정보를 Homey에 추가하세요. 포털에서 계정 구성이 완료되었는지 확인하세요! (portal.sessy.nl)",
+    "username_portal": "포털 사용자 이름",
+    "password_portal": "포털 비밀번호",
+    "portal_login_button": "SESSY 포털 로그인",
+    "incomplete_portal": "사용자 이름과 비밀번호를 입력해야 합니다!",
+    "no_batteries_registered": "이 계정 아래에 Sessy가 찾을 수 없습니다. portal.sessy.nl에서 Sessy를 추가하세요.",
+    "no_meters_registered": "이 계정 아래에 전력 계량기가 찾을 수 없습니다. portal.sessy.nl에서 시스템을 구성하세요.",
+    "local_login_title": "로컬 연결 설정",
+    "local_login_text": "Sessy 포털 로그인을 건너뛰고 로컬 연결 설정을 계속할 수 있습니다.",
+    "local_login_button": "로컬 설정 계속하기",
+    "monmodetitle": "로컬 모니터링 모드",
+    "monmodetext": "로컬 모니터링 모드에서 모든 SESSY를 추가하세요. portal.sessy.nl에서 제어를 유지하고 싶다면 이 옵션을 선택하세요.",
+    "monmodebutton": "모니터링 모드에서 계속하기",
+    "contmodetitle": "또는: 로컬 제어 모드",
+    "contmodetext": "로컬 제어 모드에서 하나의 SESSY를 추가하세요. Homey를 사용하여 제어할 수 있도록 하려면 이 옵션을 선택하세요.",
+    "contmodebutton": "제어 모드에서 계속하기",
+    "local_login_text_p1": "제어 모드에서 계속하려면 비밀번호가 필요합니다(권장). 모니터링 모드에서 계속하려면 비밀번호란을 비워두세요.",
+    "host": "IP 주소 또는 URL",
+    "sn_dongle": "동글 S/N",
+    "password_dongle": "동글 비밀번호",
+    "incomplete": "IP 주소 또는 URL, 동글 S/N 및 비밀번호를 입력해야 합니다!",
+    "continue": "계속하기"
+  },
+  "sessy": {
+    "homeyProOnly": "이 설정은 Homey Pro에서만 사용할 수 있습니다.",
+    "incomplete": "로컬 연결을 위해 호스트와 포트를 입력해야 합니다.",
+    "controlError": "Homey가 제어 모드로 설정되어 있지 않습니다.",
+    "connectionError": "연결 오류, 지금 다시 시작합니다.",
+    "migrating": "장치가 이동 중입니다. 잠시만 기다려 주세요!",
+    "newFirmware": "Sessy에 새 펌웨어가 설치되었습니다. __fw__",
+    "newFirmwareAvailable": "Sessy에 대한 새 펌웨어가 제공됩니다. __fw__",
+    "newFirmwareMeter": "계량기에 새 펌웨어가 설치되었습니다. __fw__",
+    "newFirmwareAvailableMeter": "계량기에 대한 새 펌웨어가 제공됩니다. __fw__"
+  }
+}

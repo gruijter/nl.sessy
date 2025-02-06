@@ -8,7 +8,11 @@
     "no": "Snittpris i morgen",
     "fr": "Tarif moyen demain",
     "dk": "Gn. snt. pris i morgen",
-    "nl": "Gem. prijs morgen"
+    "nl": "Gem. prijs morgen",
+    "es": "Precio medio mañana",
+    "pl": "Średnia cena jutro",
+    "ru": "Средняя цена завтра",
+    "ko": "내일 평균 가격"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

@@ -1,0 +1,43 @@
+{
+  "today": "I dag",
+  "tomorrow": "I morgen",
+  "nextHours": "Næste timer",
+  "pair": {
+    "portal_login_title": "SESSY PORTAL LOGIN",
+    "portal_login_text": "Tilføj alle dine Sessys fra Sessy-portalen til Homey. Sørg for, at du har afsluttet tilføjelsen af dine sessys i portalen først! (portal.sessy.nl)",
+    "portal_login_text_p1": "Tilføj din energimåler fra Sessy-portalen til Homey. Sørg for, at du har afsluttet konfigurationen af dit system i portalen først! (portal.sessy.nl)",
+    "portal_login_text_dap": "Tilføj dags-forhåndsprisinformation fra Sessy-portalen til Homey. Sørg for, at du har konfigureret din konto i portalen først! (portal.sessy.nl)",
+    "username_portal": "Portal Brugernavn",
+    "password_portal": "Portal Adgangskode",
+    "portal_login_button": "SESSY PORTAL LOGIN",
+    "incomplete_portal": "Brugernavn og adgangskode skal indtastes!",
+    "no_batteries_registered": "Ingen Sessys blev fundet under denne konto. Tilføj dine Sessys til portal.sessy.nl.",
+    "no_meters_registered": "Ingen energimålere blev fundet under denne konto. Konfigurer dit system på portal.sessy.nl.",
+    "local_login_title": "LOKAL FORBINDELSE OPSÆTNING",
+    "local_login_text": "Du kan også springe Sessy portallogin over og fortsætte med at opsætte en lokal forbindelse.",
+    "local_login_button": "Fortsæt med lokal opsætning",
+    "monmodetitle": "LOKAL OVERVÅGNINGSMODE",
+    "monmodetext": "Tilføj alle SESSYs i lokal overvågningsmode. Vælg dette, hvis du vil bevare kontrol ved portal.sessy.nl.",
+    "monmodebutton": "Fortsæt i overvågningsmode",
+    "contmodetitle": "ELLER: LOKAL KONTROLMODE",
+    "contmodetext": "Tilføj én SESSY i lokal kontrolmode. Vælg dette, hvis du vil kunne styre ved hjælp af Homey.",
+    "contmodebutton": "Fortsæt i kontrolmode",
+    "local_login_text_p1": "For at fortsætte i KONTROLMODE kræves adgangskoden (foretrukket). For at fortsætte i OVERVÅGNINGSMODE skal adgangskoden efterlades tom",
+    "host": "IP-adresse eller URL",
+    "sn_dongle": "Dongle S/N",
+    "password_dongle": "Dongle adgangskode",
+    "incomplete": "IP eller URL, dongle S/N og adgangskode skal indtastes!",
+    "continue": "Fortsæt"
+  },
+  "sessy": {
+    "homeyProOnly": "Denne indstilling er kun tilgængelig på Homey Pro",
+    "incomplete": "Vært og port skal indtastes for en lokal forbindelse",
+    "controlError": "Homey er ikke indstillet i kontrolmode",
+    "connectionError": "Forbindelsesfejl, genstarter nu",
+    "migrating": "Enhed migrerer. Vent venligst!",
+    "newFirmware": "Ny firmware installeret på Sessy. __fw__",
+    "newFirmwareAvailable": "Ny firmware tilgængelig for Sessy. __fw__",
+    "newFirmwareMeter": "Ny firmware installeret på Meter. __fw__",
+    "newFirmwareAvailableMeter": "Ny firmware tilgængelig for Meter. __fw__"
+  }
+}

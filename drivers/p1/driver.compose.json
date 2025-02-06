@@ -1,173 +1,346 @@
 {
   "name": {
-    "en": "Sessy P1"
+    "en": "Sessy P1",
+    "nl": "Sessy P1",
+    "da": "Sessy P1",
+    "de": "Sessy P1",
+    "es": "Sessy P1",
+    "fr": "Sessy P1",
+    "it": "Sessy P1",
+    "no": "Sessy P1",
+    "sv": "Sessy P1",
+    "pl": "Sessy P1",
+    "ru": "Сесси П1",
+    "ko": "세시 P1"
   },
   "class": "sensor",
   "energy": {
     "cumulative": true,
-		"cumulativeImportedCapability": "meter_power.imported",
+    "cumulativeImportedCapability": "meter_power.imported",
     "cumulativeExportedCapability": "meter_power.exported"
   },
   "capabilities": [
-		"measure_power",
-		"meter_offPeak",
-	
-		"measure_power.l1",
-		"measure_power.l2",
-		"measure_power.l3",
-		"measure_current.l1",
-		"measure_current.l2",
-		"measure_current.l3",
-	
-		"measure_voltage.l1",
-		"measure_voltage.l2",
-		"measure_voltage.l3",
-	
-		"meter_power.imported",
-		"meter_power.exported",
-		"meter_power.peak",
-		"meter_power.offPeak",
-		"meter_power.producedPeak",
-		"meter_power.producedOffPeak",
-	
-		"meter_power",
-	
-		"meter_voltage_sag",
-		"meter_voltage_swell",
-		"meter_power_failure",
-	
-		"measure_gas",
-		"meter_gas",
-	
-		"system_state"
-	],
-	"capabilitiesOptions": {
-		"measure_power": {
-			"title": {
-				"en": "Power total",
-				"nl": "Vermogen totaal"
-			},
-			"decimals": 2
-		},
-		"meter_power": {
-			"title": {
-				"en": "Energy meter total",
-				"nl": "Energie totaal"
-			},
-			"decimals": 4
-		},
-		"meter_power.imported": {
-			"title": {
-				"en": "Imported energy",
-				"nl": "Energie import"
-			},
-			"decimals": 4
-		},
-		"meter_power.exported": {
-			"title": {
-				"en": "Exported energy",
-				"nl": "Energie export"
-			},
-			"decimals": 4
-		},
-		"meter_power.peak": {
-			"title": {
-				"en": "Imported peak",
-				"nl": "Import piek"
-			},
-			"decimals": 4
-		},
-		"meter_power.offPeak": {
-			"title": {
-				"en": "Imported off-peak",
-				"nl": "Import dal"
-			},
-			"decimals": 4
-		},
-		"meter_power.producedPeak": {
-			"title": {
-				"en": "Exported peak",
-				"nl": "Export piek"
-			},
-			"decimals": 4
-		},
-		"meter_power.producedOffPeak": {
-			"title": {
-				"en": "Exported off-peak",
-				"nl": "Export dal"
-			},
-			"decimals": 4
-		},
-		"measure_power.l1": {
-			"title": {
-				"en": "Power L1",
-				"nl": "Vermogen L1"
-			},
-			"decimals": 2
-		},
-		"measure_power.l2": {
-			"title": {
-				"en": "Power L2",
-				"nl": "Vermogen L2"
-			},
-			"decimals": 2
-		},
-		"measure_power.l3": {
-			"title": {
-				"en": "Power L3",
-				"nl": "Vermogen L3"
-			},
-			"decimals": 2
-		},
-		"measure_current.l1": {
-			"title": {
-				"en": "Current L1",
-				"nl": "Stroom L1"
-			},
-			"decimals": 3
-		},
-		"measure_current.l2": {
-			"title": {
-				"en": "Current L2",
-				"nl": "Stroom L2"
-			},
-			"decimals": 3
-		},
-		"measure_current.l3": {
-			"title": {
-				"en": "Current L3",
-				"nl": "Stroom L3"
-			},
-			"decimals": 3
-		},
-		"measure_voltage.l1": {
-			"title": {
-				"en": "Voltage L1",
-				"nl": "Spanning L1"
-			},
-			"decimals": 2
-		},
-		"measure_voltage.l2": {
-			"title": {
-				"en": "Voltage L2",
-				"nl": "Spanning L2"
-			},
-			"decimals": 2
-		},
-		"measure_voltage.l3": {
-			"title": {
-				"en": "Voltage L3",
-				"nl": "Spanning L3"
-			},
-			"decimals": 2
-		}
-	},
-
+    "measure_power",
+    "meter_offPeak",
+    "measure_power.l1",
+    "measure_power.l2",
+    "measure_power.l3",
+    "measure_current.l1",
+    "measure_current.l2",
+    "measure_current.l3",
+    "measure_voltage.l1",
+    "measure_voltage.l2",
+    "measure_voltage.l3",
+    "meter_power.imported",
+    "meter_power.exported",
+    "meter_power.peak",
+    "meter_power.offPeak",
+    "meter_power.producedPeak",
+    "meter_power.producedOffPeak",
+    "meter_power",
+    "meter_voltage_sag",
+    "meter_voltage_swell",
+    "meter_power_failure",
+    "measure_gas",
+    "meter_gas",
+    "system_state"
+  ],
+  "capabilitiesOptions": {
+    "measure_power": {
+      "title": {
+        "en": "Power total",
+        "nl": "Vermogen totaal",
+        "da": "Samlet effekt",
+        "de": "Gesamtleistung",
+        "es": "Potencia total",
+        "fr": "Puissance totale",
+        "it": "Potenza totale",
+        "no": "Total kraft",
+        "sv": "Total effekt",
+        "pl": "Całkowita moc",
+        "ru": "Всего мощности",
+        "ko": "총 전력"
+      },
+      "decimals": 2
+    },
+    "meter_power": {
+      "title": {
+        "en": "Energy meter total",
+        "nl": "Energie totaal",
+        "da": "Energimåler total",
+        "de": "Energiezähler gesamt",
+        "es": "Medidor de energía total",
+        "fr": "Total du compteur d'énergie",
+        "it": "Contatore di energia totale",
+        "no": "Energimåler total",
+        "sv": "Energimätare totalt",
+        "pl": "Całkowity licznik energii",
+        "ru": "Общий счетчик энергии",
+        "ko": "총 에너지 계량기"
+      },
+      "decimals": 4
+    },
+    "meter_power.imported": {
+      "title": {
+        "en": "Imported energy",
+        "nl": "Energie import",
+        "da": "Importeret energi",
+        "de": "Importierte Energie",
+        "es": "Energía importada",
+        "fr": "Énergie importée",
+        "it": "Energia importata",
+        "no": "Importert energi",
+        "sv": "Importerad energi",
+        "pl": "Energia importowana",
+        "ru": "Импортированная энергия",
+        "ko": "수입된 에너지"
+      },
+      "decimals": 4,
+      "es": "Energía importada"
+    },
+    "meter_power.exported": {
+      "title": {
+        "en": "Exported energy",
+        "nl": "Energie export",
+        "da": "Eksporteret energi",
+        "de": "Exportierte Energie",
+        "es": "Energía exportada",
+        "fr": "Énergie exportée",
+        "it": "Energia esportata",
+        "no": "Eksportert energi",
+        "sv": "Exporterad energi",
+        "pl": "Energia eksportowana",
+        "ru": "Экспортированная энергия",
+        "ko": "수출된 에너지"
+      },
+      "decimals": 4
+    },
+    "meter_power.peak": {
+      "title": {
+        "en": "Imported peak",
+        "nl": "Import piek",
+        "da": "Importerede top",
+        "de": "Importspitze",
+        "es": "Pico importado",
+        "fr": "Pic importé",
+        "it": "Picco importato",
+        "no": "Importert topp",
+        "sv": "Importerad topp",
+        "pl": "Pik importowany",
+        "ru": "Импортированный пик",
+        "ko": "수입된 피크"
+      },
+      "decimals": 4
+    },
+    "meter_power.offPeak": {
+      "title": {
+        "en": "Imported off-peak",
+        "nl": "Import dal",
+        "da": "Importerede lavbelastning",
+        "de": "Importniedertarif",
+        "es": "Importado fuera de pico",
+        "fr": "Importé hors pointe",
+        "it": "Importato fuori picco",
+        "no": "Importert lavlast",
+        "sv": "Importerad låglast",
+        "pl": "Importowany poza szczytem",
+        "ru": "Импорт вне пиковый",
+        "ko": "비피크 수입"
+      },
+      "decimals": 4
+    },
+    "meter_power.producedPeak": {
+      "title": {
+        "en": "Exported peak",
+        "nl": "Export piek",
+        "da": "Eksporteret top",
+        "de": "Exportspitze",
+        "es": "Pico exportado",
+        "fr": "Pic exporté",
+        "it": "Picco esportato",
+        "no": "Eksportert topp",
+        "sv": "Exporterad topp",
+        "pl": "Pik eksportowany",
+        "ru": "Экспортированный пик",
+        "ko": "수출된 피크"
+      },
+      "decimals": 4
+    },
+    "meter_power.producedOffPeak": {
+      "title": {
+        "en": "Exported off-peak",
+        "nl": "Export dal",
+        "da": "Eksporteret lavbelastning",
+        "de": "Exportniedertarif",
+        "es": "Exportado fuera de pico",
+        "fr": "Exporté hors pointe",
+        "it": "Esportato fuori picco",
+        "no": "Eksportert lavlast",
+        "sv": "Exporterad låglast",
+        "pl": "Eksportowane poza szczytem",
+        "ru": "Экспорт вне пиковый",
+        "ko": "비피크 수출"
+      },
+      "decimals": 4
+    },
+    "measure_power.l1": {
+      "title": {
+        "en": "Power L1",
+        "nl": "Vermogen L1",
+        "da": "Effekt L1",
+        "de": "Leistung L1",
+        "es": "Potencia L1",
+        "fr": "Puissance L1",
+        "it": "Potenza L1",
+        "no": "Kraft L1",
+        "sv": "Effekt L1",
+        "pl": "Moc L1",
+        "ru": "Мощность L1",
+        "ko": "전력 L1"
+      },
+      "decimals": 2
+    },
+    "measure_power.l2": {
+      "title": {
+        "en": "Power L2",
+        "nl": "Vermogen L2",
+        "da": "Effekt L2",
+        "de": "Leistung L2",
+        "es": "Potencia L2",
+        "fr": "Puissance L2",
+        "it": "Potenza L2",
+        "no": "Kraft L2",
+        "sv": "Effekt L2",
+        "pl": "Moc L2",
+        "ru": "Мощность L2",
+        "ko": "전력 L2"
+      },
+      "decimals": 2
+    },
+    "measure_power.l3": {
+      "title": {
+        "en": "Power L3",
+        "nl": "Vermogen L3",
+        "da": "Effekt L3",
+        "de": "Leistung L3",
+        "es": "Potencia L3",
+        "fr": "Puissance L3",
+        "it": "Potenza L3",
+        "no": "Kraft L3",
+        "sv": "Effekt L3",
+        "pl": "Moc L3",
+        "ru": "Мощность L3",
+        "ko": "전력 L3"
+      },
+      "decimals": 2
+    },
+    "measure_current.l1": {
+      "title": {
+        "en": "Current L1",
+        "nl": "Stroom L1",
+        "da": "Strøm L1",
+        "de": "Strom L1",
+        "es": "Corriente L1",
+        "fr": "Courant L1",
+        "it": "Corrente L1",
+        "no": "Strøm L1",
+        "sv": "Ström L1",
+        "pl": "Prąd L1",
+        "ru": "Ток L1",
+        "ko": "전류 L1"
+      },
+      "decimals": 3
+    },
+    "measure_current.l2": {
+      "title": {
+        "en": "Current L2",
+        "nl": "Stroom L2",
+        "da": "Strøm L2",
+        "de": "Strom L2",
+        "es": "Corriente L2",
+        "fr": "Courant L2",
+        "it": "Corrente L2",
+        "no": "Strøm L2",
+        "sv": "Ström L2",
+        "pl": "Prąd L2",
+        "ru": "Ток L2",
+        "ko": "전류 L2"
+      },
+      "decimals": 3
+    },
+    "measure_current.l3": {
+      "title": {
+        "en": "Current L3",
+        "nl": "Stroom L3",
+        "da": "Strøm L3",
+        "de": "Strom L3",
+        "es": "Corriente L3",
+        "fr": "Courant L3",
+        "it": "Corrente L3",
+        "no": "Strøm L3",
+        "sv": "Ström L3",
+        "pl": "Prąd L3",
+        "ru": "Ток L3",
+        "ko": "전류 L3"
+      },
+      "decimals": 3
+    },
+    "measure_voltage.l1": {
+      "title": {
+        "en": "Voltage L1",
+        "nl": "Spanning L1",
+        "da": "Spænding L1",
+        "de": "Spannung L1",
+        "es": "Tensión L1",
+        "fr": "Tension L1",
+        "it": "Tensione L1",
+        "no": "Spenning L1",
+        "sv": "Spänning L1",
+        "pl": "Napięcie L1",
+        "ru": "Напряжение L1",
+        "ko": "전압 L1"
+      },
+      "decimals": 2
+    },
+    "measure_voltage.l2": {
+      "title": {
+        "en": "Voltage L2",
+        "nl": "Spanning L2",
+        "da": "Spænding L2",
+        "de": "Spannung L2",
+        "es": "Tensión L2",
+        "fr": "Tension L2",
+        "it": "Tensione L2",
+        "no": "Spenning L2",
+        "sv": "Spänning L2",
+        "pl": "Napięcie L2",
+        "ru": "Напряжение L2",
+        "ko": "전압 L2"
+      },
+      "decimals": 2
+    },
+    "measure_voltage.l3": {
+      "title": {
+        "en": "Voltage L3",
+        "nl": "Spanning L3",
+        "da": "Spænding L3",
+        "de": "Spannung L3",
+        "es": "Tensión L3",
+        "fr": "Tension L3",
+        "it": "Tensione L3",
+        "no": "Spenning L3",
+        "sv": "Spänning L3",
+        "pl": "Napięcie L3",
+        "ru": "Напряжение L3",
+        "ko": "전압 L3"
+      },
+      "decimals": 2
+    }
+  },
   "platforms": [
     "local"
   ],
-  "connectivity": [
-  ],
+  "connectivity": [],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.jpg",
     "large": "{{driverAssetsPath}}/images/large.jpg"
@@ -178,20 +351,22 @@
       "id": "local_login"
     },
     {
-			"id": "list_devices",
-			"template": "list_devices",
-      "options": { "singular": false },
-			"navigation": {
-				"next": "add_devices"
-			}
-		},
-		{
-			"id": "add_devices",
-			"template": "add_devices"
-		},
+      "id": "list_devices",
+      "template": "list_devices",
+      "options": {
+        "singular": false
+      },
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
     {
-			"id": "done",
-			"template": "done"
-		}
-	]
+      "id": "add_devices",
+      "template": "add_devices"
+    },
+    {
+      "id": "done",
+      "template": "done"
+    }
+  ]
 }

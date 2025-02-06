@@ -1,23 +1,63 @@
 {
-	"type": "boolean",
-	"title": {
-		"en": "Fault",
-		"nl": "Storing"
-	},
-	"desc": {
-		"en": "True when fault"
-	},
-	"insights": true,
-	"insightsTitleTrue": {
-		"en": "Fault Alarm On",
-		"nl": "Storing Alarm Aan"
-	},
-	"insightsTitleFalse": {
-		"en": "Fault Alarm Off",
-		"nl": "Storing Alarm Uit"
-	},
-	"getable": true,
-	"setable": false,
-	"uiComponent": "sensor",
-	"icon": "./assets/fault.svg"
+  "type": "boolean",
+  "title": {
+    "en": "Fault",
+    "nl": "Storing",
+    "da": "Fejl",
+    "de": "Fehler",
+    "es": "Fallo",
+    "fr": "Défaillance",
+    "it": "Guasto",
+    "no": "Feil",
+    "sv": "Fel",
+    "pl": "Błąd",
+    "ru": "Ошибка",
+    "ko": "오류"
+  },
+  "desc": {
+    "en": "True when fault",
+    "da": "Sand når der er en fejl",
+    "de": "Wahr, wenn ein Fehler vorliegt",
+    "es": "Verdadero cuando hay un fallo",
+    "fr": "Vrai en cas de défaut",
+    "it": "Vero in caso di guasto",
+    "no": "Sant når det er feil",
+    "sv": "Sant när det är fel",
+    "pl": "Prawda, gdy wystąpił błąd",
+    "ru": "Истина, когда есть ошибка",
+    "ko": "오류가 있을 때 참"
+  },
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Fault Alarm On",
+    "nl": "Storing Alarm Aan",
+    "da": "Fejl Alarm Tændt",
+    "de": "Fehleralarm Ein",
+    "es": "Alarma de Fallo Activada",
+    "fr": "Alarme de Défaillance Activée",
+    "it": "Allerta Guasto Attiva",
+    "no": "Feilalarm På",
+    "sv": "Felalarm På",
+    "pl": "Alarm Błędu Włączona",
+    "ru": "Сигнализация об ошибке Включена",
+    "ko": "오류 알람 켜짐"
+  },
+  "insightsTitleFalse": {
+    "en": "Fault Alarm Off",
+    "nl": "Storing Alarm Uit",
+    "da": "Fejl Alarm Slukket",
+    "de": "Fehleralarm Aus",
+    "es": "Alarma de Fallo Desactivada",
+    "fr": "Alarme de Défaillance Désactivée",
+    "it": "Allerta Guasto Spenta",
+    "no": "Feilalarm Av",
+    "sv": "Felalarm Av",
+    "pl": "Alarm Błędu Wyłączona",
+    "ru": "Сигнализация об ошибке Отключена",
+    "ko": "오류 알람 꺼짐"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "./assets/fault.svg"
 }

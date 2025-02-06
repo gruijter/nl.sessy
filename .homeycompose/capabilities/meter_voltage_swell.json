@@ -1,13 +1,23 @@
 {
-	"type": "number",
-	"title": {
-		"en": "Voltage swell count",
-		"nl": "Spanningspiek teller"
-	},
-	"decimals": 0,
-	"getable": true,
-	"setable": false,
-	"insights": true,
-	"uiComponent": "sensor",
-	"icon": "./assets/fault.svg"
+  "type": "number",
+  "title": {
+    "en": "Voltage swell count",
+    "nl": "Spanningspiek teller",
+    "da": "Spændingsstigningstæller",
+    "de": "Spannungsanstieg Zähler",
+    "es": "Contador de aumento de voltaje",
+    "fr": "Compteur de hausse de tension",
+    "it": "Contatore di aumento di tensione",
+    "no": "Spenningsøkning teller",
+    "sv": "Spänningsökning räknare",
+    "pl": "Licznik wzrostu napięcia",
+    "ru": "Счетчик повышения напряжения",
+    "ko": "전압 급증 카운터"
+  },
+  "decimals": 0,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "./assets/fault.svg"
 }

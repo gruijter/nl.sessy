@@ -1,5 +1,5 @@
 /*
-Copyright 2023 - 2024, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2025, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -35,6 +35,7 @@ const capabilities = [
   'system_state',
   'alarm_fault',
   'control_strategy',
+  'override',
 
   'meter_power.import',
   'meter_power.export',

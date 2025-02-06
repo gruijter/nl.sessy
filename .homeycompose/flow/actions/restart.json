@@ -1,18 +1,38 @@
 {
-	"title": {
-		"en": "Reboot dongle",
-		"nl": "Reboot dongel"
-	},
-	"hint": { 
-			"en": "Restart the dongle.",
-			"nl": "Start de dongel opnieuw op."
-	},
-	"highlight": true,
-	"args": [
-		{
-			"type": "device",
-			"name": "device",
-			"filter": "driver_id=sessy|p1|ct"
-		}
-	]
+  "title": {
+    "en": "Reboot dongle",
+    "nl": "Reboot dongel",
+    "da": "Genstart donglen",
+    "de": "Dongle neu starten",
+    "es": "Reiniciar el dongle",
+    "fr": "Redémarrer le dongle",
+    "it": "Riavvia dongle",
+    "No": "Start dongelen på nytt",
+    "sv": "Starta om dongeln",
+    "pl": "Uruchom ponownie dongle",
+    "ru": "Перезагрузить дунгл",
+    "ko": "동글 재부팅"
+  },
+  "hint": {
+    "en": "Restart the dongle.",
+    "nl": "Start de dongel opnieuw op.",
+    "da": "Genstart donglen.",
+    "de": "Starten Sie den Dongle neu.",
+    "es": "Reinicia el dongle.",
+    "fr": "Redémarrez le dongle.",
+    "it": "Riavvia il dongle.",
+    "no": "Start dongelen på nytt.",
+    "sv": "Starta om dongeln.",
+    "pl": "Uruchom ponownie dongle.",
+    "ru": "Перезагрузите дунгл.",
+    "ko": "동글을 재시작하세요."
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy|p1|ct"
+    }
+  ]
 }

@@ -1,25 +1,45 @@
 {
-	"title": { 
-		"en": "The gas usage changed",
-		"nl": "Het gasverbruik is veranderd"
-	},
-	"highlight": true,
-	"args": [
-		{
-				"type": "device",
-				"name": "device",
-				"filter": "driver_id=p1"
-		}
-	],
-	"tokens": [
-		{
-			"name": "measure_gas",
-			"type": "number",
-			"title": { 
-				"en": "Gas usage",
-				"nl": "Gasverbruik"
-			},
-			"example": 10
-		}
-	]
+  "title": {
+    "en": "The gas usage changed",
+    "nl": "Het gasverbruik is veranderd",
+    "da": "Gasforbruget ændrede sig",
+    "de": "Der Gasverbrauch hat sich geändert",
+    "es": "El consumo de gas cambió",
+    "fr": "L'utilisation du gaz a changé",
+    "it": "Il consumo di gas è cambiato",
+    "no": "Gassforbruket endret seg",
+    "sv": "Gasförbrukningen ändrades",
+    "pl": "Zużycie gazu się zmieniło",
+    "ru": "Потребление газа изменилось",
+    "ko": "가스 사용량이 변경되었습니다"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=p1"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "measure_gas",
+      "type": "number",
+      "title": {
+        "en": "Gas usage",
+        "nl": "Gasverbruik",
+        "da": "Gasforbrug",
+        "de": "Gasverbrauch",
+        "es": "Consumo de gas",
+        "fr": "Utilisation du gaz",
+        "it": "Utilizzo del gas",
+        "no": "Gassforbruk",
+        "sv": "Gasförbrukning",
+        "pl": "Zużycie gazu",
+        "ru": "Потребление газа",
+        "ko": "가스 사용량"
+      },
+      "example": 10
+    }
+  ]
 }

@@ -1,25 +1,45 @@
 {
-	"title": { 
-		"en": "The XOM Grid target power changed",
-		"nl": "Het XOM Net doelvermogen is veranderd"
-	},
-	"highlight": true,
-	"args": [
-		{
-				"type": "device",
-				"name": "device",
-				"filter": "driver_id=p1"
-		}
-	],
-	"tokens": [
-		{
-			"name": "meter_grid_target",
-			"type": "number",
-			"title": { 
-				"en": "XOM Grid target power",
-				"nl": "XOM Net Doelvermogen"
-			},
-			"example": 1500
-		}
-	]
+  "title": {
+    "en": "The XOM Grid target power changed",
+    "nl": "Het XOM Net doelvermogen is veranderd",
+    "da": "Målkraften for XOM-nettet er ændret",
+    "de": "Die Zielleistung des XOM-Gitters hat sich geändert",
+    "es": "El poder objetivo de la red XOM ha cambiado",
+    "fr": "La puissance cible du réseau XOM a changé",
+    "it": "La potenza obiettivo della rete XOM è cambiata",
+    "no": "Målkraften til XOM-nettet har endret seg",
+    "sv": "Målkraften för XOM-nätet har förändrats",
+    "pl": "Docelowa moc sieci XOM została zmieniona",
+    "ru": "Целевая мощность сети XOM изменилась",
+    "ko": "XOM 그리드 목표 전력이 변경되었습니다"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=p1"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "meter_grid_target",
+      "type": "number",
+      "title": {
+        "en": "XOM Grid target power",
+        "nl": "XOM Net Doelvermogen",
+        "da": "XOM-nettets målstrøm",
+        "de": "Zielleistung des XOM-Gitters",
+        "es": "Poder objetivo de la red XOM",
+        "fr": "Puissance cible du réseau XOM",
+        "it": "Potenza obiettivo della rete XOM",
+        "no": "Målkraft for XOM-nettet",
+        "sv": "Målkraft för XOM-nätet",
+        "pl": "Docelowa moc sieci XOM",
+        "ru": "Целевая мощность сети XOM",
+        "ko": "XOM 그리드 목표 전력"
+      },
+      "example": 1500
+    }
+  ]
 }

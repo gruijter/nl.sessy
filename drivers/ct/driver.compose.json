@@ -33,126 +33,306 @@
     "measure_power": {
       "title": {
         "en": "Power total",
-        "nl": "Vermogen totaal"
+        "nl": "Vermogen totaal",
+        "da": "Samlet effekt",
+        "de": "Gesamtleistung",
+        "es": "Potencia total",
+        "fr": "Puissance totale",
+        "it": "Potenza totale",
+        "no": "Total effekt",
+        "sv": "Total effekt",
+        "pl": "Całkowita moc",
+        "ru": "Общая мощность",
+        "ko": "총 전력"
       },
       "decimals": 2
     },
     "meter_power.imported": {
-			"title": {
-				"en": "Imported energy",
-				"nl": "Energie import"
-			},
-			"decimals": 3
-		},
-		"meter_power.exported": {
-			"title": {
-				"en": "Exported energy",
-				"nl": "Energie export"
-			},
-			"decimals": 3
-		},
+      "title": {
+        "en": "Imported energy",
+        "nl": "Energie import",
+        "da": "Importerede energi",
+        "de": "Importierte Energie",
+        "es": "Energía importada",
+        "fr": "Énergie importée",
+        "it": "Energia importata",
+        "no": "Importert energi",
+        "sv": "Importerad energi",
+        "pl": "Energie importowane",
+        "ru": "Импортированная энергия",
+        "ko": "수입 에너지"
+      },
+      "decimals": 3
+    },
+    "meter_power.exported": {
+      "title": {
+        "en": "Exported energy",
+        "nl": "Energie export",
+        "da": "Eksporteret energi",
+        "de": "Exportierte Energie",
+        "es": "Energía exportada",
+        "fr": "Énergie exportée",
+        "it": "Energia esportata",
+        "no": "Eksportert energi",
+        "sv": "Exporterad energi",
+        "pl": "Energia eksportowana",
+        "ru": "Экспортированная энергия",
+        "ko": "수출 에너지"
+      },
+      "decimals": 3
+    },
     "meter_power.l1Import": {
       "title": {
         "en": "Energy L1 Import",
-        "nl": "Energie L1 Import"
+        "nl": "Energie L1 Import",
+        "da": "Energi L1 Import",
+        "de": "Energie L1 Import",
+        "es": "Energía L1 Importada",
+        "fr": "Énergie L1 Importée",
+        "it": "Energia L1 Importata",
+        "no": "Energi L1 Import",
+        "sv": "Energi L1 Import",
+        "pl": "Energie L1 Importowane",
+        "ru": "Энергия L1 Импорт",
+        "ko": "L1 에너지 수입"
       },
       "decimals": 3
     },
     "meter_power.l1Export": {
       "title": {
         "en": "Energy L1 Export",
-        "nl": "Energie L1 Export"
+        "nl": "Energie L1 Export",
+        "da": "Energi L1 Eksport",
+        "de": "Energie L1 Export",
+        "es": "Energía L1 Exportada",
+        "fr": "Énergie L1 Exportée",
+        "it": "Energia L1 Esportata",
+        "no": "Energi L1 Eksport",
+        "sv": "Energi L1 Export",
+        "pl": "Energie L1 Eksportowane",
+        "ru": "Энергия L1 Экспорт",
+        "ko": "L1 에너지 수출"
       },
       "decimals": 3
     },
     "meter_power.l2Import": {
       "title": {
         "en": "Energy L2 Import",
-        "nl": "Energie L2 Import"
+        "nl": "Energie L2 Import",
+        "da": "Energi L2 Import",
+        "de": "Energie L2 Import",
+        "es": "Energía L2 Importada",
+        "fr": "Énergie L2 Importée",
+        "it": "Energia L2 Importata",
+        "no": "Energi L2 Import",
+        "sv": "Energi L2 Import",
+        "pl": "Energie L2 Importowane",
+        "ru": "Энергия L2 Импорт",
+        "ko": "L2 에너지 수입"
       },
       "decimals": 3
     },
     "meter_power.l2Export": {
       "title": {
         "en": "Energy L2 Export",
-        "nl": "Energie L2 Export"
+        "nl": "Energie L2 Export",
+        "da": "Energi L2 Eksport",
+        "de": "Energie L2 Export",
+        "es": "Energía L2 Exportada",
+        "fr": "Énergie L2 Exportée",
+        "it": "Energia L2 Esportata",
+        "no": "Energi L2 Eksport",
+        "sv": "Energi L2 Export",
+        "pl": "Energie L2 Eksportowane",
+        "ru": "Энергия L2 Экспорт",
+        "ko": "L2 에너지 수출"
       },
       "decimals": 3
     },
     "meter_power.l3Import": {
       "title": {
         "en": "Energy L3 Import",
-        "nl": "Energie L3 Import"
+        "nl": "Energie L3 Import",
+        "da": "Energi L3 Import",
+        "de": "Energie L3 Import",
+        "es": "Energía L3 Importada",
+        "fr": "Énergie L3 Importée",
+        "it": "Energia L3 Importata",
+        "no": "Energi L3 Import",
+        "sv": "Energi L3 Import",
+        "pl": "Energie L3 Importowane",
+        "ru": "Энергия L3 Импорт",
+        "ko": "L3 에너지 수입"
       },
       "decimals": 3
     },
     "meter_power.l3Export": {
       "title": {
         "en": "Energy L3 Export",
-        "nl": "Energie L3 Export"
+        "nl": "Energie L3 Export",
+        "da": "Energi L3 Eksport",
+        "de": "Energie L3 Export",
+        "es": "Energía L3 Exportada",
+        "fr": "Énergie L3 Exportée",
+        "it": "Energia L3 Esportata",
+        "no": "Energi L3 Eksport",
+        "sv": "Energi L3 Export",
+        "pl": "Energie L3 Eksportowane",
+        "ru": "Энергия L3 Экспорт",
+        "ko": "L3 에너지 수출"
       },
       "decimals": 3
     },
     "measure_power.l1": {
       "title": {
         "en": "Power L1",
-        "nl": "Vermogen L1"
+        "nl": "Vermogen L1",
+        "da": "Effekt L1",
+        "de": "Leistung L1",
+        "es": "Potencia L1",
+        "fr": "Puissance L1",
+        "it": "Potenza L1",
+        "no": "Effekt L1",
+        "sv": "Effekt L1",
+        "pl": "Moc L1",
+        "ru": "Мощность L1",
+        "ko": "L1 전력"
       },
       "decimals": 2
     },
     "measure_power.l2": {
       "title": {
         "en": "Power L2",
-        "nl": "Vermogen L2"
+        "nl": "Vermogen L2",
+        "da": "Effekt L2",
+        "de": "Leistung L2",
+        "es": "Potencia L2",
+        "fr": "Puissance L2",
+        "it": "Potenza L2",
+        "no": "Effekt L2",
+        "sv": "Effekt L2",
+        "pl": "Moc L2",
+        "ru": "Мощность L2",
+        "ko": "L2 전력"
       },
       "decimals": 2
     },
     "measure_power.l3": {
       "title": {
         "en": "Power L3",
-        "nl": "Vermogen L3"
+        "nl": "Vermogen L3",
+        "da": "Effekt L3",
+        "de": "Leistung L3",
+        "es": "Potencia L3",
+        "fr": "Puissance L3",
+        "it": "Potenza L3",
+        "no": "Effekt L3",
+        "sv": "Effekt L3",
+        "pl": "Moc L3",
+        "ru": "Мощность L3",
+        "ko": "L3 전력"
       },
       "decimals": 2
     },
     "measure_current.l1": {
       "title": {
         "en": "Current L1",
-        "nl": "Stroom L1"
+        "nl": "Stroom L1",
+        "da": "Strøm L1",
+        "de": "Strom L1",
+        "es": "Corriente L1",
+        "fr": "Courant L1",
+        "it": "Corrente L1",
+        "no": "Strøm L1",
+        "sv": "Ström L1",
+        "pl": "Prąd L1",
+        "ru": "Ток L1",
+        "ko": "L1 전류"
       },
       "decimals": 3
     },
     "measure_current.l2": {
       "title": {
         "en": "Current L2",
-        "nl": "Stroom L2"
+        "nl": "Stroom L2",
+        "da": "Strøm L2",
+        "de": "Strom L2",
+        "es": "Corriente L2",
+        "fr": "Courant L2",
+        "it": "Corrente L2",
+        "no": "Strøm L2",
+        "sv": "Ström L2",
+        "pl": "Prąd L2",
+        "ru": "Ток L2",
+        "ko": "L2 전류"
       },
       "decimals": 3
     },
     "measure_current.l3": {
       "title": {
         "en": "Current L3",
-        "nl": "Stroom L3"
+        "nl": "Stroom L3",
+        "da": "Strøm L3",
+        "de": "Strom L3",
+        "es": "Corriente L3",
+        "fr": "Courant L3",
+        "it": "Corrente L3",
+        "no": "Strøm L3",
+        "sv": "Ström L3",
+        "pl": "Prąd L3",
+        "ru": "Ток L3",
+        "ko": "L3 전류"
       },
       "decimals": 3
     },
     "measure_voltage.l1": {
       "title": {
         "en": "Voltage L1",
-        "nl": "Spanning L1"
+        "nl": "Spanning L1",
+        "da": "Spænding L1",
+        "de": "Spannung L1",
+        "es": "Voltaje L1",
+        "fr": "Tension L1",
+        "it": "Tensione L1",
+        "no": "Spenning L1",
+        "sv": "Spänning L1",
+        "pl": "Napięcie L1",
+        "ru": "Напряжение L1",
+        "ko": "L1 전압"
       },
       "decimals": 2
     },
     "measure_voltage.l2": {
       "title": {
         "en": "Voltage L2",
-        "nl": "Spanning L2"
+        "nl": "Spanning L2",
+        "da": "Spænding L2",
+        "de": "Spannung L2",
+        "es": "Voltaje L2",
+        "fr": "Tension L2",
+        "it": "Tensione L2",
+        "no": "Spenning L2",
+        "sv": "Spänning L2",
+        "pl": "Napięcie L2",
+        "ru": "Напряжение L2",
+        "ko": "L2 전압"
       },
       "decimals": 2
     },
     "measure_voltage.l3": {
       "title": {
         "en": "Voltage L3",
-        "nl": "Spanning L3"
+        "nl": "Spanning L3",
+        "da": "Spænding L3",
+        "de": "Spannung L3",
+        "es": "Voltaje L3",
+        "fr": "Tension L3",
+        "it": "Tensione L3",
+        "no": "Spenning L3",
+        "sv": "Spänning L3",
+        "pl": "Napięcie L3",
+        "ru": "Напряжение L3",
+        "ko": "L3 전압"
       },
       "decimals": 2
     }

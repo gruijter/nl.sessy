@@ -8,7 +8,12 @@
     "no": "Laveste pris idag",
     "fr": "Tarif le plus faible aujourd'hui",
     "dk": "Laveste pris i dag",
-    "nl": "Laagste prijs deze dag"
+    "nl": "Laagste prijs deze dag",
+    "es": "Precio más bajo de este día",
+    "pl": "Najniższa cena tego dnia",
+    "ru": "Самая низкая цена в этот день",
+    "ko": "오늘의 최저 가격",
+    "da": "Laveste pris i dag"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

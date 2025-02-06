@@ -1,11 +1,21 @@
 {
-	"type": "string",
-	"title": {
-		"en": "System State",
-		"nl": "Systeemstatus"
-	},
-	"getable": true,
-	"setable": false,
-	"uiComponent": "sensor",
-	"icon": "./assets/system_state.svg"
+  "type": "string",
+  "title": {
+    "en": "System State",
+    "nl": "Systeemstatus",
+    "da": "Systemtilstand",
+    "de": "Systemzustand",
+    "es": "Estado del sistema",
+    "fr": "État du système",
+    "it": "Stato del sistema",
+    "no": "Systemtilstand",
+    "sv": "Systemstatus",
+    "pl": "Stan systemu",
+    "ru": "Состояние системы",
+    "ko": "시스템 상태"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "./assets/system_state.svg"
 }

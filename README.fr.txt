@@ -1,0 +1,3 @@
+Surveillez et contrôlez votre système de stockage d'énergie SESSY à domicile.
+
+Avec la batterie SESSY, vous pouvez stocker l'excédent d'énergie solaire pour une utilisation ultérieure, ou vous pouvez commencer à échanger de l'énergie si vous avez un contrat dynamique. Avec l'application Power By The Hour, vous pouvez créer des flux de charge/décharge intelligents et suivre combien d'argent votre SESSY génère.

@@ -1,50 +1,120 @@
 {
-	"type": "enum",
-	"title": {
-		"en": "Control Mode",
-		"nl": "Besturingsmodus"
-	},
-	"values": [
-		{
-			"id": "POWER_STRATEGY_API",
-			"title": {
-				"en": "HOMEY"
-			}
-		},
-		{
-			"id": "POWER_STRATEGY_NOM",
-			"title": {
-				"en": "SESSY XOM (!)"
-			}
-		},
-		{
-			"id": "POWER_STRATEGY_ROI",
-			"title": {
-				"en": "SESSY ROI (!)"
-			}
-		},
-		{
-			"id": "POWER_STRATEGY_ECO",
-			"title": {
-				"en": "SESSY ECO (!)"
-			}
-		},
-		{
-			"id": "POWER_STRATEGY_SESSY_CONNECT",
-			"title": {
-				"en": "SESSY CONNECT (!)"
-			}
-		},
-		{
-			"id": "POWER_STRATEGY_IDLE",
-			"title": {
-				"en": "IDLE (!)"
-			}
-		}
-	],
-	"value": "POWER_STRATEGY_API",
-	"getable": true,
-	"setable": true,
-	"icon": "./assets/control_strategy.svg",
-	"uiComponent": "sensor"
+  "type": "enum",
+  "title": {
+    "en": "Control Mode",
+    "nl": "Besturingsmodus",
+    "da": "Kontroltilstand",
+    "de": "Steuerungsmodus",
+    "es": "Modo de Control",
+    "fr": "Mode de Contrôle",
+    "it": "Modalità di Controllo",
+    "no": "Kontrollmodus",
+    "sv": "Kontrollläge",
+    "pl": "Tryb sterowania",
+    "ru": "Режим управления",
+    "ko": "제어 모드"
+  },
+  "values": [
+    {
+      "id": "POWER_STRATEGY_API",
+      "title": {
+        "en": "HOMEY",
+        "da": "HOMEY",
+        "de": "HOMEY",
+        "es": "HOMEY",
+        "fr": "HOMEY",
+        "it": "HOMEY",
+        "no": "HOMEY",
+        "sv": "HOMEY",
+        "pl": "HOMEY",
+        "ru": "HOMEY",
+        "ko": "HOMEY"
+      }
+    },
+    {
+      "id": "POWER_STRATEGY_NOM",
+      "title": {
+        "en": "SESSY XOM (!)",
+        "da": "SESSY XOM (!)",
+        "de": "SESSY XOM (!)",
+        "es": "SESSY XOM (!)",
+        "fr": "SESSY XOM (!)",
+        "it": "SESSY XOM (!)",
+        "no": "SESSY XOM (!)",
+        "sv": "SESSY XOM (!)",
+        "pl": "SESSY XOM (!)",
+        "ru": "SESSY XOM (!)",
+        "ko": "SESSY XOM (!)"
+      }
+    },
+    {
+      "id": "POWER_STRATEGY_ROI",
+      "title": {
+        "en": "SESSY ROI (!)",
+        "da": "SESSY ROI (!)",
+        "de": "SESSY ROI (!)",
+        "es": "SESSY ROI (!)",
+        "fr": "SESSY ROI (!)",
+        "it": "SESSY ROI (!)",
+        "no": "SESSY ROI (!)",
+        "sv": "SESSY ROI (!)",
+        "pl": "SESSY ROI (!)",
+        "ru": "SESSY ROI (!)",
+        "ko": "SESSY ROI (!)"
+      }
+    },
+    {
+      "id": "POWER_STRATEGY_ECO",
+      "title": {
+        "en": "SESSY ECO (!)",
+        "da": "SESSY ECO (!)",
+        "de": "SESSY ECO (!)",
+        "es": "SESSY ECO (!)",
+        "fr": "SESSY ECO (!)",
+        "it": "SESSY ECO (!)",
+        "no": "SESSY ECO (!)",
+        "sv": "SESSY ECO (!)",
+        "pl": "SESSY ECO (!)",
+        "ru": "SESSY ECO (!)",
+        "ko": "SESSY ECO (!)"
+      }
+    },
+    {
+      "id": "POWER_STRATEGY_SESSY_CONNECT",
+      "title": {
+        "en": "SESSY CONNECT (!)",
+        "da": "SESSY CONNECT (!)",
+        "de": "SESSY CONNECT (!)",
+        "es": "SESSY CONNECT (!)",
+        "fr": "SESSY CONNECT (!)",
+        "it": "SESSY CONNECT (!)",
+        "no": "SESSY CONNECT (!)",
+        "sv": "SESSY CONNECT (!)",
+        "pl": "SESSY CONNECT (!)",
+        "ru": "SESSY CONNECT (!)",
+        "ko": "SESSY CONNECT (!)"
+      }
+    },
+    {
+      "id": "POWER_STRATEGY_IDLE",
+      "title": {
+        "en": "IDLE (!)",
+        "da": "IDLE (!)",
+        "de": "LEER (!)",
+        "es": "INACTIVO (!)",
+        "fr": "INACTIF (!)",
+        "it": "INATTIVO (!)",
+        "no": "IDLE (!)",
+        "sv": "IDLE (!)",
+        "pl": "BEZCZYNNY (!)",
+        "ru": "БЕЗДЕЙСТВИТЕЛЬНЫЙ (!)",
+        "ko": "유휴 (!)"
+      }
+    }
+  ],
+  "value": "POWER_STRATEGY_API",
+  "getable": true,
+  "setable": true,
+  "icon": "./assets/control_strategy.svg",
+  "uiComponent": "sensor"
 }

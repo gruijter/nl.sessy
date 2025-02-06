@@ -1,25 +1,45 @@
 {
-	"title": { 
-		"en": "The target power changed",
-		"nl": "Het doelvermogen is veranderd"
-	},
-	"highlight": true,
-	"args": [
-		{
-				"type": "device",
-				"name": "device",
-				"filter": "driver_id=sessy"
-		}
-	],
-	"tokens": [
-		{
-			"name": "meter_setpoint",
-			"type": "number",
-			"title": { 
-				"en": "Target power",
-				"nl": "Doelvermogen"
-			},
-			"example": 1500
-		}
-	]
+  "title": {
+    "en": "The target power changed",
+    "nl": "Het doelvermogen is veranderd",
+    "da": "Det målte strømforbrug er ændret",
+    "de": "Die Zielleistung hat sich geändert",
+    "es": "El poder objetivo ha cambiado",
+    "fr": "La puissance cible a changé",
+    "it": "La potenza target è cambiata",
+    "no": "Målstrømmen har endret seg",
+    "sv": "Måleffekten har ändrats",
+    "pl": "Docelowa moc zmieniła się",
+    "ru": "Целевая мощность изменилась",
+    "ko": "목표 전력이 변경되었습니다"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "meter_setpoint",
+      "type": "number",
+      "title": {
+        "en": "Target power",
+        "nl": "Doelvermogen",
+        "da": "Målstrøm",
+        "de": "Zielleistung",
+        "es": "Potencia objetivo",
+        "fr": "Puissance cible",
+        "it": "Potenza target",
+        "no": "Målstrøm",
+        "sv": "Måleffekt",
+        "pl": "Docelowa moc",
+        "ru": "Целевая мощность",
+        "ko": "목표 전력"
+      },
+      "example": 1500
+    }
+  ]
 }

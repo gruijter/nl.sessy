@@ -8,7 +8,12 @@
     "no": "Pris +1T",
     "fr": "Tarif +1h",
     "dk": "Pris +1T",
-    "nl": "Prijs +1U"
+    "nl": "Prijs +1U",
+    "es": "Precio +1H",
+    "pl": "Cena +1H",
+    "ru": "Цена +1Ч",
+    "ko": "가격 +1H",
+    "da": "Pris +1T"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

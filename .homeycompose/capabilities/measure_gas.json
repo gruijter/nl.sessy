@@ -2,16 +2,46 @@
   "type": "number",
   "title": {
     "en": "Gas",
-    "nl": "Gas"
+    "nl": "Gas",
+    "da": "Gas",
+    "de": "Gas",
+    "es": "Gas",
+    "fr": "Gaz",
+    "it": "Gas",
+    "no": "Gass",
+    "sv": "Gas",
+    "pl": "Gaz",
+    "ru": "Газ",
+    "ko": "가스"
   },
   "desc": {
     "en": "Gas usage",
-    "nl": "Gasverbruik"
+    "nl": "Gasverbruik",
+    "da": "Gasforbrug",
+    "de": "Gasverbrauch",
+    "es": "Uso de gas",
+    "fr": "Consommation de gaz",
+    "it": "Consumo di gas",
+    "no": "Gassforbruk",
+    "sv": "Gasförbrukning",
+    "pl": "Zużycie gazu",
+    "ru": "Использование газа",
+    "ko": "가스 사용"
   },
   "decimals": 4,
   "units": {
     "en": "m³ /hr",
-    "nl": "m³ /uur"
+    "nl": "m³ /uur",
+    "da": "m³ /t",
+    "de": "m³ /h",
+    "es": "m³ /hr",
+    "fr": "m³ /h",
+    "it": "m³ /h",
+    "no": "m³ /t",
+    "sv": "m³ /h",
+    "pl": "m³ /h",
+    "ru": "м³ /ч",
+    "ko": "m³ /시간"
   },
   "getable": true,
   "setable": false,

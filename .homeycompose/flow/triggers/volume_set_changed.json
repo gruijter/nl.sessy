@@ -1,24 +1,44 @@
 {
-	"title": {
-		"en": "The max noise level changed",
-		"nl": "Het max geluidsniveau is veranderd"
-	},
-	"args": [
-		{
-				"type": "device",
-				"name": "device",
-				"filter": "driver_id=sessy"
-		}
-	],
-	"tokens": [
-		{
-			"name": "volume_set",
-			"type": "number",
-			"title": { 
-				"en": "Max noise level",
-				"nl": "Max geluidsniveau"
-			},
-			"example": 3
-		}
-	]
+  "title": {
+    "en": "The max noise level changed",
+    "nl": "Het max geluidsniveau is veranderd",
+    "da": "Det maksimale støjniveau er ændret",
+    "de": "Das maximale Geräuschlevel wurde geändert",
+    "es": "El nivel máximo de ruido cambió",
+    "fr": "Le niveau de bruit maximal a changé",
+    "it": "Il livello massimo di rumore è cambiato",
+    "no": "Det maksimale støynivået er endret",
+    "sv": "Den maximala ljudnivån har förändrats",
+    "pl": "Maksymalny poziom hałasu zmienił się",
+    "ru": "Максимальный уровень шума изменился",
+    "ko": "최대 소음 수준이 변경되었습니다"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "volume_set",
+      "type": "number",
+      "title": {
+        "en": "Max noise level",
+        "nl": "Max geluidsniveau",
+        "da": "Maksimalt støjniveau",
+        "de": "Maximales Geräuschlevel",
+        "es": "Nivel máximo de ruido",
+        "fr": "Niveau de bruit maximal",
+        "it": "Livello massimo di rumore",
+        "no": "Maksimalt støynivå",
+        "sv": "Maximal ljudnivå",
+        "pl": "Maksymalny poziom hałasu",
+        "ru": "Максимальный уровень шума",
+        "ko": "최대 소음 수준"
+      },
+      "example": 3
+    }
+  ]
 }

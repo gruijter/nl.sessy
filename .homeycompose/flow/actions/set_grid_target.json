@@ -1,34 +1,77 @@
 {
-	"title": {
-		"en": "Set XOM Grid target power",
-		"nl": "Zet XOM Net doelvermogen"
-	},
-		"units": {
-		"en": "Watt"
-	},
-		"titleFormatted": {
-				"en": "Set XOM Grid target power to [[gridTarget]] W",
-				"nl": "Zet XOM Net doelvermogen op [[gridTarget]] W"
-		},
-		"hint": { 
-				"en": "Power to subtract from the measured power of the meter. THIS ONLY AFFECTS SESSY XOM CONTROL MODE!",
-				"nl": "Vermogen af te trekken van het gemeten meter vermogen. DIT HEEFT ALLEEN INVLOED OP SESSY XOM BESTURINGSMODUS!"
-		},
-		"highlight": true,
-		"args": [
-				{
-						"type": "device",
-						"name": "device",
-						"filter": "driver_id=p1|ct"
-				},
-				{
-						"type": "number",
-						"name": "gridTarget",
-						"title": { "en": "XOM Target power", "nl": "XOM Doelvermogen" },
-						"step": 1,
-						"value": 0,
-						"label": " Watt",
-						"labelDecimals": 0
-				}
-		]
+  "title": {
+    "en": "Set XOM Grid target power",
+    "nl": "Zet XOM Net doelvermogen",
+    "da": "Indstil XOM Net mål effekt",
+    "de": "XOM-Netz-Zielleistung einstellen",
+    "es": "Establecer la potencia objetivo de la red XOM",
+    "fr": "Définir la puissance cible du réseau XOM",
+    "it": "Imposta la potenza target della rete XOM",
+    "no": "Sett XOM-nettets målverdi",
+    "sv": "Ställ in XOM-nätets mål effekt",
+    "pl": "Ustaw docelową moc sieci XOM",
+    "ru": "Установите целевую мощность сети XOM",
+    "ko": "XOM 그리드 목표 전력 설정"
+  },
+  "units": {
+    "en": "Watt"
+  },
+  "titleFormatted": {
+    "en": "Set XOM Grid target power to [[gridTarget]] W",
+    "nl": "Zet XOM Net doelvermogen op [[gridTarget]] W",
+    "da": "Indstil XOM Net mål effekt til [[gridTarget]] W",
+    "de": "XOM-Netz-Zielleistung auf [[gridTarget]] W einstellen",
+    "es": "Establecer la potencia objetivo de la red XOM en [[gridTarget]] W",
+    "fr": "Définir la puissance cible du réseau XOM à [[gridTarget]] W",
+    "it": "Imposta la potenza target della rete XOM a [[gridTarget]] W",
+    "no": "Sett XOM-netts målverdi til [[gridTarget]] W",
+    "sv": "Ställ in XOM-nätets mål effekt till [[gridTarget]] W",
+    "pl": "Ustaw docelową moc sieci XOM na [[gridTarget]] W",
+    "ru": "Установите целевую мощность сети XOM на [[gridTarget]] W",
+    "ko": "[[gridTarget]] W로 XOM 그리드 목표 전력 설정"
+  },
+  "hint": {
+    "en": "Power to subtract from the measured power of the meter. THIS ONLY AFFECTS SESSY XOM CONTROL MODE!",
+    "nl": "Vermogen af te trekken van het gemeten meter vermogen. DIT HEEFT ALLEEN INVLOED OP SESSY XOM BESTURINGSMODUS!",
+    "da": "Effekt at trække fra den målte effekt fra måleren. DETTE PÅVIRKER KUN SESSY XOM KONTROLMODUS!",
+    "de": "Leistung, die von der gemessenen Leistung des Messgeräts subtrahiert werden soll. DIES BEINFLUSST NUR DEN SESSY XOM STEUERMODUS!",
+    "es": "Potencia a restar de la potencia medida del medidor. ¡ESTO SOLO AFECTA AL MODO DE CONTROL SESSY XOM!",
+    "fr": "Puissance à soustraire à la puissance mesurée du compteur. CECI N'AFFECRE QUE LE MODE DE CONTRÔLE SESSY XOM !",
+    "it": "Potenza da sottrarre dalla potenza misurata dal misuratore. QUESTO INFLUENZA SOLO LA MODALITÀ DI CONTROLLO SESSY XOM!",
+    "no": "Effekt som skal trekkes fra den målte effekten til måleren. DETTE PÅVIRKER KUN SESSY XOM KONTROLLMODUS!",
+    "sv": "Effekt att dra av från den uppmätta effekten från mätaren. DETTA PÅVERKAR BARA SESSY XOM KONTROLMODET!",
+    "pl": "Moc do odjęcia od zmierzonej mocy licznika. TO WPŁYWA TYLKO NA TRYB KONTROLI SESSY XOM!",
+    "ru": "Мощность, которую нужно вычесть из измеренной мощности счетчика. ЭТО ВЛИЯЕТ ТОЛЬКО НА РЕЖИМ УПРАВЛЕНИЯ SESSY XOM!",
+    "ko": "계량기에서 측정된 전력에서 빼야 할 전력. 이것은 SESSY XOM 제어 모드에만 영향을 미칩니다!"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=p1|ct"
+    },
+    {
+      "type": "number",
+      "name": "gridTarget",
+      "title": {
+        "en": "XOM Target power",
+        "nl": "XOM Doelvermogen",
+        "da": "XOM Mål effekt",
+        "de": "XOM-Zielleistung",
+        "es": "Potencia objetivo de XOM",
+        "fr": "Puissance cible de XOM",
+        "it": "Potenza obiettivo XOM",
+        "no": "XOM Målverdi",
+        "sv": "XOM Mål effekt",
+        "pl": "Docelowa moc XOM",
+        "ru": "Целевая мощность XOM",
+        "ko": "XOM 목표 전력"
+      },
+      "step": 1,
+      "value": 0,
+      "label": " Watt",
+      "labelDecimals": 0
+    }
+  ]
 }

@@ -1,35 +1,78 @@
 {
-	"title": {
-		"en": "Set the minimum active power",
-		"nl": "Zet het minimale werkzame vermogen"
-	},
-		"units": {
-		"en": "Watt"
-	},
-		"titleFormatted": {
-				"en": "Set minimum power to [[setpoint]] W",
-				"nl": "Zet minimaal vermogen op [[setpoint]] W"
-		},
-		"hint": { 
-			"en": "Minimum power with which Sessy works. This setting works in all control modes! Default is 2200 Watts.",
-			"nl": "Minimaal vermogen waarmee Sessy werkzaam is. Deze instelling werkt in alle besturings modi! Standaard is 2200 Watt."
-		},
-		"args": [
-				{
-						"type": "device",
-						"name": "device",
-						"filter": "driver_id=sessy"
-				},
-				{
-						"type": "number",
-						"name": "setpoint",
-						"title": { "en": "Minimum power", "nl": "Minimaal vermogen" },
-						"min": 50,
-						"max": 2200,
-						"step": 1,
-						"value": 50,
-						"label": " Watt",
-						"labelDecimals": 0
-				}
-		]
+  "title": {
+    "en": "Set the minimum active power",
+    "nl": "Zet het minimale werkzame vermogen",
+    "da": "Sæt den minimale aktive effekt",
+    "de": "Setzen Sie die minimale aktive Leistung",
+    "es": "Establecer la potencia activa mínima",
+    "fr": "Définir la puissance active minimale",
+    "it": "Imposta la potenza attiva minima",
+    "no": "Sett den minimale aktive effekten",
+    "sv": "Ställ in den minimi aktiva effekten",
+    "pl": "Ustaw minimalną moc aktywną",
+    "ru": "Установите минимальную активную мощность",
+    "ko": "최소 활성 전력을 설정하세요"
+  },
+  "units": {
+    "en": "Watt"
+  },
+  "titleFormatted": {
+    "en": "Set minimum power to [[setpoint]] W",
+    "nl": "Zet minimaal vermogen op [[setpoint]] W",
+    "da": "Sæt minimumseffekten til [[setpoint]] W",
+    "de": "Setzen Sie die Mindestleistung auf [[setpoint]] W",
+    "es": "Establecer la potencia mínima en [[setpoint]] W",
+    "fr": "Régler la puissance minimale sur [[setpoint]] W",
+    "it": "Imposta la potenza minima su [[setpoint]] W",
+    "no": "Sett minimumseffekten til [[setpoint]] W",
+    "sv": "Ställ in den minimi effekten på [[setpoint]] W",
+    "pl": "Ustaw minimalną moc na [[setpoint]] W",
+    "ru": "Установите минимальную мощность на [[setpoint]] W",
+    "ko": "[[setpoint]] W로 최소 전력을 설정하세요"
+  },
+  "hint": {
+    "en": "Minimum power with which Sessy works. This setting works in all control modes! Default is 2200 Watts.",
+    "nl": "Minimaal vermogen waarmee Sessy werkzaam is. Deze instelling werkt in alle besturings modi! Standaard is 2200 Watt.",
+    "da": "Minimumseffekt, som Sessy arbejder med. Denne indstilling fungerer i alle kontroltilstande! Standard er 2200 watt.",
+    "de": "Mindestleistung, mit der Sessy arbeitet. Diese Einstellung funktioniert in allen Steuerungsmodi! Standard ist 2200 Watt.",
+    "es": "Potencia mínima con la que trabaja Sessy. ¡Esta configuración funciona en todos los modos de control! El valor predeterminado es 2200 vatios.",
+    "fr": "Puissance minimale avec laquelle Sessy fonctionne. Ce paramètre fonctionne dans tous les modes de contrôle ! La valeur par défaut est de 2200 watts.",
+    "it": "Potenza minima con cui Sessy lavora. Questa impostazione funziona in tutte le modalità di controllo! Il valore predefinito è 2200 watt.",
+    "no": "Minste effekten som Sessy arbeider med. Denne innstillingen fungerer i alle kontrollmoduser! Standard er 2200 watt.",
+    "sv": "Minimaleffekten som Sessy arbetar med. Denna inställning fungerar i alla kontrolllägen! Standard är 2200 watt.",
+    "pl": "Minimalna moc, z jaką działa Sessy. To ustawienie działa we wszystkich trybach sterowania! Domyślnie to 2200 watów.",
+    "ru": "Минимальная мощность, с которой работает Sessy. Эта настройка работает во всех режимах управления! По умолчанию 2200 ватт.",
+    "ko": "Sessy가 작동하는 최소 전력입니다. 이 설정은 모든 제어 모드에서 작동합니다! 기본값은 2200와트입니다."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    },
+    {
+      "type": "number",
+      "name": "setpoint",
+      "title": {
+        "en": "Minimum power",
+        "nl": "Minimaal vermogen",
+        "da": "Minimumseffekt",
+        "de": "Mindestleistung",
+        "es": "Potencia mínima",
+        "fr": "Puissance minimale",
+        "it": "Potenza minima",
+        "no": "Minsteffekt",
+        "sv": "Minimaleffekt",
+        "pl": "Minimalna moc",
+        "ru": "Минимальная мощность",
+        "ko": "최소 전력"
+      },
+      "min": 50,
+      "max": 2200,
+      "step": 1,
+      "value": 50,
+      "label": " Watt",
+      "labelDecimals": 0
+    }
+  ]
 }

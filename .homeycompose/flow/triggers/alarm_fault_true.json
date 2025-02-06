@@ -1,16 +1,24 @@
 {
-		"title": {
-				"en": "The fault Alarm turned Off",
-				"nl": "Het storing Alarm ging Uit"
-		},
-		"highlight": true,
-		"args": [
-				{
-						"type": "device",
-						"name": "device",
-						"filter": "driver_id=sessy|p1|ct"
-				}
-		]
+  "title": {
+    "en": "The fault Alarm turned Off",
+    "nl": "Het storing Alarm ging Uit",
+    "da": "Fejl Alarmen blev slukket",
+    "de": "Der Fehleralarm wurde ausgeschaltet",
+    "es": "La alarma de fallo se apagó",
+    "fr": "L'alarme de défaut a été désactivée",
+    "it": "L'allarme di guasto è stata spenta",
+    "no": "Feil Alarmen ble slått av",
+    "sv": "Felsignalen stängdes av",
+    "pl": "Alarm awarii został wyłączony",
+    "ru": "Сигнализация об ошибке отключена",
+    "ko": "오류 알람이 꺼졌습니다"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy|p1|ct"
+    }
+  ]
 }
-
-

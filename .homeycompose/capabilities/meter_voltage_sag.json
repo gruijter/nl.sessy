@@ -1,13 +1,23 @@
 {
-	"type": "number",
-	"title": {
-		"en": "Voltage sag count",
-		"nl": "Spanningsdip teller"
-	},
-	"decimals": 0,
-	"getable": true,
-	"setable": false,
-	"insights": true,
-	"uiComponent": "sensor",
-	"icon": "./assets/fault.svg"
+  "type": "number",
+  "title": {
+    "en": "Voltage sag count",
+    "nl": "Spanningsdip teller",
+    "da": "Spændingsfald tæller",
+    "de": "Spannungsabfallzähler",
+    "es": "Contador de caídas de voltaje",
+    "fr": "Compteur de creux de tension",
+    "it": "Contatore di cadute di tensione",
+    "no": "Spenningsfall teller",
+    "sv": "Spänningsfallräknare",
+    "pl": "Licznik spadków napięcia",
+    "ru": "Счетчик просадок напряжения",
+    "ko": "전압 강하 수"
+  },
+  "decimals": 0,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "./assets/fault.svg"
 }

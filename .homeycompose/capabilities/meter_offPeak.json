@@ -2,11 +2,31 @@
   "type": "boolean",
   "title": {
     "en": "Off-peak",
-    "nl": "Laag tarief"
+    "nl": "Laag tarief",
+    "da": "Lav tarif",
+    "de": "Niedertarif",
+    "es": "Tarifa baja",
+    "fr": "Tarif hors pointe",
+    "it": "Tariffa fuori picco",
+    "no": "Lav tariff",
+    "sv": "Lågt pris",
+    "pl": "Niski tarif",
+    "ru": "Тариф вне пиковых часов",
+    "ko": "비수기 요금"
   },
   "desc": {
     "en": "Is off-peak tarriff active?",
-    "nl": "Is laag tarief actief?"
+    "nl": "Is laag tarief actief?",
+    "da": "Er lav tarif aktiv?",
+    "de": "Ist der Niedertarif aktiv?",
+    "es": "¿Está activa la tarifa baja?",
+    "fr": "Le tarif hors pointe est-il actif ?",
+    "it": "La tariffa fuori picco è attiva?",
+    "no": "Er lav tarif aktiv?",
+    "sv": "Är lågt pris aktivt?",
+    "pl": "Czy niski tarif jest aktywny?",
+    "ru": "Активен ли тариф вне пиковых часов?",
+    "ko": "비수기 요금이 활성화되어 있습니까?"
   },
   "getable": true,
   "setable": false,

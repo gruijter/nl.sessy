@@ -1,66 +1,170 @@
 {
-	"title": {
-		"en": "Set the control mode",
-		"nl": "Zet de besturingsmodus"
-	},
-		"titleFormatted": {
-				"en": "Set Sessy control mode to [[controlStrategy]]",
-				"nl": "Zet Sessy besturingsmodus op [[controlStrategy]]"
-		},
-		"hint": { 
-				"en": "Only when set to 'HOMEY' it is possible to control Sessy from Homey.",
-				"nl": "Alleen wanneer ingesteld op 'HOMEY' kan Sessy worden bestuurd door Homey."
-		},
-		"highlight": true,
-		"args": [
-				{
-					"type": "device",
-					"name": "device",
-					"filter": "driver_id=sessy"
-				},
-				{
-					"type": "dropdown",
-					"name": "controlStrategy",
-					"title": { "en": "Control mode", "nl": "Besturingsmodus" },
-					"values": [
-						{
-							"id": "POWER_STRATEGY_API",
-							"title": {
-								"en": "HOMEY"
-							}
-						},
-						{
-							"id": "POWER_STRATEGY_NOM",
-							"title": {
-									"en": "SESSY XOM (!)"
-							}
-						},
-						{
-							"id": "POWER_STRATEGY_ROI",
-							"title": {
-									"en": "SESSY ROI (!)"
-							}
-						},
-						{
-							"id": "POWER_STRATEGY_ECO",
-							"title": {
-									"en": "SESSY ECO (!)"
-							}
-						},
-						{
-							"id": "POWER_STRATEGY_SESSY_CONNECT",
-							"title": {
-									"en": "SESSY CONNECT (!)"
-							}
-						},
-						{
-							"id": "POWER_STRATEGY_IDLE",
-							"title": {
-								"en": "IDLE (!)"
-							}
-						}
-					],
-					"value": "POWER_STRATEGY_API"
-				}
-		]
+  "title": {
+    "en": "Set the control mode",
+    "nl": "Zet de besturingsmodus",
+    "da": "Indstil kontroltilstand",
+    "de": "Steuerungsmodus festlegen",
+    "es": "Establecer el modo de control",
+    "fr": "Définir le mode de contrôle",
+    "it": "Imposta la modalità di controllo",
+    "no": "Sett kontrollmodus",
+    "sv": "Ställ in kontrolläge",
+    "pl": "Ustaw tryb sterowania",
+    "ru": "Установить режим управления",
+    "ko": "제어 모드 설정"
+  },
+  "titleFormatted": {
+    "en": "Set Sessy control mode to [[controlStrategy]]",
+    "nl": "Zet Sessy besturingsmodus op [[controlStrategy]]",
+    "da": "Indstil Sessy kontroltilstand til [[controlStrategy]]",
+    "de": "Setzen Sie den Sessy-Steuerungsmodus auf [[controlStrategy]]",
+    "es": "Establecer el modo de control de Sessy a [[controlStrategy]]",
+    "fr": "Définir le mode de contrôle de Sessy sur [[controlStrategy]]",
+    "it": "Imposta la modalità di controllo Sessy su [[controlStrategy]]",
+    "no": "Sett Sessy kontrollmodus til [[controlStrategy]]",
+    "sv": "Ställ in Sessy kontrollläge till [[controlStrategy]]",
+    "pl": "Ustaw tryb sterowania Sessy na [[controlStrategy]]",
+    "ru": "Установить режим управления Sessy на [[controlStrategy]]",
+    "ko": "Sessy 제어 모드를 [[controlStrategy]]로 설정"
+  },
+  "hint": {
+    "en": "Only when set to 'HOMEY' it is possible to control Sessy from Homey.",
+    "nl": "Alleen wanneer ingesteld op 'HOMEY' kan Sessy worden bestuurd door Homey.",
+    "da": "Kun når det er indstillet til 'HOMEY', kan du kontrollere Sessy fra Homey.",
+    "de": "Nur wenn auf 'HOMEY' eingestellt, kann Sessy von Homey aus gesteuert werden.",
+    "es": "Solo cuando está configurado en 'HOMEY' es posible controlar Sessy desde Homey.",
+    "fr": "Ce n'est que lorsqu'il est réglé sur 'HOMEY' qu'il est possible de contrôler Sessy depuis Homey.",
+    "it": "Solo quando impostato su 'HOMEY' è possibile controllare Sessy da Homey.",
+    "no": "Bare når det er satt til 'HOMEY' er det mulig å kontrollere Sessy fra Homey.",
+    "sv": "Endast när det är inställt på 'HOMEY' är det möjligt att kontrollera Sessy från Homey.",
+    "pl": "Tylko gdy jest ustawione na 'HOMEY', można sterować Sessy z Homey.",
+    "ru": "Только при установке на 'HOMEY' можно управлять Sessy с Homey.",
+    "ko": "'HOMEY'로 설정된 경우에만 Sessy를 Homey에서 제어할 수 있습니다."
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    },
+    {
+      "type": "dropdown",
+      "name": "controlStrategy",
+      "title": {
+        "en": "Control mode",
+        "nl": "Besturingsmodus",
+        "da": "Kontroltilstand",
+        "de": "Steuerungsmodus",
+        "es": "Modo de control",
+        "fr": "Mode de contrôle",
+        "it": "Modalità di controllo",
+        "no": "Kontrollmodus",
+        "sv": "Kontrollläge",
+        "pl": "Tryb sterowania",
+        "ru": "Режим управления",
+        "ko": "제어 모드"
+      },
+      "values": [
+        {
+          "id": "POWER_STRATEGY_API",
+          "title": {
+            "en": "HOMEY",
+            "nl": "HOMEY",
+            "da": "HOMEY",
+            "de": "HOMEY",
+            "es": "HOMEY",
+            "fr": "HOMEY",
+            "it": "HOMEY",
+            "no": "HOMEY",
+            "sv": "HOMEY",
+            "pl": "HOMEY",
+            "ru": "HOMEY",
+            "ko": "HOMEY"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_NOM",
+          "title": {
+            "en": "SESSY XOM (!)",
+            "da": "SESSY XOM (!)",
+            "de": "SESSY XOM (!)",
+            "es": "SESSY XOM (!)",
+            "fr": "SESSY XOM (!)",
+            "it": "SESSY XOM (!)",
+            "no": "SESSY XOM (!)",
+            "sv": "SESSY XOM (!)",
+            "pl": "SESSY XOM (!)",
+            "ru": "SESSY XOM (!)",
+            "ko": "SESSY XOM (!)"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_ROI",
+          "title": {
+            "en": "SESSY ROI (!)",
+            "da": "SESSY ROI (!)",
+            "de": "SESSY ROI (!)",
+            "es": "SESSY ROI (!)",
+            "fr": "SESSY ROI (!)",
+            "it": "SESSY ROI (!)",
+            "no": "SESSY ROI (!)",
+            "sv": "SESSY ROI (!)",
+            "pl": "SESSY ROI (!)",
+            "ru": "SESSY ROI (!)",
+            "ko": "SESSY ROI (!)"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_ECO",
+          "title": {
+            "en": "SESSY ECO (!)",
+            "da": "SESSY ECO (!)",
+            "de": "SESSY ECO (!)",
+            "es": "SESSY ECO (!)",
+            "fr": "SESSY ECO (!)",
+            "it": "SESSY ECO (!)",
+            "no": "SESSY ECO (!)",
+            "sv": "SESSY ECO (!)",
+            "pl": "SESSY ECO (!)",
+            "ru": "SESSY ECO (!)",
+            "ko": "SESSY ECO (!)"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_SESSY_CONNECT",
+          "title": {
+            "en": "SESSY CONNECT (!)",
+            "da": "SESSY CONNECT (!)",
+            "de": "SESSY CONNECT (!)",
+            "es": "SESSY CONNECT (!)",
+            "fr": "SESSY CONNECT (!)",
+            "it": "SESSY CONNECT (!)",
+            "no": "SESSY CONNECT (!)",
+            "sv": "SESSY CONNECT (!)",
+            "pl": "SESSY CONNECT (!)",
+            "ru": "SESSY CONNECT (!)",
+            "ko": "SESSY CONNECT (!)"
+          }
+        },
+        {
+          "id": "POWER_STRATEGY_IDLE",
+          "title": {
+            "en": "IDLE (!)",
+            "da": "IDLE (!)",
+            "de": "IDLE (!)",
+            "es": "IDLE (!)",
+            "fr": "IDLE (!)",
+            "it": "IDLE (!)",
+            "no": "IDLE (!)",
+            "sv": "IDLE (!)",
+            "pl": "IDLE (!)",
+            "ru": "IDLE (!)",
+            "ko": "IDLE (!) "
+          }
+        }
+      ],
+      "value": "POWER_STRATEGY_API"
+    }
+  ]
 }

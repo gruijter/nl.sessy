@@ -1,5 +1,5 @@
 /*
-Copyright 2023 - 2024, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2025, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -473,30 +473,32 @@ status p1 v2:
 
 Status response:
 {
-  status: 'ok',
-  sessy: {
-    state_of_charge: 0.38999998569488525,
-    power: -1932,
-    power_setpoint: -2200,
-    system_state: 'SYSTEM_STATE_RUNNING_SAFE',
-    system_state_details: '',
-    frequency: 50007
+  "status": "ok",
+  "sessy": {
+    "state_of_charge": 0.850000023841858,
+    "power": 0,
+    "power_setpoint": 0,
+    "system_state": "SYSTEM_STATE_STANDBY",
+    "system_state_details": "",
+    "frequency": 50030,
+    "inverter_current_ma": 0,
+    "strategy_overridden": true
   },
-  renewable_energy_phase1: { voltage_rms: 234591, current_rms: 1000, power: 234 },
-  renewable_energy_phase2: { voltage_rms: 0, current_rms: 0, power: 0 },
-  renewable_energy_phase3: { voltage_rms: 0, current_rms: 0, power: 0 }
-}
-{
-  status: 'ok',
-  sessy: {
-    state_of_charge: 0.38999998569488525,
-    power: -1932,
-    power_setpoint: -2200,
-    system_state: 'SYSTEM_STATE_RUNNING_SAFE'
+  "renewable_energy_phase1": {
+    "voltage_rms": 236686,
+    "current_rms": 472,
+    "power": 26
   },
-  renewable_energy_phase1: { voltage_rms: 234591, current_rms: 1000, power: 234 },
-  renewable_energy_phase2: { voltage_rms: 0, current_rms: 0, power: 0 },
-  renewable_energy_phase3: { voltage_rms: 0, current_rms: 0, power: 0 }
+  "renewable_energy_phase2": {
+    "voltage_rms": 0,
+    "current_rms": 0,
+    "power": 0
+  },
+  "renewable_energy_phase3": {
+    "voltage_rms": 0,
+    "current_rms": 0,
+    "power": 0
+  }
 }
 
 system Info Sessy:

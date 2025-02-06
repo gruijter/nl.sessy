@@ -1,16 +1,27 @@
 {
-	"title": {
-		"en": "UNUSED"
-	},
-		"units": {
-		"en": ""
-	},
-	"deprecated": true,
-	"args": [
-			{
-					"type": "device",
-					"name": "device",
-					"filter": "driver_id=sessy"
-			}
-		]
+  "title": {
+    "en": "UNUSED",
+    "nl": "ONGEBRUIKT",
+    "da": "UBRUGT",
+    "de": "UNBENUTZT",
+    "es": "NO UTILIZADO",
+    "fr": "NON UTILISÉ",
+    "it": "NON UTILIZZATO",
+    "no": "UBRUKT",
+    "sv": "OBRUKAD",
+    "pl": "NIEUŻYWANY",
+    "ru": "НЕ ИСПОЛЬЗУЕТСЯ",
+    "ko": "사용되지 않음"
+  },
+  "units": {
+    "en": ""
+  },
+  "deprecated": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    }
+  ]
 }

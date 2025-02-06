@@ -8,7 +8,12 @@
     "no": "Pris +5T",
     "fr": "Tarif +5h",
     "dk": "Pris +5T",
-    "nl": "Prijs +5U"
+    "nl": "Prijs +5U",
+    "es": "Precio +5H",
+    "pl": "Cena +5H",
+    "ru": "Цена +5Ч",
+    "ko": "가격 +5H",
+    "da": "Pris +5H"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

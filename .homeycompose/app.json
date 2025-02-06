@@ -1,6 +1,6 @@
 {
   "id": "nl.sessy",
-  "version": "2.6.0",
+  "version": "2.7.1",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -12,7 +12,17 @@
   "brandColor": "#662abd",
   "description": {
     "en": "Your smart battery at home.",
-    "nl": "Je slimme batterij in huis."
+    "nl": "Je slimme batterij in huis.",
+    "da": "Dit er dit smarte batteri derhjemme.",
+    "de": "Ihr intelligentes Batterie zu Hause.",
+    "es": "Tu batería inteligente en casa.",
+    "fr": "Votre batterie intelligente à la maison.",
+    "it": "La tua batteria intelligente a casa.",
+    "no": "Ditt smarte batteri hjemme.",
+    "sv": "Ditt smarta batteri hemma.",
+    "pl": "Twoja inteligentna bateria w domu.",
+    "ru": "Ваша умная батарея дома.",
+    "ko": "집에 있는 스마트 배터리."
   },
   "tags": {
     "en": [
@@ -24,6 +34,56 @@
       "thuisbatterij",
       "powerwall",
       "opslag"
+    ],
+    "da": [
+      "batteri",
+      "powerwall",
+      "opbevaring"
+    ],
+    "de": [
+      "Batterie",
+      "Powerwall",
+      "Speicher"
+    ],
+    "es": [
+      "batería",
+      "powerwall",
+      "almacenamiento"
+    ],
+    "fr": [
+      "batterie",
+      "powerwall",
+      "stockage"
+    ],
+    "it": [
+      "batteria",
+      "powerwall",
+      "stoccaggio"
+    ],
+    "no": [
+      "batteri",
+      "powerwall",
+      "lagring"
+    ],
+    "sv": [
+      "batteri",
+      "powerwall",
+      "lagring"
+    ],
+    "pl": [
+      "bateria",
+      "powerwall",
+      "magazynowanie"
+    ],
+    "ru": [
+      "батарея",
+      "powerwall",
+      "хранение"
+    ],
+    "ko": [
+      "배터리",
+      "파워월",
+      "저장"
     ]
   },
   "category": [

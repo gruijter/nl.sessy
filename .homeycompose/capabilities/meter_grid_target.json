@@ -1,17 +1,27 @@
 {
-	"type": "number",
-	"title": {
-		"en": "XOM Grid target power",
-		"nl": "XOM Net doelvermogen"
-	},
-	"units": {
-		"en": "W"
-	},
-	"step": 1,
-	"decimals": 0,
-	"getable": true,
-	"setable": true,
-	"insights": true,
-	"uiComponent": "sensor",
-	"icon": "./assets/charge_setpoint.svg"
+  "type": "number",
+  "title": {
+    "en": "XOM Grid target power",
+    "nl": "XOM Net doelvermogen",
+    "da": "XOM Netmål effekt",
+    "de": "XOM Netz-Zielleistung",
+    "es": "Potencia objetivo de red XOM",
+    "fr": "Puissance cible du réseau XOM",
+    "it": "Potenza target della rete XOM",
+    "no": "XOM Mål for nettstrøm",
+    "sv": "XOM Mål kraft",
+    "pl": "Docelowa moc sieciowa XOM",
+    "ru": "Целевая мощность сети XOM",
+    "ko": "XOM 그리드 목표 전력"
+  },
+  "units": {
+    "en": "W"
+  },
+  "step": 1,
+  "decimals": 0,
+  "getable": true,
+  "setable": true,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "./assets/charge_setpoint.svg"
 }

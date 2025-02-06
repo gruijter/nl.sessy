@@ -1,7 +1,17 @@
 {
   "title": {
-      "en": "Tariff has changed",
-      "nl": "Tarief is gewijzigd"
+    "en": "Tariff has changed",
+    "nl": "Tarief is gewijzigd",
+    "da": "Tariffen er ændret",
+    "de": "Tarif hat sich geändert",
+    "es": "El tarif ha cambiado",
+    "fr": "Le tarif a changé",
+    "it": "La tariffa è cambiata",
+    "no": "Tariffen har endret seg",
+    "sv": "Tariffen har ändrats",
+    "pl": "Taryfa się zmieniła",
+    "ru": "Тариф изменился",
+    "ko": "요금이 변경되었습니다"
   },
   "tokens": [
     {
@@ -9,16 +19,26 @@
       "type": "boolean",
       "title": {
         "en": "off peak",
-        "nl": "dal"
+        "nl": "dal",
+        "da": "lavt forbrug",
+        "de": "Nebentarif",
+        "es": "horario no pico",
+        "fr": "heures creuses",
+        "it": "bassa stagione",
+        "no": "lavpriskapasitet",
+        "sv": "lågsäsong",
+        "pl": "poza szczytem",
+        "ru": "внепиковый",
+        "ko": "비혼잡 시간"
       },
       "example": true
     }
   ],
   "args": [
-      {
-          "type": "device",
-          "name": "device",
-          "filter": "driver_id=p1"
-      }
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=p1"
+    }
   ]
 }

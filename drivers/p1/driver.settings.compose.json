@@ -1,154 +1,354 @@
 [
-	{
-		"type": "group",
-		"label": {
-				"en": "Meter information",
-				"nl": "Meter informatie"
-		},
-		"children": [
-			{
-				"id": "id",
-				"type": "label",
-				"label": {
-						"en": "Meter ID",
-						"nl": "Meter ID"
-				},
-				"value": ""
-			},
-			{
-				"id": "DSMR",
-				"type": "label",
-				"label": {
-						"en": "DSMR version",
-						"nl": "DSMR versie"
-				},
-				"value": ""
-			},
-			{
-				"id": "fwDongle",
-				"type": "label",
-				"label": {
-						"en": "Firmware Dongle",
-						"nl": "Firmware Dongel"
-				},
-				"value": ""
-			}
-		]
-	},
-	{
-		"type": "group",
-		"label": {
-				"en": "Cloud connection settings",
-				"nl": "Cloud verbinding instellingen"
-		},
-		"children": [	
-			{
-				"id": "username_portal",
-				"type": "label",
-				"label": {
-						"en": "Sessy portal username",
-						"nl": "Sessy portal gebruikersnaam"
-				},
-				"value": "NOT USED"
-			},
-			{
-				"id": "password_portal",
-				"type": "label",
-				"label": {
-					"en": "Sessy portal password",
-					"nl": "Sessy portal wachtwoord"
-				},
-				"value": "NOT USED"
-			}
-		]
-	},
-	{
-		"type": "group",
-		"label": {
-				"en": "Local connection settings (Homey PRO)",
-				"nl": "Lokale verbinding instellingen (Homey PRO)"
-		},
-		"children": [	
-			{
-				"id": "host",
-				"type": "text",
-				"label": {
-						"en": "URL or IP address",
-						"nl": "URL of IP adres"
-				},
-				"hint": {
-					"en": "IP address of the dongle.",
-					"nl": "IP adres van de dongel."
-				},
-				"value": ""
-			},
-			{
-				"id": "port",
-				"type": "number",
-				"label": {
-						"en": "Port",
-						"nl": "Poort"
-				},
-				"hint": {
-					"en": "Default is 80.",
-					"nl": "Standaard is 80."
-				},
-				"value": 80
-			},
-			{
-				"id": "use_mdns",
-				"type": "checkbox",
-				"label": {
-						"en": "Use mDNS for adress",
-						"nl": "Gebruik mDNS voor adres"
-				},
-				"hint": {
-					"en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
-					"nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund."
-				},
-				"value": false
-			},
-			{
-				"id": "sn_dongle",
-				"type": "text",
-				"label": {
-						"en": "Dongle S/N",
-						"nl": "Dongel S/N"
-				},
-				"hint": {
-					"en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
-					"nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten."
-				},
-				"value": ""
-			},
-			{
-				"id": "password_dongle",
-				"type": "password",
-				"label": {
-						"en": "Dongle Password",
-						"nl": "Dongel Wachtwoord"
-				},
-				"hint": {
-					"en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
-					"nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten."
-				},
-				"value": ""
-			},
-			{
-				"id": "pollingInterval",
-				"type": "number",
-				"label": {
-						"en": "Update interval (s)",
-						"nl": "Update interval (s)"
-				},
-				"hint": {
-					"en": "A lower value provides faster updates in Homey.",
-					"nl": "Een lagere waarde geeft snellere updates in Homey."
-				},
-				"min": 1,
-				"max": 300,
-				"value": 10
-			}
-		]
-	}
+  {
+    "type": "group",
+    "label": {
+      "en": "Meter information",
+      "nl": "Meter informatie",
+      "da": "Meter information",
+      "de": "Zählerinformationen",
+      "es": "Información del medidor",
+      "fr": "Informations sur le compteur",
+      "it": "Informazioni sul contatore",
+      "no": "Målerinformasjon",
+      "sv": "Mätarinformation",
+      "pl": "Informacje o liczniku",
+      "ru": "Информация о счётчике",
+      "ko": "계량기 정보"
+    },
+    "children": [
+      {
+        "id": "id",
+        "type": "label",
+        "label": {
+          "en": "Meter ID",
+          "nl": "Meter ID",
+          "da": "Måler ID",
+          "de": "Zähler-ID",
+          "es": "ID del medidor",
+          "fr": "ID du compteur",
+          "it": "ID del contatore",
+          "no": "Måler ID",
+          "sv": "Mätares ID",
+          "pl": "ID licznika",
+          "ru": "ID счетчика",
+          "ko": "계량기 ID"
+        },
+        "value": ""
+      },
+      {
+        "id": "DSMR",
+        "type": "label",
+        "label": {
+          "en": "DSMR version",
+          "nl": "DSMR versie",
+          "da": "DSMR version",
+          "de": "DSMR-Version",
+          "es": "Versión DSMR",
+          "fr": "Version DSMR",
+          "it": "Versione DSMR",
+          "no": "DSMR versjon",
+          "sv": "DSMR-version",
+          "pl": "Wersja DSMR",
+          "ru": "Версия DSMR",
+          "ko": "DSMR 버전"
+        },
+        "value": ""
+      },
+      {
+        "id": "fwDongle",
+        "type": "label",
+        "label": {
+          "en": "Firmware Dongle",
+          "nl": "Firmware Dongel",
+          "da": "Firmware Dongle",
+          "de": "Firmware-Dongle",
+          "es": "Firmware del dongle",
+          "fr": "Firmware du dongle",
+          "it": "Firmware del dongle",
+          "no": "Firmware dongle",
+          "sv": "Firmware-dongel",
+          "pl": "Oprogramowanie dongle",
+          "ru": "Прошивка донгла",
+          "ko": "펌웨어 동글"
+        },
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Cloud connection settings",
+      "nl": "Cloud verbinding instellingen",
+      "da": "Cloud forbindelse indstillinger",
+      "de": "Cloud-Verbindungseinstellungen",
+      "es": "Configuración de conexión a la nube",
+      "fr": "Paramètres de connexion au cloud",
+      "it": "Impostazioni di connessione al cloud",
+      "no": "Cloud tilkoblingsinnstillinger",
+      "sv": "Inställningar för molnanslutning",
+      "pl": "Ustawienia połączenia z chmurą",
+      "ru": "Настройки подключения к облаку",
+      "ko": "클라우드 연결 설정"
+    },
+    "children": [
+      {
+        "id": "username_portal",
+        "type": "label",
+        "label": {
+          "en": "Sessy portal username",
+          "nl": "Sessy portal gebruikersnaam",
+          "da": "Sessy portal-brugernavn",
+          "de": "Sessy-Portal-Benutzername",
+          "es": "Nombre de usuario del portal Sessy",
+          "fr": "Nom d'utilisateur du portail Sessy",
+          "it": "Nome utente del portale Sessy",
+          "no": "Sessy portal brukernavn",
+          "sv": "Sessy portalanvändarnamn",
+          "pl": "Nazwa użytkownika portalu Sessy",
+          "ru": "Имя пользователя портала Sessy",
+          "ko": "Sessy 포털 사용자 이름"
+        },
+        "value": "NOT USED"
+      },
+      {
+        "id": "password_portal",
+        "type": "label",
+        "label": {
+          "en": "Sessy portal password",
+          "nl": "Sessy portal wachtwoord",
+          "da": "Sessy portal-adgangskode",
+          "de": "Sessy-Portal-Passwort",
+          "es": "Contraseña del portal Sessy",
+          "fr": "Mot de passe du portail Sessy",
+          "it": "Password del portale Sessy",
+          "no": "Sessy portalkode",
+          "sv": "Sessy portalkod",
+          "pl": "Hasło do portalu Sessy",
+          "ru": "Пароль для портала Sessy",
+          "ko": "Sessy 포털 비밀번호"
+        },
+        "value": "NOT USED"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Local connection settings (Homey PRO)",
+      "nl": "Lokale verbinding instellingen (Homey PRO)",
+      "da": "Lokale forbindelsesindstillinger (Homey PRO)",
+      "de": "Lokale Verbindungseinstellungen (Homey PRO)",
+      "es": "Configuración de conexión local (Homey PRO)",
+      "fr": "Paramètres de connexion locale (Homey PRO)",
+      "it": "Impostazioni di connessione locale (Homey PRO)",
+      "no": "Lokale tilkoblingsinnstillinger (Homey PRO)",
+      "sv": "Inställningar för lokal anslutning (Homey PRO)",
+      "pl": "Ustawienia połączenia lokalnego (Homey PRO)",
+      "ru": "Настройки локального подключения (Homey PRO)",
+      "ko": "로컬 연결 설정 (Homey PRO)"
+    },
+    "children": [
+      {
+        "id": "host",
+        "type": "text",
+        "label": {
+          "en": "URL or IP address",
+          "nl": "URL of IP adres",
+          "da": "URL eller IP-adresse",
+          "de": "URL oder IP-Adresse",
+          "es": "URL o dirección IP",
+          "fr": "URL ou adresse IP",
+          "it": "URL o indirizzo IP",
+          "no": "URL eller IP-adresse",
+          "sv": "URL eller IP-adress",
+          "pl": "URL lub adres IP",
+          "ru": "URL или IP-адрес",
+          "ko": "URL 또는 IP 주소"
+        },
+        "hint": {
+          "en": "IP address of the dongle.",
+          "nl": "IP adres van de dongel.",
+          "da": "IP-adressen til donglen.",
+          "de": "IP-Adresse des Dongles.",
+          "es": "Dirección IP del dongle.",
+          "fr": "Adresse IP du dongle.",
+          "it": "Indirizzo IP del dongle.",
+          "no": "IP-adressen til donglen.",
+          "sv": "IP-adress för dongeln.",
+          "pl": "Adres IP dongle.",
+          "ru": "IP-адрес донгла.",
+          "ko": "동글의 IP 주소."
+        },
+        "value": ""
+      },
+      {
+        "id": "port",
+        "type": "number",
+        "label": {
+          "en": "Port",
+          "nl": "Poort",
+          "da": "Port",
+          "de": "Port",
+          "es": "Puerto",
+          "fr": "Port",
+          "it": "Porta",
+          "no": "Port",
+          "sv": "Port",
+          "pl": "Port",
+          "ru": "Порт",
+          "ko": "포트"
+        },
+        "hint": {
+          "en": "Default is 80.",
+          "nl": "Standaard is 80.",
+          "da": "Standard er 80.",
+          "de": "Standard ist 80.",
+          "es": "El valor predeterminado es 80.",
+          "fr": "Par défaut, c'est 80.",
+          "it": "Il valore predefinito è 80.",
+          "no": "Standard er 80.",
+          "sv": "Standard är 80.",
+          "pl": "Domyślnie ustawione na 80.",
+          "ru": "По умолчанию - 80.",
+          "ko": "기본값은 80입니다."
+        },
+        "value": 80
+      },
+      {
+        "id": "use_mdns",
+        "type": "checkbox",
+        "label": {
+          "en": "Use mDNS for address",
+          "nl": "Gebruik mDNS voor adres",
+          "da": "Brug mDNS til adresse",
+          "de": "Verwenden Sie mDNS für die Adresse",
+          "es": "Usar mDNS para la dirección",
+          "fr": "Utiliser mDNS pour l'adresse",
+          "it": "Usa mDNS per l'indirizzo",
+          "no": "Bruk mDNS for adressen",
+          "sv": "Använd mDNS för adress",
+          "pl": "Użyj mDNS dla adresu",
+          "ru": "Использовать mDNS для адреса",
+          "ko": "주소에 mDNS 사용"
+        },
+        "hint": {
+          "en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
+          "nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund.",
+          "da": "Når det er aktiveret, bruges mDNS til automatisk at opdatere IP-adressen, når den ændres. Dette fungerer kun, hvis dit netværk understøtter mDNS.",
+          "de": "Wenn aktiviert, wird mDNS verwendet, um die IP-Adresse automatisch zu aktualisieren, wenn sie sich ändert. Dies funktioniert nur, wenn Ihr Netzwerk mDNS unterstützt.",
+          "es": "Cuando está habilitado, mDNS se utilizará para actualizar automáticamente la dirección IP cuando cambie. Esto solo funciona si su red admite mDNS.",
+          "fr": "Lorsqu'il est activé, mDNS sera utilisé pour mettre à jour automatiquement l'adresse IP lorsqu'elle change. Cela ne fonctionne que si votre réseau prend en charge mDNS.",
+          "it": "Quando abilitato, mDNS verrà utilizzato per aggiornare automaticamente l'indirizzo IP quando cambia. Questo funziona solo se la tua rete supporta mDNS.",
+          "no": "Når det er aktivert, vil mDNS bli brukt til å oppdatere IP-adressen automatisk når den endres. Dette fungerer bare hvis nettverket ditt støtter mDNS.",
+          "sv": "När den är aktiverad används mDNS för att automatiskt uppdatera IP-adressen när den ändras. Detta fungerar bara om ditt nätverk stöder mDNS.",
+          "pl": "Po włączeniu mDNS zostanie użyty do automatycznej aktualizacji adresu IP po zmianie. Działa to tylko wtedy, gdy Twoja sieć obsługuje mDNS.",
+          "ru": "Если включить, mDNS будет использоваться для автоматического обновления IP-адреса при его изменении. Это работает только в том случае, если ваша сеть поддерживает mDNS.",
+          "ko": "활성화되면 mDNS는 IP 주소가 변경될 때 자동으로 업데이트하는 데 사용됩니다. 이는 네트워크가 mDNS를 지원하는 경우에만 작동합니다."
+        },
+        "value": false
+      },
+      {
+        "id": "sn_dongle",
+        "type": "text",
+        "label": {
+          "en": "Dongle S/N",
+          "nl": "Dongel S/N",
+          "da": "Dongle S/N",
+          "de": "Dongle S/N",
+          "es": "Dongle S/N",
+          "fr": "S/N du dongle",
+          "it": "Dongle S/N",
+          "no": "Dongle S/N",
+          "sv": "Dongle S/N",
+          "pl": "S/N dongla",
+          "ru": "S/N донгла",
+          "ko": "동글 S/N"
+        },
+        "hint": {
+          "en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+          "nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten.",
+          "da": "Som trykt på dongle-klistermærket. Bemærk: kun nødvendigt for SESSY XOM eller for at genstarte donglen via et flow.",
+          "de": "Wie auf dem Dongle-Aufkleber gedruckt. Hinweis: nur erforderlich für SESSY XOM oder um den Dongle über einen Flow neu zu starten.",
+          "es": "Como se imprime en la etiqueta del dongle. Nota: solo necesario para SESSY XOM o para reiniciar el dongle a través de un flujo.",
+          "fr": "Tel qu'imprimé sur l'étiquette du dongle. Remarque : nécessaire uniquement pour SESSY XOM ou pour redémarrer le dongle via un flux.",
+          "it": "Come stampato sull'etichetta del dongle. Nota: necessario solo per SESSY XOM o per riavviare il dongle tramite un flusso.",
+          "no": "Som trykt på dongle-merket. Merk: kun nødvendig for SESSY XOM, eller for å starte donglen på nytt via en flyt.",
+          "sv": "Som tryckt på dongelklistret. Observera: endast nödvändigt för SESSY XOM eller för att starta om dongeln via ett flöde.",
+          "pl": "Jak na naklejce dongla. Uwaga: tylko potrzebne dla SESSY XOM lub do ponownego uruchomienia dongla za pomocą przepływu.",
+          "ru": "Как указано на наклейке донгла. Примечание: необходимо только для SESSY XOM или для перезагрузки донгла с помощью потока.",
+          "ko": "동글 스티커에 인쇄된 대로. 참고: SESSY XOM에만 필요하거나 흐름을 통해 동글을 재부팅하려는 경우에만 필요합니다."
+        },
+        "value": ""
+      },
+      {
+        "id": "password_dongle",
+        "type": "password",
+        "label": {
+          "en": "Dongle Password",
+          "nl": "Dongel Wachtwoord",
+          "da": "Dongle adgangskode",
+          "de": "Dongle-Passwort",
+          "es": "Contraseña del dongle",
+          "fr": "Mot de passe du dongle",
+          "it": "Password del dongle",
+          "no": "Dongle passord",
+          "sv": "Dongle-lösenord",
+          "pl": "Hasło dongla",
+          "ru": "Пароль донгла",
+          "ko": "동글 비밀번호"
+        },
+        "hint": {
+          "en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+          "nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten.",
+          "da": "Som trykt på dongle-klistermærket. Bemærk: kun nødvendigt for SESSY XOM eller for at genstarte donglen via et flow.",
+          "de": "Wie auf dem Dongle-Aufkleber gedruckt. Hinweis: nur erforderlich für SESSY XOM oder um den Dongle über einen Flow neu zu starten.",
+          "es": "Como se imprime en la etiqueta del dongle. Nota: solo necesario para SESSY XOM o para reiniciar el dongle a través de un flujo.",
+          "fr": "Tel qu'imprimé sur l'étiquette du dongle. Remarque : nécessaire uniquement pour SESSY XOM ou pour redémarrer le dongle via un flux.",
+          "it": "Come stampato sull'etichetta del dongle. Nota: necessario solo per SESSY XOM o per riavviare il dongle tramite un flusso.",
+          "no": "Som trykt på dongle-merket. Merk: kun nødvendig for SESSY XOM, eller for å starte donglen på nytt via en flyt.",
+          "sv": "Som tryckt på dongelklistret. Observera: endast nödvändigt för SESSY XOM eller för att starta om dongeln via ett flöde.",
+          "pl": "Jak na naklejce dongla. Uwaga: tylko potrzebne dla SESSY XOM lub do ponownego uruchomienia dongla za pomocą przepływu.",
+          "ru": "Как указано на наклейке донгла. Примечание: необходимо только для SESSY XOM или для перезагрузки донгла с помощью потока.",
+          "ko": "동글 스티커에 인쇄된 대로. 참고: SESSY XOM에만 필요하거나 흐름을 통해 동글을 재부팅하려는 경우에만 필요합니다."
+        },
+        "value": ""
+      },
+      {
+        "id": "pollingInterval",
+        "type": "number",
+        "label": {
+          "en": "Update interval (s)",
+          "nl": "Update interval (s)",
+          "da": "Opdateringsinterval (s)",
+          "de": "Aktualisierungsintervall (s)",
+          "es": "Intervalo de actualización (s)",
+          "fr": "Intervalle de mise à jour (s)",
+          "it": "Intervallo di aggiornamento (s)",
+          "no": "Oppdateringsintervall (s)",
+          "sv": "Uppdateringsintervall (s)",
+          "pl": "Interwał aktualizacji (s)",
+          "ru": "Интервал обновления (с)",
+          "ko": "업데이트 간격 (초)"
+        },
+        "hint": {
+          "en": "A lower value provides faster updates in Homey.",
+          "nl": "Een lagere waarde geeft snellere updates in Homey.",
+          "da": "En lavere værdi giver hurtigere opdateringer i Homey.",
+          "de": "Ein niedrigerer Wert sorgt für schnellere Updates in Homey.",
+          "es": "Un valor más bajo proporciona actualizaciones más rápidas en Homey.",
+          "fr": "Une valeur inférieure fournit des mises à jour plus rapides dans Homey.",
+          "it": "Un valore inferiore fornisce aggiornamenti più veloci in Homey.",
+          "no": "En lavere verdi gir raskere oppdateringer i Homey.",
+          "sv": "Ett lägre värde ger snabbare uppdateringar i Homey.",
+          "pl": "Niższa wartość zapewnia szybsze aktualizacje w Homey.",
+          "ru": "Меньшее значение обеспечивает более быструю обновление в Homey.",
+          "ko": "낮은 값은 Homey에서 더 빠른 업데이트를 제공합니다."
+        },
+        "min": 1,
+        "max": 300,
+        "value": 10
+      }
+    ]
+  }
 ]

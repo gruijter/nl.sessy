@@ -1,0 +1,43 @@
+{
+  "today": "Dziś",
+  "tomorrow": "Jutro",
+  "nextHours": "Następne godziny",
+  "pair": {
+    "portal_login_title": "LOGOWANIE DO PORTALU SESSY",
+    "portal_login_text": "Dodaj wszystkie swoje Sessy z portalu Sessy do Homey. Upewnij się, że skończyłeś dodawanie swoich sessy w portalu! (portal.sessy.nl)",
+    "portal_login_text_p1": "Dodaj swój licznik energii z portalu Sessy do Homey. Upewnij się, że skonfigurowałeś swój system w portalu! (portal.sessy.nl)",
+    "portal_login_text_dap": "Dodaj informacje o cenach na dzień do przodu z portalu Sessy do Homey. Upewnij się, że skonfigurowałeś swoje konto w portalu! (portal.sessy.nl)",
+    "username_portal": "Nazwa użytkownika portalu",
+    "password_portal": "Hasło do portalu",
+    "portal_login_button": "LOGOWANIE DO PORTALU SESSY",
+    "incomplete_portal": "Nazwa użytkownika i hasło muszą być wprowadzone!",
+    "no_batteries_registered": "Nie znaleziono żadnych Sessy w tym koncie. Dodaj swoje Sessy na portal.sessy.nl.",
+    "no_meters_registered": "Nie znaleziono żadnych liczników energii w tym koncie. Skonfiguruj swój system na portal.sessy.nl.",
+    "local_login_title": "USTAWIENIE LOKALNEGO POŁĄCZENIA",
+    "local_login_text": "Możesz również pominąć logowanie do portalu Sessy i kontynuować z konfiguracją lokalnego połączenia.",
+    "local_login_button": "KONTYNUUJ Z LOKALNĄ KONFIGURACJĄ",
+    "monmodetitle": "LOKALNY TRYB MONITOROWANIA",
+    "monmodetext": "Dodaj wszystkie SESSY w lokalnym trybie monitorowania. Wybierz to, jeśli chcesz zachować kontrolę na portal.sessy.nl.",
+    "monmodebutton": "KONTYNUUJ W TRYBIE MONITOROWANIA",
+    "contmodetitle": "LUB: LOKALNY TRYB KONTROLI",
+    "contmodetext": "Dodaj jedną SESSY w lokalnym trybie kontroli. Wybierz to, jeśli chcesz móc kontrolować za pomocą Homey.",
+    "contmodebutton": "KONTYNUUJ W TRYBIE KONTROLI",
+    "local_login_text_p1": "Aby kontynuować w TRYBIE KONTROLI, hasło jest wymagane (zalecane). Aby kontynuować w TRYBIE MONITOROWANIA, zostaw hasło puste",
+    "host": "Adres IP lub URL",
+    "sn_dongle": "Dongle S/N",
+    "password_dongle": "Hasło dongla",
+    "incomplete": "Adres IP lub URL, dongle S/N oraz hasło muszą być wprowadzone!",
+    "continue": "KONTYNUUJ"
+  },
+  "sessy": {
+    "homeyProOnly": "Ta opcja jest dostępna tylko na Homey Pro",
+    "incomplete": "Host i port muszą być wprowadzone dla lokalnego połączenia",
+    "controlError": "Homey nie jest ustawiony w trybie kontroli",
+    "connectionError": "Błąd połączenia, teraz uruchamiam ponownie",
+    "migrating": "Urządzenie jest w trakcie migracji. Proszę czekać!",
+    "newFirmware": "Nowe oprogramowanie zainstalowane na Sessy. __fw__",
+    "newFirmwareAvailable": "Nowe oprogramowanie dostępne dla Sessy. __fw__",
+    "newFirmwareMeter": "Nowe oprogramowanie zainstalowane na Liczniku. __fw__",
+    "newFirmwareAvailableMeter": "Nowe oprogramowanie dostępne dla Licznika. __fw__"
+  }
+}

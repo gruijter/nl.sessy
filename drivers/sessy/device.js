@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /*
-Copyright 2023 - 2024, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2025, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -350,6 +350,7 @@ class SessyDevice extends Device {
       const capabilityStates = {
         volume_set: noiseLevel,
         control_strategy: controlStrategy,
+        override: status.sessy.strategy_overridden,
         charge_mode: chargeMode,
         system_state: systemState,
         system_state_details: status.sessy.system_state_details,

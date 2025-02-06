@@ -8,7 +8,12 @@
     "no": "Pris +2T",
     "fr": "Tarif +2h",
     "dk": "Pris +2T",
-    "nl": "Prijs +2U"
+    "nl": "Prijs +2U",
+    "es": "Precio +2H",
+    "pl": "Cena +2H",
+    "ru": "Цена +2Ч",
+    "ko": "가격 +2H",
+    "da": "Pris +2T"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

@@ -1,48 +1,108 @@
 {
-	"type": "enum",
-	"title": {
-		"en": "Charge Mode",
-		"nl": "Laadmodus"
-	},
-	"values": [
-		{
-			"id": "CHARGE",
-			"title": {
-				"en": "Charge (fast)",
-				"nl": "Opladen (snel)"
-			}
-		},
-		{
-			"id": "CHARGE_ECO",
-			"title": {
-				"en": "Charge (eco)",
-				"nl": "Opladen (eco)"
-			}
-		},
-		{
-			"id": "STOP",
-			"title": {
-				"en": "Stop",
-				"nl": "Stop"
-			}
-		},
-		{
-			"id": "DISCHARGE_ECO",
-			"title": {
-				"en": "Discharge (eco)",
-				"nl": "Ontladen (eco)"
-			}
-		},
-		{
-			"id": "DISCHARGE",
-			"title": {
-				"en": "Discharge (fast)",
-				"nl": "Ontladen (snel)"
-			}
-		}
-	],
-	"value": "STOP",
-	"getable": true,
-	"setable": true,
-	"uiComponent": "picker"
+  "type": "enum",
+  "title": {
+    "en": "Charge Mode",
+    "nl": "Laadmodus",
+    "da": "Ladefunktion",
+    "de": "Lademodus",
+    "es": "Modo de carga",
+    "fr": "Mode de charge",
+    "it": "Modalità di carica",
+    "no": "Lademodus",
+    "sv": "Läget för laddning",
+    "pl": "Tryb ładowania",
+    "ru": "Режим зарядки",
+    "ko": "충전 모드"
+  },
+  "values": [
+    {
+      "id": "CHARGE",
+      "title": {
+        "en": "Charge (fast)",
+        "nl": "Opladen (snel)",
+        "da": "Opladning (hurtig)",
+        "de": "Laden (schnell)",
+        "es": "Cargar (rápido)",
+        "fr": "Charger (rapide)",
+        "it": "Carica (rapida)",
+        "no": "Lade (rask)",
+        "sv": "Ladda (snabbt)",
+        "pl": "Ładowanie (szybkie)",
+        "ru": "Зарядка (быстрая)",
+        "ko": "충전 (빠름)"
+      }
+    },
+    {
+      "id": "CHARGE_ECO",
+      "title": {
+        "en": "Charge (eco)",
+        "nl": "Opladen (eco)",
+        "da": "Opladning (økonomisk)",
+        "de": "Laden (ökologisch)",
+        "es": "Cargar (ecológico)",
+        "fr": "Charger (éco)",
+        "it": "Carica (eco)",
+        "no": "Lade (økologisk)",
+        "sv": "Ladda (eko)",
+        "pl": "Ładowanie (ekologiczne)",
+        "ru": "Зарядка (экологичная)",
+        "ko": "충전 (친환경)"
+      }
+    },
+    {
+      "id": "STOP",
+      "title": {
+        "en": "Stop",
+        "nl": "Stop",
+        "da": "Stop",
+        "de": "Stopp",
+        "es": "Detener",
+        "fr": "Arrêter",
+        "it": "Ferma",
+        "no": "Stopp",
+        "sv": "Stopp",
+        "pl": "Zatrzymaj",
+        "ru": "Стоп",
+        "ko": "중지"
+      }
+    },
+    {
+      "id": "DISCHARGE_ECO",
+      "title": {
+        "en": "Discharge (eco)",
+        "nl": "Ontladen (eco)",
+        "da": "Afladning (økonomisk)",
+        "de": "Entladen (ökologisch)",
+        "es": "Descargar (ecológico)",
+        "fr": "Décharger (éco)",
+        "it": "Scarica (eco)",
+        "no": "Entlading (økologisk)",
+        "sv": "Urladdning (eko)",
+        "pl": "Rozładowywanie (ekologiczne)",
+        "ru": "Разрядка (экологичная)",
+        "ko": "방전 (친환경)"
+      }
+    },
+    {
+      "id": "DISCHARGE",
+      "title": {
+        "en": "Discharge (fast)",
+        "nl": "Ontladen (snel)",
+        "da": "Afladning (hurtig)",
+        "de": "Entladen (schnell)",
+        "es": "Descargar (rápido)",
+        "fr": "Décharger (rapide)",
+        "it": "Scarica (rapida)",
+        "no": "Entlading (rask)",
+        "sv": "Urladdning (snabbt)",
+        "pl": "Rozładowywanie (szybkie)",
+        "ru": "Разрядка (быстрая)",
+        "ko": "방전 (빠름)"
+      }
+    }
+  ],
+  "value": "STOP",
+  "getable": true,
+  "setable": true,
+  "uiComponent": "picker"
 }

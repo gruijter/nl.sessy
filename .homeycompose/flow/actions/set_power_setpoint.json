@@ -1,36 +1,79 @@
 {
-	"title": {
-		"en": "Set the target power",
-		"nl": "Zet het doelvermogen"
-	},
-		"units": {
-		"en": "Watt"
-	},
-		"titleFormatted": {
-				"en": "Set target power to [[setpoint]] W",
-				"nl": "Zet doelvermogen op [[setpoint]] W"
-		},
-		"hint": { 
-				"en": "Positive = battery will discharge. Negative number = battery will charge. When set to 0 charging/discharging will stop.",
-				"nl": "Positieve waarde = accu gaat ontladen. Negatieve waarde = accu gaat laden. Bij een waarde van 0 stopt het laden/ontladen."
-		},
-		"highlight": true,
-		"args": [
-				{
-						"type": "device",
-						"name": "device",
-						"filter": "driver_id=sessy"
-				},
-				{
-						"type": "number",
-						"name": "setpoint",
-						"title": { "en": "Target power", "nl": "Doelvermogen" },
-						"min": -2200,
-						"max": 1800,
-						"step": 1,
-						"value": 0,
-						"label": " Watt",
-						"labelDecimals": 0
-				}
-		]
+  "title": {
+    "en": "Set the target power",
+    "nl": "Zet het doelvermogen",
+    "da": "Sæt mål effekten",
+    "de": "Setzen Sie die Zielleistung",
+    "es": "Establecer la potencia objetivo",
+    "fr": "Définir la puissance cible",
+    "it": "Imposta la potenza target",
+    "no": "Sett mål effekten",
+    "sv": "Ställ in måleffekten",
+    "pl": "Ustaw moc docelową",
+    "ru": "Установите целевую мощность",
+    "ko": "대상 전력을 설정하세요"
+  },
+  "units": {
+    "en": "Watt"
+  },
+  "titleFormatted": {
+    "en": "Set target power to [[setpoint]] W",
+    "nl": "Zet doelvermogen op [[setpoint]] W",
+    "da": "Sæt mål effekten til [[setpoint]] W",
+    "de": "Setzen Sie die Zielleistung auf [[setpoint]] W",
+    "es": "Establecer la potencia objetivo en [[setpoint]] W",
+    "fr": "Définir la puissance cible à [[setpoint]] W",
+    "it": "Imposta la potenza target a [[setpoint]] W",
+    "no": "Sett mål effekten til [[setpoint]] W",
+    "sv": "Ställ in måleffekten till [[setpoint]] W",
+    "pl": "Ustaw moc docelową na [[setpoint]] W",
+    "ru": "Установите целевую мощность на [[setpoint]] W",
+    "ko": "[[setpoint]] W로 목표 전력을 설정하세요"
+  },
+  "hint": {
+    "en": "Positive = battery will discharge. Negative number = battery will charge. When set to 0 charging/discharging will stop.",
+    "nl": "Positieve waarde = accu gaat ontladen. Negatieve waarde = accu gaat laden. Bij een waarde van 0 stopt het laden/ontladen.",
+    "da": "Positiv = batteriet vil aflades. Negativt tal = batteriet vil oplades. Når indstillet til 0 stopper opladningen/afladningen.",
+    "de": "Positiv = Batterie entlädt sich. Negative Zahl = Batterie lädt sich auf. Wenn auf 0 gesetzt, stoppt das Laden/Entladen.",
+    "es": "Positivo = la batería se descargará. Número negativo = la batería se cargará. Cuando se establece en 0, la carga/descarga se detendrá.",
+    "fr": "Positif = la batterie va se décharger. Nombre négatif = la batterie va se charger. Lorsque réglé sur 0, la charge/décharge s'arrête.",
+    "it": "Positivo = la batteria si scaricherà. Numero negativo = la batteria si caricherà. Quando impostato su 0, la carica/scarica si fermerà.",
+    "no": "Positiv = batteriet vil tømmes. Negativt tall = batteriet vil lades. Når det er satt til 0, stopper ladingen/tømmingen.",
+    "sv": "Positiv = batteriet kommer att urladdas. Negativt tal = batteriet kommer att laddas. När det sätts till 0 stoppas laddningen/avladdningen.",
+    "pl": "Dodatnia = bateria zostanie rozładowana. Liczba ujemna = bateria zostanie naładowana. Gdy ustawisz na 0, ładowanie/rozładowanie zatrzyma się.",
+    "ru": "Положительное = батарея разряжается. Отрицательное число = батарея заряжается. При установлении на 0 зарядка/разрядка остановится.",
+    "ko": "양수 = 배터리가 방전됩니다. 음수 = 배터리가 충전됩니다. 0으로 설정하면 충전/방전이 중지됩니다."
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    },
+    {
+      "type": "number",
+      "name": "setpoint",
+      "title": {
+        "en": "Target power",
+        "nl": "Doelvermogen",
+        "da": "Mål effekt",
+        "de": "Zielleistung",
+        "es": "Potencia objetivo",
+        "fr": "Puissance cible",
+        "it": "Potenza target",
+        "no": "Mål effekt",
+        "sv": "Måleffekt",
+        "pl": "Moc docelowa",
+        "ru": "Целевая мощность",
+        "ko": "목표 전력"
+      },
+      "min": -2200,
+      "max": 1800,
+      "step": 1,
+      "value": 0,
+      "label": " Watt",
+      "labelDecimals": 0
+    }
+  ]
 }

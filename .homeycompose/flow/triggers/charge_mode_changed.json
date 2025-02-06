@@ -1,25 +1,45 @@
 {
-	"title": { 
-		"en": "The charge mode changed",
-		"nl": "De laadmodus is veranderd"
-	},
-	"highlight": true,
-	"args": [
-		{
-				"type": "device",
-				"name": "device",
-				"filter": "driver_id=sessy"
-		}
-	],
-	"tokens": [
-		{
-			"name": "charge_mode",
-			"type": "string",
-			"title": { 
-				"en": "Charge Mode",
-				"nl": "Laadmodus"
-			},
-			"example": "STOP"
-		}
-	]
+  "title": {
+    "en": "The charge mode changed",
+    "nl": "De laadmodus is veranderd",
+    "da": "Ladeindstillingen ændret",
+    "de": "Der Lademodus wurde geändert",
+    "es": "El modo de carga ha cambiado",
+    "fr": "Le mode de charge a changé",
+    "it": "La modalità di carica è cambiata",
+    "no": "Ladeinnstillingen endret",
+    "sv": "Laddläget har ändrats",
+    "pl": "Tryb ładowania zmieniony",
+    "ru": "Режим зарядки изменен",
+    "ko": "충전 모드가 변경되었습니다"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "charge_mode",
+      "type": "string",
+      "title": {
+        "en": "Charge Mode",
+        "nl": "Laadmodus",
+        "da": "Ladeindstilling",
+        "de": "Lademodus",
+        "es": "Modo de carga",
+        "fr": "Mode de charge",
+        "it": "Modalità di carica",
+        "no": "Ladeinnstilling",
+        "sv": "Laddläge",
+        "pl": "Tryb ładowania",
+        "ru": "Режим зарядки",
+        "ko": "충전 모드"
+      },
+      "example": "STOP"
+    }
+  ]
 }

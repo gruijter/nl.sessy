@@ -1,266 +1,606 @@
 [
-	{
-		"type": "group",
-		"label": {
-				"en": "Sessy information",
-				"nl": "Sessy informatie"
-		},
-		"children": [
-			{
-				"id": "sn_sessy",
-				"type": "label",
-				"label": {
-						"en": "Sessy S/N",
-						"nl": "Sessy S/N"
-				},
-				"value": ""
-			},
-			{
-				"id": "fwDongle",
-				"type": "label",
-				"label": {
-						"en": "Firmware Dongle",
-						"nl": "Firmware Dongel"
-				},
-				"value": ""
-			},
-			{
-				"id": "fwBat",
-				"type": "label",
-				"label": {
-						"en": "Firmware Battery",
-						"nl": "Firmware Batterij"
-				},
-				"value": ""
-			}
-		]
-	},
-	{
-		"type": "group",
-		"label": {
-				"en": "Cloud connection settings",
-				"nl": "Cloud verbinding instellingen"
-		},
-		"children": [	
-			{
-				"id": "username_portal",
-				"type": "label",
-				"label": {
-						"en": "Sessy portal username",
-						"nl": "Sessy portal gebruikersnaam"
-				},
-				"value": "NOT USED"
-			},
-			{
-				"id": "password_portal",
-				"type": "label",
-				"label": {
-					"en": "Sessy portal password",
-					"nl": "Sessy portal wachtwoord"
-				},
-				"value": "NOT USED"
-			}
-		]
-	},
-	{
-		"type": "group",
-		"label": {
-				"en": "Local connection settings (Homey PRO)",
-				"nl": "Lokale verbinding instellingen (Homey PRO)"
-		},
-		"children": [	
-			{
-				"id": "host",
-				"type": "text",
-				"label": {
-						"en": "URL or IP address",
-						"nl": "URL of IP adres"
-				},
-				"hint": {
-					"en": "IP address of the dongle.",
-					"nl": "IP adres van de dongel."
-				},
-				"value": ""
-			},
-			{
-				"id": "port",
-				"type": "number",
-				"label": {
-						"en": "Port",
-						"nl": "Poort"
-				},
-				"hint": {
-					"en": "Default is 80.",
-					"nl": "Standaard is 80."
-				},
-				"value": 80
-			},
-			{
-				"id": "use_mdns",
-				"type": "checkbox",
-				"label": {
-						"en": "Use mDNS for adress",
-						"nl": "Gebruik mDNS voor adres"
-				},
-				"hint": {
-					"en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
-					"nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund."
-				},
-				"value": false
-			},
-			{
-				"id": "sn_dongle",
-				"type": "text",
-				"label": {
-						"en": "Dongle S/N",
-						"nl": "Dongel S/N"
-				},
-				"hint": {
-					"en": "As printed on the dongle sticker.",
-					"nl": "Zoals geprint op de dongel sticker."
-				},
-				"value": ""
-			},
-			{
-				"id": "password_dongle",
-				"type": "password",
-				"label": {
-						"en": "Dongle Password",
-						"nl": "Dongel Wachtwoord"
-				},
-				"hint": {
-					"en": "As printed on the dongle sticker.",
-					"nl": "Zoals geprint op de dongel sticker."
-				},
-				"value": ""
-			},
-			{
-				"id": "pollingInterval",
-				"type": "number",
-				"label": {
-						"en": "Update interval (s)",
-						"nl": "Update interval (s)"
-				},
-				"hint": {
-					"en": "A lower value provides faster updates in Homey.",
-					"nl": "Een lagere waarde geeft snellere updates in Homey."
-				},
-				"min": 5,
-				"max": 300,
-				"value": 10
-			}
-		]
-	},
-	{
-		"type": "group",
-		"label": {
-				"en": "Solar settings",
-				"nl": "PV instellingen"
-		},
-		"children": [
-			{
-				"id": "show_re_total",
-				"type": "checkbox",
-				"label": {
-						"en": "Show Solar Total",
-						"nl": "Toon PV Totaal"
-				},
-				"value": true
-			},
-			{
-				"id": "show_re1",
-				"type": "checkbox",
-				"label": {
-						"en": "Show Solar P1",
-						"nl": "Toon PV P1"
-				},
-				"value": true
-			},
-			{
-				"id": "show_re2",
-				"type": "checkbox",
-				"label": {
-					"en": "Show Solar P2",
-					"nl": "Toon PV P2"
-				},
-				"value": true
-			},
-			{
-				"id": "show_re3",
-				"type": "checkbox",
-				"label": {
-					"en": "Show Solar P3",
-					"nl": "Toon PV P3"
-				},
-				"value": true
-			}
-		]
-	},
-	{
-		"type": "group",
-		"label": {
-				"en": "Control settings",
-				"nl": "Besturing instellingen"
-		},
-		"children": [
-			{
-				"id": "force_control_strategy",
-				"type": "checkbox",
-				"label": {
-						"en": "Force Homey control mode",
-						"nl": "Forceer Homey besturingsmodus"
-				},
-				"hint": {
-					"en": "Homey Pro Only. Control mode will be set to HOMEY at every app start and control attempt (API Open Mode). Note that you must set the Dongle S/N and password first!",
-					"nl": "Alleen voor Homey Pro. Besturingsmodus wordt ingesteld op HOMEY bij iedere app start en besturingspoging. (API Open Modus). Let op: eerst Dongle S/N en wachtwoord invullen!"
-				},
-				"value": false
-			},
-			{
-				"id": "power_min",
-				"type": "number",
-				"label": {
-						"en": "Minimum power",
-						"nl": "Minimaal vermogen"
-				},
-				"hint": {
-					"en": "Homey will stop charging or discharging when the power is lower then the set minimum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
-					"nl": "Homey stopt met laden of ontladen als het vermogen lager is dan het ingestelde minimum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
-				},
-				"min": 0,
-				"max": 1800,
-				"value": 0
-			},
-			{
-				"id": "power_max_charge",
-				"type": "number",
-				"label": {
-						"en": "Maximum charge power",
-						"nl": "Maximaal laadvermogen"
-				},
-				"hint": {
-					"en": "Homey will limit the charging power to the set maximum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
-					"nl": "Homey beperkt het vermogen tijdens laden tot het ingestelde maximum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
-				},
-				"min": 100,
-				"max": 2200,
-				"value": 2200
-			},
-			{
-				"id": "power_max_discharge",
-				"type": "number",
-				"label": {
-						"en": "Maximum discharge power",
-						"nl": "Maximaal ontlaadvermogen"
-				},
-				"hint": {
-					"en": "Homey will limit the discharging power to the set maximum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
-					"nl": "Homey beperkt het vermogen tijdens ontladen tot het ingestelde maximum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus)."
-				},
-				"min": 100,
-				"max": 1800,
-				"value": 1800
-			}
-		]
-	}
+  {
+    "type": "group",
+    "label": {
+      "en": "Sessy information",
+      "nl": "Sessy informatie",
+      "da": "Sessy information",
+      "de": "Sessy Informationen",
+      "es": "Información de Sessy",
+      "fr": "Informations Sessy",
+      "it": "Informazioni Sessy",
+      "no": "Sessy informasjon",
+      "sv": "Sessy-information",
+      "pl": "Informacje o Sessy",
+      "ru": "Информация о Sessy",
+      "ko": "세시 정보"
+    },
+    "children": [
+      {
+        "id": "sn_sessy",
+        "type": "label",
+        "label": {
+          "en": "Sessy S/N",
+          "nl": "Sessy S/N",
+          "da": "Sessy S/N",
+          "de": "Sessy S/N",
+          "es": "Sessy S/N",
+          "fr": "Sessy S/N",
+          "it": "Sessy S/N",
+          "no": "Sessy S/N",
+          "sv": "Sessy S/N",
+          "pl": "Sessy S/N",
+          "ru": "Sessy S/N",
+          "ko": "Sessy S/N"
+        },
+        "value": ""
+      },
+      {
+        "id": "fwDongle",
+        "type": "label",
+        "label": {
+          "en": "Firmware Dongle",
+          "nl": "Firmware Dongel",
+          "da": "Firmware Dongle",
+          "de": "Firmware Dongle",
+          "es": "Firmware Dongle",
+          "fr": "Dongle Firmware",
+          "it": "Dongle del firmware",
+          "no": "Firmware Dongle",
+          "sv": "Firmware Dongle",
+          "pl": "Firmware Dongle",
+          "ru": "Прошивка Dongle",
+          "ko": "펌웨어 동글"
+        },
+        "value": ""
+      },
+      {
+        "id": "fwBat",
+        "type": "label",
+        "label": {
+          "en": "Firmware Battery",
+          "nl": "Firmware Batterij",
+          "da": "Firmware strøm",
+          "de": "Firmware Batterie",
+          "es": "Batería de firmware",
+          "fr": "Batterie de firmware",
+          "it": "Batteria del firmware",
+          "no": "Firmware Batteri",
+          "sv": "Firmware-batteri",
+          "pl": "Bateria firmware",
+          "ru": "Прошивка батареи",
+          "ko": "펌웨어 배터리"
+        },
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Cloud connection settings",
+      "nl": "Cloud verbinding instellingen",
+      "da": "Cloud-forbindelsesindstillinger",
+      "de": "Cloud-Verbindungseinstellungen",
+      "es": "Configuración de conexión a la nube",
+      "fr": "Paramètres de connexion au cloud",
+      "it": "Impostazioni di connessione al cloud",
+      "no": "Cloud-tilkoblingsinnstillinger",
+      "sv": "Inställningar för molnanslutning",
+      "pl": "Ustawienia połączenia z chmurą",
+      "ru": "Настройки подключения к облаку",
+      "ko": "클라우드 연결 설정"
+    },
+    "children": [
+      {
+        "id": "username_portal",
+        "type": "label",
+        "label": {
+          "en": "Sessy portal username",
+          "nl": "Sessy portal gebruikersnaam",
+          "da": "Sessy portal brugernavn",
+          "de": "Sessy-Portal-Benutzername",
+          "es": "Nombre de usuario del portal Sessy",
+          "fr": "Nom d'utilisateur du portail Sessy",
+          "it": "Nome utente del portale Sessy",
+          "no": "Brukernavn for Sessy-portalen",
+          "sv": "Användarnamn för Sessy-portalen",
+          "pl": "Nazwa użytkownika portalu Sessy",
+          "ru": "Имя пользователя портала Sessy",
+          "ko": "세시 포털 사용자 이름"
+        },
+        "value": "NOT USED"
+      },
+      {
+        "id": "password_portal",
+        "type": "label",
+        "label": {
+          "en": "Sessy portal password",
+          "nl": "Sessy portal wachtwoord",
+          "da": "Sessy portal adgangskode",
+          "de": "Sessy-Portal-Passwort",
+          "es": "Contraseña del portal Sessy",
+          "fr": "Mot de passe du portail Sessy",
+          "it": "Password del portale Sessy",
+          "no": "Passord for Sessy-portalen",
+          "sv": "Lösenord för Sessy-portalen",
+          "pl": "Hasło do portalu Sessy",
+          "ru": "Пароль портала Sessy",
+          "ko": "세시 포털 비밀번호"
+        },
+        "value": "NOT USED"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Local connection settings (Homey PRO)",
+      "nl": "Lokale verbinding instellingen (Homey PRO)",
+      "da": "Lokale forbindelseindstillinger (Homey PRO)",
+      "de": "Einstellungen für die lokale Verbindung (Homey PRO)",
+      "es": "Configuración de conexión local (Homey PRO)",
+      "fr": "Paramètres de connexion locale (Homey PRO)",
+      "it": "Impostazioni di connessione locale (Homey PRO)",
+      "no": "Lokal tilkoblingsinnstillinger (Homey PRO)",
+      "sv": "Inställningar för lokal anslutning (Homey PRO)",
+      "pl": "Ustawienia lokalnego połączenia (Homey PRO)",
+      "ru": "Настройки локального подключения (Homey PRO)",
+      "ko": "로컬 연결 설정 (Homey PRO)"
+    },
+    "children": [
+      {
+        "id": "host",
+        "type": "text",
+        "label": {
+          "en": "URL or IP address",
+          "nl": "URL of IP adres",
+          "da": "URL eller IP-adresse",
+          "de": "URL oder IP-Adresse",
+          "es": "URL o dirección IP",
+          "fr": "URL ou adresse IP",
+          "it": "URL o indirizzo IP",
+          "no": "URL eller IP-adresse",
+          "sv": "URL eller IP-adress",
+          "pl": "Adres URL lub adres IP",
+          "ru": "URL или IP-адрес",
+          "ko": "URL 또는 IP 주소"
+        },
+        "hint": {
+          "en": "IP address of the dongle.",
+          "nl": "IP adres van de dongel.",
+          "da": "IP-adresse for donglen.",
+          "de": "IP-Adresse des Dongles.",
+          "es": "Dirección IP del dongle.",
+          "fr": "Adresse IP du dongle.",
+          "it": "Indirizzo IP del dongle.",
+          "no": "IP-adresse til dongle.",
+          "sv": "IP-adress för dongle.",
+          "pl": "Adres IP dongla.",
+          "ru": "IP-адрес дунгла.",
+          "ko": "동글의 IP 주소."
+        },
+        "value": ""
+      },
+      {
+        "id": "port",
+        "type": "number",
+        "label": {
+          "en": "Port",
+          "nl": "Poort",
+          "da": "Port",
+          "de": "Port",
+          "es": "Puerto",
+          "fr": "Port",
+          "it": "Porta",
+          "no": "Port",
+          "sv": "Port",
+          "pl": "Port",
+          "ru": "Порт",
+          "ko": "포트"
+        },
+        "hint": {
+          "en": "Default is 80.",
+          "nl": "Standaard is 80.",
+          "da": "Standard er 80.",
+          "de": "Standard ist 80.",
+          "es": "El predeterminado es 80.",
+          "fr": "La valeur par défaut est 80.",
+          "it": "Il valore predefinito è 80.",
+          "no": "Standard er 80.",
+          "sv": "Standard är 80.",
+          "pl": "Domyślna wartość to 80.",
+          "ru": "По умолчанию 80.",
+          "ko": "기본값은 80입니다."
+        },
+        "value": 80
+      },
+      {
+        "id": "use_mdns",
+        "type": "checkbox",
+        "label": {
+          "en": "Use mDNS for adress",
+          "nl": "Gebruik mDNS voor adres",
+          "da": "Brug mDNS til adresse",
+          "de": "mDNS für die Adresse verwenden",
+          "es": "Usar mDNS para la dirección",
+          "fr": "Utiliser mDNS pour l'adresse",
+          "it": "Usa mDNS per l'indirizzo",
+          "no": "Bruk mDNS for adresse",
+          "sv": "Använd mDNS för adress",
+          "pl": "Użyj mDNS dla adresu",
+          "ru": "Использовать mDNS для адреса",
+          "ko": "주소에 mDNS 사용"
+        },
+        "hint": {
+          "en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
+          "nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund.",
+          "da": "Når det er aktiveret, vil mDNS blive brugt til automatisk at opdatere IP-adressen, når den ændres. Dette virker kun, hvis dit netværk understøtter mDNS.",
+          "de": "Wenn aktiviert, wird mDNS verwendet, um die IP-Adresse automatisch zu aktualisieren, wenn sie sich ändert. Dies funktioniert nur, wenn Ihr Netzwerk mDNS unterstützt.",
+          "es": "Cuando se activa, se usará mDNS para actualizar automáticamente la dirección IP cuando cambie. Esto solo funciona si su red es compatible con mDNS.",
+          "fr": "Lorsque l'option est activée, mDNS sera utilisé pour mettre à jour automatiquement l'adresse IP lorsqu'elle change. Cela ne fonctionne que si votre réseau prend en charge mDNS.",
+          "it": "Quando abilitato, mDNS verrà utilizzato per aggiornare automaticamente l'indirizzo IP quando cambia. Questo funziona solo se la tua rete supporta mDNS.",
+          "no": "Når dette er aktivert, vil mDNS bli brukt til automatisk å oppdatere IP-adressen når den endres. Dette fungerer bare hvis nettverket ditt støtter mDNS.",
+          "sv": "När det är aktiverat kommer mDNS att användas för att automatiskt uppdatera IP-adressen när den ändras. Detta fungerar endast om ditt nätverk stöder mDNS.",
+          "pl": "Gdy jest włączona, mDNS będzie używane do automatycznej aktualizacji adresu IP, gdy się zmienia. Działa to tylko wtedy, gdy twoja sieć obsługuje mDNS.",
+          "ru": "При включении mDNS будет использоваться для автоматического обновления IP-адреса при его изменении. Это работает только в том случае, если ваша сеть поддерживает mDNS.",
+          "ko": "사용하도록 설정하면 mDNS가 변경될 때 IP 주소를 자동으로 업데이트하는 데 사용됩니다. 이는 귀하의 네트워크가 mDNS를 지원하는 경우에만 작동합니다."
+        },
+        "value": false
+      },
+      {
+        "id": "sn_dongle",
+        "type": "text",
+        "label": {
+          "en": "Dongle S/N",
+          "nl": "Dongel S/N",
+          "da": "Dongle S/N",
+          "de": "Dongle S/N",
+          "es": "Dongle S/N",
+          "fr": "Dongle S/N",
+          "it": "Dongle S/N",
+          "no": "Dongle S/N",
+          "sv": "Dongle S/N",
+          "pl": "Dongle S/N",
+          "ru": "Dongle S/N",
+          "ko": "동글 S/N"
+        },
+        "hint": {
+          "en": "As printed on the dongle sticker.",
+          "nl": "Zoals geprint op de dongel sticker.",
+          "da": "Som trykt på dongle-klæbet.",
+          "de": "Wie auf dem Dongle-Aufkleber gedruckt.",
+          "es": "Como se imprime en la etiqueta del dongle.",
+          "fr": "Tel qu'imprimé sur l'autocollant du dongle.",
+          "it": "Come stampato sull'etichetta del dongle.",
+          "no": "Som det står på dongle-lappen.",
+          "sv": "Som anges på dongle-klistermärket.",
+          "pl": "Jak wydrukowano na naklejce dongle.",
+          "ru": "Как напечатано на наклейке Dongle.",
+          "ko": "동글 스티커에 인쇄된 대로."
+        },
+        "value": ""
+      },
+      {
+        "id": "password_dongle",
+        "type": "password",
+        "label": {
+          "en": "Dongle Password",
+          "nl": "Dongel Wachtwoord",
+          "da": "Dongle Adgangskode",
+          "de": "Dongle-Passwort",
+          "es": "Contraseña del dongle",
+          "fr": "Mot de passe du dongle",
+          "it": "Password del dongle",
+          "no": "Dongle passord",
+          "sv": "Dongle-lösenord",
+          "pl": "Hasło dongle",
+          "ru": "Пароль Dongle",
+          "ko": "동글 비밀번호"
+        },
+        "hint": {
+          "en": "As printed on the dongle sticker.",
+          "nl": "Zoals geprint op de dongel sticker.",
+          "da": "Som trykt på dongle-klæbet.",
+          "de": "Wie auf dem Dongle-Aufkleber gedruckt.",
+          "es": "Como se imprime en la etiqueta del dongle.",
+          "fr": "Tel qu'imprimé sur l'autocollant du dongle.",
+          "it": "Come stampato sull'etichetta del dongle.",
+          "no": "Som det står på dongle-lappen.",
+          "sv": "Som anges på dongle-klistermärket.",
+          "pl": "Jak wydrukowano na naklejce dongle.",
+          "ru": "Как напечатано на наклейке Dongle.",
+          "ko": "동글 스티커에 인쇄된 대로."
+        },
+        "value": ""
+      },
+      {
+        "id": "pollingInterval",
+        "type": "number",
+        "label": {
+          "en": "Update interval (s)",
+          "nl": "Update interval (s)",
+          "da": "Opdateringsinterval (s)",
+          "de": "Aktualisierungsintervall (s)",
+          "es": "Intervalo de actualización (s)",
+          "fr": "Intervalle de mise à jour (s)",
+          "it": "Intervallo di aggiornamento (s)",
+          "no": "Oppdateringsintervall (s)",
+          "sv": "Uppdateringsintervall (s)",
+          "pl": "Interwał aktualizacji (s)",
+          "ru": "Интервал обновления (с)",
+          "ko": "업데이트 간격 (초)"
+        },
+        "hint": {
+          "en": "A lower value provides faster updates in Homey.",
+          "nl": "Een lagere waarde geeft snellere updates in Homey.",
+          "da": "En lavere værdi giver hurtigere opdateringer i Homey.",
+          "de": "Ein niedrigerer Wert sorgt für schnellere Updates in Homey.",
+          "es": "Un valor más bajo proporciona actualizaciones más rápidas en Homey.",
+          "fr": "Une valeur plus basse permet des mises à jour plus rapides dans Homey.",
+          "it": "Un valore inferiore fornisce aggiornamenti più rapidi in Homey.",
+          "no": "En lavere verdi gir raskere oppdateringer i Homey.",
+          "sv": "Ett lägre värde ger snabbare uppdateringar i Homey.",
+          "pl": "Niższa wartość zapewnia szybsze aktualizacje w Homey.",
+          "ru": "Меньшее значение обеспечивает более быстрые обновления в Homey.",
+          "ko": "낮은 값은 Homey에서 더 빠른 업데이트를 제공합니다."
+        },
+        "min": 5,
+        "max": 300,
+        "value": 10
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Solar settings",
+      "nl": "PV instellingen",
+      "da": "Sol indstillinger",
+      "de": "Solar Einstellungen",
+      "es": "Configuraciones solares",
+      "fr": "Paramètres solaires",
+      "it": "Impostazioni solari",
+      "no": "Solinnstillinger",
+      "sv": "Solinställningar",
+      "pl": "Ustawienia solarne",
+      "ru": "Солнечные настройки",
+      "ko": "태양광 설정"
+    },
+    "children": [
+      {
+        "id": "show_re_total",
+        "type": "checkbox",
+        "label": {
+          "en": "Show Solar Total",
+          "nl": "Toon PV Totaal",
+          "da": "Vis Solar Total",
+          "de": "Solar Total anzeigen",
+          "es": "Mostrar total solar",
+          "fr": "Afficher le total solaire",
+          "it": "Mostra il totale solare",
+          "no": "Vis Solar Total",
+          "sv": "Visa soltotal",
+          "pl": "Pokaż całkowitą energię słoneczną",
+          "ru": "Показать общее количество солнечной энергии",
+          "ko": "태양광 총계 표시"
+        },
+        "value": true
+      },
+      {
+        "id": "show_re1",
+        "type": "checkbox",
+        "label": {
+          "en": "Show Solar P1",
+          "nl": "Toon PV P1",
+          "da": "Vis Solar P1",
+          "de": "Solar P1 anzeigen",
+          "es": "Mostrar solar P1",
+          "fr": "Afficher le solaire P1",
+          "it": "Mostra Solar P1",
+          "no": "Vis Solar P1",
+          "sv": "Visa sol P1",
+          "pl": "Pokaż energię słoneczną P1",
+          "ru": "Показать солнечную P1",
+          "ko": "태양광 P1 표시"
+        },
+        "value": true
+      },
+      {
+        "id": "show_re2",
+        "type": "checkbox",
+        "label": {
+          "en": "Show Solar P2",
+          "nl": "Toon PV P2",
+          "da": "Vis Solar P2",
+          "de": "Solar P2 anzeigen",
+          "es": "Mostrar solar P2",
+          "fr": "Afficher le solaire P2",
+          "it": "Mostra Solar P2",
+          "no": "Vis Solar P2",
+          "sv": "Visa sol P2",
+          "pl": "Pokaż energię słoneczną P2",
+          "ru": "Показать солнечную P2",
+          "ko": "태양광 P2 표시"
+        },
+        "value": true
+      },
+      {
+        "id": "show_re3",
+        "type": "checkbox",
+        "label": {
+          "en": "Show Solar P3",
+          "nl": "Toon PV P3",
+          "da": "Vis Solar P3",
+          "de": "Solar P3 anzeigen",
+          "es": "Mostrar solar P3",
+          "fr": "Afficher le solaire P3",
+          "it": "Mostra Solar P3",
+          "no": "Vis Solar P3",
+          "sv": "Visa sol P3",
+          "pl": "Pokaż energię słoneczną P3",
+          "ru": "Показать солнечную P3",
+          "ko": "태양광 P3 표시"
+        },
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Control settings",
+      "nl": "Besturing instellingen",
+      "da": "Kontrolindstillinger",
+      "de": "Steuereinstellungen",
+      "es": "Configuración de control",
+      "fr": "Paramètres de contrôle",
+      "it": "Impostazioni di controllo",
+      "no": "Kontrollinnstillinger",
+      "sv": "Kontrollinställningar",
+      "pl": "Ustawienia sterowania",
+      "ru": "Настройки управления",
+      "ko": "제어 설정"
+    },
+    "children": [
+      {
+        "id": "force_control_strategy",
+        "type": "checkbox",
+        "label": {
+          "en": "Force Homey control mode",
+          "nl": "Forceer Homey besturingsmodus",
+          "da": "Tvang Homey kontroltilstand",
+          "de": "Homey-Steuerungsmodus erzwingen",
+          "es": "Forzar modo de control de Homey",
+          "fr": "Forcer le mode de contrôle Homey",
+          "it": "Forza la modalità di controllo Homey",
+          "no": "Tving Homey kontrollmodus",
+          "sv": "Tvinga Homey kontrolläge",
+          "pl": "Wymuś tryb sterowania Homey",
+          "ru": "Принудительный режим управления Homey",
+          "ko": "홈리 제어 모드 강제 적용"
+        },
+        "hint": {
+          "en": "Homey Pro Only. Control mode will be set to HOMEY at every app start and control attempt (API Open Mode). Note that you must set the Dongle S/N and password first!",
+          "nl": "Alleen voor Homey Pro. Besturingsmodus wordt ingesteld op HOMEY bij iedere app start en besturingspoging. (API Open Modus). Let op: eerst Dongle S/N en wachtwoord invullen!",
+          "da": "Kun Homey Pro. Kontroltilstand indstilles til HOMEY ved hver opstart af appen og hvert kontrolforsøg (API Open Mode). Bemærk, at du først skal indstille Dongle S/N og adgangskode!",
+          "de": "Nur für Homey Pro. Der Steuerungsmodus wird bei jedem Start der App und bei jedem Steuerungsversuch (API Open Mode) auf HOMEY gesetzt. Beachten Sie, dass Sie zuerst die Dongle S/N und das Passwort festlegen müssen!",
+          "es": "Solo para Homey Pro. El modo de control se configurará en HOMEY en cada inicio de la aplicación y en cada intento de control (API Open Mode). ¡Ten en cuenta que primero debes establecer el Dongle S/N y la contraseña!",
+          "fr": "Uniquement pour Homey Pro. Le mode de contrôle sera défini sur HOMEY à chaque démarrage de l'application et à chaque tentative de contrôle (mode ouvert API). Notez que vous devez d'abord définir le Dongle S/N et le mot de passe !",
+          "it": "Solo per Homey Pro. La modalità di controllo sarà impostata su HOMEY a ogni avvio dell'app e a ogni tentativo di controllo (modalità Open API). Si noti che è necessario prima impostare il Dongle S/N e la password!",
+          "no": "Kun Homey Pro. Kontrollmodus vil bli satt til HOMEY ved hver oppstart av appen og hvert kontrollforsøk (API Open Mode). Merk at du først må angi Dongle S/N og passord!",
+          "sv": "Endast Homey Pro. Kontrollläget sätts till HOMEY vid varje appstart och varje kontrollförsök (API Open Mode). Observera att du först måste ange Dongle S/N och lösenord!",
+          "pl": "Tylko dla Homey Pro. Tryb sterowania zostanie ustawiony na HOMEY przy każdym uruchomieniu aplikacji i każdym próbie sterowania (API Open Mode). Pamiętaj, aby najpierw ustawić Dongle S/N i hasło!",
+          "ru": "Только для Homey Pro. Режим управления будет установлен на HOMEY при каждом запуске приложения и при каждой попытке управления (API Open Mode). Обратите внимание, что сначала необходимо установить Dongle S/N и пароль!",
+          "ko": "Homey Pro 전용. 앱 시작 시마다 제어 모드는 HOMEY로 설정되며, 모든 제어 시도(API Open 모드)에서 HOMEY로 설정됩니다. 먼저 Dongle S/N과 비밀번호를 설정해야 합니다!"
+        },
+        "value": false
+      },
+      {
+        "id": "power_min",
+        "type": "number",
+        "label": {
+          "en": "Minimum power",
+          "nl": "Minimaal vermogen",
+          "da": "Minimum effekt",
+          "de": "Mindestleistung",
+          "es": "Potencia mínima",
+          "fr": "Puissance minimale",
+          "it": "Potenza minima",
+          "no": "Minimum effekt",
+          "sv": "Minimaleffekt",
+          "pl": "Minimalna moc",
+          "ru": "Минимальная мощность",
+          "ko": "최소 전력"
+        },
+        "hint": {
+          "en": "Homey will stop charging or discharging when the power is lower then the set minimum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+          "nl": "Homey stopt met laden of ontladen als het vermogen lager is dan het ingestelde minimum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus).",
+          "da": "Homey stopper med at oplade eller aflade, når effekten er lavere end det indstillede minimum. Dette gælder kun, når kontroltilstand er indstillet til HOMEY (API Open Mode).",
+          "de": "Homey stoppt das Laden oder Entladen, wenn die Leistung unter dem festgelegten Minimum liegt. Dies gilt nur, wenn der Steuerungsmodus auf HOMEY (API Open Mode) eingestellt ist.",
+          "es": "Homey dejará de cargar o descargar cuando la potencia sea inferior a la mínima establecida. Esto solo se aplica cuando el modo de control está configurado en HOMEY (API Open Mode).",
+          "fr": "Homey arrêtera la charge ou le déchargement lorsque la puissance est inférieure au minimum fixé. Cela ne s'applique que lorsque le mode de contrôle est défini sur HOMEY (mode ouvert API).",
+          "it": "Homey smetterà di caricare o scaricare quando la potenza sarà inferiore al minimo impostato. Questo si applica solo quando la modalità di controllo è impostata su HOMEY (modalità Open API).",
+          "no": "Homey sluttet å lade eller utlade når effekten er lavere enn det angitte minimum. Dette gjelder kun når kontrollmodus er innstilt på HOMEY (API Open Mode).",
+          "sv": "Homey slutar ladda eller urladda när effekten är lägre än den angivna minimi. Detta gäller endast när kontrollläget är inställt på HOMEY (API Open Mode).",
+          "pl": "Homey przestanie ładować lub rozładowywać, gdy moc jest niższa niż ustawione minimum. Ma to zastosowanie tylko wtedy, gdy tryb sterowania jest ustawiony na HOMEY (API Open Mode).",
+          "ru": "Homey прекратит зарядку или разрядку, когда мощность станет меньше установленного минимума. Это применяется только в том случае, если режим управления установлен на HOMEY (API Open Mode).",
+          "ko": "전력이 설정된 최소값보다 낮아지면 Homey는 충전 또는 방전을 중지합니다. 이는 제어 모드가 HOMEY(API Open 모드)로 설정된 경우에만 적용됩니다."
+        },
+        "min": 0,
+        "max": 1800,
+        "value": 0
+      },
+      {
+        "id": "power_max_charge",
+        "type": "number",
+        "label": {
+          "en": "Maximum charge power",
+          "nl": "Maximaal laadvermogen",
+          "da": "Maksimum opladningseffekt",
+          "de": "Maximale Ladeleistung",
+          "es": "Potencia máxima de carga",
+          "fr": "Puissance de charge maximale",
+          "it": "Potenza di carica massima",
+          "no": "Maksimal laddeffekt",
+          "sv": "Maximal laddningseffekt",
+          "pl": "Maksymalna moc ładowania",
+          "ru": "Максимальная зарядная мощность",
+          "ko": "최대 충전 전력"
+        },
+        "hint": {
+          "en": "Homey will limit the charging power to the set maximum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+          "nl": "Homey beperkt het vermogen tijdens laden tot het ingestelde maximum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus).",
+          "da": "Homey vil begrænse opladningskraften til det indstillede maksimum. Dette gælder kun, når kontroltilstand er indstillet til HOMEY (API Open Mode).",
+          "de": "Homey begrenzt die Ladeleistung auf das festgelegte Maximum. Dies gilt nur, wenn der Steuerungsmodus auf HOMEY (API Open Mode) eingestellt ist.",
+          "es": "Homey limitará la potencia de carga al máximo establecido. Esto solo se aplica cuando el modo de control está configurado en HOMEY (API Open Mode).",
+          "fr": "Homey limitera la puissance de charge au maximum défini. Cela ne s'applique que lorsque le mode de contrôle est réglé sur HOMEY (mode ouvert API).",
+          "it": "Homey limiterà la potenza di carica al massimo impostato. Questo si applica solo quando la modalità di controllo è impostata su HOMEY (modalità Open API).",
+          "no": "Homey vil begrense ladeeffekten til maksimumet som er angitt. Dette gjelder kun når kontrollmodus er innstilt på HOMEY (API Open Mode).",
+          "sv": "Homey begränsar laddningskraften till det angivna maximala. Detta gäller endast när kontrollläget är inställt på HOMEY (API Open Mode).",
+          "pl": "Homey ograniczy moc ładowania do ustawionego maksimum. Ma to zastosowanie tylko wtedy, gdy tryb sterowania jest ustawiony na HOMEY (API Open Mode).",
+          "ru": "Homey ограничит зарядный ток установленным максимумом. Это применяется только в том случае, если режим управления установлен на HOMEY (API Open Mode).",
+          "ko": "Homey는 설정된 최대값으로 충전 전력을 제한합니다. 이는 제어 모드가 HOMEY(API Open 모드)로 설정된 경우에만 적용됩니다."
+        },
+        "min": 100,
+        "max": 2200,
+        "value": 2200
+      },
+      {
+        "id": "power_max_discharge",
+        "type": "number",
+        "label": {
+          "en": "Maximum discharge power",
+          "nl": "Maximaal ontlaadvermogen",
+          "da": "Maksimal afladdeffekt",
+          "de": "Maximale Entladeleistung",
+          "es": "Potencia máxima de descarga",
+          "fr": "Puissance de décharge maximale",
+          "it": "Potenza di scarica massima",
+          "no": "Maksimal utladdeffekt",
+          "sv": "Maximal urladdningseffekt",
+          "pl": "Maksymalna moc rozładowania",
+          "ru": "Максимальная мощность разряда",
+          "ko": "최대 방전 전력"
+        },
+        "hint": {
+          "en": "Homey will limit the discharging power to the set maximum. This only applies when Control Mode is set to HOMEY (API Open Mode).",
+          "nl": "Homey beperkt het vermogen tijdens ontladen tot het ingestelde maximum. Dit is alleen van toepassing als de besturingsmodus is ingesteld op HOMEY (API Open Modus).",
+          "da": "Homey vil begrænse afladningskraften til det indstillede maksimum. Dette gælder kun, når kontroltilstand er indstillet til HOMEY (API Open Mode).",
+          "de": "Homey begrenzt die Entladeleistung auf das festgelegte Maximum. Dies gilt nur, wenn der Steuerungsmodus auf HOMEY (API Open Mode) eingestellt ist.",
+          "es": "Homey limitará la potencia de descarga al máximo establecido. Esto solo se aplica cuando el modo de control está configurado en HOMEY (API Open Mode).",
+          "fr": "Homey limitera la puissance de décharge au maximum défini. Cela ne s'applique que lorsque le mode de contrôle est réglé sur HOMEY (mode ouvert API).",
+          "it": "Homey limiterà la potenza di scarica al massimo impostato. Questo si applica solo quando la modalità di controllo è impostata su HOMEY (modalità Open API).",
+          "no": "Homey vil begrense utladningskraften til maksimumet som er angitt. Dette gjelder kun når kontrollmodus er innstilt på HOMEY (API Open Mode).",
+          "sv": "Homey begränsar urladdningskraften till det angivna maximala. Detta gäller endast när kontrollläget är inställt på HOMEY (API Open Mode).",
+          "pl": "Homey ograniczy moc rozładowania do ustawionego maksimum. Ma to zastosowanie tylko wtedy, gdy tryb sterowania jest ustawiony na HOMEY (API Open Modus).",
+          "ru": "Homey ограничит разрядный ток установленным максимумом. Это применяется только в том случае, если режим управления установлен на HOMEY (API Open Mode).",
+          "ko": "Homey는 설정된 최대값으로 방전 전력을 제한합니다. 이는 제어 모드가 HOMEY(API Open 모드)로 설정된 경우에만 적용됩니다."
+        },
+        "min": 100,
+        "max": 1800,
+        "value": 1800
+      }
+    ]
+  }
 ]

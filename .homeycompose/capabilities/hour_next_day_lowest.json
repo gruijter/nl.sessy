@@ -3,12 +3,17 @@
   "title": {
     "en": "Lowest hour tomorrow",
     "de": "Niedrigste Stunde morgen",
-    "sv": "Lägsta timmen imorgen",
+    "sv": "Lägsta timmen imorgon",
     "it": "Ora più bassa di domani",
     "no": "Laveste time morgen",
     "fr": "Heure la plus faible demain",
     "dk": "Laveste pris i morgen",
-    "nl": "Laagste uur morgen"
+    "nl": "Laagste uur morgen",
+    "es": "Hora más baja mañana",
+    "da": "Laveste time i morgen",
+    "pl": "Najniższa godzina jutro",
+    "ru": "Самый низкий час завтра",
+    "ko": "내일 가장 낮은 시간"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",
@@ -21,7 +26,12 @@
     "de": "Stunde",
     "sv": "Timme",
     "it": "Ora",
-    "nl": "Uur"
+    "nl": "Uur",
+    "es": "Hora",
+    "da": "Time",
+    "pl": "Godzina",
+    "ru": "Час",
+    "ko": "시간"
   },
   "decimals": 0
 }

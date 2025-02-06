@@ -8,7 +8,11 @@
     "no": "Høyeste pris morgen",
     "fr": "Tarif le plus élevée demain",
     "dk": "Højeste pris i morgen",
-    "nl": "Hoogste prijs morgen"
+    "nl": "Hoogste prijs morgen",
+    "es": "Precio más alto mañana",
+    "pl": "Najwyższa cena jutro",
+    "ru": "Самая высокая цена завтра",
+    "ko": "내일의 최고 가격"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

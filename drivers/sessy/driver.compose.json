@@ -1,41 +1,49 @@
 {
   "name": {
-    "en": "Sessy"
+    "en": "Sessy",
+    "nl": "Sessy",
+    "da": "Sessy",
+    "de": "Sessy",
+    "es": "Sessy",
+    "fr": "Sessy",
+    "it": "Sessy",
+    "no": "Sessy",
+    "sv": "Sessy",
+    "pl": "Sessy",
+    "ru": "Сесси",
+    "ko": "세시"
   },
   "class": "battery",
   "energy": {
-    "batteries": ["INTERNAL"],
+    "batteries": [
+      "INTERNAL"
+    ],
     "homeBattery": true
   },
   "capabilities": [
     "charge_mode",
     "volume_set",
     "measure_battery",
-  
     "measure_power",
     "measure_current.inverter",
     "meter_setpoint",
     "system_state",
     "alarm_fault",
     "control_strategy",
-
+    "override",
     "meter_power.import",
     "meter_power.export",
-  
     "measure_power.total",
-  
     "measure_power.p1",
     "measure_voltage.p1",
     "measure_current.p1",
     "meter_power.p1Import",
     "meter_power.p1Export",
-  
     "measure_power.p2",
     "measure_voltage.p2",
     "measure_current.p2",
     "meter_power.p2Import",
     "meter_power.p2Export",
-  
     "measure_power.p3",
     "measure_current.p3",
     "measure_voltage.p3",
@@ -43,89 +51,364 @@
     "meter_power.p3Export"
   ],
   "capabilitiesOptions": {
-    "volume_set": { 
+    "volume_set": {
       "min": 1,
       "max": 5,
       "step": 1,
-      "units": { "en": "" },
+      "units": {
+        "en": ""
+      },
       "labelMultiplier": 1,
       "labelDecimals": 0
     },
-    "measure_current.inverter": { 
-      "title": { "en": "Inverter Current", "nl": "Omvormer Stroom" }
+    "measure_current.inverter": {
+      "title": {
+        "en": "Inverter Current",
+        "nl": "Omvormer Stroom",
+        "da": "Inverter Strøm",
+        "de": "Wechselrichterstrom",
+        "es": "Corriente del Inversor",
+        "fr": "Courant de l'Inversor",
+        "it": "Corrente dell'Inverter",
+        "no": "Inverter Strøm",
+        "sv": "Inverter Ström",
+        "pl": "Prąd Inwertera",
+        "ru": "Ток инвертора",
+        "ko": "인버터 전류"
+      }
     },
-    "meter_power.import": { 
-      "title": { "en": "Energy Charged", "nl": "Energie Geladen" }
+    "meter_power.import": {
+      "title": {
+        "en": "Energy Charged",
+        "nl": "Energie Geladen",
+        "da": "Energi Opbevaret",
+        "de": "Energie Eingeladen",
+        "es": "Energía Cargada",
+        "fr": "Énergie Chargée",
+        "it": "Energia Caricata",
+        "no": "Energi Ladet",
+        "sv": "Energi Laddad",
+        "pl": "Energia Załadowana",
+        "ru": "Энергия Заряжена",
+        "ko": "충전된 에너지"
+      }
     },
-    "meter_power.export": { 
-      "title": { "en": "Energy Discharged", "nl": "Energie Ontladen" }
+    "meter_power.export": {
+      "title": {
+        "en": "Energy Discharged",
+        "nl": "Energie Ontladen",
+        "da": "Energi Afladet",
+        "de": "Energie Entladen",
+        "es": "Energía Descargada",
+        "fr": "Énergie Déchargée",
+        "it": "Energia Scaricata",
+        "no": "Energi Utladet",
+        "sv": "Energi Urladdad",
+        "pl": "Energia Rozładowana",
+        "ru": "Энергия Разряжена",
+        "ko": "방전된 에너지"
+      }
     },
-    "measure_power.total": { 
-      "title": { "en": "Solar Power Total", "nl": "PV vermogen Totaal" }
+    "measure_power.total": {
+      "title": {
+        "en": "Solar Power Total",
+        "nl": "PV vermogen Totaal",
+        "da": "Solenergi Total",
+        "de": "Solarleistung Gesamt",
+        "es": "Potencia Solar Total",
+        "fr": "Puissance Solaire Totale",
+        "it": "Potenza Solare Totale",
+        "no": "Solkraft Total",
+        "sv": "Solkraft Totalt",
+        "pl": "Całkowita Moc Słoneczna",
+        "ru": "Общая Солнечная Мощность",
+        "ko": "총 태양광 출력"
+      }
     },
-    "measure_power.p1": { 
-      "title": { "en": "Solar Power P1", "nl": "PV vermogen P1" }
+    "measure_power.p1": {
+      "title": {
+        "en": "Solar Power P1",
+        "nl": "PV vermogen P1",
+        "da": "Solenergi P1",
+        "de": "Solarleistung P1",
+        "es": "Potencia Solar P1",
+        "fr": "Puissance Solaire P1",
+        "it": "Potenza Solare P1",
+        "no": "Solkraft P1",
+        "sv": "Solkraft P1",
+        "pl": "Moc Słoneczna P1",
+        "ru": "Солнечная Мощность P1",
+        "ko": "태양광 출력 P1"
+      }
     },
-    "measure_power.p2": { 
-      "title": { "en": "Solar Power P2", "nl": "PV vermogen P2" }
+    "measure_power.p2": {
+      "title": {
+        "en": "Solar Power P2",
+        "nl": "PV vermogen P2",
+        "da": "Solenergi P2",
+        "de": "Solarleistung P2",
+        "es": "Potencia Solar P2",
+        "fr": "Puissance Solaire P2",
+        "it": "Potenza Solare P2",
+        "no": "Solkraft P2",
+        "sv": "Solkraft P2",
+        "pl": "Moc Słoneczna P2",
+        "ru": "Солнечная Мощность P2",
+        "ko": "태양광 출력 P2"
+      }
     },
-    "measure_power.p3": { 
-      "title": { "en": "Solar Power P3", "nl": "PV vermogen P3" }
+    "measure_power.p3": {
+      "title": {
+        "en": "Solar Power P3",
+        "nl": "PV vermogen P3",
+        "da": "Solenergi P3",
+        "de": "Solarleistung P3",
+        "es": "Potencia Solar P3",
+        "fr": "Puissance Solaire P3",
+        "it": "Potenza Solare P3",
+        "no": "Solkraft P3",
+        "sv": "Solkraft P3",
+        "pl": "Moc Słoneczna P3",
+        "ru": "Солнечная Мощность P3",
+        "ko": "태양광 출력 P3"
+      }
     },
-    "meter_power.p1Import": { 
-      "title": { "en": "Energy P1 Usage", "nl": "Energie P1 Verbruik" },
+    "meter_power.p1Import": {
+      "title": {
+        "en": "Energy P1 Usage",
+        "nl": "Energie P1 Verbruik",
+        "da": "Energi P1 Forbrug",
+        "de": "Energie P1 Verbrauch",
+        "es": "Uso de Energía P1",
+        "fr": "Consommation d'énergie P1",
+        "it": "Uso di energia P1",
+        "no": "Energibruk P1",
+        "sv": "Energi P1 Användning",
+        "pl": "Zużycie Energii P1",
+        "ru": "Использование энергии P1",
+        "ko": "에너지 P1 사용"
+      },
       "decimals": 3
     },
-    "meter_power.p1Export": { 
-      "title": { "en": "Solar Energy P1", "nl": "PV energie P1" },
+    "meter_power.p1Export": {
+      "title": {
+        "en": "Solar Energy P1",
+        "nl": "PV energie P1",
+        "da": "Solenergi P1",
+        "de": "Solarenergie P1",
+        "es": "Energía Solar P1",
+        "fr": "Énergie Solaire P1",
+        "it": "Energia Solare P1",
+        "no": "Solenergi P1",
+        "sv": "Solenergi P1",
+        "pl": "Energia Słoneczna P1",
+        "ru": "Солнечная энергия P1",
+        "ko": "태양광 에너지 P1"
+      },
       "decimals": 3
     },
-    "meter_power.p2Import": { 
-      "title": { "en": "Energy P2 Usage", "nl": "Energie P2 Verbruik" },
+    "meter_power.p2Import": {
+      "title": {
+        "en": "Energy P2 Usage",
+        "nl": "Energie P2 Verbruik",
+        "da": "Energi P2 Forbrug",
+        "de": "Energie P2 Verbrauch",
+        "es": "Uso de Energía P2",
+        "fr": "Consommation d'énergie P2",
+        "it": "Uso di energia P2",
+        "no": "Energibruk P2",
+        "sv": "Energi P2 Användning",
+        "pl": "Zużycie Energii P2",
+        "ru": "Использование энергии P2",
+        "ko": "에너지 P2 사용"
+      },
       "decimals": 3
     },
-    "meter_power.p2Export": { 
-      "title": { "en": "Solar Energy P2", "nl": "PV energie P2" },
+    "meter_power.p2Export": {
+      "title": {
+        "en": "Solar Energy P2",
+        "nl": "PV energie P2",
+        "da": "Solenergi P2",
+        "de": "Solarenergie P2",
+        "es": "Energía Solar P2",
+        "fr": "Énergie Solaire P2",
+        "it": "Energia Solare P2",
+        "no": "Solenergi P2",
+        "sv": "Solenergi P2",
+        "pl": "Energia Słoneczna P2",
+        "ru": "Солнечная энергия P2",
+        "ko": "태양광 에너지 P2"
+      },
       "decimals": 3
     },
-    "meter_power.p3Import": { 
-      "title": { "en": "Energy P3 Usage", "nl": "Energie P3 Verbruik" },
+    "meter_power.p3Import": {
+      "title": {
+        "en": "Energy P3 Usage",
+        "nl": "Energie P3 Verbruik",
+        "da": "Energi P3 Forbrug",
+        "de": "Energie P3 Verbrauch",
+        "es": "Uso de Energía P3",
+        "fr": "Consommation d'énergie P3",
+        "it": "Uso di energia P3",
+        "no": "Energibruk P3",
+        "sv": "Energi P3 Användning",
+        "pl": "Zużycie Energii P3",
+        "ru": "Использование энергии P3",
+        "ko": "에너지 P3 사용"
+      },
       "decimals": 3
     },
-    "meter_power.p3Export": { 
-      "title": { "en": "Solar Energy P3", "nl": "PV Energie 3" },
+    "meter_power.p3Export": {
+      "title": {
+        "en": "Solar Energy P3",
+        "nl": "PV Energie 3",
+        "da": "Solenergi P3",
+        "de": "Solarenergie P3",
+        "es": "Energía Solar P3",
+        "fr": "Énergie Solaire P3",
+        "it": "Energia Solare P3",
+        "no": "Solenergi P3",
+        "sv": "Solenergi P3",
+        "pl": "Energia Słoneczna P3",
+        "ru": "Солнечная энергия P3",
+        "ko": "태양광 에너지 P3"
+      },
       "decimals": 3
     },
-    "measure_current.p1": { 
-      "title": { "en": "Solar Current P1", "nl": "PV Stroom P1" },
+    "measure_current.p1": {
+      "title": {
+        "en": "Solar Current P1",
+        "nl": "PV Stroom P1",
+        "da": "Solstrøm P1",
+        "de": "Solarstrom P1",
+        "es": "Corriente Solar P1",
+        "fr": "Courant Solaire P1",
+        "it": "Corrente Solare P1",
+        "no": "Sola strøm P1",
+        "sv": "Solström P1",
+        "pl": "Prąd Słoneczny P1",
+        "ru": "Солнечный ток P1",
+        "ko": "태양 전류 P1"
+      },
       "decimals": 3
     },
-    "measure_current.p2": { 
-      "title": { "en": "Solar Current P2", "nl": "PV Stroom P2" },
+    "measure_current.p2": {
+      "title": {
+        "en": "Solar Current P2",
+        "nl": "PV Stroom P2",
+        "da": "Solstrøm P2",
+        "de": "Solarstrom P2",
+        "es": "Corriente Solar P2",
+        "fr": "Courant Solaire P2",
+        "it": "Corrente Solare P2",
+        "no": "Sola strøm P2",
+        "sv": "Solström P2",
+        "pl": "Prąd Słoneczny P2",
+        "ru": "Солнечный ток P2",
+        "ko": "태양 전류 P2"
+      },
       "decimals": 3
     },
-    "measure_current.p3": { 
-      "title": { "en": "Solar Current P3", "nl": "PV Stroom P3" },
+    "measure_current.p3": {
+      "title": {
+        "en": "Solar Current P3",
+        "nl": "PV Stroom P3",
+        "da": "Solstrøm P3",
+        "de": "Solarstrom P3",
+        "es": "Corriente Solar P3",
+        "fr": "Courant Solaire P3",
+        "it": "Corrente Solare P3",
+        "no": "Sola strøm P3",
+        "sv": "Solström P3",
+        "pl": "Prąd Słoneczny P3",
+        "ru": "Солнечный ток P3",
+        "ko": "태양 전류 P3"
+      },
       "decimals": 3
     },
-    "measure_voltage.p1": { 
-      "title": { "en": "Solar Voltage P1", "nl": "PV Spanning P1" }
+    "measure_voltage.p1": {
+      "title": {
+        "en": "Solar Voltage P1",
+        "nl": "PV Spanning P1",
+        "da": "Solspænding P1",
+        "de": "Solarspannung P1",
+        "es": "Voltaje Solar P1",
+        "fr": "Tension Solaire P1",
+        "it": "Tensione Solare P1",
+        "no": "Sola spenning P1",
+        "sv": "Solspänning P1",
+        "pl": "Napięcie Słoneczne P1",
+        "ru": "Солнечное напряжение P1",
+        "ko": "태양 전압 P1"
+      }
     },
-    "measure_voltage.p2": { 
-      "title": { "en": "Solar Voltage P2", "nl": "PV Spanning P2" }
+    "measure_voltage.p2": {
+      "title": {
+        "en": "Solar Voltage P2",
+        "nl": "PV Spanning P2",
+        "da": "Solspænding P2",
+        "de": "Solarspannung P2",
+        "es": "Voltaje Solar P2",
+        "fr": "Tension Solaire P2",
+        "it": "Tensione Solare P2",
+        "no": "Sola spenning P2",
+        "sv": "Solspänning P2",
+        "pl": "Napięcie Słoneczne P2",
+        "ru": "Солнечное напряжение P2",
+        "ko": "태양 전압 P2"
+      }
     },
-    "measure_voltage.p3": { 
-      "title": { "en": "Solar Voltage P3", "nl": "PV Spanning P3" }
+    "measure_voltage.p3": {
+      "title": {
+        "en": "Solar Voltage P3",
+        "nl": "PV Spanning P3",
+        "da": "Solspænding P3",
+        "de": "Solarspannung P3",
+        "es": "Voltaje Solar P3",
+        "fr": "Tension Solaire P3",
+        "it": "Tensione Solare P3",
+        "no": "Sola spenning P3",
+        "sv": "Solspänning P3",
+        "pl": "Napięcie Słoneczne P3",
+        "ru": "Солнечное напряжение P3",
+        "ko": "태양 전압 P3"
+      }
     },
     "alarm_fault": {
-      "titleTrue": { "en": "Yes", "nl": "Ja" },
-      "titleFalse": { "en": "No", "nl": "Nee" }
+      "titleTrue": {
+        "en": "Yes",
+        "nl": "Ja",
+        "da": "Ja",
+        "de": "Ja",
+        "es": "Sí",
+        "fr": "Oui",
+        "it": "Sì",
+        "no": "Ja",
+        "sv": "Ja",
+        "pl": "Tak",
+        "ru": "Да",
+        "ko": "네"
+      },
+      "titleFalse": {
+        "en": "No",
+        "nl": "Nee",
+        "da": "Nej",
+        "de": "Nein",
+        "es": "No",
+        "fr": "Non",
+        "it": "No",
+        "no": "Nei",
+        "sv": "Nej",
+        "pl": "Nie",
+        "ru": "Нет",
+        "ko": "아니요"
+      }
     }
   },
   "platforms": [
     "local"
   ],
-  "connectivity": [ ],
+  "connectivity": [],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.jpg",
     "large": "{{driverAssetsPath}}/images/large.jpg"
@@ -133,23 +416,25 @@
   "discovery": "sessy",
   "pair": [
     {
-			"id": "local_login"
-		},
+      "id": "local_login"
+    },
     {
-			"id": "list_devices",
-			"template": "list_devices",
-      "options": { "singular": false },
-			"navigation": {
-				"next": "add_devices"
-			}
-		},
-		{
-			"id": "add_devices",
-			"template": "add_devices"
-		},
+      "id": "list_devices",
+      "template": "list_devices",
+      "options": {
+        "singular": false
+      },
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
     {
-			"id": "done",
-			"template": "done"
-		}
-	]
+      "id": "add_devices",
+      "template": "add_devices"
+    },
+    {
+      "id": "done",
+      "template": "done"
+    }
+  ]
 }

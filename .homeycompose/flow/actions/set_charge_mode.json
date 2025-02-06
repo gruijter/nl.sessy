@@ -1,51 +1,124 @@
 {
-	"title": {
-		"en": "Start/Stop (dis)charging",
-		"nl": "Start/Stop (ont)laden"
-	},
-		"titleFormatted": {
-				"en": "Set Sessy charge mode to [[chargeMode]]",
-				"nl": "Zet Sessy laadmodus op [[chargeMode]]"
-		},
-		"hint": { 
-				"en": "Charging/Discharging will be set to the maximum capacity.",
-				"nl": "Laden/Ontladen wordt ingesteld op de maximale capaciteit."
-		},
-		"highlight": true,
-		"args": [
-				{
-						"type": "device",
-						"name": "device",
-						"filter": "driver_id=sessy"
-				},
-				{
-						"type": "dropdown",
-						"name": "chargeMode",
-						"title": { "en": "Charge mode", "nl": "Laadmodus" },
-						"values": [
-								{
-										"id": "CHARGE",
-										"title": {
-												"en": "Charge",
-												"nl": "Opladen"
-										}
-								},
-								{
-										"id": "STOP",
-										"title": {
-												"en": "Stop",
-												"nl": "Stop"
-										}
-								},
-								{
-										"id": "DISCHARGE",
-										"title": {
-												"en": "Discharge",
-												"nl": "Ontladen"
-										}
-								}
-						],
-						"value": "STOP"
-				}
-		]
+  "title": {
+    "en": "Start/Stop (dis)charging",
+    "nl": "Start/Stop (ont)laden",
+    "da": "Start/Stop (af)ladning",
+    "de": "Start/Stopp (ent)laden",
+    "es": "Iniciar/Detener (carga)",
+    "fr": "Démarrer/Arrêter (dé)charge",
+    "it": "Avvia/Arresta (carica)",
+    "no": "Start/Stopp (ut)lading",
+    "sv": "Starta/Stopp (ladda)",
+    "pl": "Rozpocznij/Zatrzymaj (ładowanie)",
+    "ru": "Запустить/Остановить (зарядку)",
+    "ko": "시작/정지 (충전)"
+  },
+  "titleFormatted": {
+    "en": "Set Sessy charge mode to [[chargeMode]]",
+    "nl": "Zet Sessy laadmodus op [[chargeMode]]",
+    "da": "Indstil Sessy ladetilstand til [[chargeMode]]",
+    "de": "Setze Sessy Lademodus auf [[chargeMode]]",
+    "es": "Establecer el modo de carga de Sessy en [[chargeMode]]",
+    "fr": "Définir le mode de charge de Sessy sur [[chargeMode]]",
+    "it": "Imposta la modalità di carica di Sessy su [[chargeMode]]",
+    "no": "Sett Sessy ladetilstand til [[chargeMode]]",
+    "sv": "Ställ in Sessy laddläge på [[chargeMode]]",
+    "pl": "Ustaw tryb ładowania Sessy na [[chargeMode]]",
+    "ru": "Установите режим зарядки Sessy на [[chargeMode]]",
+    "ko": "Sessy의 충전 모드를 [[chargeMode]]로 설정"
+  },
+  "hint": {
+    "en": "Charging/Discharging will be set to the maximum capacity.",
+    "nl": "Laden/Ontladen wordt ingesteld op de maximale capaciteit.",
+    "da": "Opladning/afladning vil blive sat til maksimal kapacitet.",
+    "de": "Das Laden/Entladen wird auf die maximale Kapazität eingestellt.",
+    "es": "La carga/descarga se establecerá a la capacidad máxima.",
+    "fr": "La charge/décharge sera réglée sur la capacité maximale.",
+    "it": "La ricarica/scarica sarà impostata sulla capacità massima.",
+    "no": "Lading/utlading vil bli satt til maksimal kapasitet.",
+    "sv": "Laddning/utladdning kommer att ställas in på maximal kapacitet.",
+    "pl": "Ładowanie/rozładowywanie zostanie ustawione na maksymalną pojemność.",
+    "ru": "Зарядка/разрядка будет установлена на максимальную емкость.",
+    "ko": "충전/방전이 최대 용량으로 설정됩니다."
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    },
+    {
+      "type": "dropdown",
+      "name": "chargeMode",
+      "title": {
+        "en": "Charge mode",
+        "nl": "Laadmodus",
+        "da": "Opladningstilstand",
+        "de": "Lademodus",
+        "es": "Modo de carga",
+        "fr": "Mode de charge",
+        "it": "Modalità di carica",
+        "no": "Ladetilstand",
+        "sv": "Laddläge",
+        "pl": "Tryb ładowania",
+        "ru": "Режим зарядки",
+        "ko": "충전 모드"
+      },
+      "values": [
+        {
+          "id": "CHARGE",
+          "title": {
+            "en": "Charge",
+            "nl": "Opladen",
+            "da": "Opladning",
+            "de": "Laden",
+            "es": "Cargar",
+            "fr": "Charger",
+            "it": "Caricare",
+            "no": "Lade",
+            "sv": "Ladda",
+            "pl": "Ładować",
+            "ru": "Зарядить",
+            "ko": "충전하다"
+          }
+        },
+        {
+          "id": "STOP",
+          "title": {
+            "en": "Stop",
+            "nl": "Stop",
+            "da": "Stop",
+            "de": "Stopp",
+            "es": "Detener",
+            "fr": "Arrêter",
+            "it": "Arresta",
+            "no": "Stopp",
+            "sv": "Stoppa",
+            "pl": "Zatrzymaj",
+            "ru": "Остановить",
+            "ko": "중지하다"
+          }
+        },
+        {
+          "id": "DISCHARGE",
+          "title": {
+            "en": "Discharge",
+            "nl": "Ontladen",
+            "da": "Aflade",
+            "de": "Entladen",
+            "es": "Descargar",
+            "fr": "Décharger",
+            "it": "Scarica",
+            "no": "Utlade",
+            "sv": "Utladda",
+            "pl": "Rozładować",
+            "ru": "Разрядить",
+            "ko": "방전하다"
+          }
+        }
+      ],
+      "value": "STOP"
+    }
+  ]
 }

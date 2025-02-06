@@ -8,7 +8,11 @@
     "no": "Laveste pris neste 8T",
     "fr": "Tarif le plus faible les 8 prochaines heures",
     "dk": "Laveste pris næste 8T",
-    "nl": "Laagste prijs komende 8U"
+    "nl": "Laagste prijs komende 8U",
+    "es": "El precio más bajo en las próximas 8 horas",
+    "pl": "Najniższa cena w następnych 8 godzinach",
+    "ru": "Lowest price next 8H",
+    "ko": "다음 8시간 최저가"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

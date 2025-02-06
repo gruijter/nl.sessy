@@ -1,0 +1,43 @@
+{
+  "today": "Oggi",
+  "tomorrow": "Domani",
+  "nextHours": "Prossore ore",
+  "pair": {
+    "portal_login_title": "ACCESSO PORTALE SESSY",
+    "portal_login_text": "Aggiungi tutti i tuoi Sessy dal portale Sessy a Homey. Assicurati di aver finito di aggiungere i tuoi Sessy nel portale prima! (portal.sessy.nl)",
+    "portal_login_text_p1": "Aggiungi il tuo misuratore di energia dal portale Sessy a Homey. Assicurati di aver finito di configurare il tuo sistema nel portale prima! (portal.sessy.nl)",
+    "portal_login_text_dap": "Aggiungi informazioni sui prezzi per il giorno successivo dal portale Sessy a Homey. Assicurati di aver configurato il tuo account nel portale prima! (portal.sessy.nl)",
+    "username_portal": "Nome utente Portale",
+    "password_portal": "Password Portale",
+    "portal_login_button": "ACCESSO PORTALE SESSY",
+    "incomplete_portal": "Nome utente e password devono essere inseriti!",
+    "no_batteries_registered": "Nessun Sessy trovato sotto questo account. Aggiungi i tuoi Sessy a portal.sessy.nl.",
+    "no_meters_registered": "Nessun misuratore di energia trovato sotto questo account. Configura il tuo sistema su portal.sessy.nl.",
+    "local_login_title": "CONFIGURAZIONE CONNESSIONE LOCALE",
+    "local_login_text": "Puoi anche saltare l'accesso al portale Sessy e continuare con la configurazione di una connessione locale.",
+    "local_login_button": "CONTINUA CON LA CONFIGURAZIONE LOCALE",
+    "monmodetitle": "MODALITÀ MONITORAGGIO LOCALE",
+    "monmodetext": "Aggiungi tutti i SESSY in modalità monitoraggio locale. Scegli questa opzione se vuoi mantenere il controllo su portal.sessy.nl.",
+    "monmodebutton": "CONTINUA IN MODALITÀ MONITORAGGIO",
+    "contmodetitle": "OPPURE: MODALITÀ CONTROLLO LOCALE",
+    "contmodetext": "Aggiungi un SESSY in modalità controllo locale. Scegli questa opzione se vuoi essere in grado di controllare utilizzando Homey.",
+    "contmodebutton": "CONTINUA IN MODALITÀ CONTROLLO",
+    "local_login_text_p1": "Per continuare in MODALITÀ CONTROLLO, è richiesta la password (preferita). Per continuare in MODALITÀ MONITORAGGIO, lascia la password vuota",
+    "host": "Indirizzo IP o URL",
+    "sn_dongle": "Dongle S/N",
+    "password_dongle": "Password Dongle",
+    "incomplete": "Indirizzo IP o URL, dongle S/N e password devono essere inseriti!",
+    "continue": "CONTINUA"
+  },
+  "sessy": {
+    "homeyProOnly": "Questa impostazione è disponibile solo su Homey Pro",
+    "incomplete": "Ospite e porta devono essere inseriti per una connessione locale",
+    "controlError": "Homey non è impostato in modalità controllo",
+    "connectionError": "Errore di connessione, riavvio ora",
+    "migrating": "Il dispositivo è in fase di migrazione. Attendere!",
+    "newFirmware": "Nuovo firmware installato su Sessy. __fw__",
+    "newFirmwareAvailable": "Nuovo firmware disponibile per Sessy. __fw__",
+    "newFirmwareMeter": "Nuovo firmware installato sul Misuratore. __fw__",
+    "newFirmwareAvailableMeter": "Nuovo firmware disponibile per il Misuratore. __fw__"
+  }
+}

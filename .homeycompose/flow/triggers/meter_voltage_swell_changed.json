@@ -1,25 +1,45 @@
 {
-	"title": { 
-		"en": "The voltage swell count changed",
-		"nl": "De spanningspiek teller veranderd"
-	},
-	"highlight": true,
-	"args": [
-		{
-				"type": "device",
-				"name": "device",
-				"filter": "driver_id=p1"
-		}
-	],
-	"tokens": [
-		{
-			"name": "meter_voltage_swell",
-			"type": "number",
-			"title": { 
-				"en": "Voltage swell count",
-				"nl": "Spanningspiek teller"
-			},
-			"example": 12
-		}
-	]
+  "title": {
+    "en": "The voltage swell count changed",
+    "nl": "De spanningspiek teller veranderd",
+    "da": "Antallet af spændingsspidser er ændret",
+    "de": "Die Anzahl der Spannungsspitzen hat sich geändert",
+    "es": "El conteo de picos de voltaje cambió",
+    "fr": "Le nombre de pics de tension a changé",
+    "it": "Il conteggio degli picchi di tensione è cambiato",
+    "no": "Antall spenningspiker har endret seg",
+    "sv": "Antalet spänningsspikar har ändrats",
+    "pl": "Liczba szczytów napięcia została zmieniona",
+    "ru": "Количество скачков напряжения изменилось",
+    "ko": "전압 스웰 수가 변경되었습니다"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=p1"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "meter_voltage_swell",
+      "type": "number",
+      "title": {
+        "en": "Voltage swell count",
+        "nl": "Spanningspiek teller",
+        "da": "Antal spændingsspidser",
+        "de": "Anzahl der Spannungsspitzen",
+        "es": "Contador de picos de voltaje",
+        "fr": "Compte des pics de tension",
+        "it": "Conteggio dei picchi di tensione",
+        "no": "Antall spenningspiker",
+        "sv": "Antal spänningsspikar",
+        "pl": "Liczba szczytów napięcia",
+        "ru": "Количество скачков напряжения",
+        "ko": "전압 스웰 수"
+      },
+      "example": 12
+    }
+  ]
 }

@@ -1,34 +1,77 @@
 {
-	"title": {
-		"en": "Set the max noise level",
-		"nl": "Zet het max geluidsniveau"
-	},
-		"units": {
-		"en": ""
-	},
-	"titleFormatted": {
-			"en": "Set max noise level to [[setpoint]]",
-			"nl": "Zet maxi geluidsniveau op [[setpoint]]"
-	},
-	"hint": { 
-			"en": "A lower noise level limits the power. This setting works in all control modes!",
-			"nl": "Een lager geluidsniveau beperkt het vermogen. Deze instelling werkt in alle besturings modi!"
-	},
-	"args": [
-			{
-					"type": "device",
-					"name": "device",
-					"filter": "driver_id=sessy"
-			},
-			{
-					"type": "range",
-					"name": "setpoint",
-					"title": { "en": "Max noise level", "nl": "Max geluidsniveau" },
-					"min": 1,
-					"max": 5,
-					"step": 1,
-					"value": 5,
-					"labelDecimals": 0
-			}
-		]
+  "title": {
+    "en": "Set the max noise level",
+    "nl": "Zet het max geluidsniveau",
+    "da": "Sæt det maksimale støjniveau",
+    "de": "Stellen Sie das maximale Geräuschlevel ein",
+    "es": "Establecer el nivel máximo de ruido",
+    "fr": "Définir le niveau de bruit maximal",
+    "it": "Imposta il livello massimo di rumore",
+    "no": "Sett maksimum støynivå",
+    "sv": "Ställ in max ljudnivå",
+    "pl": "Ustaw maksymalny poziom hałasu",
+    "ru": "Установите максимальный уровень шума",
+    "ko": "최대 소음 수준 설정"
+  },
+  "units": {
+    "en": ""
+  },
+  "titleFormatted": {
+    "en": "Set max noise level to [[setpoint]]",
+    "nl": "Zet maxi geluidsniveau op [[setpoint]]",
+    "da": "Sæt det maksimale støjniveau til [[setpoint]]",
+    "de": "Stellen Sie das maximale Geräuschlevel auf [[setpoint]] ein",
+    "es": "Establecer el nivel máximo de ruido en [[setpoint]]",
+    "fr": "Définir le niveau de bruit maximal sur [[setpoint]]",
+    "it": "Imposta il livello massimo di rumore a [[setpoint]]",
+    "no": "Sett maksimum støynivå til [[setpoint]]",
+    "sv": "Ställ in max ljudnivå till [[setpoint]]",
+    "pl": "Ustaw maksymalny poziom hałasu na [[setpoint]]",
+    "ru": "Установите максимальный уровень шума на [[setpoint]]",
+    "ko": "[[setpoint]]로 최대 소음 수준 설정"
+  },
+  "hint": {
+    "en": "A lower noise level limits the power. This setting works in all control modes!",
+    "nl": "Een lager geluidsniveau beperkt het vermogen. Deze instelling werkt in alle besturings modi!",
+    "da": "Et lavere støjniveau begrænser strømmen. Denne indstilling fungerer i alle kontroltilstande!",
+    "de": "Ein niedrigerer Geräuschpegel begrenzt die Leistung. Diese Einstellung funktioniert in allen Steuerungsmodi!",
+    "es": "Un nivel de ruido más bajo limita la potencia. ¡Esta configuración funciona en todos los modos de control!",
+    "fr": "Un niveau de bruit plus bas limite la puissance. Ce paramètre fonctionne dans tous les modes de contrôle !",
+    "it": "Un livello di rumore più basso limita la potenza. Questa impostazione funziona in tutti i modi di controllo!",
+    "no": "Et lavere støynivå begrenser kraften. Denne innstillingen fungerer i alle kontrollmodi!",
+    "sv": "En lägre ljudnivå begränsar effekten. Denna inställning fungerar i alla kontrolllägen!",
+    "pl": "Niższy poziom hałasu ogranicza moc. Ta opcja działa we wszystkich trybach sterowania!",
+    "ru": "Низкий уровень шума ограничивает мощность. Эта настройка работает во всех режимах управления!",
+    "ko": "낮은 소음 수준은 전력을 제한합니다. 이 설정은 모든 제어 모드에서 작동합니다!"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy"
+    },
+    {
+      "type": "range",
+      "name": "setpoint",
+      "title": {
+        "en": "Max noise level",
+        "nl": "Max geluidsniveau",
+        "da": "Maks støjniveau",
+        "de": "Maximaler Geräuschpegel",
+        "es": "Nivel máximo de ruido",
+        "fr": "Niveau de bruit maximum",
+        "it": "Livello massimo di rumore",
+        "no": "Maksimal støynivå",
+        "sv": "Max ljudnivå",
+        "pl": "Maksymalny poziom hałasu",
+        "ru": "Максимальный уровень шума",
+        "ko": "최대 소음 수준"
+      },
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "value": 5,
+      "labelDecimals": 0
+    }
+  ]
 }

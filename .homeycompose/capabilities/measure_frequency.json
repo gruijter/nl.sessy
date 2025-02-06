@@ -1,16 +1,26 @@
 {
-	"type": "number",
-	"title": {
-		"en": "Frequency",
-		"nl": "Frequentie"
-	},
-	"units": {
-		"en": "Hz"
-	},
-	"decimals": 3,
-	"getable": true,
-	"setable": false,
-	"insights": true,
-	"uiComponent": "sensor",
-	"icon": "./assets/frequency.svg"
+  "type": "number",
+  "title": {
+    "en": "Frequency",
+    "nl": "Frequentie",
+    "da": "Frekvens",
+    "de": "Frequenz",
+    "es": "Frecuencia",
+    "fr": "Fréquence",
+    "it": "Frequenza",
+    "no": "Frekvens",
+    "sv": "Frekvens",
+    "pl": "Częstotliwość",
+    "ru": "Частота",
+    "ko": "주파수"
+  },
+  "units": {
+    "en": "Hz"
+  },
+  "decimals": 3,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "./assets/frequency.svg"
 }

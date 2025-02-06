@@ -1,13 +1,23 @@
 {
-	"type": "number",
-	"title": {
-		"en": "Power failure count",
-		"nl": "Stroomuitval teller"
-	},
-	"decimals": 0,
-	"getable": true,
-	"setable": false,
-	"insights": true,
-	"uiComponent": "sensor",
-	"icon": "./assets/fault.svg"
+  "type": "number",
+  "title": {
+    "en": "Power failure count",
+    "nl": "Stroomuitval teller",
+    "da": "Strømfejltæller",
+    "de": "Stromausfallzähler",
+    "es": "Contador de fallos de energía",
+    "fr": "Compteur de pannes de courant",
+    "it": "Contatore di guasti di corrente",
+    "no": "Strømbruddteller",
+    "sv": "Strömavbrottsräknare",
+    "pl": "Licznik awarii zasilania",
+    "ru": "Счетчик отключений питания",
+    "ko": "전원 장애 수"
+  },
+  "decimals": 0,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "./assets/fault.svg"
 }

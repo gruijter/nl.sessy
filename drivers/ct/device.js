@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /*
-Copyright 2023 - 2024, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2025, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -264,15 +264,26 @@ class CTDevice extends Device {
   async updateDeviceState(status, energy) {
     // this.log(`updating states for: ${this.getName()}`);
     try {
-      const { cosphi } = this.getSettings();
+      // compensate low power factor
+      const { cosphi, useLowPowerCorrection } = this.getSettings();
+      let powerL1 = status.power_l1;
+      let powerL2 = status.power_l2;
+      let powerL3 = status.power_l3;
+      let totalPower = status.total_power;
+      if (useLowPowerCorrection) {
+        if (status.power_l1 < 25 && status.current_l1 > 0) powerL1 = Math.round((status.current_l1 * status.voltage_l1 * cosphi) / 1000000);
+        if (status.power_l2 < 25 && status.current_l2 > 0) powerL2 = Math.round((status.current_l2 * status.voltage_l2 * cosphi) / 1000000);
+        if (status.power_l3 < 25 && status.current_l3 > 0) powerL3 = Math.round((status.current_l3 * status.voltage_l3 * cosphi) / 1000000);
+        totalPower = powerL1 + powerL2 + powerL3;
+      }
       // determine capability states
       const systemState = status.status;
       const capabilityStates = {
-        measure_power: status.total_power * cosphi,
+        measure_power: totalPower,
         system_state: systemState,
-        'measure_power.l1': status.power_l1 * cosphi,
-        'measure_power.l2': status.power_l2 * cosphi,
-        'measure_power.l3': status.power_l3 * cosphi,
+        'measure_power.l1': powerL1,
+        'measure_power.l2': powerL2,
+        'measure_power.l3': powerL3,
         'measure_current.l1': status.current_l1 / 1000,
         'measure_current.l2': status.current_l2 / 1000,
         'measure_current.l3': status.current_l3 / 1000,

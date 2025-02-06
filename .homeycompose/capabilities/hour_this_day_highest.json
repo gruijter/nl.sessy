@@ -8,7 +8,12 @@
     "no": "Høyeste time denne dag",
     "fr": "Heure la plus élevée aujourd'hui",
     "dk": "Højeste time i dag",
-    "nl": "Hoogste uur deze dag"
+    "nl": "Hoogste uur deze dag",
+    "es": "Hora más alta de este día",
+    "pl": "Najwyższa godzina tego dnia",
+    "ru": "Самый высокий час в этот день",
+    "ko": "오늘 최고 시간",
+    "da": "Højeste time i dag"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",
@@ -21,7 +26,13 @@
     "de": "Stunde",
     "sv": "Timme",
     "it": "Ora",
-    "nl": "Uur"
+    "nl": "Uur",
+    "es": "Hora",
+    "pl": "Godzina",
+    "ru": "Час",
+    "ko": "시간",
+    "da": "Time",
+    "fr": "Heure"
   },
   "decimals": 0
 }

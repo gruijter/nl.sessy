@@ -8,7 +8,12 @@
     "no": "Pris nå",
     "fr": "Tarif actuel",
     "dk": "Pris nu",
-    "nl": "Prijs nu"
+    "nl": "Prijs nu",
+    "es": "Precio ahora",
+    "pl": "Cena teraz",
+    "ru": "Цена сейчас",
+    "ko": "현재 가격",
+    "da": "Pris nu"
   },
   "uiComponent": "sensor",
   "icon": "/assets/tariff.svg",

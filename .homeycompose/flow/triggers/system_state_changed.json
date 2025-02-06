@@ -1,34 +1,64 @@
 {
-	"title": { 
-		"en": "The system state changed",
-		"nl": "De systeemstatus is veranderd"
-	},
-	"highlight": true,
-	"args": [
-		{
-				"type": "device",
-				"name": "device",
-				"filter": "driver_id=sessy|p1|ct"
-		}
-	],
-	"tokens": [
-		{
-			"name": "system_state",
-			"type": "string",
-			"title": { 
-				"en": "System state",
-				"nl": "Systeemstatus"
-			},
-			"example": "RUNNING_SAFE"
-		},
-		{
-			"name": "system_state_details",
-			"type": "string",
-			"title": { 
-				"en": "System state details",
-				"nl": "Systeemstatus details"
-			},
-			"example": "UNDERVOLTAGE"
-		}
-	]
+  "title": {
+    "en": "The system state changed",
+    "nl": "De systeemstatus is veranderd",
+    "da": "Systemtilstanden ændret",
+    "de": "Der Systemzustand hat sich geändert",
+    "es": "El estado del sistema ha cambiado",
+    "fr": "L'état du système a changé",
+    "it": "Lo stato del sistema è cambiato",
+    "No": "Systemtilstanden har endret seg",
+    "sv": "Systemtillståndet har ändrats",
+    "pl": "Stan systemu został zmieniony",
+    "ru": "Состояние системы изменилось",
+    "ko": "시스템 상태가 변경되었습니다."
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy|p1|ct"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "system_state",
+      "type": "string",
+      "title": {
+        "en": "System state",
+        "nl": "Systeemstatus",
+        "da": "Systemtilstand",
+        "de": "Systemzustand",
+        "es": "Estado del sistema",
+        "fr": "État du système",
+        "it": "Stato del sistema",
+        "no": "Systemtilstand",
+        "sv": "Systemtillstånd",
+        "pl": "Stan systemu",
+        "ru": "Состояние системы",
+        "ko": "시스템 상태"
+      },
+      "example": "RUNNING_SAFE"
+    },
+    {
+      "name": "system_state_details",
+      "type": "string",
+      "title": {
+        "en": "System state details",
+        "nl": "Systeemstatus details",
+        "da": "Systemtilstandsdetaljer",
+        "de": "Systemzustandsdetails",
+        "es": "Detalles del estado del sistema",
+        "fr": "Détails de l'état du système",
+        "it": "Dettagli sullo stato del sistema",
+        "no": "Detaljer om systemtilstand",
+        "sv": "Detaljer om systemtillstånd",
+        "pl": "Szczegóły stanu systemu",
+        "ru": "Подробности состояния системы",
+        "ko": "시스템 상태 세부정보"
+      },
+      "example": "UNDERVOLTAGE"
+    }
+  ]
 }

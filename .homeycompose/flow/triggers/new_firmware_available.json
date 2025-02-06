@@ -1,34 +1,64 @@
 {
-	"title": { 
-		"en": "New firmware is available",
-		"nl": "Nieuwe firmware is beschikbaar"
-	},
-	"highlight": true,
-	"args": [
-		{
-				"type": "device",
-				"name": "device",
-				"filter": "driver_id=sessy|p1|ct"
-		}
-	],
-	"tokens": [
-		{
-			"name": "availableFWDongle",
-			"type": "string",
-			"title": { 
-				"en": "Dongle Firmware",
-				"nl": "Dongel Firmware"
-			},
-			"example": "1.5.4"
-		},
-		{
-			"name": "availableFWBat",
-			"type": "string",
-			"title": { 
-				"en": "Battery firmware",
-				"nl": "Batterij firmware"
-			},
-			"example": "1.5.4"
-		}
-	]
+  "title": {
+    "en": "New firmware is available",
+    "nl": "Nieuwe firmware is beschikbaar",
+    "da": "Ny firmware er tilgængelig",
+    "de": "Neue Firmware ist verfügbar",
+    "es": "Nuevo firmware está disponible",
+    "fr": "Un nouveau firmware est disponible",
+    "it": "È disponibile un nuovo firmware",
+    "No": "Ny fastvare er tilgjengelig",
+    "sv": "Ny fastvara är tillgänglig",
+    "pl": "Nowe oprogramowanie sprzętowe jest dostępne",
+    "ru": "Новое программное обеспечение доступно",
+    "ko": "새로운 펌웨어를 사용할 수 있습니다"
+  },
+  "highlight": true,
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=sessy|p1|ct"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "availableFWDongle",
+      "type": "string",
+      "title": {
+        "en": "Dongle Firmware",
+        "nl": "Dongel Firmware",
+        "da": "Dongle firmware",
+        "de": "Dongle-Firmware",
+        "es": "Firmware del dongle",
+        "fr": "Firmware de dongle",
+        "it": "Firmware del dongle",
+        "no": "Dongle-firmware",
+        "sv": "Dongle-firmware",
+        "pl": "Firmware dongla",
+        "ru": "Прошивка dongle",
+        "ko": "동글 펌웨어"
+      },
+      "example": "1.5.4"
+    },
+    {
+      "name": "availableFWBat",
+      "type": "string",
+      "title": {
+        "en": "Battery firmware",
+        "nl": "Batterij firmware",
+        "da": "Batteri firmware",
+        "de": "Batterie-Firmware",
+        "es": "Firmware de la batería",
+        "fr": "Firmware de la batterie",
+        "it": "Firmware della batteria",
+        "no": "Batteri-firmware",
+        "sv": "Batterifirmware",
+        "pl": "Oprogramowanie sprzętowe baterii",
+        "ru": "Прошивка батареи",
+        "ko": "배터리 펌웨어"
+      },
+      "example": "1.5.4"
+    }
+  ]
 }
