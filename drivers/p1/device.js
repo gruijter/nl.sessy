@@ -47,7 +47,7 @@ class P1Device extends Device {
 
       // start polling device for info
       await this.startPolling(settings.pollingInterval || 10);
-      this.log('P1 device has been initialized');
+      this.log(`${this.getName()} is initialized`);
     } catch (error) {
       this.error(error);
       this.setUnavailable(error).catch(() => null);
@@ -157,7 +157,7 @@ class P1Device extends Device {
       // this.setUnavailable('Device is restarting. Wait a few minutes!');
       await setTimeoutPromise(dly);
       this.restarting = false;
-      await this.onInit();
+      this.onInit().catch((error) => this.error(error));
     } catch (error) {
       this.error(error);
     }
@@ -201,11 +201,16 @@ class P1Device extends Device {
       if (newSettings.host.length < 3) throw Error(this.homey.__('sessy.incomplete'));
     }
     this.restarting = false;
-    await this.restartDevice(2 * 1000).catch(this.error);
+    this.restartDevice(2 * 1000).catch((error) => this.error(error));
   }
 
   async onRenamed(name) {
     this.log(`${this.getName()} was renamed to ${name}`);
+  }
+
+  async onUninit() {
+    await this.stopPolling();
+    this.log(`${this.getName()} uninit`);
   }
 
   async onDeleted() {

@@ -1,52 +1,29 @@
 {
   "name": {
-    "en": "Sessy",
-    "nl": "Sessy",
-    "da": "Sessy",
-    "de": "Sessy",
-    "es": "Sessy",
-    "fr": "Sessy",
-    "it": "Sessy",
-    "no": "Sessy",
-    "sv": "Sessy",
-    "pl": "Sessy",
-    "ru": "Сесси",
-    "ko": "세시"
+    "en": "Solar System",
+    "nl": "PV Systeem"
   },
-  "class": "battery",
-  "energy": {
-    "homeBattery": true,
-    "meterPowerImportedCapability": "meter_power.import",
-    "meterPowerExportedCapability": "meter_power.export"
+  "class": "solarpanel",
+    "energy": {
+      "meterPowerExportedCapability": "meter_power"
   },
   "capabilities": [
-    "charge_mode",
-    "volume_set",
-    "measure_battery",
-    "meter_setpoint",
     "measure_power",
-    "measure_power.battery",
-    "measure_current.inverter",
+    "meter_power",
     "measure_frequency",
-    "measure_voltage.pack",
-    "measure_power.external",
-    "system_state",
-    "alarm_fault",
-    "control_strategy",
-    "override",
-    "meter_power.import",
-    "meter_power.export",
-    "measure_power.total",
+
     "measure_power.p1",
     "measure_voltage.p1",
     "measure_current.p1",
     "meter_power.p1Import",
     "meter_power.p1Export",
+
     "measure_power.p2",
     "measure_voltage.p2",
     "measure_current.p2",
     "meter_power.p2Import",
     "meter_power.p2Export",
+
     "measure_power.p3",
     "measure_current.p3",
     "measure_voltage.p3",
@@ -54,145 +31,6 @@
     "meter_power.p3Export"
   ],
   "capabilitiesOptions": {
-    "volume_set": {
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "units": {
-        "en": ""
-      },
-      "labelMultiplier": 1,
-      "labelDecimals": 0
-    },
-    "measure_current.inverter": {
-      "title": {
-        "en": "Inverter Current",
-        "nl": "Omvormer Stroom",
-        "da": "Inverter Strøm",
-        "de": "Wechselrichterstrom",
-        "es": "Corriente del Inversor",
-        "fr": "Courant de l'Inversor",
-        "it": "Corrente dell'Inverter",
-        "no": "Inverter Strøm",
-        "sv": "Inverter Ström",
-        "pl": "Prąd Inwertera",
-        "ru": "Ток инвертора",
-        "ko": "인버터 전류"
-      }
-    },
-    "measure_voltage.pack": {
-      "title": {
-        "en": "Battery Voltage",
-        "nl": "Batterij Spanning",
-        "da": "Batteri Spænding",
-        "de": "Batteriespannung",
-        "es": "Voltaje de la Batería",
-        "fr": "Tension de la Batterie",
-        "it": "Tensione della Batteria",
-        "no": "Batteri Spenning",
-        "sv": "Batterispänning",
-        "pl": "Napięcie Baterii",
-        "ru": "Напряжение батареи",
-        "ko": "배터리 전압"
-      }
-    },
-    "meter_power.import": {
-      "title": {
-        "en": "Energy Charged",
-        "nl": "Energie Geladen",
-        "da": "Energi Opbevaret",
-        "de": "Energie Eingeladen",
-        "es": "Energía Cargada",
-        "fr": "Énergie Chargée",
-        "it": "Energia Caricata",
-        "no": "Energi Ladet",
-        "sv": "Energi Laddad",
-        "pl": "Energia Załadowana",
-        "ru": "Энергия Заряжена",
-        "ko": "충전된 에너지"
-      }
-    },
-    "meter_power.export": {
-      "title": {
-        "en": "Energy Discharged",
-        "nl": "Energie Ontladen",
-        "da": "Energi Afladet",
-        "de": "Energie Entladen",
-        "es": "Energía Descargada",
-        "fr": "Énergie Déchargée",
-        "it": "Energia Scaricata",
-        "no": "Energi Utladet",
-        "sv": "Energi Urladdad",
-        "pl": "Energia Rozładowana",
-        "ru": "Энергия Разряжена",
-        "ko": "방전된 에너지"
-      }
-    },
-    "measure_power.external": {
-      "title": {
-        "en": "External Power",
-        "nl": "Extern Vermogen",
-        "da": "Ekstern Effekt",
-        "de": "Externe Leistung",
-        "es": "Potencia Externa",
-        "fr": "Puissance Externe",
-        "it": "Potenza Esterna",
-        "no": "Ekstern Effekt",
-        "sv": "Extern Effekt",
-        "pl": "Moc Zewnętrzna",
-        "ru": "Внешняя мощность",
-        "ko": "외부 전력"
-      }
-    },
-    "measure_power": {
-      "title": {
-        "en": "Homey Power",
-        "nl": "Homey Vermogen",
-        "da": "Homey Power",
-        "de": "Homey Power",
-        "es": "Potencia Homey",
-        "fr": "Puissance Homey",
-        "it": "Potenza Homey",
-        "no": "Homey Power",
-        "sv": "Homey Power",
-        "pl": "Moc Homey",
-        "ru": "Мощность Homey",
-        "ko": "Homey 전력"
-      },
-      "uiComponent": null
-    },
-    "measure_power.battery": {
-      "title": {
-        "en": "Sessy Power",
-        "nl": "Sessy Vermogen",
-        "da": "Sessy Power",
-        "de": "Sessy Power",
-        "es": "Potencia Sessy",
-        "fr": "Puissance Sessy",
-        "it": "Potenza Sessy",
-        "no": "Sessy Power",
-        "sv": "Sessy Power",
-        "pl": "Moc Sessy",
-        "ru": "Мощность Sessy",
-        "ko": "Sessy 전력"
-      }
-    },
-    "measure_power.total": {
-      "title": {
-        "en": "Solar Power Total",
-        "nl": "PV Vermogen Totaal",
-        "da": "Solenergi Power Total",
-        "de": "Solar Power Gesamt",
-        "es": "Potencia Solar Total",
-        "fr": "Puissance Solaire Totale",
-        "it": "Potenza Solare Totale",
-        "no": "Solkraft Power Total",
-        "sv": "Solkraft Power Totalt",
-        "pl": "Całkowita Moc Słoneczna",
-        "ru": "Общая Солнечная Мощность",
-        "ko": "총 태양광 출력"
-      }
-    },
     "measure_power.p1": {
       "title": {
         "en": "Solar Power P1",
@@ -441,36 +279,6 @@
         "ru": "Солнечное напряжение P3",
         "ko": "태양 전압 P3"
       }
-    },
-    "alarm_fault": {
-      "titleTrue": {
-        "en": "Yes",
-        "nl": "Ja",
-        "da": "Ja",
-        "de": "Ja",
-        "es": "Sí",
-        "fr": "Oui",
-        "it": "Sì",
-        "no": "Ja",
-        "sv": "Ja",
-        "pl": "Tak",
-        "ru": "Да",
-        "ko": "네"
-      },
-      "titleFalse": {
-        "en": "No",
-        "nl": "Nee",
-        "da": "Nej",
-        "de": "Nein",
-        "es": "No",
-        "fr": "Non",
-        "it": "No",
-        "no": "Nei",
-        "sv": "Nej",
-        "pl": "Nie",
-        "ru": "Нет",
-        "ko": "아니요"
-      }
     }
   },
   "platforms": [
@@ -478,14 +286,12 @@
   ],
   "connectivity": [],
   "images": {
-    "small": "{{driverAssetsPath}}/images/small.jpg",
-    "large": "{{driverAssetsPath}}/images/large.jpg"
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
   },
   "discovery": "sessy",
   "pair": [
-    {
-      "id": "local_login"
-    },
     {
       "id": "list_devices",
       "template": "list_devices",

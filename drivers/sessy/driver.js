@@ -28,10 +28,13 @@ const capabilities = [
   'volume_set',
   'measure_battery',
 
-  'measure_power',
-  'measure_current.inverter',
   'meter_setpoint',
+  'measure_power', // required for Homey Energy, inverted from Sessy battery power
+  'measure_power.battery', // Sessy battery power
+  'measure_current.inverter',
   'measure_frequency',
+  'measure_voltage.pack',
+  'measure_power.external',
   'system_state',
   'alarm_fault',
   'control_strategy',
@@ -213,16 +216,12 @@ class SessyDriver extends Driver {
       try {
         const allDevicesPromise = [];
         discovered.forEach((sessy) => {
-          // remove PV info when phase not connected
-          const showRe1 = sessy.status && sessy.status.renewable_energy_phase1 && (sessy.status.renewable_energy_phase1.voltage_rms > 0);
-          const showRe2 = sessy.status && sessy.status.renewable_energy_phase2 && (sessy.status.renewable_energy_phase2.voltage_rms > 0);
-          const showRe3 = sessy.status && sessy.status.renewable_energy_phase3 && (sessy.status.renewable_energy_phase3.voltage_rms > 0);
-          const showReTotal = showRe1 + showRe2 + showRe3 > 1;
-          let correctCaps = capabilities;
-          if (!showReTotal) correctCaps = correctCaps.filter((cap) => !cap.includes('measure_power.total'));
-          if (!showRe1) correctCaps = correctCaps.filter((cap) => !cap.includes('p1'));
-          if (!showRe2) correctCaps = correctCaps.filter((cap) => !cap.includes('p2'));
-          if (!showRe3) correctCaps = correctCaps.filter((cap) => !cap.includes('p3'));
+          // remove PV info
+          const correctCaps = capabilities
+            .filter((cap) => !cap.includes('.p1'))
+            .filter((cap) => !cap.includes('.p2'))
+            .filter((cap) => !cap.includes('.p3'))
+            .filter((cap) => !cap.includes('measure_power.total'));
           // construct the homey device
           const device = {
             name: sessy.name,
@@ -243,10 +242,10 @@ class SessyDriver extends Driver {
               host: sessy.ip,
               port: sessy.port || 80,
               use_mdns: sessy.useMdns,
-              show_re_total: showReTotal,
-              show_re1: showRe1,
-              show_re2: showRe2,
-              show_re3: showRe3,
+              show_re_total: false,
+              show_re1: false,
+              show_re2: false,
+              show_re3: false,
             },
           };
           allDevicesPromise.push(device);

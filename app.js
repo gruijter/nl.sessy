@@ -32,6 +32,7 @@ class SessyApp extends Homey.App {
   async onUninit() {
     this.log('app onUninit called');
     this.homey.removeAllListeners('everyhour');
+    this.homey.removeAllListeners('sessyInfo');
   }
 
   everyHour() {

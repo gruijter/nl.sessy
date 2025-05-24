@@ -1,15 +1,15 @@
 {
   "type": "number",
   "title": {
-    "en": "XOM Grid target power",
-    "nl": "XOM Net doelvermogen",
-    "da": "XOM Netmål effekt",
+    "en": "XOM Grid Target Power",
+    "nl": "XOM Net Doelvermogen",
+    "da": "XOM Netmål Effekt",
     "de": "XOM Netz-Zielleistung",
     "es": "Potencia objetivo de red XOM",
     "fr": "Puissance cible du réseau XOM",
     "it": "Potenza target della rete XOM",
-    "no": "XOM Mål for nettstrøm",
-    "sv": "XOM Mål kraft",
+    "no": "XOM Mål for Nettstrøm",
+    "sv": "XOM Mål Kraft",
     "pl": "Docelowa moc sieciowa XOM",
     "ru": "Целевая мощность сети XOM",
     "ko": "XOM 그리드 목표 전력"

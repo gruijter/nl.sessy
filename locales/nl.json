@@ -43,5 +43,8 @@
 		"newFirmwareAvailable": "Nieuwe firmware beschikbaar voor Sessy. __fw__",
 		"newFirmwareMeter": "Nieuwe firmware geinstalleerd op Meter. __fw__",
 		"newFirmwareAvailableMeter": "Nieuwe firmware beschikbaar voor Meter. __fw__"
+	},
+	"pv": {
+		"no_updates": "Geen updates van Sessy"
 	}
 }

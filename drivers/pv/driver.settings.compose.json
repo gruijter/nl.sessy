@@ -1,0 +1,135 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Sessy information",
+      "nl": "Sessy informatie",
+      "da": "Sessy information",
+      "de": "Sessy Informationen",
+      "es": "Información de Sessy",
+      "fr": "Informations Sessy",
+      "it": "Informazioni Sessy",
+      "no": "Sessy informasjon",
+      "sv": "Sessy-information",
+      "pl": "Informacje o Sessy",
+      "ru": "Информация о Sessy",
+      "ko": "세시 정보"
+    },
+    "children": [
+      {
+        "id": "sn_sessy",
+        "type": "label",
+        "label": {
+          "en": "Sessy S/N",
+          "nl": "Sessy S/N",
+          "da": "Sessy S/N",
+          "de": "Sessy S/N",
+          "es": "Sessy S/N",
+          "fr": "Sessy S/N",
+          "it": "Sessy S/N",
+          "no": "Sessy S/N",
+          "sv": "Sessy S/N",
+          "pl": "Sessy S/N",
+          "ru": "Sessy S/N",
+          "ko": "Sessy S/N"
+        },
+        "value": ""
+      },
+      {
+        "id": "sn_dongle",
+        "type": "label",
+        "label": {
+          "en": "Dongle S/N",
+          "nl": "Dongel S/N",
+          "da": "Dongle S/N",
+          "de": "Dongle S/N",
+          "es": "Dongle S/N",
+          "fr": "Dongle S/N",
+          "it": "Dongle S/N",
+          "no": "Dongle S/N",
+          "sv": "Dongle S/N",
+          "pl": "Dongle S/N",
+          "ru": "Dongle S/N",
+          "ko": "동글 S/N"
+        },
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Solar settings",
+      "nl": "PV instellingen",
+      "da": "Sol indstillinger",
+      "de": "Solar Einstellungen",
+      "es": "Configuraciones solares",
+      "fr": "Paramètres solaires",
+      "it": "Impostazioni solari",
+      "no": "Solinnstillinger",
+      "sv": "Solinställningar",
+      "pl": "Ustawienia solarne",
+      "ru": "Солнечные настройки",
+      "ko": "태양광 설정"
+    },
+    "children": [
+      {
+        "id": "show_re1",
+        "type": "checkbox",
+        "label": {
+          "en": "Show Solar P1",
+          "nl": "Toon PV P1",
+          "da": "Vis Solar P1",
+          "de": "Solar P1 anzeigen",
+          "es": "Mostrar solar P1",
+          "fr": "Afficher le solaire P1",
+          "it": "Mostra Solar P1",
+          "no": "Vis Solar P1",
+          "sv": "Visa sol P1",
+          "pl": "Pokaż energię słoneczną P1",
+          "ru": "Показать солнечную P1",
+          "ko": "태양광 P1 표시"
+        },
+        "value": true
+      },
+      {
+        "id": "show_re2",
+        "type": "checkbox",
+        "label": {
+          "en": "Show Solar P2",
+          "nl": "Toon PV P2",
+          "da": "Vis Solar P2",
+          "de": "Solar P2 anzeigen",
+          "es": "Mostrar solar P2",
+          "fr": "Afficher le solaire P2",
+          "it": "Mostra Solar P2",
+          "no": "Vis Solar P2",
+          "sv": "Visa sol P2",
+          "pl": "Pokaż energię słoneczną P2",
+          "ru": "Показать солнечную P2",
+          "ko": "태양광 P2 표시"
+        },
+        "value": true
+      },
+      {
+        "id": "show_re3",
+        "type": "checkbox",
+        "label": {
+          "en": "Show Solar P3",
+          "nl": "Toon PV P3",
+          "da": "Vis Solar P3",
+          "de": "Solar P3 anzeigen",
+          "es": "Mostrar solar P3",
+          "fr": "Afficher le solaire P3",
+          "it": "Mostra Solar P3",
+          "no": "Vis Solar P3",
+          "sv": "Visa sol P3",
+          "pl": "Pokaż energię słoneczną P3",
+          "ru": "Показать солнечную P3",
+          "ko": "태양광 P3 표시"
+        },
+        "value": true
+      }
+    ]
+  }
+]

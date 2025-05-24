@@ -221,7 +221,7 @@ class Sessy {
   async setSetpoint(opts) {
     try {
       const options = opts || {};
-      const data = { setpoint: options.setpoint };
+      const data = { setpoint: Number(options.setpoint) };
       const res = await this._makeRequest(setSetpointEP, data);
       this.strategy = options.strategy;
       return Promise.resolve(res);

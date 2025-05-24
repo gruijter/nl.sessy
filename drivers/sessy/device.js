@@ -60,7 +60,7 @@ class SessyDevice extends Device {
       // start polling device for info
       const pollingInterval = this.homey.platform === 'cloud' ? 10 : (settings.pollingInterval || 10);
       await this.startPolling(pollingInterval);
-      this.log('Sessy device has been initialized');
+      this.log(`${this.getName()} is initialized`);
     } catch (error) {
       this.error(error);
       await this.setCapability('alarm_fault', true).catch(this.error);
@@ -214,7 +214,7 @@ class SessyDevice extends Device {
       // this.setUnavailable('Device is restarting. Wait a few minutes!');
       await setTimeoutPromise(dly);
       this.restarting = false;
-      await this.onInit().catch(this.error);
+      this.onInit().catch((error) => this.error(error));
     } catch (error) {
       this.error(error);
     }
@@ -236,7 +236,10 @@ class SessyDevice extends Device {
       this.busy = true;
       // get new status and update the devicestate
       const status = await this.sessy.getStatus();
+      this.lastStatus = status;
       const energy = await this.sessy.getEnergy().catch(() => this.error('No energy info available'));
+      this.lastEnergy = energy;
+      this.emitSessyInfo(status, energy);
       const systemSettings = await this.sessy.getSystemSettings().catch(this.error);
       let strategy = null;
       if (this.useCloud || this.useLocalLogin) strategy = await this.sessy.getStrategy();
@@ -278,11 +281,16 @@ class SessyDevice extends Device {
         || newSettings.password_dongle === '') throw Error(this.homey.__('pair.incomplete'));
     }
     this.restarting = false;
-    await this.restartDevice(2 * 1000).catch(this.error);
+    this.restartDevice(2 * 1000).catch((error) => this.error(error));
   }
 
   async onRenamed(name) {
     this.log(`${this.getName()} was renamed to ${name}`);
+  }
+
+  async onUninit() {
+    await this.stopPolling();
+    this.log(`${this.getName()} uninit`);
   }
 
   async onDeleted() {
@@ -357,10 +365,13 @@ class SessyDevice extends Device {
         alarm_fault: alarmFault,
         measure_battery: status.sessy.state_of_charge * 100,
         meter_setpoint: status.sessy.power_setpoint,
-        measure_power: status.sessy.power,
+        measure_power: -status.sessy.power,
+        'measure_power.battery': status.sessy.power,
         measure_frequency: status.sessy.frequency / 1000,
         'measure_power.total': totalREPower,
         'measure_current.inverter': status.sessy.inverter_current_ma / 1000,
+        'measure_voltage.pack': status.sessy.pack_voltage / 1000,
+        'measure_power.external': status.sessy.external_power,
         'measure_power.p1': status.renewable_energy_phase1.power,
         'measure_power.p2': status.renewable_energy_phase2.power,
         'measure_power.p3': status.renewable_energy_phase3.power,
@@ -511,7 +522,7 @@ class SessyDevice extends Device {
     // limit min/max power
     const sp = await this.limitSetpoint(setpoint);
     await this.sessy.setSetpoint({ setpoint: sp });
-    this.log(`Power setpoint set by ${source} to ${sp}`);
+    this.log(`${this.getName()} Power setpoint set by ${source} to ${sp}`);
     return Promise.resolve(true);
   }
 
@@ -538,6 +549,14 @@ class SessyDevice extends Device {
     await this.sessy.restart();
     this.log(`Restart command executed from ${source}`);
     return Promise.resolve(true);
+  }
+
+  emitSessyInfo(status, energy) {
+    try {
+      this.homey.emit('sessyInfo', { id: this.getData().id, status, energy }); // emit info to PV devices
+    } catch (error) {
+      this.error(error);
+    }
   }
 
   // register capability listeners

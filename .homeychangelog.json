@@ -82,5 +82,8 @@
   },
   "2.7.1": {
     "en": "Added Sessy strategy_overridden state (fw>=1.8.3)."
+  },
+  "3.0.0": {
+    "en": "Added battery voltage, external power and Homey Energy properties for Home Battery. Added Sessy Power and inverted Homey Power as required by Homey Energy. Added separate PV driver. Minor fixes."
   }
 }
