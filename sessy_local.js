@@ -19,7 +19,6 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 'use strict';
 
-const http = require('http');
 const os = require('os');
 const util = require('util');
 
@@ -310,107 +309,99 @@ class Sessy {
     try {
       const postData = JSON.stringify(data);
       const headers = {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        'user-agent': 'Sessy-Homey-App/1.0',
       };
       if (this.client) headers.Client = this.client;
-      const options = {
-        hostname: host || this.host,
-        port: this.port,
-        path: actionPath,
-        auth: `${this.username}:${this.password}`,
-        headers,
-        method: 'GET',
-      };
-      if (data && data !== '') options.method = 'POST';
-      if (actionPath === restartEP) options.method = 'POST';
-      // console.log(options);
-      const result = await this._makeHttpRequest(options, postData, timeout);
-      this.lastResponse = result.body || result.statusCode;
-      const contentType = result.headers['content-type'];
-      // find errors
-      if (result.statusCode === 500) {
-        throw Error(`Request Failed: ${result.body}`);
+      // add basic auth header if username/password available
+      if (this.username && this.password) {
+        const basic = Buffer.from(`${this.username}:${this.password}`).toString('base64');
+        headers.Authorization = `Basic ${basic}`;
       }
-      if (result.statusCode === 401) {
+      const method = (data && data !== '') || actionPath === restartEP ? 'POST' : 'GET';
+      const hostToUse = host || this.host;
+      const portToUse = this.port || defaultPort;
+      const url = `http://${hostToUse}:${portToUse}${actionPath}`;
+      // timeout with AbortController
+      const controller = new AbortController();
+      const fetchTimeout = Number(timeout || this.timeout) || defaultTimeout;
+      // eslint-disable-next-line homey-app/global-timers
+      const timeoutHandle = setTimeout(() => controller.abort(), fetchTimeout);
+      const resp = await fetch(url, {
+        method,
+        headers,
+        body: method === 'POST' ? postData : undefined,
+        signal: controller.signal,
+      }).finally(() => clearTimeout(timeoutHandle));
+
+      const statusCode = resp.status;
+      const contentType = resp.headers.get('content-type') || '';
+      const body = await resp.text();
+      this.lastResponse = body || statusCode;
+      // find errors
+      if (statusCode === 500) {
+        throw Error(`Request Failed: ${body}`);
+      }
+      if (statusCode === 401) {
         throw Error('Wrong username/password');
       }
-      if (result.statusCode !== 200) {
-        this.lastResponse = result.statusCode;
-        throw Error(`HTTP request Failed. Status Code: ${result.statusCode}`);
+      if (statusCode !== 200) {
+        this.lastResponse = statusCode;
+        throw Error(`HTTP request Failed. Status Code: ${statusCode} ${body}`);
       }
       if (!/application\/json/.test(contentType)) {
-        throw Error(`Expected json but received ${contentType}: ${result.body}`);
+        throw Error(`Expected json but received ${contentType}: ${body}`);
       }
-      const json = JSON.parse(result.body);
-      if (!json.status || json.status !== 'ok') throw Error(`Request not ok: ${result.body}`);
-      // console.dir(json, { depth: null });
-      return Promise.resolve(json);
+      let json;
+      try {
+        json = JSON.parse(body);
+      } catch (err) {
+        throw Error(`Failed to parse JSON response: ${err.message}`);
+      }
+      if (!json.status || json.status !== 'ok') throw Error(`Request not ok: ${body}`);
+      this.lastResponse = json;
+      return json;
     } catch (error) {
+      // normalize abort error message
+      if (error.name === 'AbortError') return Promise.reject(Error('Request timed out'));
       return Promise.reject(error);
     }
-  }
-
-  _makeHttpRequest(options, postData, timeout) {
-    return new Promise((resolve, reject) => {
-      const opts = options;
-      opts.timeout = timeout || this.timeout;
-      const req = http.request(opts, (res) => {
-        let resBody = '';
-        res.on('data', (chunk) => {
-          resBody += chunk;
-        });
-        res.once('end', () => {
-          this.lastResponse = resBody;
-          if (!res.complete) {
-            return reject(Error('The connection was terminated while the message was still being sent'));
-          }
-          res.body = resBody;
-          return resolve(res);
-        });
-      });
-      req.on('error', (e) => {
-        req.destroy();
-        this.lastResponse = e;
-        return reject(e);
-      });
-      req.on('timeout', () => {
-        req.destroy();
-      });
-      req.end(postData);
-    });
   }
 
 }
 
 module.exports = Sessy;
 
-// START TEST HERE
+// // START TEST HERE
+// console.log('REMOVE KEYS!!!!');
 // const test = async () => {
-// const SESSY = new Sessy();
-// const discovered = await SESSY.discover({ p1: true });
-// const SESSY = new Sessy({ sn_dongle: '...', password_dongle: '...', host: '...' });
-// const res = await SESSY.restart();
-// console.log(res);
-// const discovered = await SESSY.discover();
-// console.dir(discovered, { depth: null });
-// const status = await SESSY.getStatus();
-// console.dir(status, { depth: null });
-// const setStrategy = await SESSY.setStrategy({ strategy: 'POWER_STRATEGY_API' });
-// console.dir(setStrategy, { depth: null });
-// const strategy = await SESSY.getStrategy();
-// console.dir(strategy, { depth: null });
-// const setSetpoint = await SESSY.setSetpoint({ setpoint: 500 });
-// console.dir(setSetpoint, { depth: null });
-// const status2 = await SESSY.getStatus();
-// console.dir(status2, { depth: null });
-// const OTAstatus = await SESSY.getOTAStatus();
-// console.dir(OTAstatus, { depth: null });
-// const newSsettings = { max_power: 2200, eco_charge_power: 1500 };
-// await SESSY.setSystemSettings(newSsettings);
-// const settings = await SESSY.getSystemSettings();
-// console.dir(settings, { depth: null });
+//   // const SESSY = new Sessy();
+//   // const discovered = await SESSY.discover({ p1: true });
+//   const SESSY = new Sessy({ sn_dongle: '', password_dongle: '', host: '10.0.0.80' });
+//   // const res = await SESSY.restart();
+//   // console.log(res);
+//   // const discovered = await SESSY.discover();
+//   // console.dir(discovered, { depth: null });
+//   // const status = await SESSY.getStatus();
+//   // console.dir(status, { depth: null });
+//   // const setStrategy = await SESSY.setStrategy({ strategy: 'POWER_STRATEGY_API' });
+//   // console.dir(setStrategy, { depth: null });
+//   const strategy = await SESSY.getStrategy();
+//   console.dir(strategy, { depth: null });
+//   // const setSetpoint = await SESSY.setSetpoint({ setpoint: 500 });
+//   // console.dir(setSetpoint, { depth: null });
+//   // const status2 = await SESSY.getStatus();
+//   // console.dir(status2, { depth: null });
+//   // const OTAstatus = await SESSY.getOTAStatus();
+//   // console.dir(OTAstatus, { depth: null });
+//   // const newSsettings = { max_power: 2200, eco_charge_power: 1500 };
+//   // await SESSY.setSystemSettings(newSsettings);
+//   // const settings = await SESSY.getSystemSettings();
+//   // console.dir(settings, { depth: null });
 // };
 
-// test();
+// test().catch(console.log);
 
 /*
 fw source: https://github.com/ChargedBV/sessy-updates

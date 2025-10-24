@@ -225,7 +225,7 @@ class SessyDevice extends Device {
       if (this.watchDogCounter <= 0) {
         this.log('watchdog triggered, restarting Homey device now');
         await this.setCapability('alarm_fault', true).catch(this.error);
-        this.setUnavailable(this.homey.__('sessy.connectionError')).catch(() => null);
+        this.setUnavailable(this.homey.__('sessy.connectionError')).catch(() => this.error);
         await this.restartDevice(60000).catch(this.error);
         return;
       }
@@ -243,7 +243,7 @@ class SessyDevice extends Device {
       const systemSettings = await this.sessy.getSystemSettings().catch(this.error);
       let strategy = null;
       if (this.useCloud || this.useLocalLogin) strategy = await this.sessy.getStrategy();
-      this.setAvailable().catch(() => null);
+      this.setAvailable().catch(() => this.error);
       await this.updateDeviceState(status, strategy, energy, systemSettings);
       // check if power is within min/max settings, but only if setpoint is set
       if (status.sessy.power_setpoint) await this.checkMinMaxPower(status.sessy.power);
@@ -260,7 +260,13 @@ class SessyDevice extends Device {
     } catch (error) {
       this.busy = false;
       this.watchDogCounter -= 1;
-      this.error('Poll error', error.message);
+      this.error('Poll error', {
+        message: error.message,
+        code: error.code,
+        stack: error.stack,
+        status: error.status,
+        response: error.response,
+      });
     }
   }
 
@@ -399,9 +405,10 @@ class SessyDevice extends Device {
       const controlStrategyChanged = (controlStrategy && (controlStrategy !== this.getCapabilityValue('control_strategy')));
 
       // set the capabilities
-      Object.entries(capabilityStates).forEach(async (entry) => {
-        await this.setCapability(entry[0], entry[1]);
-      });
+      for (const [capability, value] of Object.entries(capabilityStates)) {
+        // await each call to properly handle promises and avoid returning a Promise from forEach
+        this.setCapability(capability, value).catch(this.error);
+      }
 
       // execute custom flow triggers
       if (systemStateChanged) {
