@@ -88,5 +88,8 @@
   },
   "3.1.0": {
     "en": "Fix for Homey fw>12.9.0."
+  },
+  "3.1.1": {
+    "en": "Set minimal required Homey fw>12.9.0."
   }
 }
