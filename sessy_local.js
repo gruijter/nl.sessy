@@ -24,6 +24,19 @@ const util = require('util');
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
+let fetch;
+let AbortController;
+
+if (typeof global.fetch === 'function' && typeof global.AbortController === 'function') {
+  fetch = global.fetch;
+  AbortController = global.AbortController;
+} else {
+  // eslint-disable-next-line global-require
+  fetch = require('node-fetch');
+  // eslint-disable-next-line global-require
+  AbortController = require('abort-controller');
+}
+
 // SYSTEM
 const getSystemInfoEP = '/api/v1/system/info'; // version "v5.1.1"?, sessy_serial
 const getSystemSettingsEP = '/api/v1/system/settings';
