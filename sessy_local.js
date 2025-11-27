@@ -255,7 +255,7 @@ class Sessy {
   async setGridTarget(opts) {
     try {
       const options = opts || {};
-      const data = { grid_target: options.setpoint };
+      const data = { grid_target: options.gridTarget };
       const res = await this._makeRequest(setGridTargetEP, data);
       return Promise.resolve(res);
     } catch (error) {
@@ -341,6 +341,7 @@ class Sessy {
       const fetchTimeout = Number(timeout || this.timeout) || defaultTimeout;
       // eslint-disable-next-line homey-app/global-timers
       const timeoutHandle = setTimeout(() => controller.abort(), fetchTimeout);
+      // console.log(url, headers, postData);
       const resp = await fetch(url, {
         method,
         headers,

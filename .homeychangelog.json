@@ -94,5 +94,8 @@
   },
   "3.2.0": {
     "en": "Fix compatibility HP2016/2019. Fixed support link and email."
+  },
+  "3.2.1": {
+    "en": "Fix set Grid target."
   }
 }

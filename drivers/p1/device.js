@@ -307,8 +307,8 @@ class P1Device extends Device {
       const systemStateChanged = (systemState !== this.getCapabilityValue('system_state'));
 
       // set the capabilities
-      Object.entries(capabilityStates).forEach(async (entry) => {
-        await this.setCapability(entry[0], entry[1]);
+      Object.entries(capabilityStates).forEach((entry) => {
+        this.setCapability(entry[0], entry[1]).catch(this.error);
       });
 
       this.lastStatus = status;
