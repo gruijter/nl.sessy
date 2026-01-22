@@ -13,21 +13,22 @@
     "incomplete_portal": "Benutzername und Passwort müssen eingegeben werden!",
     "no_batteries_registered": "Es wurden keine Sessys unter diesem Konto gefunden. Füge deine Sessys zu portal.sessy.nl hinzu.",
     "no_meters_registered": "Es wurden keine Stromzähler unter diesem Konto gefunden. Konfiguriere dein System unter portal.sessy.nl.",
-    "local_login_title": "EINRICHTUNG DER LOKALEN VERBINUNG",
-    "local_login_text": "Du kannst dich auch mit der Sessy-Portal-Anmeldung zurückziehen und mit der Einrichtung einer lokalen Verbindung fortfahren.",
+    "local_login_title": "EINRICHTUNG DER LOKALEN VERBINDUNG",
+    "local_login_text": "Du kannst auch die Sessy-Portal-Anmeldung überspringen und mit der Einrichtung einer lokalen Verbindung fortfahren.",
     "local_login_button": "FORTFAHREN MIT DER LOKALEN EINRICHTUNG",
-    "monmodetitle": "LOKALES ÜBERWACHUNGS-MODE",
+    "monmodetitle": "LOKALER ÜBERWACHUNGSMODUS",
     "monmodetext": "Füge alle SESSYs im lokalen Überwachungsmodus hinzu. Wähle dies, wenn du die Kontrolle unter portal.sessy.nl behalten möchtest.",
-    "monmodebutton": "FORTFAHREN IM ÜBERWACHUNGS-MODE",
-    "contmodetitle": "ODER: LOKALES STEUERUNGS-MODE",
+    "monmodebutton": "FORTFAHREN IM ÜBERWACHUNGSMODUS",
+    "contmodetitle": "ODER: LOKALER STEUERUNGSMODUS",
     "contmodetext": "Füge einen SESSY im lokalen Steuerungsmodus hinzu. Wähle dies, wenn du mit Homey steuern möchtest.",
-    "contmodebutton": "FORTFAHREN IM STEUERUNGS-MODE",
-    "local_login_text_p1": "Um im STEUERUNGS-MODE fortzufahren, wird das Passwort benötigt (bevorzugt). Um im ÜBERWACHUNGS-MODE fortzufahren, lasse das Passwort leer",
+    "contmodebutton": "FORTFAHREN IM STEUERUNGSMODUS",
+    "local_login_text_p1": "Um im STEUERUNGSMODUS fortzufahren, wird das Passwort benötigt (bevorzugt). Um im ÜBERWACHUNGSMODUS fortzufahren, lasse das Passwort leer.",
     "host": "IP-Adresse oder URL",
     "sn_dongle": "Dongle S/N",
     "password_dongle": "Dongle-Passwort",
     "incomplete": "IP oder URL, Dongle S/N und Passwort müssen eingegeben werden!",
-    "continue": "FORTFAHREN"
+    "continue": "FORTFAHREN",
+    "endpoint_not_found": "Alte Firmware oder falscher Gerätetyp."
   },
   "sessy": {
     "homeyProOnly": "Diese Einstellung ist nur auf Homey Pro verfügbar",
@@ -39,5 +40,8 @@
     "newFirmwareAvailable": "Neue Firmware für Sessy verfügbar. __fw__",
     "newFirmwareMeter": "Neue Firmware auf Zähler installiert. __fw__",
     "newFirmwareAvailableMeter": "Neue Firmware für Zähler verfügbar. __fw__"
+  },
+  "pv": {
+    "no_updates": "Keine Updates von Sessy"
   }
 }

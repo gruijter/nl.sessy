@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /*
-Copyright 2023 - 2025, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2026, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -407,7 +407,7 @@ class SessyDevice extends Device {
       // set the capabilities
       for (const [capability, value] of Object.entries(capabilityStates)) {
         // await each call to properly handle promises and avoid returning a Promise from forEach
-        this.setCapability(capability, value).catch(this.error);
+        this.setCapability(capability, value).catch((e) => this.error(e));
       }
 
       // execute custom flow triggers

@@ -1,8 +1,8 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.sessy",
-  "version": "3.2.1",
-  "compatibility": ">=12.6.0",
+  "version": "3.3.0",
+  "compatibility": ">=12.10.0",
   "sdk": 3,
   "platforms": [
     "local"
@@ -843,7 +843,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy|p1|ct"
+            "filter": "driver_id=sessy|p1|ct|modbus"
           }
         ],
         "id": "restart"
@@ -1913,8 +1913,8 @@
       ],
       "connectivity": [],
       "images": {
-        "small": "/drivers/ct/assets/images/small.jpg",
-        "large": "/drivers/ct/assets/images/large.jpg"
+        "small": "/drivers/ct/assets/images/small.png",
+        "large": "/drivers/ct/assets/images/large.png"
       },
       "discovery": "sessy",
       "pair": [
@@ -2471,6 +2471,798 @@
     },
     {
       "name": {
+        "en": "Sessy Modbus"
+      },
+      "class": "sensor",
+      "energy": {
+        "cumulative": true,
+        "cumulativeImportedCapability": "meter_power.imported",
+        "cumulativeExportedCapability": "meter_power.exported"
+      },
+      "capabilities": [
+        "measure_power",
+        "system_state",
+        "measure_power.l1",
+        "measure_power.l2",
+        "measure_power.l3",
+        "measure_current.l1",
+        "measure_current.l2",
+        "measure_current.l3",
+        "measure_voltage.l1",
+        "measure_voltage.l2",
+        "measure_voltage.l3",
+        "meter_power.imported",
+        "meter_power.exported"
+      ],
+      "capabilitiesOptions": {
+        "measure_power": {
+          "title": {
+            "en": "Power total",
+            "nl": "Vermogen totaal",
+            "da": "Samlet effekt",
+            "de": "Gesamtleistung",
+            "es": "Potencia total",
+            "fr": "Puissance totale",
+            "it": "Potenza totale",
+            "no": "Total effekt",
+            "sv": "Total effekt",
+            "pl": "Całkowita moc",
+            "ru": "Общая мощность",
+            "ko": "총 전력"
+          },
+          "decimals": 2
+        },
+        "meter_power.imported": {
+          "title": {
+            "en": "Imported energy",
+            "nl": "Energie import",
+            "da": "Importerede energi",
+            "de": "Importierte Energie",
+            "es": "Energía importada",
+            "fr": "Énergie importée",
+            "it": "Energia importata",
+            "no": "Importert energi",
+            "sv": "Importerad energi",
+            "pl": "Energie importowane",
+            "ru": "Импортированная энергия",
+            "ko": "수입 에너지"
+          },
+          "decimals": 3
+        },
+        "meter_power.exported": {
+          "title": {
+            "en": "Exported energy",
+            "nl": "Energie export",
+            "da": "Eksporteret energi",
+            "de": "Exportierte Energie",
+            "es": "Energía exportada",
+            "fr": "Énergie exportée",
+            "it": "Energia esportata",
+            "no": "Eksportert energi",
+            "sv": "Exporterad energi",
+            "pl": "Energia eksportowana",
+            "ru": "Экспортированная энергия",
+            "ko": "수출 에너지"
+          },
+          "decimals": 3
+        },
+        "measure_power.l1": {
+          "title": {
+            "en": "Power L1",
+            "nl": "Vermogen L1",
+            "da": "Effekt L1",
+            "de": "Leistung L1",
+            "es": "Potencia L1",
+            "fr": "Puissance L1",
+            "it": "Potenza L1",
+            "no": "Effekt L1",
+            "sv": "Effekt L1",
+            "pl": "Moc L1",
+            "ru": "Мощность L1",
+            "ko": "L1 전력"
+          },
+          "decimals": 2
+        },
+        "measure_power.l2": {
+          "title": {
+            "en": "Power L2",
+            "nl": "Vermogen L2",
+            "da": "Effekt L2",
+            "de": "Leistung L2",
+            "es": "Potencia L2",
+            "fr": "Puissance L2",
+            "it": "Potenza L2",
+            "no": "Effekt L2",
+            "sv": "Effekt L2",
+            "pl": "Moc L2",
+            "ru": "Мощность L2",
+            "ko": "L2 전력"
+          },
+          "decimals": 2
+        },
+        "measure_power.l3": {
+          "title": {
+            "en": "Power L3",
+            "nl": "Vermogen L3",
+            "da": "Effekt L3",
+            "de": "Leistung L3",
+            "es": "Potencia L3",
+            "fr": "Puissance L3",
+            "it": "Potenza L3",
+            "no": "Effekt L3",
+            "sv": "Effekt L3",
+            "pl": "Moc L3",
+            "ru": "Мощность L3",
+            "ko": "L3 전력"
+          },
+          "decimals": 2
+        },
+        "measure_current.l1": {
+          "title": {
+            "en": "Current L1",
+            "nl": "Stroom L1",
+            "da": "Strøm L1",
+            "de": "Strom L1",
+            "es": "Corriente L1",
+            "fr": "Courant L1",
+            "it": "Corrente L1",
+            "no": "Strøm L1",
+            "sv": "Ström L1",
+            "pl": "Prąd L1",
+            "ru": "Ток L1",
+            "ko": "L1 전류"
+          },
+          "decimals": 3
+        },
+        "measure_current.l2": {
+          "title": {
+            "en": "Current L2",
+            "nl": "Stroom L2",
+            "da": "Strøm L2",
+            "de": "Strom L2",
+            "es": "Corriente L2",
+            "fr": "Courant L2",
+            "it": "Corrente L2",
+            "no": "Strøm L2",
+            "sv": "Ström L2",
+            "pl": "Prąd L2",
+            "ru": "Ток L2",
+            "ko": "L2 전류"
+          },
+          "decimals": 3
+        },
+        "measure_current.l3": {
+          "title": {
+            "en": "Current L3",
+            "nl": "Stroom L3",
+            "da": "Strøm L3",
+            "de": "Strom L3",
+            "es": "Corriente L3",
+            "fr": "Courant L3",
+            "it": "Corrente L3",
+            "no": "Strøm L3",
+            "sv": "Ström L3",
+            "pl": "Prąd L3",
+            "ru": "Ток L3",
+            "ko": "L3 전류"
+          },
+          "decimals": 3
+        },
+        "measure_voltage.l1": {
+          "title": {
+            "en": "Voltage L1",
+            "nl": "Spanning L1",
+            "da": "Spænding L1",
+            "de": "Spannung L1",
+            "es": "Voltaje L1",
+            "fr": "Tension L1",
+            "it": "Tensione L1",
+            "no": "Spenning L1",
+            "sv": "Spänning L1",
+            "pl": "Napięcie L1",
+            "ru": "Напряжение L1",
+            "ko": "L1 전압"
+          },
+          "decimals": 2
+        },
+        "measure_voltage.l2": {
+          "title": {
+            "en": "Voltage L2",
+            "nl": "Spanning L2",
+            "da": "Spænding L2",
+            "de": "Spannung L2",
+            "es": "Voltaje L2",
+            "fr": "Tension L2",
+            "it": "Tensione L2",
+            "no": "Spenning L2",
+            "sv": "Spänning L2",
+            "pl": "Napięcie L2",
+            "ru": "Напряжение L2",
+            "ko": "L2 전압"
+          },
+          "decimals": 2
+        },
+        "measure_voltage.l3": {
+          "title": {
+            "en": "Voltage L3",
+            "nl": "Spanning L3",
+            "da": "Spænding L3",
+            "de": "Spannung L3",
+            "es": "Voltaje L3",
+            "fr": "Tension L3",
+            "it": "Tensione L3",
+            "no": "Spenning L3",
+            "sv": "Spänning L3",
+            "pl": "Napięcie L3",
+            "ru": "Напряжение L3",
+            "ko": "L3 전압"
+          },
+          "decimals": 2
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/modbus/assets/images/small.png",
+        "large": "/drivers/modbus/assets/images/large.png"
+      },
+      "discovery": "sessy",
+      "pair": [
+        {
+          "id": "local_login"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": false
+          },
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
+      "id": "modbus",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Meter information",
+            "nl": "Meter informatie",
+            "da": "Målerinformation",
+            "de": "Messgerät Informationen",
+            "es": "Información del medidor",
+            "fr": "Informations sur le compteur",
+            "it": "Informazioni sul misuratore",
+            "no": "Målerinformasjon",
+            "sv": "Mätinginformation",
+            "pl": "Informacje o mierniku",
+            "ru": "Информация о счетчике",
+            "ko": "계량기 정보"
+          },
+          "children": [
+            {
+              "id": "id",
+              "type": "label",
+              "label": {
+                "en": "Meter ID",
+                "nl": "Meter ID",
+                "da": "Måler ID",
+                "de": "Messgerät ID",
+                "es": "ID del medidor",
+                "fr": "ID du compteur",
+                "it": "ID del misuratore",
+                "no": "Måler ID",
+                "sv": "Mätnings ID",
+                "pl": "ID licznika",
+                "ru": "ID счетчика",
+                "ko": "계량기 ID"
+              },
+              "value": ""
+            },
+            {
+              "id": "fwDongle",
+              "type": "label",
+              "label": {
+                "en": "Firmware Dongle",
+                "nl": "Firmware Dongel",
+                "da": "Firmware Dongle",
+                "de": "Firmware Dongle",
+                "es": "Firmware Dongle",
+                "fr": "Firmware Dongle",
+                "it": "Firmware Dongle",
+                "no": "Firmware Dongle",
+                "sv": "Firmware Dongle",
+                "pl": "Firmware Dongle",
+                "ru": "Прошивка Dongle",
+                "ko": "펌웨어 동글"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Cloud connection settings",
+            "nl": "Cloud verbinding instellingen",
+            "da": "Indstillinger for skyforbindelse",
+            "de": "Cloud-Verbindungseinstellungen",
+            "es": "Configuraciones de conexión a la nube",
+            "fr": "Paramètres de connexion au cloud",
+            "it": "Impostazioni di connessione al cloud",
+            "no": "Innstillinger for skytilkobling",
+            "sv": "Inställningar för molnanslutning",
+            "pl": "Ustawienia połączenia z chmurą",
+            "ru": "Настройки подключения к облаку",
+            "ko": "클라우드 연결 설정"
+          },
+          "children": [
+            {
+              "id": "username_portal",
+              "type": "label",
+              "label": {
+                "en": "Sessy portal username",
+                "nl": "Sessy portal gebruikersnaam",
+                "da": "Sessy portal brugernavn",
+                "de": "Sessy Portal-Benutzername",
+                "es": "Nombre de usuario del portal Sessy",
+                "fr": "Nom d'utilisateur du portail Sessy",
+                "it": "Nome utente del portale Sessy",
+                "no": "Sessy portal brukernavn",
+                "sv": "Sessy portal användarnamn",
+                "pl": "Nazwa użytkownika portalu Sessy",
+                "ru": "Имя пользователя портала Sessy",
+                "ko": "Sessy 포털 사용자 이름"
+              },
+              "value": "NOT USED"
+            },
+            {
+              "id": "password_portal",
+              "type": "label",
+              "label": {
+                "en": "Sessy portal password",
+                "nl": "Sessy portal wachtwoord",
+                "da": "Sessy portal adgangskode",
+                "de": "Sessy Portal-Passwort",
+                "es": "Contraseña del portal Sessy",
+                "fr": "Mot de passe du portail Sessy",
+                "it": "Password del portale Sessy",
+                "no": "Sessy portal passord",
+                "sv": "Sessy portal lösenord",
+                "pl": "Hasło do portalu Sessy",
+                "ru": "Пароль портала Sessy",
+                "ko": "Sessy 포털 비밀번호"
+              },
+              "value": "NOT USED"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Local connection settings (Homey PRO)",
+            "nl": "Lokale verbinding instellingen (Homey PRO)",
+            "da": "Indstillinger for lokal forbindelse (Homey PRO)",
+            "de": "Einstellungen für lokale Verbindungen (Homey PRO)",
+            "es": "Configuraciones de conexión local (Homey PRO)",
+            "fr": "Paramètres de connexion locale (Homey PRO)",
+            "it": "Impostazioni di connessione locale (Homey PRO)",
+            "no": "Innstillinger for lokal tilkobling (Homey PRO)",
+            "sv": "Inställningar för lokal anslutning (Homey PRO)",
+            "pl": "Ustawienia połączenia lokalnego (Homey PRO)",
+            "ru": "Настройки локального подключения (Homey PRO)",
+            "ko": "로컬 연결 설정 (Homey PRO)"
+          },
+          "children": [
+            {
+              "id": "host",
+              "type": "text",
+              "label": {
+                "en": "URL or IP address",
+                "nl": "URL of IP adres",
+                "da": "URL eller IP-adresse",
+                "de": "URL oder IP-Adresse",
+                "es": "URL o dirección IP",
+                "fr": "URL ou adresse IP",
+                "it": "URL o indirizzo IP",
+                "no": "URL eller IP-adresse",
+                "sv": "URL eller IP-adress",
+                "pl": "URL lub adres IP",
+                "ru": "URL или IP-адрес",
+                "ko": "URL 또는 IP 주소"
+              },
+              "hint": {
+                "en": "IP address of the dongle.",
+                "nl": "IP adres van de dongel.",
+                "da": "IP-adressen til donglen.",
+                "de": "IP-Adresse des Dongles.",
+                "es": "Dirección IP del dongle.",
+                "fr": "Adresse IP du dongle.",
+                "it": "Indirizzo IP del dongle.",
+                "no": "IP-adressen til donglen.",
+                "sv": "IP-adressen till dongeln.",
+                "pl": "Adres IP dongla.",
+                "ru": "IP-адрес донгла.",
+                "ko": "동글의 IP 주소."
+              },
+              "value": ""
+            },
+            {
+              "id": "port",
+              "type": "number",
+              "label": {
+                "en": "Port",
+                "nl": "Poort",
+                "da": "Port",
+                "de": "Port",
+                "es": "Puerto",
+                "fr": "Port",
+                "it": "Porta",
+                "no": "Port",
+                "sv": "Port",
+                "pl": "Port",
+                "ru": "Порт",
+                "ko": "포트"
+              },
+              "hint": {
+                "en": "Default is 80.",
+                "nl": "Standaard is 80.",
+                "da": "Standard er 80.",
+                "de": "Standard ist 80.",
+                "es": "El valor predeterminado es 80.",
+                "fr": "La valeur par défaut est 80.",
+                "it": "Il valore predefinito è 80.",
+                "no": "Standard er 80.",
+                "sv": "Standard är 80.",
+                "pl": "Domyślnie jest 80.",
+                "ru": "По умолчанию 80.",
+                "ko": "기본값은 80입니다."
+              },
+              "value": 80
+            },
+            {
+              "id": "use_mdns",
+              "type": "checkbox",
+              "label": {
+                "en": "Use mDNS for adress",
+                "nl": "Gebruik mDNS voor adres",
+                "da": "Brug mDNS til adresse",
+                "de": "mDNS für Adressen verwenden",
+                "es": "Usar mDNS para dirección",
+                "fr": "Utiliser mDNS pour l'adresse",
+                "it": "Usa mDNS per indirizzo",
+                "no": "Bruk mDNS for adresse",
+                "sv": "Använd mDNS för adress",
+                "pl": "Użyj mDNS dla adresu",
+                "ru": "Использовать mDNS для адреса",
+                "ko": "주소에 mDNS 사용"
+              },
+              "hint": {
+                "en": "When enabled, mDNS will be used to automatically update the IP address when it changes. This only works if your network supports mDNS.",
+                "nl": "Indien ingeschakeld zal mDNS worden gebruikt om automatisch het IP adres aan te passen bij wijzigingen. Dit werkt alleen als je netwerk mDNS ondersteund.",
+                "da": "Når det er aktiveret, vil mDNS blive brugt til automatisk at opdatere IP-adressen, når den ændres. Dette fungerer kun, hvis dit netværk understøtter mDNS.",
+                "de": "Wenn aktiviert, wird mDNS verwendet, um die IP-Adresse automatisch zu aktualisieren, wenn sie sich ändert. Dies funktioniert nur, wenn Ihr Netzwerk mDNS unterstützt.",
+                "es": "Cuando está habilitado, se usará mDNS para actualizar automáticamente la dirección IP cuando cambie. Esto solo funciona si su red es compatible con mDNS.",
+                "fr": "Lorsque c'est activé, mDNS sera utilisé pour mettre à jour automatiquement l'adresse IP lorsqu'elle change. Cela ne fonctionne que si votre réseau prend en charge mDNS.",
+                "it": "Quando abilitato, mDNS verrà utilizzato per aggiornare automaticamente l'indirizzo IP quando cambia. Questo funziona solo se la tua rete supporta mDNS.",
+                "no": "Når det er aktivert, vil mDNS bli brukt til å automatisk oppdatere IP-adressen når den endres. Dette fungerer bare hvis nettverket ditt støtter mDNS.",
+                "sv": "När den är aktiverad kommer mDNS att användas för att automatiskt uppdatera IP-adressen när den ändras. Detta fungerar bara om ditt nätverk stöder mDNS.",
+                "pl": "Po włączeniu mDNS będzie używany do automatycznego aktualizowania adresu IP, gdy się zmieni. Działa to tylko wtedy, gdy twoja sieć obsługuje mDNS.",
+                "ru": "При активации mDNS будет использоваться для автоматического обновления IP-адреса при его изменении. Это работает только в том случае, если ваша сеть поддерживает mDNS.",
+                "ko": "활성화되면 mDNS가 IP 주소가 변경될 때 자동으로 업데이트되도록 사용됩니다. 이는 네트워크가 mDNS를 지원하는 경우에만 작동합니다."
+              },
+              "value": false
+            },
+            {
+              "id": "sn_dongle",
+              "type": "text",
+              "label": {
+                "en": "Dongle S/N",
+                "nl": "Dongel S/N",
+                "da": "Dongle S/N",
+                "de": "Dongle S/N",
+                "es": "Dongle S/N",
+                "fr": "Dongle S/N",
+                "it": "Dongle S/N",
+                "no": "Dongle S/N",
+                "sv": "Dongle S/N",
+                "pl": "Dongle S/N",
+                "ru": "Dongle S/N",
+                "ko": "동글 S/N"
+              },
+              "hint": {
+                "en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+                "nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten.",
+                "da": "Som printet på dongleskiltet. Bemærk: kun nødvendigt for SESSY XOM, eller for at genstarte donglen via et flow.",
+                "de": "Wie auf dem Dongle-Aufkleber gedruckt. Hinweis: Nur für SESSY XOM oder um den Dongle über einen Flow neu zu starten.",
+                "es": "Como se imprime en la etiqueta del dongle. Nota: solo es necesario para SESSY XOM o para reiniciar el dongle a través de un flujo.",
+                "fr": "Comme imprimé sur l'autocollant du dongle. Remarque : nécessaire uniquement pour SESSY XOM ou pour redémarrer le dongle via un flux.",
+                "it": "Come stampato sull'etichetta del dongle. Nota: necessario solo per SESSY XOM, o per riavviare il dongle tramite un flusso.",
+                "no": "Som skrevet på dongelklistermerket. Merk: kun nødvendig for SESSY XOM, eller for å starte donglen på nytt via et flow.",
+                "sv": "Som det står på dongleklistermärket. Observera: endast nödvändigt för SESSY XOM eller för att återstarta dongeln via ett flöde.",
+                "pl": "Jak podano na naklejce dongla. Uwaga: potrzebny tylko dla SESSY XOM lub do ponownego uruchomienia dongla za pomocą przepływu.",
+                "ru": "Как указано на наклейке донгла. Примечание: нужно только для SESSY XOM или для перезагрузки донгла через поток.",
+                "ko": "동글 스티커에 인쇄된 대로. 참고: SESSY XOM의 경우에만 필요하며, 흐름을 통해 동글을 다시 시작하는 데 필요합니다."
+              },
+              "value": ""
+            },
+            {
+              "id": "password_dongle",
+              "type": "password",
+              "label": {
+                "en": "Dongle Password",
+                "nl": "Dongel Wachtwoord",
+                "da": "Dongle Adgangskode",
+                "de": "Dongle-Passwort",
+                "es": "Contraseña del dongle",
+                "fr": "Mot de passe du dongle",
+                "it": "Password del dongle",
+                "no": "Dongle Passord",
+                "sv": "Dongle Lösenord",
+                "pl": "Hasło do dongla",
+                "ru": "Пароль для донгла",
+                "ko": "동글 비밀번호"
+              },
+              "hint": {
+                "en": "As printed on the dongle sticker. Note: only needed for SESSY XOM, or to reboot the dongle via a flow.",
+                "nl": "Zoals geprint op de dongel sticker. NB: alleen nodig voor SESSY XOM, of om de dongel via een flow te rebooten.",
+                "da": "Som printet på dongleskiltet. Bemærk: kun nødvendigt for SESSY XOM, eller for at genstarte donglen via et flow.",
+                "de": "Wie auf dem Dongle-Aufkleber gedruckt. Hinweis: Nur für SESSY XOM oder um den Dongle über einen Flow neu zu starten.",
+                "es": "Como se imprime en la etiqueta del dongle. Nota: solo es necesario para SESSY XOM o para reiniciar el dongle a través de un flujo.",
+                "fr": "Comme imprimé sur l'autocollant du dongle. Remarque : nécessaire uniquement pour SESSY XOM ou pour redémarrer le dongle via un flux.",
+                "it": "Come stampato sull'etichetta del dongle. Nota: necessario solo per SESSY XOM, o per riavviare il dongle tramite un flusso.",
+                "no": "Som skrevet på dongelklistermerket. Merk: kun nødvendig for SESSY XOM, eller for å starte donglen på nytt via et flow.",
+                "sv": "Som det står på dongleklistermärket. Observera: endast nödvändigt för SESSY XOM eller för att återstarta dongeln via ett flöde.",
+                "pl": "Jak podano na naklejce dongla. Uwaga: potrzebny tylko dla SESSY XOM lub do ponownego uruchomienia dongla za pomocą przepływu.",
+                "ru": "Как указано на наклейке донгла. Примечание: нужно только для SESSY XOM или для перезагрузки донгла через поток.",
+                "ko": "동글 스티커에 인쇄된 대로. 참고: SESSY XOM의 경우에만 필요하며, 흐름을 통해 동글을 다시 시작하는 데 필요합니다."
+              },
+              "value": ""
+            },
+            {
+              "id": "pollingInterval",
+              "type": "number",
+              "label": {
+                "en": "Update interval (s)",
+                "nl": "Update interval (s)",
+                "da": "Opdateringsinterval (s)",
+                "de": "Aktualisierungsintervall (s)",
+                "es": "Intervalo de actualización (s)",
+                "fr": "Intervalle de mise à jour (s)",
+                "it": "Intervallo di aggiornamento (s)",
+                "no": "Oppdateringsintervall (s)",
+                "sv": "Uppdateringsintervall (s)",
+                "pl": "Interwał aktualizacji (s)",
+                "ru": "Интервал обновления (с)",
+                "ko": "업데이트 간격(초)"
+              },
+              "hint": {
+                "en": "A lower value provides faster updates in Homey.",
+                "nl": "Een lagere waarde geeft snellere updates in Homey.",
+                "da": "Et lavere antal giver hurtigere opdateringer i Homey.",
+                "de": "Ein niedrigerer Wert ermöglicht schnellere Aktualisierungen in Homey.",
+                "es": "Un valor más bajo proporciona actualizaciones más rápidas en Homey.",
+                "fr": "Une valeur plus basse permet des mises à jour plus rapides dans Homey.",
+                "it": "Un valore più basso fornisce aggiornamenti più veloci in Homey.",
+                "no": "En lavere verdi gir raskere oppdateringer i Homey.",
+                "sv": "Ett lägre värde ger snabbare uppdateringar i Homey.",
+                "pl": "Niższa wartość zapewnia szybsze aktualizacje w Homey.",
+                "ru": "Низкое значение обеспечивает более быструю работу в Homey.",
+                "ko": "낮은 값은 Homey에서 더 빠른 업데이트를 제공합니다."
+              },
+              "min": 1,
+              "max": 300,
+              "value": 10
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Homey Energy",
+            "nl": "Homey Energy",
+            "da": "Homey Energi",
+            "de": "Homey Energie",
+            "es": "Homey Energía",
+            "fr": "Homey Énergie",
+            "it": "Homey Energia",
+            "no": "Homey Energi",
+            "sv": "Homey Energi",
+            "pl": "Homey Energia",
+            "ru": "Homey Энергия",
+            "ko": "Homey 에너지"
+          },
+          "children": [
+            {
+              "id": "homey_energy_type",
+              "label": {
+                "en": "Behaviour",
+                "nl": "Gedrag",
+                "da": "Adfærd",
+                "de": "Verhalten",
+                "es": "Comportamiento",
+                "fr": "Comportement",
+                "it": "Comportamento",
+                "no": "Atferd",
+                "sv": "Beteende",
+                "pl": "Zachowanie",
+                "ru": "Поведение",
+                "ko": "행동"
+              },
+              "hint": {
+                "en": "The Modbus meter is per default intended to act as main meter in Homey Energy. But you can also select it to be counted as an individual device, or as a producing device. The Sessy app might need a restart after changing the behaviour.",
+                "nl": "De Modbus meter is standaard bedoeld om als hoofdmeter te fungeren in Homey Energy. Maar je kunt ook kiezen om het te laten tellen als individueel apparaat, of als producerend apparaat. De Sessy app moet misschien een herstart krijgen na het wijzigen van het gedrag.",
+                "da": "CT-måleren er som standard beregnet til at fungere som hovedmåler i Homey Energien. Men du kan også vælge at få den talt som en individuel enhed eller som en producerende enhed. Sessy-appen kan have brug for en genstart efter ændring af adfærden.",
+                "de": "Der CT-Messer ist standardmäßig dafür vorgesehen, als Hauptmeter in Homey Energy zu fungieren. Sie können jedoch auch auswählen, dass es als individuelles Gerät oder als erzeugendes Gerät gezählt wird. Die Sessy-App benötigt möglicherweise einen Neustart nach der Änderung des Verhaltens.",
+                "es": "Por defecto, el medidor Modbus está destinado a actuar como medidor principal en Homey Energy. Pero también puedes seleccionarlo para que se cuente como un dispositivo individual, o como un dispositivo productor. Es posible que la aplicación Sessy necesite reiniciarse después de cambiar el comportamiento.",
+                "fr": "Le compteur Modbus est par défaut conçu pour fonctionner comme compteur principal dans Homey Energy. Mais vous pouvez également sélectionner qu'il soit compté comme un dispositif individuel ou comme un dispositif de production. L'application Sessy peut nécessiter un redémarrage après avoir modifié le comportement.",
+                "it": "Il misuratore Modbus è progettato per funzionare come misuratore principale in Homey Energy. Ma puoi anche sceglierlo per essere conteggiato come dispositivo individuale o come dispositivo produttivo. L'app di Sessy potrebbe dover essere riavviata dopo aver modificato il comportamento.",
+                "no": "CT-måleren er som standard ment å fungere som hovedmåler i Homey Energi. Men du kan også velge å telle den som en individuell enhet, eller som en produserende enhet. Sessy-appen kan trenge en omstart etter å ha endret atferden.",
+                "sv": "CT-mätaren är som standard avsedd att fungera som huvudmätare i Homey Energi. Men du kan också välja att den ska räknas som en individuell enhet, eller som en producerande enhet. Sessy-appen kan behöva startas om efter att ha ändrat beteendet.",
+                "pl": "Licznik Modbus domyślnie ma działać jako główny licznik w Homey Energy. Możesz jednak także wybrać, aby był traktowany jako urządzenie indywidualne lub jako urządzenie produkujące. Aplikacja Sessy może wymagać ponownego uruchomienia po zmianie zachowań.",
+                "ru": "CT-метр по умолчанию предназначен для работы в качестве основного счетчика в Homey Energy. Но вы также можете выбрать его в качестве отдельного устройства или в качестве производящего устройства. После изменения поведения приложения Sessy может потребоваться перезапустить.",
+                "ko": "Modbus 미터는 기본적으로 Homey Energy의 주요 미터기로 작동하도록 설계되어 있습니다. 그러나 개별 장치로 계산되거나 생산 장치로 선택할 수도 있습니다. Sessy 앱은 동작 변경 후 재시작이 필요할 수 있습니다."
+              },
+              "type": "dropdown",
+              "value": "cumulative",
+              "values": [
+                {
+                  "id": "cumulative",
+                  "label": {
+                    "en": "Main / smart meter",
+                    "nl": "Hoofd / slimme meter",
+                    "da": "Hoved- / smartmåler",
+                    "de": "Haupt- / Smartmeter",
+                    "es": "Medidor principal / inteligente",
+                    "fr": "Compteur principal / intelligent",
+                    "it": "Contatore principale / intelligente",
+                    "no": "Hoved- / smartmåler",
+                    "sv": "Huvud- / smartmätare",
+                    "pl": "Główne / inteligentne liczniki",
+                    "ru": "Основной / умный счетчик",
+                    "ko": "주요 / 스마트 미터"
+                  }
+                },
+                {
+                  "id": "socket",
+                  "label": {
+                    "en": "Device",
+                    "nl": "Apparaat",
+                    "da": "Enhed",
+                    "de": "Gerät",
+                    "es": "Dispositivo",
+                    "fr": "Appareil",
+                    "it": "Dispositivo",
+                    "no": "Enhet",
+                    "sv": "Enhet",
+                    "pl": "Urządzenie",
+                    "ru": "Устройство",
+                    "ko": "장치"
+                  }
+                },
+                {
+                  "id": "solarpanel",
+                  "label": {
+                    "en": "Solar panel (producing)",
+                    "nl": "Zonnepaneel (produceert)",
+                    "da": "Solpanel (producerer)",
+                    "de": "Solarpanel (produzierend)",
+                    "es": "Panel solar (produciendo)",
+                    "fr": "Panneau solaire (produisant)",
+                    "it": "Pannello solare (produzione)",
+                    "no": "Solcellepanel (produserende)",
+                    "sv": "Solpanel (producerande)",
+                    "pl": "Panele słoneczne (produkujące)",
+                    "ru": "Солнечная панель (производящая)",
+                    "ko": "태양광 패널(생산)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Low power correction",
+            "nl": "Laag vermogen correctie",
+            "da": "Lav effektkorrektion",
+            "de": "Korrektur bei niedrigem Stromverbrauch",
+            "es": "Corrección de baja potencia",
+            "fr": "Correction de faible puissance",
+            "it": "Correzione a bassa potenza",
+            "no": "Lav effektkorrigering",
+            "sv": "Korrigering av låg effekt",
+            "pl": "Korekcja niskiej mocy",
+            "ru": "Коррекция низкой мощности",
+            "ko": "저전력 보정"
+          },
+          "children": [
+            {
+              "id": "useLowPowerCorrection",
+              "type": "checkbox",
+              "label": {
+                "en": "Use low power correction",
+                "nl": "Gebruik laag vermogen correctie",
+                "da": "Brug lav effektkorrektion",
+                "de": "Niedrige Leistungs-korrektur verwenden",
+                "es": "Usar corrección de baja potencia",
+                "fr": "Utiliser la correction basse puissance",
+                "it": "Usa la correzione a bassa potenza",
+                "no": "Bruk lav effektkorrigering",
+                "sv": "Använd låg effektkorrektion",
+                "pl": "Użyj korekcji niskiej mocy",
+                "ru": "Использовать коррекцию низкой мощности",
+                "ko": "저전력 보정 사용"
+              },
+              "hint": {
+                "en": "When enabled low power will be calculated as V*A*Cos-Phi. This happens when the Sessy Modbus meter measures a current and still shows 0W.",
+                "nl": "Wanneer aangezet laag vermogen worden berekend als V*A*Cos-Phi. Dat gebeurt als de Sessy Modbus meter een stroom meet en toch 0W aangeeft.",
+                "da": "Når det er aktiveret, vil lav effekt blive beregnet som V*A*Cos-Phi. Dette sker, når Sessy CT-måleren måler en strøm og stadig viser 0W.",
+                "de": "Wenn aktiviert, wird der niedrige Stromverbrauch als V*A*Cos-Phi berechnet. Dies passiert, wenn der Sessy CT-Messer einen Strom misst und immer noch 0 W anzeigt.",
+                "es": "Cuando está habilitado, la baja potencia se calculará como V*A*Cos-Phi. Esto ocurre cuando el medidor Modbus Sessy mide una corriente y aún muestra 0 W.",
+                "fr": "Lorsque c'est activé, la faible puissance sera calculée comme V*A*Cos-Phi. Cela se produit lorsque le compteur Modbus Sessy mesure un courant et affiche toujours 0 W.",
+                "it": "Quando abilitata, la bassa potenza sarà calcolata come V*A*Cos-Phi. Questo accade quando il misuratore Sessy Modbus misura una corrente e mostra comunque 0W.",
+                "no": "Når det er aktivert, vil lav effekt bli beregnet som V*A*Cos-Phi. Dette skjer når Sessy CT-måleren måler en strøm og fortsatt viser 0W.",
+                "sv": "När den är aktiverad kommer låg effekt att beräknas som V*A*Cos-Phi. Detta inträffar när Sessy CT-mätaren mäter en ström och ändå visar 0W.",
+                "pl": "Gdy jest włączony, niska moc będzie obliczana jako V*A*Cos-Phi. Dzieje się tak, gdy miernik Modbus Sessy mierzy prąd i nadal pokazuje 0W.",
+                "ru": "При включении низкая мощность будет рассчитываться как V*A*Cos-Phi. Это происходит, когда CT-метр Sessy измеряет ток и при этом все равно показывает 0 Вт.",
+                "ko": "활성화되면 낮은 전력이 V*A*Cos-Phi로 계산됩니다. Sessy Modbus 계량기가 전류를 측정하고 여전히 0W를 표시할 때 발생합니다."
+              },
+              "value": false
+            },
+            {
+              "id": "cosphi",
+              "type": "number",
+              "label": {
+                "en": "Low power cos-Phi.",
+                "nl": "Laag vermogen Cos-Phi.",
+                "da": "Lav effekt cos-Phi.",
+                "de": "Niedrige Leistung cos-Phi.",
+                "es": "Baja potencia cos-Phi.",
+                "fr": "Faible puissance cos-Phi.",
+                "it": "Bassa potenza cos-Phi.",
+                "no": "Lav effekt cos-Phi.",
+                "sv": "Låg effekt cos-Phi.",
+                "pl": "Niska moc cos-Phi.",
+                "ru": "Низкая мощность cos-Phi.",
+                "ko": "저전력 cos-Phi."
+              },
+              "hint": {
+                "en": "Default setting is 1.",
+                "nl": "Standaard instelling is 1.",
+                "da": "Standardindstillingen er 1.",
+                "de": "Die Standardeinstellung ist 1.",
+                "es": "La configuración predeterminada es 1.",
+                "fr": "La valeur par défaut est 1.",
+                "it": "L'impostazione predefinita è 1.",
+                "no": "Standardinnstillingen er 1.",
+                "sv": "Standardinställningen är 1.",
+                "pl": "Domyślne ustawienie wynosi 1.",
+                "ru": "Настройка по умолчанию - 1.",
+                "ko": "기본 설정은 1입니다."
+              },
+              "min": 0,
+              "max": 1,
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
         "en": "Sessy P1",
         "nl": "Sessy P1",
         "da": "Sessy P1",
@@ -2813,8 +3605,8 @@
       ],
       "connectivity": [],
       "images": {
-        "small": "/drivers/p1/assets/images/small.jpg",
-        "large": "/drivers/p1/assets/images/large.jpg"
+        "small": "/drivers/p1/assets/images/small.png",
+        "large": "/drivers/p1/assets/images/large.png"
       },
       "discovery": "sessy",
       "pair": [
@@ -4123,8 +4915,8 @@
       ],
       "connectivity": [],
       "images": {
-        "small": "/drivers/sessy/assets/images/small.jpg",
-        "large": "/drivers/sessy/assets/images/large.jpg"
+        "small": "/drivers/sessy/assets/images/small.png",
+        "large": "/drivers/sessy/assets/images/large.png"
       },
       "discovery": "sessy",
       "pair": [

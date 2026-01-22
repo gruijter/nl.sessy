@@ -27,7 +27,8 @@
     "sn_dongle": "S/N del dongle",
     "password_dongle": "Contraseña del dongle",
     "incomplete": "¡Se deben ingresar la IP o URL, el S/N del dongle y la contraseña!",
-    "continue": "CONTINUAR"
+    "continue": "CONTINUAR",
+    "endpoint_not_found": "Firmware antiguo o tipo de dispositivo incorrecto."
   },
   "sessy": {
     "homeyProOnly": "Esta configuración solo está disponible en Homey Pro",

@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /*
-Copyright 2023 - 2025, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2026, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -312,7 +312,7 @@ class CTDevice extends Device {
 
       // set the capabilities
       Object.entries(capabilityStates).forEach((entry) => {
-        this.setCapability(entry[0], entry[1]).catch(this.error);
+        this.setCapability(entry[0], entry[1]).catch((e) => this.error(e));
       });
 
       // execute custom flow triggers

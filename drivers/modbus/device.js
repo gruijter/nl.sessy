@@ -27,7 +27,7 @@ const SessyLocal = require('../../sessy_local');
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
-class P1Device extends Device {
+class ModbusDevice extends Device {
 
   async onInit() {
     try {
@@ -173,7 +173,7 @@ class P1Device extends Device {
         return;
       }
       // get new status and update the devicestate
-      const status = await this.sessy.getStatus({ p1: true });
+      const status = await this.sessy.getStatus({ modbus: true });
       this.setAvailable().catch(() => null);
       await this.updateDeviceState(status);
       // check fw every 60 minutes
@@ -199,6 +199,16 @@ class P1Device extends Device {
     if (changedKeys.includes('use_local_connection')) {
       if (this.homey.platform === 'cloud') throw Error(this.homey.__('sessy.homeyProOnly'));
       if (newSettings.host.length < 3) throw Error(this.homey.__('sessy.incomplete'));
+    }
+    if (newSettings.homey_energy_type === 'solarpanel') {
+      this.setEnergy({ cumulative: false }).catch(this.error);
+      this.setClass('solarpanel').catch(this.error);
+    } else if (newSettings.homey_energy_type === 'cumulative') {
+      this.setEnergy({ cumulative: true }).catch(this.error);
+      this.setClass('sensor').catch(this.error);
+    } else {
+      this.setEnergy({ cumulative: false }).catch(this.error);
+      this.setClass('sensor').catch(this.error);
     }
     this.restarting = false;
     this.restartDevice(2 * 1000).catch((error) => this.error(error));
@@ -258,49 +268,34 @@ class P1Device extends Device {
   async updateDeviceState(status) {
     // this.log(`updating states for: ${this.getName()}`);
     try {
-      // calculate gas usage
-      let gasFlow = this.getCapabilityValue('measure_gas');
-      if (this.lastStatus && this.lastStatus.gas_meter_value_time && this.lastStatus.gas_meter_value_time.length === 13
-        && status.gas_meter_value_time && status.gas_meter_value_time.length === 13) {
-        let d = status.gas_meter_value_time; // "231125175508W" YYMMDDhhmmssX
-        let T2 = (new Date(`20${d.slice(0, 2)}`, d.slice(2, 4) - 1, d.slice(4, 6), d.slice(6, 8), d.slice(8, 10), d.slice(10, 2))).valueOf();
-        if (d[11] === 'S') T2 -= 3600 * 1000; // substract an hour when on DST
-        d = this.lastStatus.gas_meter_value_time; // "231125175508W" YYMMDDhhmmssX
-        let T1 = (new Date(`20${d.slice(0, 2)}`, d.slice(2, 4) - 1, d.slice(4, 6), d.slice(6, 8), d.slice(8, 10), d.slice(10, 2))).valueOf();
-        if (d[11] === 'S') T1 -= 3600 * 1000; // substract an hour when on DST
-        const usedGas = (status.gas_meter_value - this.lastStatus.gas_meter_value) / 1000; // m3
-        const deltaT = (T2 - T1) / 1000 / 60 / 60; // hour
-        if (deltaT > 0) gasFlow = usedGas / deltaT;
+      // compensate low power factor
+      const { cosphi, useLowPowerCorrection } = this.getSettings();
+      let powerL1 = status.phase_1.power;
+      let powerL2 = status.phase_2.power;
+      let powerL3 = status.phase_3.power;
+      let totalPower = status.total_power;
+      if (useLowPowerCorrection) {
+        if (status.phase_1.power < 25 && status.phase_1.current > 0) powerL1 = Math.round((status.phase_1.current * status.phase_1.voltage * cosphi) / 1000000);
+        if (status.phase_2.power < 25 && status.phase_2.current > 0) powerL2 = Math.round((status.phase_2.current * status.phase_2.voltage * cosphi) / 1000000);
+        if (status.phase_3.power < 25 && status.phase_3.current > 0) powerL3 = Math.round((status.phase_3.current * status.phase_3.voltage * cosphi) / 1000000);
+        totalPower = powerL1 + powerL2 + powerL3;
       }
-
       // determine capability states
       const systemState = status.state;
       const capabilityStates = {
-        measure_power: status.power_total, // .net_power_delivered * 1000,
+        measure_power: totalPower,
         system_state: systemState,
-        meter_offPeak: status.tariff_indicator === 1,
-        'measure_power.l1': status.power_consumed_l1 - status.power_produced_l1,
-        'measure_power.l2': status.power_consumed_l2 - status.power_produced_l2,
-        'measure_power.l3': status.power_consumed_l3 - status.power_produced_l3,
-        'measure_current.l1': status.current_l1 / 1000,
-        'measure_current.l2': status.current_l2 / 1000,
-        'measure_current.l3': status.current_l3 / 1000,
-        'measure_voltage.l1': status.voltage_l1 / 1000,
-        'measure_voltage.l2': status.voltage_l2 / 1000,
-        'measure_voltage.l3': status.voltage_l3 / 1000,
-        'meter_power.imported': (status.power_consumed_tariff1 + status.power_consumed_tariff2) / 1000,
-        'meter_power.exported': (status.power_produced_tariff1 + status.power_produced_tariff2) / 1000,
-        'meter_power.peak': status.power_consumed_tariff2 / 1000,
-        'meter_power.offPeak': status.power_consumed_tariff1 / 1000,
-        'meter_power.producedPeak': status.power_produced_tariff2 / 1000,
-        'meter_power.producedOffPeak': status.power_produced_tariff1 / 1000,
-        meter_power: (status.power_consumed_tariff2 + status.power_consumed_tariff1
-          - status.power_produced_tariff2 - status.power_produced_tariff1) / 1000,
-        meter_power_failure: status.power_failure_any_phase,
-        meter_voltage_sag: status.voltage_sag_count_l1 + status.voltage_sag_count_l2 + status.voltage_sag_count_l3,
-        meter_voltage_swell: status.voltage_swell_count_l1 + status.voltage_swell_count_l2 + status.voltage_swell_count_l3,
-        meter_gas: status.gas_meter_value / 1000,
-        measure_gas: gasFlow,
+        'measure_power.l1': powerL1,
+        'measure_power.l2': powerL2,
+        'measure_power.l3': powerL3,
+        'measure_current.l1': status.phase_1.current / 1000,
+        'measure_current.l2': status.phase_2.current / 1000,
+        'measure_current.l3': status.phase_3.current / 1000,
+        'measure_voltage.l1': status.phase_1.voltage / 1000,
+        'measure_voltage.l2': status.phase_2.voltage / 1000,
+        'measure_voltage.l3': status.phase_3.voltage / 1000,
+        'meter_power.imported': status.total_import / 1000,
+        'meter_power.exported': status.total_export / 1000,
       };
 
       // setup custom flow triggers
@@ -311,23 +306,12 @@ class P1Device extends Device {
         this.setCapability(entry[0], entry[1]).catch((e) => this.error(e));
       });
 
-      this.lastStatus = status;
-
       // execute custom flow triggers
       if (systemStateChanged) {
         this.log('System State changed:', systemState);
         const tokens = { system_state: systemState, system_state_details: '' };
         this.homey.app.triggerSystemStateChanged(this, tokens, {});
       }
-      const tariffChanged = capabilityStates.meter_offPeak !== this.getCapabilityValue('meter_offPeak');
-      if (tariffChanged) {
-        this.log('Tariff changed. offPeak:', capabilityStates.meter_offPeak);
-        const tokens = { tariff: capabilityStates.meter_offPeak };
-        this.homey.app.triggerTariffChanged(this, tokens, {});
-      }
-
-      // update DSMR info
-      if (this.getSettings().DSMR !== status.toString()) this.setSettings({ DSMR: status.dsmr_version.toString() }).catch(this.error);
     } catch (error) {
       this.error(error);
     }
@@ -350,4 +334,4 @@ class P1Device extends Device {
 
 }
 
-module.exports = P1Device;
+module.exports = ModbusDevice;

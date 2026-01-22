@@ -1,11 +1,11 @@
 {
-	"today": "Vandaag",
+  "today": "Vandaag",
   "tomorrow": "Morgen",
   "nextHours": "Komende uren",
 	"pair": {
 		"portal_login_title": "SESSY PORTAL LOGIN",
 		"portal_login_text": "Voeg alle Sessy's van de Sessy Portal toe aan Homey. Zorg dat al je Sessy's in de portal geregistreerd zijn! (portal.sessy.nl)",
-		"portal_login_text_p1": "Voeg je vermogen meter van de Sessy Portal toe aan Homey. Zorg dat je je systeem in de portal hebt geconfigureerd! (portal.sessy.nl)",
+		"portal_login_text_p1": "Voeg je vermogensmeter van de Sessy Portal toe aan Homey. Zorg dat je je systeem in de portal hebt geconfigureerd! (portal.sessy.nl)",
 		"portal_login_text_dap": "Voeg dynamische prijsinformatie van de Sessy Portal toe aan Homey. Zorg dat je je account in de portal hebt geconfigureerd! (portal.sessy.nl)",
 		"username_portal": "Portal Gebruikersnaam",
 		"password_portal": "Portal Wachtwoord",
@@ -30,18 +30,19 @@
 		"host": "IP adres of URL",
 		"sn_dongle": "Dongle S/N",
 		"password_dongle": "Dongle Wachtwoord",
-		"incomplete": "IP of URL, dongle S/N en wachtwoordmoeten worden ingevoerd!",
-		"continue": "VERDER"
+		"incomplete": "IP of URL, dongle S/N en wachtwoord moeten worden ingevoerd!",
+		"continue": "VERDER",
+		"endpoint_not_found": "Oude firmware of verkeerd apparaattype."
 	},
 	"sessy": {
 		"homeyProOnly": "Deze instelling is alleen beschikbaar op Homey Pro",
 		"incomplete": "Host en poort moet worden ingevuld voor een lokale verbinding",
 		"controlError": "Homey is niet ingesteld in besturingsmodus",
-		"connectionError": "Verbindingsfout, aan het hertarten",
+		"connectionError": "Verbindingsfout, aan het herstarten",
 		"migrating": "Apparaat is aan het migreren. Geduld AUB!",
-		"newFirmware": "Nieuwe firmware geinstalleerd op Sessy. __fw__",
+		"newFirmware": "Nieuwe firmware geïnstalleerd op Sessy. __fw__",
 		"newFirmwareAvailable": "Nieuwe firmware beschikbaar voor Sessy. __fw__",
-		"newFirmwareMeter": "Nieuwe firmware geinstalleerd op Meter. __fw__",
+		"newFirmwareMeter": "Nieuwe firmware geïnstalleerd op Meter. __fw__",
 		"newFirmwareAvailableMeter": "Nieuwe firmware beschikbaar voor Meter. __fw__"
 	},
 	"pv": {

@@ -27,7 +27,8 @@
     "sn_dongle": "Dongle S/N",
     "password_dongle": "Hasło dongla",
     "incomplete": "Adres IP lub URL, dongle S/N oraz hasło muszą być wprowadzone!",
-    "continue": "KONTYNUUJ"
+    "continue": "KONTYNUUJ",
+    "endpoint_not_found": "Stare oprogramowanie lub niewłaściwy typ urządzenia."
   },
   "sessy": {
     "homeyProOnly": "Ta opcja jest dostępna tylko na Homey Pro",

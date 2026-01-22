@@ -27,7 +27,8 @@
     "sn_dongle": "동글 S/N",
     "password_dongle": "동글 비밀번호",
     "incomplete": "IP 주소 또는 URL, 동글 S/N 및 비밀번호를 입력해야 합니다!",
-    "continue": "계속하기"
+    "continue": "계속하기",
+    "endpoint_not_found": "오래된 펌웨어 또는 잘못된 장치 유형입니다."
   },
   "sessy": {
     "homeyProOnly": "이 설정은 Homey Pro에서만 사용할 수 있습니다.",

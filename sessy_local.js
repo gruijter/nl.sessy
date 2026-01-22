@@ -1,5 +1,5 @@
 /*
-Copyright 2023 - 2025, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2023 - 2026, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of nl.sessy.
 
@@ -23,20 +23,6 @@ const os = require('os');
 const util = require('util');
 
 const setTimeoutPromise = util.promisify(setTimeout);
-
-let fetch;
-let AbortController;
-
-if (typeof global.fetch === 'function' && typeof global.AbortController === 'function') {
-  fetch = global.fetch;
-  AbortController = global.AbortController;
-} else {
-  // eslint-disable-next-line global-require
-  fetch = require('node-fetch');
-  // eslint-disable-next-line global-require
-  AbortController = require('abort-controller');
-}
-
 // SYSTEM
 const getSystemInfoEP = '/api/v1/system/info'; // version "v5.1.1"?, sessy_serial
 const getSystemSettingsEP = '/api/v1/system/settings';
@@ -55,6 +41,9 @@ const getOTAStatusEP = '/api/v1/ota/status';
 
 // P1
 const getP1DetailsEP = '/api/v2/p1/details'; // fw > 1.5.2
+
+// P1 Modbus
+const getModbusDetailsEP = '/api/v1/modbus/details'; // fw > 1.11.8
 
 // CT
 const getCTDetailsEP = '/api/v1/ct/details'; // fw > 1.5.2
@@ -116,6 +105,7 @@ class Sessy {
       let statusEP = getStatusEP;
       if (options && options.p1) statusEP = getP1DetailsEP;
       if (options && options.ct) statusEP = getCTDetailsEP;
+      if (options && options.modbus) statusEP = getModbusDetailsEP;
       const res = await this._makeRequest(statusEP);
       this.status = res;
       return Promise.resolve(res);
@@ -274,7 +264,7 @@ class Sessy {
 
   async discover(opts) {
     try {
-      const hostsToTest = []; // make an array of all host IP's in the LAN
+      const hostsToTest = new Set(); // make a set of all host IP's in the LAN
       const servers = [];
       // const servers = dns.getServers() || []; // get the IP address of all routers in the LAN
       const ifaces = os.networkInterfaces(); // get ip address info from all network interfaces
@@ -286,23 +276,21 @@ class Sessy {
         });
       });
       servers.forEach((server) => { // make an array of all host IP's in the LAN
-        const splitServer = server.split('.').slice(0, 3);
-        const reducer = (accumulator, currentValue) => `${accumulator}.${currentValue}`;
-        const segment = splitServer.reduce(reducer);
-        if (segment.slice(0, 3) === '127') return undefined;
+        const segment = server.split('.').slice(0, 3).join('.');
+        if (segment.startsWith('127')) return;
         for (let host = 1; host <= 254; host += 1) {
           const ipToTest = `${segment}.${host}`;
-          hostsToTest.push(ipToTest);
+          hostsToTest.add(ipToTest);
         }
-        return true;
       });
 
-      // try all servers for login response, with http timeout 4 seconds
+      // try all servers for login response, with http timeout 2.5 seconds
       let discoveryEP = getStatusEP;
-      if (opts && (opts.p1 || opts.ct)) discoveryEP = getMeterStatusEP;
-      const allHostsPromise = hostsToTest.map(async (hostToTest) => {
+      if (opts && (opts.p1 || opts.ct || opts.modbus)) discoveryEP = getMeterStatusEP;
+      const timeout = (opts && opts.timeout) || 2500;
+      const allHostsPromise = [...hostsToTest].map(async (hostToTest) => {
         let found = false;
-        const status = await this._makeRequest(discoveryEP, undefined, 4000, hostToTest).catch(() => undefined);
+        const status = await this._makeRequest(discoveryEP, undefined, timeout, hostToTest).catch(() => undefined);
         if (status) found = { ip: hostToTest, status }; // device found
         return Promise.resolve(found);
       });
@@ -387,36 +375,6 @@ class Sessy {
 
 module.exports = Sessy;
 
-// // START TEST HERE
-// console.log('REMOVE KEYS!!!!');
-// const test = async () => {
-//   // const SESSY = new Sessy();
-//   // const discovered = await SESSY.discover({ p1: true });
-//   const SESSY = new Sessy({ sn_dongle: '', password_dongle: '', host: '10.0.0.80' });
-//   // const res = await SESSY.restart();
-//   // console.log(res);
-//   // const discovered = await SESSY.discover();
-//   // console.dir(discovered, { depth: null });
-//   // const status = await SESSY.getStatus();
-//   // console.dir(status, { depth: null });
-//   // const setStrategy = await SESSY.setStrategy({ strategy: 'POWER_STRATEGY_API' });
-//   // console.dir(setStrategy, { depth: null });
-//   const strategy = await SESSY.getStrategy();
-//   console.dir(strategy, { depth: null });
-//   // const setSetpoint = await SESSY.setSetpoint({ setpoint: 500 });
-//   // console.dir(setSetpoint, { depth: null });
-//   // const status2 = await SESSY.getStatus();
-//   // console.dir(status2, { depth: null });
-//   // const OTAstatus = await SESSY.getOTAStatus();
-//   // console.dir(OTAstatus, { depth: null });
-//   // const newSsettings = { max_power: 2200, eco_charge_power: 1500 };
-//   // await SESSY.setSystemSettings(newSsettings);
-//   // const settings = await SESSY.getSystemSettings();
-//   // console.dir(settings, { depth: null });
-// };
-
-// test().catch(console.log);
-
 /*
 fw source: https://github.com/ChargedBV/sessy-updates
 
@@ -439,6 +397,32 @@ Energy response:
     "import_wh": 1234,
     "export_wh": 1234
   }
+}
+
+status modbus:
+{
+  "status": "ok",
+  "phase_1": {
+    "voltage": 0,
+    "current": 0,
+    "power": 0
+  },
+  "phase_2": {
+    "voltage": 0,
+    "current": 0,
+    "power": 0
+  },
+  "phase_3": {
+    "voltage": 237707,
+    "current": 0,
+    "power": 0
+  },
+  "total_power": 0,
+  "total_import": 0,
+  "total_export": 0,
+  "device_type": "Eastron_SDM630",
+  "time_since": 636,
+  "state": "MODBUS_OK"
 }
 
 status p1 v2:

@@ -1,6 +1,6 @@
 {
   "name": {
-    "en": "Sessy CT"
+    "en": "Sessy Modbus"
   },
   "class": "sensor",
   "energy": {
@@ -21,13 +21,7 @@
     "measure_voltage.l2",
     "measure_voltage.l3",
     "meter_power.imported",
-    "meter_power.exported",
-    "meter_power.l1Import",
-    "meter_power.l1Export",
-    "meter_power.l2Import",
-    "meter_power.l2Export",
-    "meter_power.l3Import",
-    "meter_power.l3Export"
+    "meter_power.exported"
   ],
   "capabilitiesOptions": {
     "measure_power": {
@@ -78,108 +72,6 @@
         "pl": "Energia eksportowana",
         "ru": "Экспортированная энергия",
         "ko": "수출 에너지"
-      },
-      "decimals": 3
-    },
-    "meter_power.l1Import": {
-      "title": {
-        "en": "Energy L1 Import",
-        "nl": "Energie L1 Import",
-        "da": "Energi L1 Import",
-        "de": "Energie L1 Import",
-        "es": "Energía L1 Importada",
-        "fr": "Énergie L1 Importée",
-        "it": "Energia L1 Importata",
-        "no": "Energi L1 Import",
-        "sv": "Energi L1 Import",
-        "pl": "Energie L1 Importowane",
-        "ru": "Энергия L1 Импорт",
-        "ko": "L1 에너지 수입"
-      },
-      "decimals": 3
-    },
-    "meter_power.l1Export": {
-      "title": {
-        "en": "Energy L1 Export",
-        "nl": "Energie L1 Export",
-        "da": "Energi L1 Eksport",
-        "de": "Energie L1 Export",
-        "es": "Energía L1 Exportada",
-        "fr": "Énergie L1 Exportée",
-        "it": "Energia L1 Esportata",
-        "no": "Energi L1 Eksport",
-        "sv": "Energi L1 Export",
-        "pl": "Energie L1 Eksportowane",
-        "ru": "Энергия L1 Экспорт",
-        "ko": "L1 에너지 수출"
-      },
-      "decimals": 3
-    },
-    "meter_power.l2Import": {
-      "title": {
-        "en": "Energy L2 Import",
-        "nl": "Energie L2 Import",
-        "da": "Energi L2 Import",
-        "de": "Energie L2 Import",
-        "es": "Energía L2 Importada",
-        "fr": "Énergie L2 Importée",
-        "it": "Energia L2 Importata",
-        "no": "Energi L2 Import",
-        "sv": "Energi L2 Import",
-        "pl": "Energie L2 Importowane",
-        "ru": "Энергия L2 Импорт",
-        "ko": "L2 에너지 수입"
-      },
-      "decimals": 3
-    },
-    "meter_power.l2Export": {
-      "title": {
-        "en": "Energy L2 Export",
-        "nl": "Energie L2 Export",
-        "da": "Energi L2 Eksport",
-        "de": "Energie L2 Export",
-        "es": "Energía L2 Exportada",
-        "fr": "Énergie L2 Exportée",
-        "it": "Energia L2 Esportata",
-        "no": "Energi L2 Eksport",
-        "sv": "Energi L2 Export",
-        "pl": "Energie L2 Eksportowane",
-        "ru": "Энергия L2 Экспорт",
-        "ko": "L2 에너지 수출"
-      },
-      "decimals": 3
-    },
-    "meter_power.l3Import": {
-      "title": {
-        "en": "Energy L3 Import",
-        "nl": "Energie L3 Import",
-        "da": "Energi L3 Import",
-        "de": "Energie L3 Import",
-        "es": "Energía L3 Importada",
-        "fr": "Énergie L3 Importée",
-        "it": "Energia L3 Importata",
-        "no": "Energi L3 Import",
-        "sv": "Energi L3 Import",
-        "pl": "Energie L3 Importowane",
-        "ru": "Энергия L3 Импорт",
-        "ko": "L3 에너지 수입"
-      },
-      "decimals": 3
-    },
-    "meter_power.l3Export": {
-      "title": {
-        "en": "Energy L3 Export",
-        "nl": "Energie L3 Export",
-        "da": "Energi L3 Eksport",
-        "de": "Energie L3 Export",
-        "es": "Energía L3 Exportada",
-        "fr": "Énergie L3 Exportée",
-        "it": "Energia L3 Esportata",
-        "no": "Energi L3 Eksport",
-        "sv": "Energi L3 Export",
-        "pl": "Energie L3 Eksportowane",
-        "ru": "Энергия L3 Экспорт",
-        "ko": "L3 에너지 수출"
       },
       "decimals": 3
     },

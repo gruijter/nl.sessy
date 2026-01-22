@@ -4,14 +4,14 @@
   "nextHours": "Prochaines heures",
   "pair": {
     "portal_login_title": "CONNEXION AU PORTAIL SESSY",
-    "portal_login_text": "Ajoutez tous vos Sessy depuis le portail Sessy à Homey. Assurez-vous d'avoir terminé d'ajouter vos sessy's dans le portail d'abord ! (portal.sessy.nl)",
+    "portal_login_text": "Ajoutez tous vos Sessy depuis le portail Sessy à Homey. Assurez-vous d'avoir terminé d'ajouter vos Sessy dans le portail d'abord ! (portal.sessy.nl)",
     "portal_login_text_p1": "Ajoutez votre compteur d'énergie depuis le portail Sessy à Homey. Assurez-vous d'avoir terminé de configurer votre système dans le portail d'abord ! (portal.sessy.nl)",
     "portal_login_text_dap": "Ajoutez les informations de prix prévues depuis le portail Sessy à Homey. Assurez-vous d'avoir configuré votre compte dans le portail d'abord ! (portal.sessy.nl)",
     "username_portal": "Nom d'utilisateur du portail",
     "password_portal": "Mot de passe du portail",
     "portal_login_button": "CONNEXION AU PORTAIL SESSY",
     "incomplete_portal": "Nom d'utilisateur et mot de passe doivent être remplis !",
-    "no_batteries_registered": "Aucun Sessy n'a été trouvé sous ce compte. Ajoutez vos Sessy's à portal.sessy.nl.",
+    "no_batteries_registered": "Aucun Sessy n'a été trouvé sous ce compte. Ajoutez vos Sessy à portal.sessy.nl.",
     "no_meters_registered": "Aucun compteur d'énergie n'a été trouvé sous ce compte. Configurez votre système à portal.sessy.nl.",
     "local_login_title": "CONFIGURATION DE CONNEXION LOCALE",
     "local_login_text": "Vous pouvez également ignorer la connexion au portail Sessy et continuer avec la configuration d'une connexion locale.",
@@ -22,12 +22,13 @@
     "contmodetitle": "OU : MODE DE CONTRÔLE LOCAL",
     "contmodetext": "Ajoutez un SESSY en mode de contrôle local. Choisissez cela si vous souhaitez pouvoir contrôler via Homey.",
     "contmodebutton": "CONTINUER EN MODE DE CONTRÔLE",
-    "local_login_text_p1": "Pour continuer en MODE DE CONTRÔLE, le mot de passe est requis (préféré). Pour continuer en MODE DE SURVEILLANCE, laissez le mot de passe vide",
+    "local_login_text_p1": "Pour continuer en MODE DE CONTRÔLE, le mot de passe est requis (préféré). Pour continuer en MODE DE SURVEILLANCE, laissez le mot de passe vide.",
     "host": "Adresse IP ou URL",
     "sn_dongle": "S/N du dongle",
     "password_dongle": "Mot de passe du dongle",
     "incomplete": "L'adresse IP ou l'URL, le S/N du dongle et le mot de passe doivent être renseignés !",
-    "continue": "CONTINUER"
+    "continue": "CONTINUER",
+    "endpoint_not_found": "Ancien firmware ou mauvais type d'appareil."
   },
   "sessy": {
     "homeyProOnly": "Ce réglage est uniquement disponible sur Homey Pro",
@@ -39,5 +40,8 @@
     "newFirmwareAvailable": "Nouveau firmware disponible pour le Sessy. __fw__",
     "newFirmwareMeter": "Nouveau firmware installé sur le compteur. __fw__",
     "newFirmwareAvailableMeter": "Nouveau firmware disponible pour le compteur. __fw__"
+  },
+  "pv": {
+    "no_updates": "Pas de mises à jour de Sessy"
   }
 }

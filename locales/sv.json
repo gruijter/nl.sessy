@@ -27,7 +27,8 @@
     "sn_dongle": "Dongle S/N",
     "password_dongle": "Dongle Lösenord",
     "incomplete": "IP eller URL, dongle S/N och lösenord måste anges!",
-    "continue": "Fortsätt"
+    "continue": "Fortsätt",
+    "endpoint_not_found": "Gammal firmware eller fel enhetstyp."
   },
   "sessy": {
     "homeyProOnly": "Denna inställning är endast tillgänglig på Homey Pro",

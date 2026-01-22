@@ -1,10 +1,10 @@
 {
-	"today": "Today",
+  "today": "Today",
   "tomorrow": "Tomorrow",
   "nextHours": "Next hours",
 	"pair": {
 		"portal_login_title": "SESSY PORTAL LOGIN",
-		"portal_login_text": "Add all your Sessy's from the Sessy portal to Homey. Make sure you finished adding your sessy's in the portal first! (portal.sessy.nl)",
+		"portal_login_text": "Add all your Sessy's from the Sessy portal to Homey. Make sure you finished adding your Sessy's in the portal first! (portal.sessy.nl)",
 		"portal_login_text_p1": "Add your power meter from the Sessy portal to Homey. Make sure you finished configuring your system in the portal first! (portal.sessy.nl)",
 		"portal_login_text_dap": "Add day ahead price information from the Sessy portal to Homey. Make sure you configured your account in the portal first! (portal.sessy.nl)",
 		"username_portal": "Portal Username",
@@ -13,7 +13,7 @@
 		"incomplete_portal": "Username and password must be entered!",
 		"no_batteries_registered": "No Sessy's were found under this account. Add your Sessy's to portal.sessy.nl.",
 		"no_meters_registered": "No power meters were found under this account. Configure your system at portal.sessy.nl.",
-
+ 
 		"local_login_title": "LOCAL CONNECTION SETUP",
 		"local_login_text": "You can also skip the Sessy portal login, and continue with setting up a local connection.",
 		"local_login_button": "CONTINUE WITH LOCAL SETUP",
@@ -26,12 +26,13 @@
 		"contmodetext": "Add one SESSY in local control mode. Choose this if you want to be able to control using Homey.",
 		"contmodebutton": "CONTINUE IN CONTROL MODE",
 
-		"local_login_text_p1": "To continue in CONTROL MODE, the password is required (preferred). To continue in MONITORING MODE, leave the password empty",
+		"local_login_text_p1": "To continue in CONTROL MODE, the password is required (preferred). To continue in MONITORING MODE, leave the password empty.",
 		"host": "IP address or URL",
 		"sn_dongle": "Dongle S/N",
 		"password_dongle": "Dongle Password",
 		"incomplete": "IP or URL, dongle S/N and password must be entered!",
-		"continue": "CONTINUE"
+		"continue": "CONTINUE",
+    	"endpoint_not_found": "Old firmware or wrong device type."
 	},
 	"sessy": {
 		"homeyProOnly": "This setting is only available on Homey Pro",
