@@ -76,42 +76,48 @@ class SessyApp extends Homey.App {
     restart.registerRunListener((args) => args.device.restart('flow'));
 
     // trigger cards
-    this.triggerSystemStateChanged = (device, tokens, state) => {
-      const systemStateChanged = this.homey.flow.getDeviceTriggerCard('system_state_changed');
-      systemStateChanged
-        .trigger(device, tokens, state)
-        .catch(this.error);
-    };
-    this.triggerChargeModeChanged = (device, tokens, state) => {
-      const chargeModeChanged = this.homey.flow.getDeviceTriggerCard('charge_mode_changed');
-      chargeModeChanged
-        .trigger(device, tokens, state)
-        .catch(this.error);
-    };
-    this.triggerControlStrategyChanged = (device, tokens, state) => {
-      const controlStrategyChanged = this.homey.flow.getDeviceTriggerCard('control_strategy_changed');
-      controlStrategyChanged
-        .trigger(device, tokens, state)
-        .catch(this.error);
-    };
-    this.triggerFirmwareChanged = (device, tokens, state) => {
-      const firmwareChanged = this.homey.flow.getDeviceTriggerCard('firmware_changed');
-      firmwareChanged
-        .trigger(device, tokens, state)
-        .catch(this.error);
-    };
-    this.triggerNewFirmwareAvailable = (device, tokens, state) => {
-      const newFirmwareAvailable = this.homey.flow.getDeviceTriggerCard('new_firmware_available');
-      newFirmwareAvailable
-        .trigger(device, tokens, state)
-        .catch(this.error);
-    };
-    this.triggerTariffChanged = (device, tokens, state) => {
-      const tariffChanged = this.homey.flow.getDeviceTriggerCard('tariff_changed');
-      tariffChanged
-        .trigger(device, tokens, state)
-        .catch(this.error);
-    };
+  }
+
+  triggerSystemStateChanged(device, tokens, state) {
+    const systemStateChanged = this.homey.flow.getDeviceTriggerCard('system_state_changed');
+    systemStateChanged
+      .trigger(device, tokens, state)
+      .catch(this.error);
+  }
+
+  triggerChargeModeChanged(device, tokens, state) {
+    const chargeModeChanged = this.homey.flow.getDeviceTriggerCard('charge_mode_changed');
+    chargeModeChanged
+      .trigger(device, tokens, state)
+      .catch(this.error);
+  }
+
+  triggerControlStrategyChanged(device, tokens, state) {
+    const controlStrategyChanged = this.homey.flow.getDeviceTriggerCard('control_strategy_changed');
+    controlStrategyChanged
+      .trigger(device, tokens, state)
+      .catch(this.error);
+  }
+
+  triggerFirmwareChanged(device, tokens, state) {
+    const firmwareChanged = this.homey.flow.getDeviceTriggerCard('firmware_changed');
+    firmwareChanged
+      .trigger(device, tokens, state)
+      .catch(this.error);
+  }
+
+  triggerNewFirmwareAvailable(device, tokens, state) {
+    const newFirmwareAvailable = this.homey.flow.getDeviceTriggerCard('new_firmware_available');
+    newFirmwareAvailable
+      .trigger(device, tokens, state)
+      .catch(this.error);
+  }
+
+  triggerTariffChanged(device, tokens, state) {
+    const tariffChanged = this.homey.flow.getDeviceTriggerCard('tariff_changed');
+    tariffChanged
+      .trigger(device, tokens, state)
+      .catch(this.error);
   }
 
 }
