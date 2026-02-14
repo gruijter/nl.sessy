@@ -184,6 +184,7 @@ class ModbusDevice extends Device {
     }
     this.restarting = false;
     this.restartDevice(2 * 1000).catch((error) => this.error(error));
+    return Promise.resolve(true);
   }
 
   async onRenamed(name) {
