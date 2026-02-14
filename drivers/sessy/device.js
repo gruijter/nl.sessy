@@ -212,13 +212,17 @@ class SessyDevice extends Device {
       this.busy = true;
       // get new status and update the devicestate
       const status = await this.sessy.getStatus();
+      if (this.isUninitialized) return;
       this.lastStatus = status;
       const energy = await this.sessy.getEnergy().catch(() => this.error('No energy info available'));
+      if (this.isUninitialized) return;
       this.lastEnergy = energy;
       this.emitSessyInfo(status, energy);
       const systemSettings = await this.sessy.getSystemSettings().catch(this.error);
+      if (this.isUninitialized) return;
       let strategy = null;
       if (this.useCloud || this.useLocalLogin) strategy = await this.sessy.getStrategy();
+      if (this.isUninitialized) return;
       this.setAvailable().catch(() => this.error);
       await this.updateDeviceState(status, strategy, energy, systemSettings);
       // check if power is within min/max settings, but only if setpoint is set
@@ -228,6 +232,7 @@ class SessyDevice extends Device {
       // check fw every 60 minutes
       if ((this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
         const OTAstatus = await this.sessy.getOTAStatus();
+        if (this.isUninitialized) return;
         await this.updateFWState(OTAstatus);
         this.lastFWCheck = Date.now();
       }
@@ -385,6 +390,7 @@ class SessyDevice extends Device {
       // set the capabilities
       for (const [capability, value] of Object.entries(capabilityStates)) {
         // await each call to properly handle promises and avoid returning a Promise from forEach
+        if (this.isUninitialized) return;
         await this.setCapability(capability, value).catch((e) => this.error(e));
       }
 

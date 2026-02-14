@@ -147,13 +147,16 @@ class CTDevice extends Device {
       }
       // get new status and update the devicestate
       const energy = await this.sessy.getEnergy().catch(() => this.error('No energy info available'));
+      if (this.isUninitialized) return;
       const status = await this.sessy.getStatus({ ct: true });
+      if (this.isUninitialized) return;
       this.setAvailable().catch(() => null);
       await this.updateDeviceState(status, energy);
       // check fw every 60 minutes
       if ((this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
         this.lastFWCheck = Date.now();
         const OTAstatus = await this.sessy.getOTAStatus();
+        if (this.isUninitialized) return;
         await this.updateFWState(OTAstatus);
       }
       this.watchDogCounter = 10;
@@ -287,6 +290,7 @@ class CTDevice extends Device {
 
       // set the capabilities
       for (const [capability, value] of Object.entries(capabilityStates)) {
+        if (this.isUninitialized) return;
         await this.setCapability(capability, value).catch((e) => this.error(e));
       }
 

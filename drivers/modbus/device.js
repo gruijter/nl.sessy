@@ -147,12 +147,14 @@ class ModbusDevice extends Device {
       }
       // get new status and update the devicestate
       const status = await this.sessy.getStatus({ modbus: true });
+      if (this.isUninitialized) return;
       this.setAvailable().catch(() => null);
       await this.updateDeviceState(status);
       // check fw every 60 minutes
       if ((this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
         this.lastFWCheck = Date.now();
         const OTAstatus = await this.sessy.getOTAStatus();
+        if (this.isUninitialized) return;
         await this.updateFWState(OTAstatus);
       }
       this.watchDogCounter = 10;
@@ -278,6 +280,7 @@ class ModbusDevice extends Device {
 
       // set the capabilities
       for (const [capability, value] of Object.entries(capabilityStates)) {
+        if (this.isUninitialized) return;
         await this.setCapability(capability, value).catch((e) => this.error(e));
       }
 

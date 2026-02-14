@@ -124,6 +124,7 @@ class PVDevice extends Device {
     try {
       this.lastPoll = Date.now();
       await this.setAvailable().catch((error) => this.error(error));
+      if (this.isUninitialized) return;
       // determine capability states
       const totalREPower = status.renewable_energy_phase1.power + status.renewable_energy_phase2.power + status.renewable_energy_phase3.power;
       const capabilityStates = {
@@ -151,6 +152,7 @@ class PVDevice extends Device {
       }
       // set the capabilities
       for (const [capability, value] of Object.entries(capabilityStates)) {
+        if (this.isUninitialized) return;
         await this.setCapability(capability, value).catch((e) => this.error(e));
       }
     } catch (error) {
