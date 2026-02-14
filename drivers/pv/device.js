@@ -150,9 +150,9 @@ class PVDevice extends Device {
         capabilityStates['meter_power.p3Export'] = energy.energy_phase3.export_wh / 1000;
       }
       // set the capabilities
-      Object.entries(capabilityStates).forEach((entry) => {
-        this.setCapability(entry[0], entry[1]).catch((e) => this.error(e));
-      });
+      for (const [capability, value] of Object.entries(capabilityStates)) {
+        await this.setCapability(capability, value).catch((e) => this.error(e));
+      }
     } catch (error) {
       this.error(error);
     }

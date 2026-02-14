@@ -385,7 +385,7 @@ class SessyDevice extends Device {
       // set the capabilities
       for (const [capability, value] of Object.entries(capabilityStates)) {
         // await each call to properly handle promises and avoid returning a Promise from forEach
-        this.setCapability(capability, value).catch((e) => this.error(e));
+        await this.setCapability(capability, value).catch((e) => this.error(e));
       }
 
       // execute custom flow triggers

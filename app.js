@@ -31,6 +31,8 @@ class SessyApp extends Homey.App {
 
   async onUninit() {
     this.log('app onUninit called');
+    if (this.everyHourTimer) this.homey.clearTimeout(this.everyHourTimer);
+    if (this.everyHourInterval) this.homey.clearInterval(this.everyHourInterval);
     this.homey.removeAllListeners('everyhour');
     this.homey.removeAllListeners('sessyInfo');
   }
@@ -40,8 +42,8 @@ class SessyApp extends Homey.App {
     const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 0, 50);
     const timeToNextHour = nextHour - now;
     // console.log('everyHour starts in', timeToNextHour / 1000);
-    this.homey.setTimeout(() => {
-      this.homey.setInterval(async () => {
+    this.everyHourTimer = this.homey.setTimeout(() => {
+      this.everyHourInterval = this.homey.setInterval(async () => {
         this.homey.emit('everyhour', true);
       }, 60 * 60 * 1000);
       this.homey.emit('everyhour', true);

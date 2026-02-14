@@ -286,9 +286,9 @@ class CTDevice extends Device {
       const systemStateChanged = (systemState !== this.getCapabilityValue('system_state'));
 
       // set the capabilities
-      Object.entries(capabilityStates).forEach((entry) => {
-        this.setCapability(entry[0], entry[1]).catch((e) => this.error(e));
-      });
+      for (const [capability, value] of Object.entries(capabilityStates)) {
+        await this.setCapability(capability, value).catch((e) => this.error(e));
+      }
 
       // execute custom flow triggers
       if (systemStateChanged) {

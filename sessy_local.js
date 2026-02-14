@@ -291,13 +291,18 @@ class Sessy {
       let discoveryEP = getStatusEP;
       if (opts && (opts.p1 || opts.ct || opts.modbus)) discoveryEP = getMeterStatusEP;
       const timeout = (opts && opts.timeout) || 2500;
-      const allHostsPromise = [...hostsToTest].map(async (hostToTest) => {
-        let found = false;
-        const status = await this._makeRequest(discoveryEP, undefined, timeout, hostToTest).catch(() => undefined);
-        if (status) found = { ip: hostToTest, status }; // device found
-        return Promise.resolve(found);
-      });
-      const allHosts = await Promise.all(allHostsPromise);
+      const hostsArray = [...hostsToTest];
+      const allHosts = [];
+      const chunkSize = 10; // limit concurrent requests to avoid EMFILE or network saturation
+      for (let i = 0; i < hostsArray.length; i += chunkSize) {
+        const chunk = hostsArray.slice(i, i + chunkSize);
+        const chunkPromises = chunk.map(async (hostToTest) => {
+          const status = await this._makeRequest(discoveryEP, undefined, timeout, hostToTest).catch(() => undefined);
+          return status ? { ip: hostToTest, status } : undefined;
+        });
+        const chunkResults = await Promise.all(chunkPromises);
+        allHosts.push(...chunkResults);
+      }
       const discoveredHosts = allHosts
         .filter((host) => host)
         .filter((value, index, self) => index === self.findIndex((h) => h.ip === value.ip)); // remove double found IP's
