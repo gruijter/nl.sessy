@@ -19,8 +19,6 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 'use strict';
 
-// const util = require('util');
-
 const defaultHost = 'image-charts.com';
 const chartEP = '/chart.js/2.8.0?';
 
