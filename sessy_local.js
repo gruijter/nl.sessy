@@ -21,10 +21,7 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 const os = require('os');
 
-const setTimeoutPromise = (delay) => new Promise((resolve) => {
-  // eslint-disable-next-line homey-app/global-timers
-  setTimeout(resolve, delay);
-});
+const { setTimeoutPromise } = require('./lib/util');
 
 // SYSTEM
 const getSystemInfoEP = '/api/v1/system/info'; // version "v5.1.1"?, sessy_serial

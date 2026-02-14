@@ -20,94 +20,24 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 'use strict';
 
-const { Device } = require('homey');
-const SessyLocal = require('../../sessy_local');
-// const SessyCloud = require('../../sessy_cloud');
+const SessyBaseDevice = require('../../lib/base_device');
 const { migrateCapabilities } = require('../../lib/migrate');
 
-const setTimeoutPromise = (delay) => new Promise((resolve) => {
-  // eslint-disable-next-line homey-app/global-timers
-  setTimeout(resolve, delay);
-});
+class SessyDevice extends SessyBaseDevice {
 
-class SessyDevice extends Device {
+  async onInitSpecific() {
+    this.busy = false;
+    this.batIsFull = false;
+    this.batIsEmpty = false;
+    this.overrideCounter = 0;
+    const settings = this.getSettings();
+    // register capability listeners
+    await this.registerListeners();
 
-  async onInit() {
-    try {
-      this.busy = false;
-      this.watchDogCounter = 10;
-      this.lastFWCheck = 0;
-      this.batIsFull = false;
-      this.batIsEmpty = false;
-      this.overrideCounter = 0;
-      const settings = this.getSettings();
-
-      this.useCloud = this.homey.platform === 'cloud'; // || !settings.use_local_connection;
-      this.useLocalLogin = !this.useCloud && settings.sn_dongle !== '' && settings.password_dongle !== '';
-
-      // if (this.useCloud) this.sessy = new SessyCloud(settings); else
-      if (settings.use_mdns) await this.discover();
-      this.sessy = new SessyLocal(settings);
-
-      // check for capability migration
-      await this.migrate();
-
-      // register capability listeners
-      await this.registerListeners();
-
-      // set Homey control mode
-      if (this.useLocalLogin && settings.force_control_strategy) {
-        await this.setControlStrategy('POWER_STRATEGY_API', 'device init');
-      }
-
-      // start polling device for info
-      const pollingInterval = this.homey.platform === 'cloud' ? 10 : (settings.pollingInterval || 10);
-      await this.startPolling(pollingInterval);
-      this.log(`${this.getName()} is initialized`);
-    } catch (error) {
-      this.error(error);
-      await this.setCapability('alarm_fault', true).catch(this.error);
-      this.setUnavailable(error).catch(() => null);
-      await this.restartDevice(60 * 1000).catch(this.error);
+    // set Homey control mode
+    if (this.useLocalLogin && settings.force_control_strategy) {
+      await this.setControlStrategy('POWER_STRATEGY_API', 'device init');
     }
-  }
-
-  // mDNS related stuff
-  async discover() {
-    const discoveryStrategy = this.driver.getDiscoveryStrategy();
-    const discoveryResults = await discoveryStrategy.getDiscoveryResults();
-    if (!discoveryResults) return;
-    const [discoveryResult] = Object.values(discoveryResults).filter((disc) => disc.txt.serial === this.getSettings().sn_dongle);
-    await this.discoveryAvailable(discoveryResult);
-  }
-
-  async discoveryAvailable(discoveryResult) { // onDiscoveryAvailable(discoveryResult)
-    // This method will be executed once when the device has been found (onDiscoveryResult returned true)
-    if (!discoveryResult) return;
-    if (this.getSettings().host !== discoveryResult.address) {
-      this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
-      if (this.getSettings().use_mdns) {
-        this.setSettings({ host: discoveryResult.address }).catch(this.error);
-        await this.restartDevice().catch(this.error);
-      } else this.log('The IP address is NOT updated (mDNS not enabled)');
-    }
-  }
-
-  onDiscoveryResult(discoveryResult) {
-    // Return a truthy value here if the discovery result matches your device.
-    return discoveryResult.id === this.getSettings().sn_dongle;
-  }
-
-  async onDiscoveryAddressChanged(discoveryResult) {
-    // Update your connection details here, reconnect when the device is offline
-    this.log('onDiscoveryAddressChanged triggered', this.getName());
-    if (this.getSettings().host !== discoveryResult.address) {
-      this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
-      if (this.getSettings().use_mdns) {
-        this.setSettings({ host: discoveryResult.address }).catch(this.error);
-        await this.restartDevice().catch(this.error);
-      } else this.log('The IP address is NOT updated (mDNS not enabled)');
-    } else this.log('IP address still the same :)');
   }
 
   async migrate() {
@@ -164,52 +94,13 @@ class SessyDevice extends Device {
     }
   }
 
-  async startPolling(interval) {
-    this.homey.clearInterval(this.intervalIdDevicePoll);
-    this.log(`start polling ${this.getName()} @${interval} seconds interval`);
-    await this.doPoll();
-    this.intervalIdDevicePoll = this.homey.setInterval(async () => {
-      await this.doPoll().catch(this.error);
-    }, interval * 1000);
-  }
-
-  async stopPolling() {
-    this.log(`Stop polling ${this.getName()}`);
-    this.homey.clearInterval(this.intervalIdDevicePoll);
-  }
-
-  async restartDevice(delay) {
-    try {
-      if (this.restarting) return;
-      this.restarting = true;
-      await this.stopPolling();
-      // this.destroyListeners();
-      const dly = delay || 2000;
-      this.log(`Device will restart in ${dly / 1000} seconds`);
-      // this.setUnavailable('Device is restarting. Wait a few minutes!');
-      await setTimeoutPromise(dly);
-      if (this.isUninitialized) return;
-      this.restarting = false;
-      this.onInit().catch((error) => this.error(error));
-    } catch (error) {
-      this.error(error);
+  async onPoll() {
+    if (this.busy) {
+      this.log('still busy. skipping a poll');
+      return;
     }
-  }
-
-  async doPoll() {
+    this.busy = true;
     try {
-      if (this.watchDogCounter <= 0) {
-        this.log('watchdog triggered, restarting Homey device now');
-        await this.setCapability('alarm_fault', true).catch(this.error);
-        this.setUnavailable(this.homey.__('sessy.connectionError')).catch(() => this.error);
-        await this.restartDevice(60000).catch(this.error);
-        return;
-      }
-      if (this.busy) {
-        this.log('still busy. skipping a poll');
-        return;
-      }
-      this.busy = true;
       // get new status and update the devicestate
       const status = await this.sessy.getStatus();
       if (this.isUninitialized) return;
@@ -236,64 +127,23 @@ class SessyDevice extends Device {
         await this.updateFWState(OTAstatus);
         this.lastFWCheck = Date.now();
       }
-      this.watchDogCounter = 10;
+    } finally {
       this.busy = false;
-    } catch (error) {
-      this.busy = false;
-      this.watchDogCounter -= 1;
-      this.error('Poll error', {
-        message: error.message,
-        code: error.code,
-        stack: error.stack,
-        status: error.status,
-        response: error.response,
-      });
     }
   }
 
-  async onAdded() {
-    this.log(`${this.getName()} has been added`);
-  }
-
-  async onSettings({ newSettings, changedKeys }) { // oldSettings, changedKeys
-    this.log(`${this.getName()} settings where changed`, newSettings);
-    // check for illegal settings
-    if (changedKeys.includes('use_local_connection')) {
-      if (this.homey.platform === 'cloud') throw Error(this.homey.__('sessy.homeyProOnly'));
-      if (newSettings.host.length < 3) throw Error(this.homey.__('sessy.incomplete'));
-    }
+  async onSettingsSpecific({ newSettings, changedKeys }) {
     if (changedKeys.includes('force_control_strategy')) {
       if (this.homey.platform === 'cloud') throw Error(this.homey.__('sessy.homeyProOnly'));
       if (newSettings.host.length < 3 || newSettings.sn_dongle === ''
         || newSettings.password_dongle === '') throw Error(this.homey.__('pair.incomplete'));
     }
-    this.restarting = false;
-    this.restartDevice(2 * 1000).catch((error) => this.error(error));
-    return Promise.resolve(true);
-  }
-
-  async onRenamed(name) {
-    this.log(`${this.getName()} was renamed to ${name}`);
   }
 
   async onUninit() {
     this.isUninitialized = true;
     await this.stopPolling();
     this.log(`${this.getName()} uninit`);
-  }
-
-  async onDeleted() {
-    await this.stopPolling();
-    this.log(`${this.getName()} has been deleted`);
-  }
-
-  async setCapability(capability, value) {
-    if (this.hasCapability(capability) && value !== undefined) {
-      await this.setCapabilityValue(capability, value)
-        .catch((error) => {
-          this.log(error, capability, value);
-        });
-    }
   }
 
   async updateFWState(OTAStatus) {
@@ -418,7 +268,7 @@ class SessyDevice extends Device {
   // check if min/max power reached, and override setpoint if needed
   async checkMinMaxPower(power) {
     let overrideSP = power;
-    if (power) {
+    if (typeof power === 'number') {
       overrideSP = await this.limitSetpoint(power);
       if (overrideSP !== power) this.overrideCounter += 1;
       else this.overrideCounter = 0;

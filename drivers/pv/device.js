@@ -22,11 +22,7 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 
 const { Device } = require('homey');
 const { migrateCapabilities } = require('../../lib/migrate');
-
-const setTimeoutPromise = (delay) => new Promise((resolve) => {
-  // eslint-disable-next-line homey-app/global-timers
-  setTimeout(resolve, delay);
-});
+const { setTimeoutPromise } = require('../../lib/util');
 
 class PVDevice extends Device {
 
