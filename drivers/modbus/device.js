@@ -128,6 +128,7 @@ class ModbusDevice extends Device {
       this.log(`Device will restart in ${dly / 1000} seconds`);
       // this.setUnavailable('Device is restarting. Wait a few minutes!');
       await setTimeoutPromise(dly);
+      if (this.isUninitialized) return;
       this.restarting = false;
       this.onInit().catch((error) => this.error(error));
     } catch (error) {
@@ -192,6 +193,7 @@ class ModbusDevice extends Device {
   }
 
   async onUninit() {
+    this.isUninitialized = true;
     await this.stopPolling();
     this.log(`${this.getName()} uninit`);
   }
