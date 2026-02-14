@@ -26,7 +26,6 @@ const { migrateCapabilities } = require('../../lib/migrate');
 class SessyDevice extends SessyBaseDevice {
 
   async onInitSpecific() {
-    this.busy = false;
     this.batIsFull = false;
     this.batIsEmpty = false;
     this.overrideCounter = 0;
@@ -95,40 +94,31 @@ class SessyDevice extends SessyBaseDevice {
   }
 
   async onPoll() {
-    if (this.busy) {
-      this.log('still busy. skipping a poll');
-      return;
-    }
-    this.busy = true;
-    try {
-      // get new status and update the devicestate
-      const status = await this.sessy.getStatus();
+    // get new status and update the devicestate
+    const status = await this.sessy.getStatus();
+    if (this.isUninitialized) return;
+    this.lastStatus = status;
+    const energy = await this.sessy.getEnergy().catch(() => this.error('No energy info available'));
+    if (this.isUninitialized) return;
+    this.lastEnergy = energy;
+    this.emitSessyInfo(status, energy);
+    const systemSettings = await this.sessy.getSystemSettings().catch(this.error);
+    if (this.isUninitialized) return;
+    let strategy = null;
+    if (this.useCloud || this.useLocalLogin) strategy = await this.sessy.getStrategy();
+    if (this.isUninitialized) return;
+    this.setAvailable().catch(() => this.error);
+    await this.updateDeviceState(status, strategy, energy, systemSettings);
+    // check if power is within min/max settings, but only if setpoint is set
+    if (status.sessy.power_setpoint) await this.checkMinMaxPower(status.sessy.power);
+    // check if battery is empty or full
+    await this.checkBatEmptyFull();
+    // check fw every 60 minutes
+    if ((this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
+      const OTAstatus = await this.sessy.getOTAStatus();
       if (this.isUninitialized) return;
-      this.lastStatus = status;
-      const energy = await this.sessy.getEnergy().catch(() => this.error('No energy info available'));
-      if (this.isUninitialized) return;
-      this.lastEnergy = energy;
-      this.emitSessyInfo(status, energy);
-      const systemSettings = await this.sessy.getSystemSettings().catch(this.error);
-      if (this.isUninitialized) return;
-      let strategy = null;
-      if (this.useCloud || this.useLocalLogin) strategy = await this.sessy.getStrategy();
-      if (this.isUninitialized) return;
-      this.setAvailable().catch(() => this.error);
-      await this.updateDeviceState(status, strategy, energy, systemSettings);
-      // check if power is within min/max settings, but only if setpoint is set
-      if (status.sessy.power_setpoint) await this.checkMinMaxPower(status.sessy.power);
-      // check if battery is empty or full
-      await this.checkBatEmptyFull();
-      // check fw every 60 minutes
-      if ((this.useCloud || this.useLocalLogin) && (Date.now() - this.lastFWCheck > 60 * 60 * 1000)) {
-        const OTAstatus = await this.sessy.getOTAStatus();
-        if (this.isUninitialized) return;
-        await this.updateFWState(OTAstatus);
-        this.lastFWCheck = Date.now();
-      }
-    } finally {
-      this.busy = false;
+      await this.updateFWState(OTAstatus);
+      this.lastFWCheck = Date.now();
     }
   }
 
@@ -291,7 +281,7 @@ class SessyDevice extends SessyBaseDevice {
   // limit min/max setpoint
   async limitSetpoint(setpoint) {
     let sp = setpoint;
-    if (sp && this.getCapabilityValue('control_strategy') === 'POWER_STRATEGY_API') {
+    if (typeof sp === 'number' && this.getCapabilityValue('control_strategy') === 'POWER_STRATEGY_API') {
       // apply battery full_empty protection
       if (this.batIsEmpty && sp > 0) sp = 0; // don't discharge when bat is empty
       if (this.batIsFull && sp < 0) sp = 0; // don't charge when bat is full
