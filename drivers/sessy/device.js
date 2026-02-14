@@ -140,12 +140,6 @@ class SessyDevice extends SessyBaseDevice {
     }
   }
 
-  async onUninit() {
-    this.isUninitialized = true;
-    await this.stopPolling();
-    this.log(`${this.getName()} uninit`);
-  }
-
   async updateFWState(OTAStatus) {
     // console.log(`updating OTAstates for: ${this.getName()}`, OTAStatus);
     try {
