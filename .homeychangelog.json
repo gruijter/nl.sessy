@@ -100,5 +100,8 @@
   },
   "3.3.0": {
     "en": "Added Modbus meter support (P1 fw>1.11.8). Improved translations. Faster discovery during pair. Removed node-fetch dependency (Homey fw>12.10.0 )."
+  },
+  "3.4.0": {
+    "en": "Major code refactoring. Fix device settings save. Stability improvements."
   }
 }
