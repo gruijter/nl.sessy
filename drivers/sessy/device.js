@@ -23,6 +23,7 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 const { Device } = require('homey');
 const SessyLocal = require('../../sessy_local');
 // const SessyCloud = require('../../sessy_cloud');
+const { migrateCapabilities } = require('../../lib/migrate');
 
 const setTimeoutPromise = (delay) => new Promise((resolve) => {
   // eslint-disable-next-line homey-app/global-timers
@@ -111,9 +112,6 @@ class SessyDevice extends Device {
 
   async migrate() {
     try {
-      this.log(`checking device migration for ${this.getName()}`);
-
-      // migrate from v1 to v2
       const settings = this.getSettings() || {};
       if (settings.username && settings.username !== '' && (!settings.sn_dongle || settings.sn_dongle === '')) {
         this.log('migrating authentication settings from v1', this.getName());
@@ -145,9 +143,6 @@ class SessyDevice extends Device {
         await this.setSettings({ power_max_discharge: maxDisCharge }).catch(this.error);
       }
 
-      // store the capability states before migration
-      const sym = Object.getOwnPropertySymbols(this).find((s) => String(s) === 'Symbol(state)');
-      const state = this[sym];
       // check and repair incorrect capability(order)
       let correctCaps = this.driver.ds.capabilities;
       // remove unwanted PV phase info
@@ -155,30 +150,8 @@ class SessyDevice extends Device {
       if (!this.getSettings().show_re1) correctCaps = correctCaps.filter((cap) => !cap.includes('p1'));
       if (!this.getSettings().show_re2) correctCaps = correctCaps.filter((cap) => !cap.includes('p2'));
       if (!this.getSettings().show_re3) correctCaps = correctCaps.filter((cap) => !cap.includes('p3'));
-      for (let index = 0; index <= correctCaps.length; index += 1) {
-        const caps = await this.getCapabilities();
-        const newCap = correctCaps[index];
-        if (caps[index] !== newCap) {
-          this.setUnavailable(this.homey.__('sessy.migrating')).catch(() => null);
-          // remove all caps from here
-          for (let i = index; i < caps.length; i += 1) {
-            this.log(`removing capability ${caps[i]} for ${this.getName()}`);
-            await this.removeCapability(caps[i])
-              .catch((error) => this.log(error));
-            await setTimeoutPromise(2 * 1000); // wait a bit for Homey to settle
-          }
-          // add the new cap
-          if (newCap !== undefined) {
-            this.log(`adding capability ${newCap} for ${this.getName()}`);
-            await this.addCapability(newCap);
-            // restore capability state
-            if (state[newCap]) this.log(`${this.getName()} restoring value ${newCap} to ${state[newCap]}`);
-            // else this.log(`${this.getName()} has gotten a new capability ${newCap}!`);
-            if (state[newCap] !== undefined) await this.setCapability(newCap, state[newCap]).catch(this.error);
-            await setTimeoutPromise(2 * 1000); // wait a bit for Homey to settle
-          }
-        }
-      }
+
+      await migrateCapabilities(this, correctCaps);
 
       // migrate to Battery class (Homey fw >= 12)
       const deviceClass = this.getClass();
