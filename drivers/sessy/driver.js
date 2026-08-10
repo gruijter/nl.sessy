@@ -20,7 +20,7 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 'use strict';
 
 const { Driver } = require('homey');
-const SessyLocal = require('../../sessy_local');
+const SessyLocal = require('../../lib/sessy_local');
 // const SessyCloud = require('../../sessy_cloud');
 
 const capabilities = [
