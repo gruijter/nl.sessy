@@ -103,5 +103,8 @@
   },
   "3.4.0": {
     "en": "Major code refactoring. Fix device settings save. Stability improvements."
+  },
+  "3.5.0": {
+    "en": "Added Homey's standard Target Power capability for battery control. Fixed P1 gas usage and tariff-change accuracy, the alarm flow card, and several translations. Fixed flows firing twice for charge mode/control strategy changes. Improved reliability when updating the app."
   }
 }
