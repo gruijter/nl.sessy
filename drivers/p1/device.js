@@ -75,11 +75,11 @@ class P1Device extends SessyBaseDevice {
       if (this.lastStatus && this.lastStatus.gas_meter_value_time && this.lastStatus.gas_meter_value_time.length === 13
         && status.gas_meter_value_time && status.gas_meter_value_time.length === 13) {
         let d = status.gas_meter_value_time; // "231125175508W" YYMMDDhhmmssX
-        let T2 = (new Date(`20${d.slice(0, 2)}`, d.slice(2, 4) - 1, d.slice(4, 6), d.slice(6, 8), d.slice(8, 10), d.slice(10, 2))).valueOf();
-        if (d[11] === 'S') T2 -= 3600 * 1000; // substract an hour when on DST
+        let T2 = (new Date(`20${d.slice(0, 2)}`, d.slice(2, 4) - 1, d.slice(4, 6), d.slice(6, 8), d.slice(8, 10), d.slice(10, 12))).valueOf();
+        if (d[12] === 'S') T2 -= 3600 * 1000; // substract an hour when on DST
         d = this.lastStatus.gas_meter_value_time; // "231125175508W" YYMMDDhhmmssX
-        let T1 = (new Date(`20${d.slice(0, 2)}`, d.slice(2, 4) - 1, d.slice(4, 6), d.slice(6, 8), d.slice(8, 10), d.slice(10, 2))).valueOf();
-        if (d[11] === 'S') T1 -= 3600 * 1000; // substract an hour when on DST
+        let T1 = (new Date(`20${d.slice(0, 2)}`, d.slice(2, 4) - 1, d.slice(4, 6), d.slice(6, 8), d.slice(8, 10), d.slice(10, 12))).valueOf();
+        if (d[12] === 'S') T1 -= 3600 * 1000; // substract an hour when on DST
         const usedGas = (status.gas_meter_value - this.lastStatus.gas_meter_value) / 1000; // m3
         const deltaT = (T2 - T1) / 1000 / 60 / 60; // hour
         if (deltaT > 0) gasFlow = usedGas / deltaT;
@@ -117,6 +117,7 @@ class P1Device extends SessyBaseDevice {
 
       // setup custom flow triggers
       const systemStateChanged = (systemState !== this.getCapabilityValue('system_state'));
+      const tariffChanged = capabilityStates.meter_offPeak !== this.getCapabilityValue('meter_offPeak');
 
       // set the capabilities
       for (const [capability, value] of Object.entries(capabilityStates)) {
@@ -132,7 +133,6 @@ class P1Device extends SessyBaseDevice {
         const tokens = { system_state: systemState, system_state_details: '' };
         this.homey.app.triggerSystemStateChanged(this, tokens, {});
       }
-      const tariffChanged = capabilityStates.meter_offPeak !== this.getCapabilityValue('meter_offPeak');
       if (tariffChanged) {
         this.log('Tariff changed. offPeak:', capabilityStates.meter_offPeak);
         const tokens = { tariff: capabilityStates.meter_offPeak };
@@ -140,7 +140,7 @@ class P1Device extends SessyBaseDevice {
       }
 
       // update DSMR info
-      if (this.getSettings().DSMR !== status.toString()) this.setSettings({ DSMR: status.dsmr_version.toString() }).catch(this.error);
+      if (this.getSettings().DSMR !== status.dsmr_version.toString()) this.setSettings({ DSMR: status.dsmr_version.toString() }).catch(this.error);
     } catch (error) {
       this.error(error);
     }
