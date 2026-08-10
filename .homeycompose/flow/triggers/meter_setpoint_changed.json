@@ -1,17 +1,17 @@
 {
   "title": {
-    "en": "The target power changed",
-    "nl": "Het doelvermogen is veranderd",
-    "da": "Det målte strømforbrug er ændret",
-    "de": "Die Zielleistung hat sich geändert",
-    "es": "El poder objetivo ha cambiado",
-    "fr": "La puissance cible a changé",
-    "it": "La potenza target è cambiata",
-    "no": "Målstrømmen har endret seg",
-    "sv": "Måleffekten har ändrats",
-    "pl": "Docelowa moc zmieniła się",
-    "ru": "Целевая мощность изменилась",
-    "ko": "목표 전력이 변경되었습니다"
+    "en": "The Sessy target power changed",
+    "nl": "Het Sessy doelvermogen is veranderd",
+    "da": "Sessy mål effekten er ændret",
+    "de": "Die Sessy-Zielleistung hat sich geändert",
+    "es": "El poder objetivo Sessy ha cambiado",
+    "fr": "La puissance cible Sessy a changé",
+    "it": "La potenza target Sessy è cambiata",
+    "no": "Sessy mål effekten har endret seg",
+    "sv": "Sessy måleffekten har ändrats",
+    "pl": "Docelowa moc Sessy zmieniła się",
+    "ru": "Целевая мощность Sessy изменилась",
+    "ko": "Sessy 목표 전력이 변경되었습니다"
   },
   "highlight": true,
   "args": [

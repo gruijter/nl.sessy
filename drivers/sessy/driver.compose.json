@@ -24,6 +24,7 @@
     "volume_set",
     "measure_battery",
     "meter_setpoint",
+    "target_power",
     "measure_power",
     "measure_power.battery",
     "measure_current.inverter",
@@ -54,6 +55,39 @@
     "meter_power.p3Export"
   ],
   "capabilitiesOptions": {
+    "meter_setpoint": {
+      "title": {
+        "en": "Sessy Target Power",
+        "nl": "Sessy Doelvermogen",
+        "da": "Sessy Mål effekt",
+        "de": "Sessy Zielleistung",
+        "es": "Potencia objetivo Sessy",
+        "fr": "Puissance cible Sessy",
+        "it": "Potenza target Sessy",
+        "no": "Sessy Mål effekt",
+        "sv": "Sessy Måleffekt",
+        "pl": "Docelowa moc Sessy",
+        "ru": "Целевая мощность Sessy",
+        "ko": "Sessy 목표 전력"
+      }
+    },
+    "target_power": {
+      "title": {
+        "en": "Homey Target Power",
+        "nl": "Homey Doelvermogen",
+        "da": "Homey Mål effekt",
+        "de": "Homey Zielleistung",
+        "es": "Potencia objetivo Homey",
+        "fr": "Puissance cible Homey",
+        "it": "Potenza target Homey",
+        "no": "Homey Mål effekt",
+        "sv": "Homey Måleffekt",
+        "pl": "Docelowa moc Homey",
+        "ru": "Целевая мощность Homey",
+        "ko": "Homey 목표 전력"
+      },
+      "uiComponent": null
+    },
     "volume_set": {
       "min": 1,
       "max": 5,

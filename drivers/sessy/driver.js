@@ -29,6 +29,7 @@ const capabilities = [
   'measure_battery',
 
   'meter_setpoint',
+  'target_power', // Homey standard home battery capability, inverted sign from meter_setpoint
   'measure_power', // required for Homey Energy, inverted from Sessy battery power
   'measure_power.battery', // Sessy battery power
   'measure_current.inverter',

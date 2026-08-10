@@ -188,6 +188,7 @@ class SessyDevice extends SessyBaseDevice {
         alarm_fault: alarmFault,
         measure_battery: status.sessy.state_of_charge * 100,
         meter_setpoint: status.sessy.power_setpoint,
+        target_power: -status.sessy.power_setpoint,
         measure_power: -status.sessy.power,
         'measure_power.battery': status.sessy.power,
         measure_frequency: status.sessy.frequency / 1000,
@@ -394,6 +395,7 @@ class SessyDevice extends SessyBaseDevice {
       this.registerCapabilityListener('control_strategy', (strategy) => this.setControlStrategy(strategy, 'app'));
       this.registerCapabilityListener('charge_mode', (chargeMode) => this.setChargeMode(chargeMode, 'app'));
       this.registerCapabilityListener('meter_setpoint', (setpoint) => this.setPowerSetpoint(setpoint, 'app'));
+      this.registerCapabilityListener('target_power', (targetPower) => this.setPowerSetpoint(-targetPower, 'app'));
       this.registerCapabilityListener('volume_set', (setpoint) => this.setAllowedNoiseLevel(setpoint, 'app'));
 
       this.listenersSet = true;

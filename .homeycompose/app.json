@@ -1,7 +1,7 @@
 {
   "id": "nl.sessy",
   "version": "3.4.0",
-  "compatibility": ">=12.10.0",
+  "compatibility": ">=12.13.0",
   "sdk": 3,
   "platforms": [
     "local"

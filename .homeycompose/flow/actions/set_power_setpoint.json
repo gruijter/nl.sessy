@@ -1,34 +1,34 @@
 {
   "title": {
-    "en": "Set the target power",
-    "nl": "Zet het doelvermogen",
-    "da": "Sæt mål effekten",
-    "de": "Setzen Sie die Zielleistung",
-    "es": "Establecer la potencia objetivo",
-    "fr": "Définir la puissance cible",
-    "it": "Imposta la potenza target",
-    "no": "Sett mål effekten",
-    "sv": "Ställ in måleffekten",
-    "pl": "Ustaw moc docelową",
-    "ru": "Установите целевую мощность",
-    "ko": "대상 전력을 설정하세요"
+    "en": "Set the Sessy target power",
+    "nl": "Zet het Sessy doelvermogen",
+    "da": "Sæt Sessy mål effekten",
+    "de": "Setzen Sie die Sessy Zielleistung",
+    "es": "Establecer la potencia objetivo Sessy",
+    "fr": "Définir la puissance cible Sessy",
+    "it": "Imposta la potenza target Sessy",
+    "no": "Sett Sessy mål effekten",
+    "sv": "Ställ in Sessy måleffekten",
+    "pl": "Ustaw moc docelową Sessy",
+    "ru": "Установите целевую мощность Sessy",
+    "ko": "Sessy 대상 전력을 설정하세요"
   },
   "units": {
     "en": "Watt"
   },
   "titleFormatted": {
-    "en": "Set target power to [[setpoint]] W",
-    "nl": "Zet doelvermogen op [[setpoint]] W",
-    "da": "Sæt mål effekten til [[setpoint]] W",
-    "de": "Setzen Sie die Zielleistung auf [[setpoint]] W",
-    "es": "Establecer la potencia objetivo en [[setpoint]] W",
-    "fr": "Définir la puissance cible à [[setpoint]] W",
-    "it": "Imposta la potenza target a [[setpoint]] W",
-    "no": "Sett mål effekten til [[setpoint]] W",
-    "sv": "Ställ in måleffekten till [[setpoint]] W",
-    "pl": "Ustaw moc docelową na [[setpoint]] W",
-    "ru": "Установите целевую мощность на [[setpoint]] W",
-    "ko": "[[setpoint]] W로 목표 전력을 설정하세요"
+    "en": "Set the Sessy target power to [[setpoint]] W",
+    "nl": "Zet het Sessy doelvermogen op [[setpoint]] W",
+    "da": "Sæt Sessy mål effekten til [[setpoint]] W",
+    "de": "Setzen Sie die Sessy Zielleistung auf [[setpoint]] W",
+    "es": "Establecer la potencia objetivo Sessy en [[setpoint]] W",
+    "fr": "Définir la puissance cible Sessy à [[setpoint]] W",
+    "it": "Imposta la potenza target Sessy a [[setpoint]] W",
+    "no": "Sett Sessy mål effekten til [[setpoint]] W",
+    "sv": "Ställ in Sessy måleffekten till [[setpoint]] W",
+    "pl": "Ustaw moc docelową Sessy na [[setpoint]] W",
+    "ru": "Установите целевую мощность Sessy на [[setpoint]] W",
+    "ko": "[[setpoint]] W로 Sessy 대상 전력을 설정하세요"
   },
   "hint": {
     "en": "Positive = battery will discharge. Negative number = battery will charge. When set to 0 charging/discharging will stop.",
