@@ -218,9 +218,13 @@ class SessyDevice extends SessyBaseDevice {
       }
 
       // setup custom flow triggers
+      // charge_mode_changed / control_strategy_changed are NOT triggered here: their trigger cards
+      // carry no extra data beyond the capability's own value, so Homey's automatic
+      // <capability_id>_changed convention (see https://apps.developer.homey.app/the-basics/flow)
+      // already fires them from the setCapability() call below - an explicit trigger() here would
+      // double-fire the flow. system_state_changed stays manual because it needs the extra
+      // system_state_details token, which isn't itself a capability and so can't be auto-filled.
       const systemStateChanged = (systemState !== this.getCapabilityValue('system_state'));
-      const chargeModeChanged = (chargeMode !== this.getCapabilityValue('charge_mode'));
-      const controlStrategyChanged = (controlStrategy && (controlStrategy !== this.getCapabilityValue('control_strategy')));
 
       // set the capabilities
       for (const [capability, value] of Object.entries(capabilityStates)) {
@@ -234,16 +238,6 @@ class SessyDevice extends SessyBaseDevice {
         this.log('System State changed:', systemState);
         const tokens = { system_state: systemState, system_state_details: capabilityStates.system_state_details };
         this.homey.app.triggerSystemStateChanged(this, tokens, {});
-      }
-      if (chargeModeChanged) {
-        this.log('Charge Mode changed:', chargeMode);
-        const tokens = { charge_mode: chargeMode };
-        this.homey.app.triggerChargeModeChanged(this, tokens, {});
-      }
-      if (controlStrategyChanged) {
-        this.log('Control Strategy changed:', controlStrategy);
-        const tokens = { control_strategy: controlStrategy };
-        this.homey.app.triggerControlStrategyChanged(this, tokens, {});
       }
     } catch (error) {
       this.error(error);

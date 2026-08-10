@@ -87,19 +87,9 @@ class SessyApp extends Homey.App {
       .catch(this.error);
   }
 
-  triggerChargeModeChanged(device, tokens, state) {
-    const chargeModeChanged = this.homey.flow.getDeviceTriggerCard('charge_mode_changed');
-    chargeModeChanged
-      .trigger(device, tokens, state)
-      .catch(this.error);
-  }
-
-  triggerControlStrategyChanged(device, tokens, state) {
-    const controlStrategyChanged = this.homey.flow.getDeviceTriggerCard('control_strategy_changed');
-    controlStrategyChanged
-      .trigger(device, tokens, state)
-      .catch(this.error);
-  }
+  // charge_mode_changed / control_strategy_changed are not triggered manually - see the comment
+  // in drivers/sessy/device.js's updateDeviceState() for why Homey's automatic
+  // <capability_id>_changed convention already covers them.
 
   triggerFirmwareChanged(device, tokens, state) {
     const firmwareChanged = this.homey.flow.getDeviceTriggerCard('firmware_changed');
