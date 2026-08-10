@@ -370,13 +370,6 @@ class SessyDevice extends SessyBaseDevice {
     return Promise.resolve(true);
   }
 
-  async restart(source) {
-    if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
-    await this.sessy.restart();
-    this.log(`Restart command executed from ${source}`);
-    return Promise.resolve(true);
-  }
-
   emitSessyInfo(status, energy) {
     try {
       this.homey.emit('sessyInfo', { id: this.getData().id, status, energy }); // emit info to PV devices

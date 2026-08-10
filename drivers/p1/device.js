@@ -39,34 +39,6 @@ class P1Device extends SessyBaseDevice {
     }
   }
 
-  async updateFWState(OTAStatus) {
-    // console.log(`updating OTAstates for: ${this.getName()}`, OTAStatus);
-    try {
-      const fwDongle = OTAStatus.self.installed_firmware.version;
-      const availableFWDongle = OTAStatus.self.available_firmware.version;
-      const firmwareDongleChanged = fwDongle !== this.getSettings().fwDongle;
-      const newDongleFirmwareAvailable = fwDongle !== availableFWDongle;
-      if (firmwareDongleChanged) {
-        this.log('The firmware was updated:', fwDongle);
-        await this.setSettings({ fwDongle }).catch(this.error);
-        const tokens = { fwDongle, fwBat: '' };
-        this.homey.app.triggerFirmwareChanged(this, tokens, {});
-        const excerpt = this.homey.__('sessy.newFirmwareMeter', { fw: `Dongle: ${fwDongle}` });
-        await this.homey.notifications.createNotification({ excerpt });
-      }
-      if (newDongleFirmwareAvailable && this.availableFWDongle !== availableFWDongle) {
-        this.log('New firmware available:', availableFWDongle);
-        const tokens = { availableFWDongle, availableFWBat: '' };
-        this.homey.app.triggerNewFirmwareAvailable(this, tokens, {});
-        this.availableFWDongle = availableFWDongle;
-        const excerpt = this.homey.__('sessy.newFirmwareAvailableMeter', { fw: `Dongle: ${availableFWDongle}` });
-        await this.homey.notifications.createNotification({ excerpt });
-      }
-    } catch (error) {
-      this.error(error);
-    }
-  }
-
   async updateDeviceState(status) {
     // this.log(`updating states for: ${this.getName()}`);
     try {
@@ -144,21 +116,6 @@ class P1Device extends SessyBaseDevice {
     } catch (error) {
       this.error(error);
     }
-  }
-
-  // flow functions
-  async setGridTarget(gridTarget, source) {
-    if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
-    await this.sessy.setGridTarget({ gridTarget });
-    this.log(`Grid target set by ${source} to ${gridTarget}`);
-    return Promise.resolve(true);
-  }
-
-  async restart(source) {
-    if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
-    await this.sessy.restart();
-    this.log(`Restart command executed from ${source}`);
-    return Promise.resolve(true);
   }
 
 }
