@@ -19,6 +19,7 @@
       "id": "POWER_STRATEGY_API",
       "title": {
         "en": "HOMEY",
+        "nl": "HOMEY",
         "da": "HOMEY",
         "de": "HOMEY",
         "es": "HOMEY",
@@ -35,6 +36,7 @@
       "id": "POWER_STRATEGY_NOM",
       "title": {
         "en": "SESSY XOM (!)",
+        "nl": "SESSY XOM (!)",
         "da": "SESSY XOM (!)",
         "de": "SESSY XOM (!)",
         "es": "SESSY XOM (!)",
@@ -51,6 +53,7 @@
       "id": "POWER_STRATEGY_ROI",
       "title": {
         "en": "SESSY ROI (!)",
+        "nl": "SESSY ROI (!)",
         "da": "SESSY ROI (!)",
         "de": "SESSY ROI (!)",
         "es": "SESSY ROI (!)",
@@ -67,6 +70,7 @@
       "id": "POWER_STRATEGY_ECO",
       "title": {
         "en": "SESSY ECO (!)",
+        "nl": "SESSY ECO (!)",
         "da": "SESSY ECO (!)",
         "de": "SESSY ECO (!)",
         "es": "SESSY ECO (!)",
@@ -83,6 +87,7 @@
       "id": "POWER_STRATEGY_SESSY_CONNECT",
       "title": {
         "en": "SESSY CONNECT (!)",
+        "nl": "SESSY CONNECT (!)",
         "da": "SESSY CONNECT (!)",
         "de": "SESSY CONNECT (!)",
         "es": "SESSY CONNECT (!)",
@@ -99,6 +104,7 @@
       "id": "POWER_STRATEGY_IDLE",
       "title": {
         "en": "IDLE (!)",
+        "nl": "INACTIEF (!)",
         "da": "IDLE (!)",
         "de": "LEER (!)",
         "es": "INACTIVO (!)",

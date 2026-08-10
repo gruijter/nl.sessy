@@ -40,5 +40,8 @@
     "newFirmwareAvailable": "Ny programvare tilgjengelig for Sessy. __fw__",
     "newFirmwareMeter": "Ny programvare installert på Meter. __fw__",
     "newFirmwareAvailableMeter": "Ny programvare tilgjengelig for Meter. __fw__"
+  },
+  "pv": {
+    "no_updates": "Ingen oppdateringer fra Sessy"
   }
 }

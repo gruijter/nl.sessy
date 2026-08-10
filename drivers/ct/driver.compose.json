@@ -1,6 +1,17 @@
 {
   "name": {
-    "en": "Sessy CT"
+    "en": "Sessy CT",
+    "nl": "Sessy CT",
+    "da": "Sessy CT",
+    "de": "Sessy CT",
+    "es": "Sessy CT",
+    "fr": "Sessy CT",
+    "it": "Sessy CT",
+    "no": "Sessy CT",
+    "sv": "Sessy CT",
+    "pl": "Sessy CT",
+    "ru": "Сесси CT",
+    "ko": "세시 CT"
   },
   "class": "sensor",
   "energy": {

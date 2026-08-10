@@ -106,31 +106,6 @@
     "triggers": [
       {
         "title": {
-          "en": "The fault Alarm turned On",
-          "nl": "Het storing Alarm ging Aan",
-          "da": "Alarmen for fejlen er tændt",
-          "de": "Der Fehleralarm wurde aktiviert",
-          "es": "La alarma de falla se activó",
-          "fr": "L'alarme de défaut s'est déclenchée",
-          "it": "L'allarme di errore è stata attivata",
-          "no": "Feilalarmet ble slått på",
-          "sv": "Felalarmsignalen är påslagen",
-          "pl": "Alarm błędu został włączony",
-          "ru": "Сигнализация об ошибке включена",
-          "ko": "장애 경고가 켜졌습니다"
-        },
-        "highlight": true,
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=sessy|p1|ct"
-          }
-        ],
-        "id": "alarm_fault_false"
-      },
-      {
-        "title": {
           "en": "The fault Alarm turned Off",
           "nl": "Het storing Alarm ging Uit",
           "da": "Fejl Alarmen blev slukket",
@@ -149,7 +124,32 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=sessy|p1|ct"
+            "filter": "driver_id=sessy"
+          }
+        ],
+        "id": "alarm_fault_false"
+      },
+      {
+        "title": {
+          "en": "The fault Alarm turned On",
+          "nl": "Het storing Alarm ging Aan",
+          "da": "Alarmen for fejlen er tændt",
+          "de": "Der Fehleralarm wurde aktiviert",
+          "es": "La alarma de falla se activó",
+          "fr": "L'alarme de défaut s'est déclenchée",
+          "it": "L'allarme di errore è stata attivata",
+          "no": "Feilalarmet ble slått på",
+          "sv": "Felalarmsignalen är påslagen",
+          "pl": "Alarm błędu został włączony",
+          "ru": "Сигнализация об ошибке включена",
+          "ko": "장애 경고가 켜졌습니다"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=sessy"
           }
         ],
         "id": "alarm_fault_true"
@@ -596,7 +596,7 @@
           "es": "Nuevo firmware está disponible",
           "fr": "Un nouveau firmware est disponible",
           "it": "È disponibile un nuovo firmware",
-          "No": "Ny fastvare er tilgjengelig",
+          "no": "Ny fastvare er tilgjengelig",
           "sv": "Ny fastvara är tillgänglig",
           "pl": "Nowe oprogramowanie sprzętowe jest dostępne",
           "ru": "Новое программное обеспечение доступно",
@@ -661,7 +661,7 @@
           "es": "El estado del sistema ha cambiado",
           "fr": "L'état du système a changé",
           "it": "Lo stato del sistema è cambiato",
-          "No": "Systemtilstanden har endret seg",
+          "no": "Systemtilstanden har endret seg",
           "sv": "Systemtillståndet har ändrats",
           "pl": "Stan systemu został zmieniony",
           "ru": "Состояние системы изменилось",
@@ -818,7 +818,7 @@
           "es": "Reiniciar el dongle",
           "fr": "Redémarrer le dongle",
           "it": "Riavvia dongle",
-          "No": "Start dongelen på nytt",
+          "no": "Start dongelen på nytt",
           "sv": "Starta om dongeln",
           "pl": "Uruchom ponownie dongle",
           "ru": "Перезагрузить дунгл",
@@ -1571,7 +1571,18 @@
   "drivers": [
     {
       "name": {
-        "en": "Sessy CT"
+        "en": "Sessy CT",
+        "nl": "Sessy CT",
+        "da": "Sessy CT",
+        "de": "Sessy CT",
+        "es": "Sessy CT",
+        "fr": "Sessy CT",
+        "it": "Sessy CT",
+        "no": "Sessy CT",
+        "sv": "Sessy CT",
+        "pl": "Sessy CT",
+        "ru": "Сесси CT",
+        "ko": "세시 CT"
       },
       "class": "sensor",
       "energy": {
@@ -2471,7 +2482,18 @@
     },
     {
       "name": {
-        "en": "Sessy Modbus"
+        "en": "Sessy Modbus",
+        "nl": "Sessy Modbus",
+        "da": "Sessy Modbus",
+        "de": "Sessy Modbus",
+        "es": "Sessy Modbus",
+        "fr": "Sessy Modbus",
+        "it": "Sessy Modbus",
+        "no": "Sessy Modbus",
+        "sv": "Sessy Modbus",
+        "pl": "Sessy Modbus",
+        "ru": "Сесси Modbus",
+        "ko": "세시 Modbus"
       },
       "class": "sensor",
       "energy": {
@@ -3991,7 +4013,17 @@
     {
       "name": {
         "en": "Solar System",
-        "nl": "PV Systeem"
+        "nl": "PV Systeem",
+        "da": "Solenergi System",
+        "de": "Solar System",
+        "es": "Sistema Solar",
+        "fr": "Système Solaire",
+        "it": "Sistema Solare",
+        "no": "Solkraft System",
+        "sv": "Solkraft System",
+        "pl": "System Słoneczny",
+        "ru": "Солнечная система",
+        "ko": "태양광 시스템"
       },
       "class": "solarpanel",
       "energy": {
@@ -5778,6 +5810,7 @@
           "id": "POWER_STRATEGY_API",
           "title": {
             "en": "HOMEY",
+            "nl": "HOMEY",
             "da": "HOMEY",
             "de": "HOMEY",
             "es": "HOMEY",
@@ -5794,6 +5827,7 @@
           "id": "POWER_STRATEGY_NOM",
           "title": {
             "en": "SESSY XOM (!)",
+            "nl": "SESSY XOM (!)",
             "da": "SESSY XOM (!)",
             "de": "SESSY XOM (!)",
             "es": "SESSY XOM (!)",
@@ -5810,6 +5844,7 @@
           "id": "POWER_STRATEGY_ROI",
           "title": {
             "en": "SESSY ROI (!)",
+            "nl": "SESSY ROI (!)",
             "da": "SESSY ROI (!)",
             "de": "SESSY ROI (!)",
             "es": "SESSY ROI (!)",
@@ -5826,6 +5861,7 @@
           "id": "POWER_STRATEGY_ECO",
           "title": {
             "en": "SESSY ECO (!)",
+            "nl": "SESSY ECO (!)",
             "da": "SESSY ECO (!)",
             "de": "SESSY ECO (!)",
             "es": "SESSY ECO (!)",
@@ -5842,6 +5878,7 @@
           "id": "POWER_STRATEGY_SESSY_CONNECT",
           "title": {
             "en": "SESSY CONNECT (!)",
+            "nl": "SESSY CONNECT (!)",
             "da": "SESSY CONNECT (!)",
             "de": "SESSY CONNECT (!)",
             "es": "SESSY CONNECT (!)",
@@ -5858,6 +5895,7 @@
           "id": "POWER_STRATEGY_IDLE",
           "title": {
             "en": "IDLE (!)",
+            "nl": "INACTIEF (!)",
             "da": "IDLE (!)",
             "de": "LEER (!)",
             "es": "INACTIVO (!)",
@@ -6392,7 +6430,7 @@
         "it": "Prezzo +6h",
         "no": "Pris +6T",
         "fr": "Tarif +6h",
-        "dk": "Pris +6T",
+        "da": "Pris +6T",
         "nl": "Prijs +6U",
         "es": "Precio +6H",
         "pl": "Cena +6H",
@@ -6418,7 +6456,7 @@
         "it": "Prezzo +7h",
         "no": "Pris +7T",
         "fr": "Tarif +7h",
-        "dk": "Pris +7T",
+        "da": "Pris +7T",
         "nl": "Prijs +7U",
         "es": "Precio +7H",
         "pl": "Cena +7H",
@@ -6444,7 +6482,7 @@
         "it": "Prezzo medio prossime 8h",
         "no": "Gj.snitt pris neste 8T",
         "fr": "Tarif moyen les 8 prochaines heures",
-        "dk": "Gn. snt. pris næste 8T",
+        "da": "Gn. snt. pris næste 8T",
         "nl": "Gem. prijs komende 8U",
         "es": "Precio medio próximas 8H",
         "pl": "Średnia cena następne 8H",
@@ -6470,7 +6508,7 @@
         "it": "Prezzo più alta prossime 8h",
         "no": "Høyeste pris neste 8T",
         "fr": "Tarif le plus élevée les 8 prochaines heures",
-        "dk": "Højeste pris næste 8T",
+        "da": "Højeste pris næste 8T",
         "nl": "Hoogste prijs komende 8U",
         "es": "Precio más alto próximas 8H",
         "pl": "Najwyższa cena następne 8H",
@@ -6496,7 +6534,7 @@
         "it": "Prezzo più basso prossime 8h",
         "no": "Laveste pris neste 8T",
         "fr": "Tarif le plus faible les 8 prochaines heures",
-        "dk": "Laveste pris næste 8T",
+        "da": "Laveste pris næste 8T",
         "nl": "Laagste prijs komende 8U",
         "es": "El precio más bajo en las próximas 8 horas",
         "pl": "Najniższa cena w następnych 8 godzinach",
@@ -6522,7 +6560,7 @@
         "it": "prezzo medio domani",
         "no": "Snittpris i morgen",
         "fr": "Tarif moyen demain",
-        "dk": "Gn. snt. pris i morgen",
+        "da": "Gn. snt. pris i morgen",
         "nl": "Gem. prijs morgen",
         "es": "Precio medio mañana",
         "pl": "Średnia cena jutro",
@@ -6548,7 +6586,7 @@
         "it": "Prezzo più alta di domani",
         "no": "Høyeste pris morgen",
         "fr": "Tarif le plus élevée demain",
-        "dk": "Højeste pris i morgen",
+        "da": "Højeste pris i morgen",
         "nl": "Hoogste prijs morgen",
         "es": "Precio más alto mañana",
         "pl": "Najwyższa cena jutro",
@@ -6574,7 +6612,7 @@
         "it": "Prezzo più basso domani",
         "no": "Laveste pris morgen",
         "fr": "Tarif le plus faible demain",
-        "dk": "Laveste pris i morgen",
+        "da": "Laveste pris i morgen",
         "nl": "Laagste prijs morgen",
         "es": "Precio más bajo mañana",
         "pl": "Najniższa cena jutro",
@@ -6600,7 +6638,7 @@
         "it": "Prezzo medio giornata odierna",
         "no": "Gj.snitt pris denne dag",
         "fr": "Tarif moyen aujourd'hui",
-        "dk": "Gn. snt. pris i dag",
+        "da": "Gn. snt. pris i dag",
         "nl": "Gem. prijs deze dag",
         "es": "Precio medio este día",
         "pl": "Średnia cena tego dnia",

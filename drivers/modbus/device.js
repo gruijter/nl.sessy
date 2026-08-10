@@ -134,13 +134,6 @@ class ModbusDevice extends SessyBaseDevice {
   }
 
   // flow functions
-  async setGridTarget(gridTarget, source) {
-    if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
-    await this.sessy.setGridTarget({ gridTarget });
-    this.log(`Grid target set by ${source} to ${gridTarget}`);
-    return Promise.resolve(true);
-  }
-
   async restart(source) {
     if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
     await this.sessy.restart();

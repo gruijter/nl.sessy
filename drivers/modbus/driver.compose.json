@@ -1,6 +1,17 @@
 {
   "name": {
-    "en": "Sessy Modbus"
+    "en": "Sessy Modbus",
+    "nl": "Sessy Modbus",
+    "da": "Sessy Modbus",
+    "de": "Sessy Modbus",
+    "es": "Sessy Modbus",
+    "fr": "Sessy Modbus",
+    "it": "Sessy Modbus",
+    "no": "Sessy Modbus",
+    "sv": "Sessy Modbus",
+    "pl": "Sessy Modbus",
+    "ru": "Сесси Modbus",
+    "ko": "세시 Modbus"
   },
   "class": "sensor",
   "energy": {

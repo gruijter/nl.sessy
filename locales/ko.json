@@ -40,5 +40,8 @@
     "newFirmwareAvailable": "Sessy에 대한 새 펌웨어가 제공됩니다. __fw__",
     "newFirmwareMeter": "계량기에 새 펌웨어가 설치되었습니다. __fw__",
     "newFirmwareAvailableMeter": "계량기에 대한 새 펌웨어가 제공됩니다. __fw__"
+  },
+  "pv": {
+    "no_updates": "Sessy에서 업데이트 없음"
   }
 }

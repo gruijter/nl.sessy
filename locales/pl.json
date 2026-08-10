@@ -40,5 +40,8 @@
     "newFirmwareAvailable": "Nowe oprogramowanie dostępne dla Sessy. __fw__",
     "newFirmwareMeter": "Nowe oprogramowanie zainstalowane na Liczniku. __fw__",
     "newFirmwareAvailableMeter": "Nowe oprogramowanie dostępne dla Licznika. __fw__"
+  },
+  "pv": {
+    "no_updates": "Brak aktualizacji od Sessy"
   }
 }

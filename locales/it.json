@@ -27,7 +27,8 @@
     "sn_dongle": "Dongle S/N",
     "password_dongle": "Password Dongle",
     "incomplete": "Indirizzo IP o URL, dongle S/N e password devono essere inseriti!",
-    "continue": "CONTINUA"
+    "continue": "CONTINUA",
+    "endpoint_not_found": "Firmware vecchio o tipo di dispositivo errato."
   },
   "sessy": {
     "homeyProOnly": "Questa impostazione è disponibile solo su Homey Pro",
@@ -39,5 +40,8 @@
     "newFirmwareAvailable": "Nuovo firmware disponibile per Sessy. __fw__",
     "newFirmwareMeter": "Nuovo firmware installato sul Misuratore. __fw__",
     "newFirmwareAvailableMeter": "Nuovo firmware disponibile per il Misuratore. __fw__"
+  },
+  "pv": {
+    "no_updates": "Nessun aggiornamento da Sessy"
   }
 }

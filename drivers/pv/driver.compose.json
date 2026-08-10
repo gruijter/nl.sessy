@@ -1,29 +1,36 @@
 {
   "name": {
     "en": "Solar System",
-    "nl": "PV Systeem"
+    "nl": "PV Systeem",
+    "da": "Solenergi System",
+    "de": "Solar System",
+    "es": "Sistema Solar",
+    "fr": "Système Solaire",
+    "it": "Sistema Solare",
+    "no": "Solkraft System",
+    "sv": "Solkraft System",
+    "pl": "System Słoneczny",
+    "ru": "Солнечная система",
+    "ko": "태양광 시스템"
   },
   "class": "solarpanel",
-    "energy": {
-      "meterPowerExportedCapability": "meter_power"
+  "energy": {
+    "meterPowerExportedCapability": "meter_power"
   },
   "capabilities": [
     "measure_power",
     "meter_power",
     "measure_frequency",
-
     "measure_power.p1",
     "measure_voltage.p1",
     "measure_current.p1",
     "meter_power.p1Import",
     "meter_power.p1Export",
-
     "measure_power.p2",
     "measure_voltage.p2",
     "measure_current.p2",
     "meter_power.p2Import",
     "meter_power.p2Export",
-
     "measure_power.p3",
     "measure_current.p3",
     "measure_voltage.p3",
