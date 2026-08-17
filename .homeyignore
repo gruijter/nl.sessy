@@ -1,2 +1,5 @@
 /.vscode/
 zzz_*
+.claude
+.github
+AGENTS.md

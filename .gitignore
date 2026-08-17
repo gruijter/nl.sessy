@@ -3,3 +3,6 @@
 /.homeybuild/
 /.vscode/
 zzz*
+.claude/
+.github/
+AGENTS.md
