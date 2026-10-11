@@ -21,7 +21,7 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 'use strict';
 
 const SessyBaseDevice = require('../../lib/base_device');
-const { migrateCapabilities } = require('../../lib/migrate');
+const DeviceMigrator = require('../../lib/DeviceMigrator');
 
 class SessyDevice extends SessyBaseDevice {
 
@@ -80,14 +80,10 @@ class SessyDevice extends SessyBaseDevice {
       if (!this.getSettings().show_re2) correctCaps = correctCaps.filter((cap) => !cap.includes('p2'));
       if (!this.getSettings().show_re3) correctCaps = correctCaps.filter((cap) => !cap.includes('p3'));
 
-      await migrateCapabilities(this, correctCaps);
+      await this.migrateCapabilities(correctCaps);
 
       // migrate to Battery class (Homey fw >= 12)
-      const deviceClass = this.getClass();
-      if (deviceClass !== 'battery') {
-        this.log('Converting device class to battery');
-        await this.setClass('battery');
-      }
+      await DeviceMigrator.migrateClass(this);
     } catch (error) {
       this.error(error);
     }

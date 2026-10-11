@@ -21,7 +21,7 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 'use strict';
 
 const { Device } = require('homey');
-const { migrateCapabilities } = require('../../lib/migrate');
+const DeviceMigrator = require('../../lib/DeviceMigrator');
 const { setTimeoutPromise } = require('../../lib/util');
 
 class PVDevice extends Device {
@@ -55,7 +55,10 @@ class PVDevice extends Device {
       if (!showRe3) correctCaps = correctCaps.filter((cap) => !cap.includes('p3'));
       if (onlyShowTotalPower) correctCaps = correctCaps.filter((cap) => !cap.includes('measure_power.p'));
 
-      await migrateCapabilities(this, correctCaps);
+      await DeviceMigrator.migrateCapabilities(this, correctCaps, {
+        shouldAbort: () => this.isUninitialized,
+        unavailableMessage: this.homey.__('sessy.migrating'),
+      });
     } catch (error) {
       this.error(error);
     }
