@@ -34,6 +34,7 @@
     "homeyProOnly": "Denne indstilling er kun tilgængelig på Homey Pro",
     "incomplete": "Vært og port skal indtastes for en lokal forbindelse",
     "controlError": "Homey er ikke indstillet i kontrolmode",
+    "unknownMode": "Ukendt kontroltilstand",
     "connectionError": "Forbindelsesfejl, genstarter nu",
     "migrating": "Enhed migrerer. Vent venligst!",
     "newFirmware": "Ny firmware installeret på Sessy. __fw__",

@@ -188,7 +188,7 @@ class SessyDevice extends SessyBaseDevice {
       const capabilityStates = {
         volume_set: noiseLevel,
         control_strategy: controlStrategy,
-        target_power_mode: MODES[controlStrategy],
+        target_power_mode: MODES[controlStrategy] ?? null,
         override: status.sessy.strategy_overridden,
         charge_mode: chargeMode,
         system_state: systemState,
@@ -283,8 +283,13 @@ class SessyDevice extends SessyBaseDevice {
 
   // limit min/max setpoint
   async limitSetpoint(setpoint) {
+    if (this.getCapabilityValue('target_power_mode') !== 'homey') return setpoint;
+    return this.clampSetpoint(setpoint);
+  }
+
+  clampSetpoint(setpoint) {
     let sp = setpoint;
-    if (typeof sp === 'number' && this.getCapabilityValue('target_power_mode') === 'homey') {
+    if (typeof sp === 'number') {
       // apply battery full_empty protection
       if (this.batIsEmpty && sp > 0) sp = 0; // don't discharge when bat is empty
       if (this.batIsFull && sp < 0) sp = 0; // don't charge when bat is full
@@ -309,13 +314,13 @@ class SessyDevice extends SessyBaseDevice {
     if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
     await this.sessy.setStrategy({ strategy });
     await this.setCapability('control_strategy', strategy).catch((e) => this.error(e));
-    await this.setCapability('target_power_mode', MODES[strategy]).catch((e) => this.error(e));
+    await this.setCapability('target_power_mode', MODES[strategy] ?? null).catch((e) => this.error(e));
     this.log(`Control Strategy set by ${source} to ${strategy}`);
     return Promise.resolve(true);
   }
 
   async setTargetPowerMode(mode, source) {
-    if (!STRATEGIES[mode]) throw Error(`Unknown target power mode ${mode}`);
+    if (!STRATEGIES[mode]) throw Error(this.homey.__('sessy.unknownMode'));
     return this.setControlStrategy(STRATEGIES[mode], source);
   }
 
@@ -354,8 +359,8 @@ class SessyDevice extends SessyBaseDevice {
       if (this.getSettings().force_control_strategy) await this.setControlStrategy('POWER_STRATEGY_API', 'control attempt');
       else throw Error(this.homey.__('sessy.controlError'));
     }
-    // limit min/max power
-    const sp = await this.limitSetpoint(setpoint);
+    // limit min/max power; Homey is in control here, also when target_power_mode is not (yet) known
+    const sp = this.clampSetpoint(setpoint);
     await this.sessy.setSetpoint({ setpoint: sp });
     this.log(`${this.getName()} Power setpoint set by ${source} to ${sp}`);
     return Promise.resolve(true);
@@ -395,6 +400,7 @@ class SessyDevice extends SessyBaseDevice {
 
       // capabilityListeners will be overwritten, so no need to unregister them
       this.registerCapabilityListener('target_power_mode', (mode) => this.setTargetPowerMode(mode, 'app'));
+      this.registerCapabilityListener('control_strategy', (strategy) => this.setControlStrategy(strategy, 'app'));
       this.registerCapabilityListener('charge_mode', (chargeMode) => this.setChargeMode(chargeMode, 'app'));
       this.registerCapabilityListener('meter_setpoint', (setpoint) => this.setPowerSetpoint(setpoint, 'app'));
       this.registerCapabilityListener('target_power', (targetPower) => this.setPowerSetpoint(-targetPower, 'app'));

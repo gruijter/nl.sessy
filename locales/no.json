@@ -34,6 +34,7 @@
     "homeyProOnly": "Denne innstillingen er kun tilgjengelig på Homey Pro",
     "incomplete": "Vert og port må fylles ut for en lokal tilkobling",
     "controlError": "Homey er ikke satt i kontrollmodus",
+    "unknownMode": "Ukjent kontrollmodus",
     "connectionError": "Tilkoblingsfeil, starter på nytt nå",
     "migrating": "Enheten migrerer. Vennligst vent!",
     "newFirmware": "Ny programvare installert på Sessy. __fw__",

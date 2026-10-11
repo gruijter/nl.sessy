@@ -38,6 +38,7 @@
 		"homeyProOnly": "Deze instelling is alleen beschikbaar op Homey Pro",
 		"incomplete": "Host en poort moet worden ingevuld voor een lokale verbinding",
 		"controlError": "Homey is niet ingesteld in besturingsmodus",
+		"unknownMode": "Onbekende besturingsmodus",
 		"connectionError": "Verbindingsfout, aan het herstarten",
 		"migrating": "Apparaat is aan het migreren. Geduld AUB!",
 		"newFirmware": "Nieuwe firmware geïnstalleerd op Sessy. __fw__",

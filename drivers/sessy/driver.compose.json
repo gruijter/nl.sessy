@@ -102,7 +102,8 @@
         "sv": "Kontrollläge",
         "pl": "Tryb sterowania",
         "ru": "Режим управления",
-        "ko": "제어 모드"
+        "ko": "제어 모드",
+        "ar": "وضع التحكم"
       },
       "values": [
         {
@@ -119,7 +120,8 @@
             "sv": "HOMEY",
             "pl": "HOMEY",
             "ru": "HOMEY",
-            "ko": "HOMEY"
+            "ko": "HOMEY",
+            "ar": "HOMEY"
           }
         },
         {
@@ -136,7 +138,8 @@
             "sv": "SESSY XOM (!)",
             "pl": "SESSY XOM (!)",
             "ru": "SESSY XOM (!)",
-            "ko": "SESSY XOM (!)"
+            "ko": "SESSY XOM (!)",
+            "ar": "SESSY XOM (!)"
           }
         },
         {
@@ -153,7 +156,8 @@
             "sv": "SESSY ROI (!)",
             "pl": "SESSY ROI (!)",
             "ru": "SESSY ROI (!)",
-            "ko": "SESSY ROI (!)"
+            "ko": "SESSY ROI (!)",
+            "ar": "SESSY ROI (!)"
           }
         },
         {
@@ -170,7 +174,8 @@
             "sv": "SESSY ECO (!)",
             "pl": "SESSY ECO (!)",
             "ru": "SESSY ECO (!)",
-            "ko": "SESSY ECO (!)"
+            "ko": "SESSY ECO (!)",
+            "ar": "SESSY ECO (!)"
           }
         },
         {
@@ -187,7 +192,8 @@
             "sv": "SESSY CONNECT (!)",
             "pl": "SESSY CONNECT (!)",
             "ru": "SESSY CONNECT (!)",
-            "ko": "SESSY CONNECT (!)"
+            "ko": "SESSY CONNECT (!)",
+            "ar": "SESSY CONNECT (!)"
           }
         },
         {
@@ -204,7 +210,8 @@
             "sv": "IDLE (!)",
             "pl": "BEZCZYNNY (!)",
             "ru": "БЕЗДЕЙСТВИТЕЛЬНЫЙ (!)",
-            "ko": "유휴 (!)"
+            "ko": "유휴 (!)",
+            "ar": "خامل (!)"
           }
         }
       ]

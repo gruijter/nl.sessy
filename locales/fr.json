@@ -34,6 +34,7 @@
     "homeyProOnly": "Ce réglage est uniquement disponible sur Homey Pro",
     "incomplete": "L'hôte et le port doivent être renseignés pour une connexion locale",
     "controlError": "Homey n'est pas réglé en mode contrôle",
+    "unknownMode": "Mode de contrôle inconnu",
     "connectionError": "Erreur de connexion, redémarrage en cours",
     "migrating": "L'appareil est en cours de migration. Veuillez patienter !",
     "newFirmware": "Nouveau firmware installé sur le Sessy. __fw__",
