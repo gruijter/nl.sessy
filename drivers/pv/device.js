@@ -78,7 +78,7 @@ class PVDevice extends Device {
     }
   }
 
-  async onAdded() {
+  onAdded() {
     this.log(`${this.getName()} has been added`);
   }
 
@@ -89,7 +89,7 @@ class PVDevice extends Device {
     return Promise.resolve(true);
   }
 
-  async onRenamed(name) {
+  onRenamed(name) {
     this.log(`${this.getName()} was renamed to ${name}`);
   }
 
@@ -100,7 +100,7 @@ class PVDevice extends Device {
     this.log(`${this.getName()} uninit`);
   }
 
-  async onDeleted() {
+  onDeleted() {
     if (this.watchdog) this.homey.clearInterval(this.watchdog);
     this.destroyListeners();
     this.log(`${this.getName()} has been deleted`);
