@@ -106,5 +106,8 @@
   },
   "3.5.0": {
     "en": "Added Homey's standard Target Power capability for battery control. Fixed P1 gas usage and tariff-change accuracy, the alarm flow card, and several translations. Fixed flows firing twice for charge mode/control strategy changes. Improved reliability when updating the app."
+  },
+  "3.6.0": {
+    "en": "Added Homey's standard Control Mode for battery control. Deprecated Control Strategy. Power limits are now always applied when Homey sets the battery power. Improved error handling and translations."
   }
 }
