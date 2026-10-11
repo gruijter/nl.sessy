@@ -41,5 +41,6 @@
       },
       "example": "HOMEY"
     }
-  ]
+  ],
+  "deprecated": true
 }

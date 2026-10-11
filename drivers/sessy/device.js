@@ -23,6 +23,17 @@ along with nl.sessy. If not, see <http://www.gnu.org/licenses/>.
 const SessyBaseDevice = require('../../lib/base_device');
 const DeviceMigrator = require('../../lib/DeviceMigrator');
 
+// target_power_mode id -> Sessy power strategy
+const STRATEGIES = {
+  homey: 'POWER_STRATEGY_API',
+  nom: 'POWER_STRATEGY_NOM',
+  roi: 'POWER_STRATEGY_ROI',
+  eco: 'POWER_STRATEGY_ECO',
+  sessy_connect: 'POWER_STRATEGY_SESSY_CONNECT',
+  idle: 'POWER_STRATEGY_IDLE',
+};
+const MODES = Object.fromEntries(Object.entries(STRATEGIES).map(([mode, strategy]) => [strategy, mode]));
+
 class SessyDevice extends SessyBaseDevice {
 
   async onInitSpecific() {
@@ -177,6 +188,7 @@ class SessyDevice extends SessyBaseDevice {
       const capabilityStates = {
         volume_set: noiseLevel,
         control_strategy: controlStrategy,
+        target_power_mode: MODES[controlStrategy],
         override: status.sessy.strategy_overridden,
         charge_mode: chargeMode,
         system_state: systemState,
@@ -272,7 +284,7 @@ class SessyDevice extends SessyBaseDevice {
   // limit min/max setpoint
   async limitSetpoint(setpoint) {
     let sp = setpoint;
-    if (typeof sp === 'number' && this.getCapabilityValue('control_strategy') === 'POWER_STRATEGY_API') {
+    if (typeof sp === 'number' && this.getCapabilityValue('target_power_mode') === 'homey') {
       // apply battery full_empty protection
       if (this.batIsEmpty && sp > 0) sp = 0; // don't discharge when bat is empty
       if (this.batIsFull && sp < 0) sp = 0; // don't charge when bat is full
@@ -296,12 +308,19 @@ class SessyDevice extends SessyBaseDevice {
   async setControlStrategy(strategy, source) {
     if (!this.useLocalLogin) throw Error(this.homey.__('sessy.controlError'));
     await this.sessy.setStrategy({ strategy });
+    await this.setCapability('control_strategy', strategy).catch((e) => this.error(e));
+    await this.setCapability('target_power_mode', MODES[strategy]).catch((e) => this.error(e));
     this.log(`Control Strategy set by ${source} to ${strategy}`);
     return Promise.resolve(true);
   }
 
+  async setTargetPowerMode(mode, source) {
+    if (!STRATEGIES[mode]) throw Error(`Unknown target power mode ${mode}`);
+    return this.setControlStrategy(STRATEGIES[mode], source);
+  }
+
   async setChargeMode(chargeMode, source) {
-    if (this.getCapabilityValue('control_strategy') !== 'POWER_STRATEGY_API') {
+    if (this.getCapabilityValue('target_power_mode') !== 'homey') {
       if (this.getSettings().force_control_strategy) await this.setControlStrategy('POWER_STRATEGY_API', 'control attempt');
       else throw Error(this.homey.__('sessy.controlError'));
     }
@@ -331,7 +350,7 @@ class SessyDevice extends SessyBaseDevice {
 
   async setPowerSetpoint(setpoint, source) {
     // force Homey as controller
-    if (this.getCapabilityValue('control_strategy') !== 'POWER_STRATEGY_API') {
+    if (this.getCapabilityValue('target_power_mode') !== 'homey') {
       if (this.getSettings().force_control_strategy) await this.setControlStrategy('POWER_STRATEGY_API', 'control attempt');
       else throw Error(this.homey.__('sessy.controlError'));
     }
@@ -375,7 +394,7 @@ class SessyDevice extends SessyBaseDevice {
       this.log('registering listeners');
 
       // capabilityListeners will be overwritten, so no need to unregister them
-      this.registerCapabilityListener('control_strategy', (strategy) => this.setControlStrategy(strategy, 'app'));
+      this.registerCapabilityListener('target_power_mode', (mode) => this.setTargetPowerMode(mode, 'app'));
       this.registerCapabilityListener('charge_mode', (chargeMode) => this.setChargeMode(chargeMode, 'app'));
       this.registerCapabilityListener('meter_setpoint', (setpoint) => this.setPowerSetpoint(setpoint, 'app'));
       this.registerCapabilityListener('target_power', (targetPower) => this.setPowerSetpoint(-targetPower, 'app'));

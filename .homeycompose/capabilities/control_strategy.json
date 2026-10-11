@@ -120,7 +120,7 @@
   ],
   "value": "POWER_STRATEGY_API",
   "getable": true,
-  "setable": true,
+  "setable": false,
   "icon": "./assets/control_strategy.svg",
-  "uiComponent": "sensor"
+  "uiComponent": null
 }

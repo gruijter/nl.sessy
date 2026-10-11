@@ -33,7 +33,7 @@
     "measure_power.external",
     "system_state",
     "alarm_fault",
-    "control_strategy",
+    "target_power_mode",
     "override",
     "meter_power.import",
     "meter_power.export",
@@ -52,7 +52,8 @@
     "measure_current.p3",
     "measure_voltage.p3",
     "meter_power.p3Import",
-    "meter_power.p3Export"
+    "meter_power.p3Export",
+    "control_strategy"
   ],
   "capabilitiesOptions": {
     "meter_setpoint": {
@@ -87,6 +88,126 @@
         "ko": "Homey 목표 전력"
       },
       "uiComponent": null
+    },
+    "target_power_mode": {
+      "title": {
+        "en": "Control Mode",
+        "nl": "Besturingsmodus",
+        "da": "Kontroltilstand",
+        "de": "Steuerungsmodus",
+        "es": "Modo de Control",
+        "fr": "Mode de Contrôle",
+        "it": "Modalità di Controllo",
+        "no": "Kontrollmodus",
+        "sv": "Kontrollläge",
+        "pl": "Tryb sterowania",
+        "ru": "Режим управления",
+        "ko": "제어 모드"
+      },
+      "values": [
+        {
+          "id": "homey",
+          "title": {
+            "en": "HOMEY",
+            "nl": "HOMEY",
+            "da": "HOMEY",
+            "de": "HOMEY",
+            "es": "HOMEY",
+            "fr": "HOMEY",
+            "it": "HOMEY",
+            "no": "HOMEY",
+            "sv": "HOMEY",
+            "pl": "HOMEY",
+            "ru": "HOMEY",
+            "ko": "HOMEY"
+          }
+        },
+        {
+          "id": "nom",
+          "title": {
+            "en": "SESSY XOM (!)",
+            "nl": "SESSY XOM (!)",
+            "da": "SESSY XOM (!)",
+            "de": "SESSY XOM (!)",
+            "es": "SESSY XOM (!)",
+            "fr": "SESSY XOM (!)",
+            "it": "SESSY XOM (!)",
+            "no": "SESSY XOM (!)",
+            "sv": "SESSY XOM (!)",
+            "pl": "SESSY XOM (!)",
+            "ru": "SESSY XOM (!)",
+            "ko": "SESSY XOM (!)"
+          }
+        },
+        {
+          "id": "roi",
+          "title": {
+            "en": "SESSY ROI (!)",
+            "nl": "SESSY ROI (!)",
+            "da": "SESSY ROI (!)",
+            "de": "SESSY ROI (!)",
+            "es": "SESSY ROI (!)",
+            "fr": "SESSY ROI (!)",
+            "it": "SESSY ROI (!)",
+            "no": "SESSY ROI (!)",
+            "sv": "SESSY ROI (!)",
+            "pl": "SESSY ROI (!)",
+            "ru": "SESSY ROI (!)",
+            "ko": "SESSY ROI (!)"
+          }
+        },
+        {
+          "id": "eco",
+          "title": {
+            "en": "SESSY ECO (!)",
+            "nl": "SESSY ECO (!)",
+            "da": "SESSY ECO (!)",
+            "de": "SESSY ECO (!)",
+            "es": "SESSY ECO (!)",
+            "fr": "SESSY ECO (!)",
+            "it": "SESSY ECO (!)",
+            "no": "SESSY ECO (!)",
+            "sv": "SESSY ECO (!)",
+            "pl": "SESSY ECO (!)",
+            "ru": "SESSY ECO (!)",
+            "ko": "SESSY ECO (!)"
+          }
+        },
+        {
+          "id": "sessy_connect",
+          "title": {
+            "en": "SESSY CONNECT (!)",
+            "nl": "SESSY CONNECT (!)",
+            "da": "SESSY CONNECT (!)",
+            "de": "SESSY CONNECT (!)",
+            "es": "SESSY CONNECT (!)",
+            "fr": "SESSY CONNECT (!)",
+            "it": "SESSY CONNECT (!)",
+            "no": "SESSY CONNECT (!)",
+            "sv": "SESSY CONNECT (!)",
+            "pl": "SESSY CONNECT (!)",
+            "ru": "SESSY CONNECT (!)",
+            "ko": "SESSY CONNECT (!)"
+          }
+        },
+        {
+          "id": "idle",
+          "title": {
+            "en": "IDLE (!)",
+            "nl": "INACTIEF (!)",
+            "da": "IDLE (!)",
+            "de": "LEER (!)",
+            "es": "INACTIVO (!)",
+            "fr": "INACTIF (!)",
+            "it": "INATTIVO (!)",
+            "no": "IDLE (!)",
+            "sv": "IDLE (!)",
+            "pl": "BEZCZYNNY (!)",
+            "ru": "БЕЗДЕЙСТВИТЕЛЬНЫЙ (!)",
+            "ko": "유휴 (!)"
+          }
+        }
+      ]
     },
     "volume_set": {
       "min": 1,

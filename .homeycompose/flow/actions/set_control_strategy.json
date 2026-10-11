@@ -166,5 +166,6 @@
       ],
       "value": "POWER_STRATEGY_API"
     }
-  ]
+  ],
+  "deprecated": true
 }

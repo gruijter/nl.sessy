@@ -38,7 +38,7 @@ const capabilities = [
   'measure_power.external',
   'system_state',
   'alarm_fault',
-  'control_strategy',
+  'target_power_mode', // Homey standard home battery capability, replaces control_strategy
   'override',
 
   'meter_power.import',
@@ -63,6 +63,8 @@ const capabilities = [
   'measure_voltage.p3',
   'meter_power.p3Import',
   'meter_power.p3Export',
+
+  'control_strategy', // hidden, kept for the deprecated control_strategy flow cards
 ];
 
 class SessyDriver extends Driver {
